@@ -1,0 +1,138 @@
+
+{
+    "nav": {
+        "home": "Home",
+        "services": "Services",
+        "whyUs": "Why Us",
+        "successStories": "Success Stories",
+        "contact": "Contact"
+    },
+    "footer": {
+        "companyName": "Tech Solutions AR",
+        "companyDescription": "Boosting your SMB with infrastructure, DevOps, and AWS solutions designed for the Argentine market.",
+        "quickContact": "Quick Contact",
+        "whatsapp": "WhatsApp Business",
+        "linkedin": "LinkedIn",
+        "hours": "Hours: Mon-Fri 9:00 AM - 6:00 PM (GMT-3)",
+        "navigation": "Navigation",
+        "services": "Services",
+        "contact": "Contact",
+        "copyright": "Tech Solutions AR. All rights reserved."
+    },
+    "home": {
+        "hero": {
+            "title": "We boost your SMB with infrastructure, DevOps, and AWS solutions",
+            "subtitle": "Comprehensive technical support, cloud migrations, automation, and security, designed for the Argentine market.",
+            "cta": "Request your free diagnosis"
+        },
+        "services": {
+            "title": "Our Solutions",
+            "subtitle": "From technical support to cutting-edge cloud engineering, we offer a full range of services for your company.",
+            "items": [
+                { "title": "Technical Support", "description": "On-premise and remote for SMBs." },
+                { "title": "AWS Migration", "description": "Secure cloud architecture and migration." },
+                { "title": "DevOps Consulting", "description": "CI/CD, automation, and pipelines." },
+                { "title": "Cloud Engineering", "description": "Infrastructure as code and automation." },
+                { "title": "Advanced Security", "description": "Monitoring and protection of your infrastructure." },
+                { "title": "Networks & Networking", "description": "Management of Cisco and Fortinet equipment." }
+            ],
+            "seeAll": "See all services"
+        },
+        "whyUs": {
+            "tag": "Why Choose Us",
+            "title": "Your Technology Partner in Argentina",
+            "subtitle": "We combine global expertise with deep knowledge of the local market to deliver solutions that truly work.",
+            "points": [
+                { "title": "Experience and Certifications", "description": "Our team is certified as AWS DevOps Engineers with years of experience working with Argentine SMBs." },
+                { "title": "Professional Methodology", "description": "Technical support, personalized attention, and a rapid response capacity adapted to your needs." }
+            ]
+        },
+        "testimonials": {
+            "title": "Our Clients' Success",
+            "subtitle": "Real results and testimonials from companies that trust us.",
+            "items": [
+                { "text": "A national fintech company saved 40% on AWS costs after a DevOps audit.", "author": "CEO, Argentine Fintech" },
+                { "text": "A local e-commerce doubled sales with no downtime thanks to CI/CD and cloud monitoring.", "author": "CTO, Fashion E-commerce" },
+                { "text": "The post-migration support was key, and the team understood the Argentine context perfectly.", "author": "IT Manager, Logistics Company" }
+            ]
+        }
+    },
+    "servicesPage": {
+        "heroTitle": "Our Services",
+        "intro": "We offer a complete set of technological solutions designed to boost the growth and efficiency of SMBs in Argentina. Explore how we can help you.",
+        "services": [
+            { "title": "On-premise and remote Technical Support", "content": "We offer comprehensive support for your physical and virtual infrastructure. Our team is prepared to resolve incidents quickly, minimize downtime, and ensure business continuity, with both on-site and remote assistance." },
+            { "title": "Migration and Architecture in AWS", "content": "We accompany you on your journey to the cloud. We design scalable, secure, and cost-effective architectures in AWS. We carry out planned migrations of servers, databases, and applications without interrupting your operation." },
+            { "title": "DevOps Consulting", "content": "We implement a DevOps culture to accelerate your development and delivery cycles. We set up CI/CD pipelines with tools like AWS CodePipeline, CodeBuild, and CodeDeploy, automating tests and deployments so your team can focus on innovation." },
+            { "title": "Cloud Engineering", "content": "We automate your infrastructure with tools like Terraform and CloudFormation. We manage your containerized applications with ECS/EKS, optimizing resources and improving the portability and scalability of your systems." },
+            { "title": "Network Administration (Cisco)", "content": "We manage and optimize your network infrastructure based on Cisco technology. From configuring switches and routers to solving complex problems, ensuring a robust and reliable network." },
+            { "title": "Networking and Security (Fortinet)", "content": "We implement and manage perimeter security solutions with Fortinet. We configure firewalls (FortiGate), security policies, VPNs, and traffic analysis to protect your network against external and internal threats." },
+            { "title": "Advanced Security and Monitoring", "content": "We protect your digital assets with the best cloud security practices. We implement proactive monitoring systems with CloudWatch and Grafana to detect and respond to threats in real time, ensuring the integrity and availability of your information." },
+            { "title": "Personalized Attention", "content": "We understand that every Argentine SMB is unique. That's why we offer a close and personalized service, assigning a technical specialist to your account to thoroughly understand your needs and provide quick and effective answers." }
+        ]
+    },
+    "whyUsPage": {
+        "heroTitle": "Why Choose Us",
+        "intro": "We are more than a provider; we are your strategic technology partner. Discover the reasons why Argentine companies trust us.",
+        "points": [
+            { "title": "Experience and Certifications", "description": "Our team holds official certifications such as AWS Certified DevOps Engineer and has a solid track record working with the specific challenges of Argentine SMBs." },
+            { "title": "Customer-Centric Methodology", "description": "We believe in constant technical support and personalized attention. Your success is our goal, so we offer smooth communication and quick responses." },
+            { "title": "Solutions Adapted to the Local Context", "description": "We understand the economic and operational reality of Argentina. We design solutions that are not only technically robust but also financially viable for the national market." }
+        ],
+        "certifications": {
+            "title": "Our Certifications",
+            "subtitle": "Committed to excellence and cutting-edge knowledge.",
+            "items": [
+                { "title": "AWS Certified<br/>DevOps Engineer" },
+                { "title": "Certified DevOps<br/>Professional" }
+            ]
+        }
+    },
+    "successStoriesPage": {
+        "heroTitle": "Success Stories",
+        "intro": "Tangible results we have generated for Argentine companies. Stories of transformation and growth driven by technology.",
+        "stories": [
+            { "title": "Cost reduction for Fintech", "description": "A leading national fintech faced high costs in its AWS infrastructure. We conducted an exhaustive DevOps audit, optimized resource usage, and refactored their CI/CD pipelines.", "metric": "40% savings", "metricDescription": "in monthly AWS costs." },
+            { "title": "High availability for E-commerce", "description": "A fashion e-commerce experienced downtime during traffic peaks like Hot Sale. We migrated their monolith to a microservices architecture on EKS and automated scaling.", "metric": "100% Uptime", "metricDescription": "during high-demand events." },
+            { "title": "Scalable growth for EdTech", "description": "An EdTech startup needed an infrastructure to support its rapid user growth. We designed a serverless architecture on AWS that scales automatically and reduces operational load.", "metric": "2X Growth", "metricDescription": "in users without service degradation." }
+        ]
+    },
+    "contactPage": {
+        "heroTitle": "Contact",
+        "heroSubtitle": "Let's talk about how we can help you.",
+        "form": {
+            "title": "Send us a message",
+            "subtitle": "Complete the form and our team will get in touch shortly to coordinate a free diagnosis.",
+            "name": "Name",
+            "namePlaceholder": "Your name",
+            "company": "Company",
+            "companyPlaceholder": "Your company's name",
+            "email": "Email",
+            "emailPlaceholder": "you@email.com",
+            "message": "Message",
+            "messagePlaceholder": "Tell us about your project or needs...",
+            "submit": "Send Message",
+            "submitting": "Sending...",
+            "successTitle": "Message Sent",
+            "successDescription": "Thank you for contacting us. Your ticket has been generated and we will get back to you shortly.",
+            "errorTitle": "Error sending",
+            "errorDescription": "There was a problem sending your message. Please try again.",
+             "validation": {
+                "name": "Name must be at least 2 characters.",
+                "company": "Company must be at least 2 characters.",
+                "email": "Please enter a valid email.",
+                "message": "Message must be at least 10 characters."
+            }
+        },
+        "channels": {
+            "title": "Contact Channels",
+            "whatsapp": "WhatsApp Business",
+            "whatsappDescription": "Start a direct conversation.",
+            "email": "Email",
+            "emailAddress": "contact@techsolutions.ar",
+            "linkedin": "LinkedIn",
+            "linkedinDescription": "Connect with us on the professional network.",
+            "hours": "Business hours: Monday to Friday from 9:00 AM to 6:00 PM (GMT-3)."
+        }
+    }
+}
