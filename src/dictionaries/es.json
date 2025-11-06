@@ -8,28 +8,28 @@
         "contact": "Contacto"
     },
     "footer": {
-        "companyName": "Tech Solutions AR",
-        "companyDescription": "Impulsando tu pyme con soluciones de infraestructura, DevOps y AWS diseñadas para el mercado argentino.",
+        "companyName": "Tech Solutions",
+        "companyDescription": "Impulsando tu negocio con soluciones globales de infraestructura, DevOps y AWS.",
         "quickContact": "Contacto Rápido",
         "whatsapp": "WhatsApp Business",
         "linkedin": "LinkedIn",
-        "hours": "Horarios: L-V 9:00 - 18:00 (GMT-3)",
+        "hours": "Horarios: L-V 9:00 - 18:00",
         "navigation": "Navegación",
         "services": "Servicios",
         "contact": "Contacto",
-        "copyright": "Tech Solutions AR. Todos los derechos reservados."
+        "copyright": "Tech Solutions. Todos los derechos reservados."
     },
     "home": {
         "hero": {
-            "title": "Impulsamos tu pyme con soluciones de infraestructura, DevOps y AWS",
-            "subtitle": "Soporte técnico integral, migraciones cloud, automatización y seguridad, diseñadas para el mercado argentino.",
+            "title": "Impulsamos tu negocio con soluciones de infraestructura, DevOps y AWS",
+            "subtitle": "Soporte técnico integral, migraciones cloud, automatización y seguridad para empresas de todo el mundo.",
             "cta": "Solicitá tu diagnóstico sin cargo"
         },
         "services": {
             "title": "Nuestras Soluciones",
             "subtitle": "Desde soporte técnico hasta ingeniería cloud de vanguardia, ofrecemos un abanico completo de servicios para tu empresa.",
             "items": [
-                { "title": "Soporte Técnico", "description": "On-premise y remoto para pymes." },
+                { "title": "Soporte Técnico", "description": "Soporte on-premise y remoto para empresas." },
                 { "title": "Migración a AWS", "description": "Arquitectura y migración segura a la nube." },
                 { "title": "Consultoría DevOps", "description": "CI/CD, automatización y pipelines." },
                 { "title": "Ingeniería Cloud", "description": "Infraestructura como código y automatización." },
@@ -40,26 +40,26 @@
         },
         "whyUs": {
             "tag": "Por qué elegirnos",
-            "title": "Tu Socio Tecnológico en Argentina",
-            "subtitle": "Combinamos experiencia global con un profundo conocimiento del mercado local para ofrecer soluciones que realmente funcionan.",
+            "title": "Tu Socio Tecnológico Global",
+            "subtitle": "Combinamos experiencia global con un enfoque centrado en el cliente para ofrecer soluciones que realmente funcionan.",
             "points": [
-                { "title": "Trayectoria y Certificaciones", "description": "Equipo certificado como AWS DevOps Engineer con años de experiencia en pymes argentinas." },
-                { "title": "Metodología Profesional", "description": "Acompañamiento técnico, atención personalizada y una rápida capacidad de respuesta adaptada a tus necesidades." }
+                { "title": "Trayectoria y Certificaciones", "description": "Nuestro equipo está certificado como AWS DevOps Engineer y tiene años de experiencia ayudando a empresas de todos los tamaños." },
+                { "title": "Metodología Profesional", "description": "Acompañamiento técnico, atención personalizada y una rápida capacidad de respuesta adaptada a tus necesidades, en cualquier parte del mundo." }
             ]
         },
         "testimonials": {
             "title": "El éxito de nuestros clientes",
             "subtitle": "Resultados reales y testimonios de empresas que confían en nosotros.",
             "items": [
-                { "text": "Fintech nacional ahorró 40% de costos en AWS tras auditoría DevOps.", "author": "CEO, Fintech Argentina" },
-                { "text": "E-commerce local duplicó ventas sin caídas gracias a CI/CD y monitoreo cloud.", "author": "CTO, E-commerce de Moda" },
-                { "text": "El soporte post migración fue clave y el equipo entendió el contexto argentino perfectamente.", "author": "Gerente de IT, Empresa de Logística" }
+                { "text": "Una fintech líder ahorró 40% de costos en AWS tras una auditoría DevOps.", "author": "CEO, Fintech Internacional" },
+                { "text": "Un e-commerce global duplicó sus ventas sin caídas gracias a CI/CD y monitoreo en la nube.", "author": "CTO, E-commerce de Moda" },
+                { "text": "El soporte post migración fue clave y el equipo entendió perfectamente nuestras necesidades de negocio.", "author": "Gerente de IT, Empresa de Logística" }
             ]
         }
     },
     "servicesPage": {
         "heroTitle": "Nuestros Servicios",
-        "intro": "Ofrecemos un conjunto completo de soluciones tecnológicas diseñadas para impulsar el crecimiento y la eficiencia de las pymes en Argentina. Explora cómo podemos ayudarte.",
+        "intro": "Ofrecemos un conjunto completo de soluciones tecnológicas diseñadas para impulsar el crecimiento y la eficiencia de empresas en todo el mundo. Explora cómo podemos ayudarte.",
         "services": [
             { "title": "Soporte Técnico on-premise y remoto", "content": "Ofrecemos soporte integral para tu infraestructura física y virtual. Nuestro equipo está preparado para resolver incidentes rápidamente, minimizar el tiempo de inactividad y garantizar la continuidad de tu negocio, con atención tanto en tus oficinas como de forma remota." },
             { "title": "Migración y Arquitectura en AWS", "content": "Te acompañamos en tu viaje a la nube. Diseñamos arquitecturas escalables, seguras y costo-eficientes en AWS. Realizamos migraciones de servidores, bases de datos y aplicaciones de forma planificada y sin interrupciones para tu operación." },
@@ -68,16 +68,16 @@
             { "title": "Administración de Redes (Cisco)", "content": "Gestionamos y optimizamos tu infraestructura de red basada en tecnología Cisco. Desde la configuración de switches y routers hasta la resolución de problemas complejos, asegurando una red robusta y confiable." },
             { "title": "Networking y Seguridad (Fortinet)", "content": "Implementamos y administramos soluciones de seguridad perimetral con Fortinet. Configuramos firewalls (FortiGate), políticas de seguridad, VPNs y análisis de tráfico para proteger tu red contra amenazas externas e internas." },
             { "title": "Seguridad y Monitoreo Avanzado", "content": "Protegemos tus activos digitales con las mejores prácticas de seguridad en la nube. Implementamos sistemas de monitoreo proactivo con CloudWatch y Grafana para detectar y responder a amenazas en tiempo real, asegurando la integridad y disponibilidad de tu información." },
-            { "title": "Atención Personalizada", "content": "Entendemos que cada pyme argentina es única. Por eso, ofrecemos un servicio de atención cercano y personalizado, asignando un especialista técnico a tu cuenta para que conozca a fondo tus necesidades y te brinde respuestas rápidas y efectivas." }
+            { "title": "Atención Personalizada", "content": "Entendemos que cada negocio es único. Por eso, ofrecemos un servicio de atención cercano y personalizado, asignando un especialista técnico a tu cuenta para que conozca a fondo tus necesidades y te brinde respuestas rápidas y efectivas." }
         ]
     },
     "whyUsPage": {
         "heroTitle": "Por Qué Elegirnos",
-        "intro": "Somos más que un proveedor; somos tu socio estratégico en tecnología. Descubre las razones por las que las empresas argentinas confían en nosotros.",
+        "intro": "Somos más que un proveedor; somos tu socio estratégico en tecnología. Descubre las razones por las que empresas de todo el mundo confían en nosotros.",
         "points": [
-            { "title": "Experiencia y Certificaciones", "description": "Nuestro equipo posee certificaciones oficiales como AWS Certified DevOps Engineer y una sólida trayectoria trabajando con los desafíos específicos de las pymes argentinas." },
+            { "title": "Experiencia y Certificaciones", "description": "Nuestro equipo posee certificaciones oficiales como AWS Certified DevOps Engineer y una sólida trayectoria trabajando con los desafíos de empresas de todos los tamaños." },
             { "title": "Metodología Centrada en el Cliente", "description": "Creemos en el acompañamiento técnico constante y la atención personalizada. Tu éxito es nuestro objetivo, por lo que ofrecemos una comunicación fluida y respuestas rápidas." },
-            { "title": "Soluciones Adaptadas al Contexto Local", "description": "Entendemos la realidad económica y operativa de Argentina. Diseñamos soluciones que no solo son técnicamente robustas, sino también financieramente viables para el mercado nacional." }
+            { "title": "Soluciones de Alcance Global", "description": "Diseñamos soluciones que no solo son técnicamente robustas, sino también financieramente viables y escalables para el mercado internacional." }
         ],
         "certifications": {
             "title": "Nuestras Certificaciones",
@@ -90,10 +90,10 @@
     },
     "successStoriesPage": {
         "heroTitle": "Casos de Éxito",
-        "intro": "Resultados tangibles que hemos generado para empresas argentinas. Historias de transformación y crecimiento impulsadas por la tecnología.",
+        "intro": "Resultados tangibles que hemos generado para empresas de todo el mundo. Historias de transformación y crecimiento impulsadas por la tecnología.",
         "stories": [
-            { "title": "Reducción de costos para Fintech", "description": "Una fintech nacional líder enfrentaba altos costos en su infraestructura de AWS. Realizamos una auditoría DevOps exhaustiva, optimizamos el uso de recursos y refactorizamos sus pipelines de CI/CD.", "metric": "40% de ahorro", "metricDescription": "en costos mensuales de AWS." },
-            { "title": "Alta disponibilidad para E-commerce", "description": "Un e-commerce de moda experimentaba caídas durante picos de tráfico como Hot Sale. Migramos su monolito a una arquitectura de microservicios en EKS y automatizamos el escalado.", "metric": "100% Uptime", "metricDescription": "durante eventos de alta demanda." },
+            { "title": "Reducción de costos para Fintech", "description": "Una fintech internacional líder enfrentaba altos costos en su infraestructura de AWS. Realizamos una auditoría DevOps exhaustiva, optimizamos el uso de recursos y refactorizamos sus pipelines de CI/CD.", "metric": "40% de ahorro", "metricDescription": "en costos mensuales de AWS." },
+            { "title": "Alta disponibilidad para E-commerce", "description": "Un e-commerce global experimentaba caídas durante picos de tráfico. Migramos su monolito a una arquitectura de microservicios en EKS y automatizamos el escalado.", "metric": "100% Uptime", "metricDescription": "durante eventos de alta demanda." },
             { "title": "Crecimiento escalable para EdTech", "description": "Una startup EdTech necesitaba una infraestructura que acompañara su rápido crecimiento de usuarios. Diseñamos una arquitectura serverless en AWS que escala automáticamente y reduce la carga operativa.", "metric": "2X Crecimiento", "metricDescription": "de usuarios sin degradación del servicio." }
         ]
     },
@@ -129,10 +129,10 @@
             "whatsapp": "WhatsApp Business",
             "whatsappDescription": "Inicia una conversación directa.",
             "email": "Email",
-            "emailAddress": "contacto@techsolutions.ar",
+            "emailAddress": "contacto@techsolutions.dev",
             "linkedin": "LinkedIn",
             "linkedinDescription": "Conecta con nosotros en la red profesional.",
-            "hours": "Horarios de atención: Lunes a Viernes de 9:00 a 18:00 hs (GMT-3)."
+            "hours": "Horarios de atención: Lunes a Viernes de 9:00 a 18:00 hs."
         }
     }
 }

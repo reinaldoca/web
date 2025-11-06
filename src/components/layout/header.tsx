@@ -89,7 +89,7 @@ export default function Header() {
       <div className="container mx-auto flex h-16 items-center justify-between px-4 md:px-6">
         <Link href={getLocalizedHref('/')} className="flex items-center gap-2 font-bold text-xl">
           <Code className="h-6 w-6 text-primary" />
-          <span className="font-headline">Tech Solutions AR</span>
+          <span className="font-headline">Tech Solutions</span>
         </Link>
         
         <nav className="hidden md:flex gap-4 items-center">
@@ -147,7 +147,7 @@ export default function Header() {
                       onClick={() => setIsOpen(false)}
                     >
                       <Code className="h-6 w-6 text-primary" />
-                      <span className="font-headline">Tech Solutions AR</span>
+                      <span className="font-headline">Tech Solutions</span>
                     </Link>
                     <nav className="flex flex-col gap-4">
                       {navLinks.map((link) => (

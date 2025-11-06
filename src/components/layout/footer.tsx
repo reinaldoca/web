@@ -7,8 +7,8 @@ import { type Locale, i18n } from '@/dictionaries/i18n-config';
 
 const footerTexts: Record<Locale, any> = {
   en: {
-    companyName: "Tech Solutions AR",
-    companyDescription: "Boosting your SMB with infrastructure, DevOps, and AWS solutions designed for the Argentine market.",
+    companyName: "Tech Solutions",
+    companyDescription: "Boosting your business with global infrastructure, DevOps, and AWS solutions.",
     quickContact: "Quick Contact",
     whatsapp: "WhatsApp Business",
     linkedin: "LinkedIn",
@@ -16,11 +16,11 @@ const footerTexts: Record<Locale, any> = {
     navigation: "Navigation",
     services: "Services",
     contact: "Contact",
-    copyright: "Tech Solutions AR. All rights reserved."
+    copyright: "Tech Solutions. All rights reserved."
   },
   es: {
-    companyName: "Tech Solutions AR",
-    companyDescription: "Impulsando tu pyme con soluciones de infraestructura, DevOps y AWS diseñadas para el mercado argentino.",
+    companyName: "Tech Solutions",
+    companyDescription: "Impulsando tu negocio con soluciones globales de infraestructura, DevOps y AWS.",
     quickContact: "Contacto Rápido",
     whatsapp: "WhatsApp Business",
     linkedin: "LinkedIn",
@@ -28,7 +28,7 @@ const footerTexts: Record<Locale, any> = {
     navigation: "Navegación",
     services: "Servicios",
     contact: "Contacto",
-    copyright: "Tech Solutions AR. Todos los derechos reservados."
+    copyright: "Tech Solutions. Todos los derechos reservados."
   }
 };
 

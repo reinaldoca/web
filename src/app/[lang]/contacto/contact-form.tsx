@@ -1,3 +1,4 @@
+
 'use client';
 
 import { useForm } from 'react-hook-form';
@@ -24,6 +25,7 @@ export default function ContactForm({ t }: { t: ContactFormTranslations }) {
     company: z.string().min(2, { message: t.validation.company }),
     email: z.string().email({ message: t.validation.email }),
     message: z.string().min(10, { message: t.validation.message }),
+    honeypot: z.string().optional(), // Honeypot field
   });
 
   const form = useForm<z.infer<typeof formSchema>>({
@@ -33,6 +35,7 @@ export default function ContactForm({ t }: { t: ContactFormTranslations }) {
       company: '',
       email: '',
       message: '',
+      honeypot: '',
     },
   });
 
@@ -63,6 +66,19 @@ export default function ContactForm({ t }: { t: ContactFormTranslations }) {
   return (
     <Form {...form}>
       <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-6">
+        {/* Honeypot Field: visually hidden but available for bots */}
+        <FormField
+            control={form.control}
+            name="honeypot"
+            render={({ field }) => (
+                <FormItem className="absolute -left-[9999px]">
+                    <FormLabel>Please leave this field empty</FormLabel>
+                    <FormControl>
+                        <Input tabIndex={-1} autoComplete="off" {...field} />
+                    </FormControl>
+                </FormItem>
+            )}
+        />
         <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
            <FormField
             control={form.control}

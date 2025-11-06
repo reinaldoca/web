@@ -13,8 +13,8 @@ const pointIcons: { [key: string]: JSX.Element } = {
   "Experience and Certifications": <Award className="h-10 w-10 text-primary" />,
   "Metodología Centrada en el Cliente": <Users className="h-10 w-10 text-primary" />,
   "Customer-Centric Methodology": <Users className="h-10 w-10 text-primary" />,
-  "Soluciones Adaptadas al Contexto Local": <Target className="h-10 w-10 text-primary" />,
-  "Solutions Adapted to the Local Context": <Target className="h-10 w-10 text-primary" />,
+  "Soluciones de Alcance Global": <Target className="h-10 w-10 text-primary" />,
+  "Globally Proven Solutions": <Target className="h-10 w-10 text-primary" />,
 };
 
 interface PorqueElegirnosPageProps {

@@ -6,8 +6,8 @@ import { Toaster } from '@/components/ui/toaster';
 import { AppProviders } from './providers';
 
 export const metadata: Metadata = {
-  title: 'Tech Solutions AR',
-  description: 'Soluciones de infraestructura, DevOps y AWS para pymes en Argentina.',
+  title: 'Tech Solutions',
+  description: 'Global solutions for infrastructure, DevOps, and AWS.',
 };
 
 interface RootLayoutProps {
