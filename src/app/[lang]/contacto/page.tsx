@@ -57,7 +57,7 @@ export default async function ContactoPage({ params }: ContactoPageProps) {
                             <p className="text-muted-foreground">{t.channels.whatsappDescription}</p>
                         </div>
                     </a>
-                    <a href="mailto:contact@techsolutions.dev" className="flex items-center gap-4 group">
+                    <a href="mailto:contact@cloudbit.dev" className="flex items-center gap-4 group">
                          <div className="bg-primary text-primary-foreground p-3 rounded-full group-hover:bg-primary/90 transition-colors">
                             <Mail className="h-6 w-6" />
                         </div>

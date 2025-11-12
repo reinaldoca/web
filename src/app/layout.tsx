@@ -6,7 +6,7 @@ import { Toaster } from '@/components/ui/toaster';
 import { AppProviders } from './providers';
 
 export const metadata: Metadata = {
-  title: 'Tech Solutions',
+  title: 'CloudBit',
   description: 'Global solutions for infrastructure, DevOps, and AWS.',
 };
 

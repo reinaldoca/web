@@ -7,7 +7,7 @@ import { type Locale, i18n } from '@/dictionaries/i18n-config';
 
 const footerTexts: Record<Locale, any> = {
   en: {
-    companyName: "Tech Solutions",
+    companyName: "CloudBit",
     companyDescription: "Boosting your business with global infrastructure, DevOps, and AWS solutions.",
     quickContact: "Quick Contact",
     whatsapp: "WhatsApp Business",
@@ -16,10 +16,10 @@ const footerTexts: Record<Locale, any> = {
     navigation: "Navigation",
     services: "Services",
     contact: "Contact",
-    copyright: "Tech Solutions. All rights reserved."
+    copyright: "CloudBit. All rights reserved."
   },
   es: {
-    companyName: "Tech Solutions",
+    companyName: "CloudBit",
     companyDescription: "Impulsando tu negocio con soluciones globales de infraestructura, DevOps y AWS.",
     quickContact: "Contacto Rápido",
     whatsapp: "WhatsApp Business",
@@ -28,7 +28,7 @@ const footerTexts: Record<Locale, any> = {
     navigation: "Navegación",
     services: "Servicios",
     contact: "Contacto",
-    copyright: "Tech Solutions. Todos los derechos reservados."
+    copyright: "CloudBit. Todos los derechos reservados."
   }
 };
 

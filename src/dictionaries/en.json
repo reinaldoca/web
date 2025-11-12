@@ -8,7 +8,7 @@
         "contact": "Contact"
     },
     "footer": {
-        "companyName": "Tech Solutions",
+        "companyName": "CloudBit",
         "companyDescription": "Boosting your business with global infrastructure, DevOps, and AWS solutions.",
         "quickContact": "Quick Contact",
         "whatsapp": "WhatsApp Business",
@@ -17,7 +17,7 @@
         "navigation": "Navigation",
         "services": "Services",
         "contact": "Contact",
-        "copyright": "Tech Solutions. All rights reserved."
+        "copyright": "CloudBit. All rights reserved."
     },
     "home": {
         "hero": {
@@ -129,7 +129,7 @@
             "whatsapp": "WhatsApp Business",
             "whatsappDescription": "Start a direct conversation.",
             "email": "Email",
-            "emailAddress": "contact@techsolutions.dev",
+            "emailAddress": "contact@cloudbit.dev",
             "linkedin": "LinkedIn",
             "linkedinDescription": "Connect with us on the professional network.",
             "hours": "Business hours: Monday to Friday from 9:00 AM to 6:00 PM."
