@@ -1,3 +1,4 @@
+
 import Image from 'next/image';
 import { PlaceHolderImages } from '@/lib/placeholder-images';
 import ContactForm from './contact-form';
@@ -48,7 +49,7 @@ export default async function ContactoPage({ params }: ContactoPageProps) {
             <div className="bg-secondary rounded-lg p-8">
                 <h3 className="text-2xl font-bold mb-6">{t.channels.title}</h3>
                 <div className="space-y-6">
-                    <a href="https://wa.me/" target="_blank" rel="noopener noreferrer" className="flex items-center gap-4 group">
+                    <a href="https://wa.me/+5491169044913" target="_blank" rel="noopener noreferrer" className="flex items-center gap-4 group">
                         <div className="bg-primary text-primary-foreground p-3 rounded-full group-hover:bg-primary/90 transition-colors">
                             <Phone className="h-6 w-6" />
                         </div>
@@ -66,7 +67,7 @@ export default async function ContactoPage({ params }: ContactoPageProps) {
                             <p className="text-muted-foreground">{t.channels.emailAddress}</p>
                         </div>
                     </a>
-                    <a href="https://linkedin.com/company/" target="_blank" rel="noopener noreferrer" className="flex items-center gap-4 group">
+                    <a href="https://linkedin.com/company/cloudbit-consultoria-it/" target="_blank" rel="noopener noreferrer" className="flex items-center gap-4 group">
                          <div className="bg-primary text-primary-foreground p-3 rounded-full group-hover:bg-primary/90 transition-colors">
                             <Linkedin className="h-6 w-6" />
                         </div>
