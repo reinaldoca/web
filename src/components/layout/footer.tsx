@@ -1,3 +1,4 @@
+
 'use client';
 
 import Link from 'next/link';
@@ -61,11 +62,11 @@ export default function Footer() {
             <ul className="space-y-2">
               <li className="flex items-center gap-2">
                 <Phone className="h-5 w-5" />
-                <a href="https://wa.me/" target="_blank" rel="noopener noreferrer" className="text-sm hover:text-primary">{t.whatsapp}</a>
+                <a href="https://wa.me/+5491169044913" target="_blank" rel="noopener noreferrer" className="text-sm hover:text-primary">{t.whatsapp}</a>
               </li>
               <li className="flex items-center gap-2">
                 <Linkedin className="h-5 w-5" />
-                <a href="https://linkedin.com/company/" target="_blank" rel="noopener noreferrer" className="text-sm hover:text-primary">{t.linkedin}</a>
+                <a href="https://linkedin.com/company/cloudbit-consultoria-it/" target="_blank" rel="noopener noreferrer" className="text-sm hover:text-primary">{t.linkedin}</a>
               </li>
               <li className="text-sm">{t.hours}</li>
             </ul>
