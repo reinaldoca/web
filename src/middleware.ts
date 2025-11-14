@@ -1,32 +1,44 @@
 import { NextResponse, type NextRequest } from 'next/server'
 import { i18n } from './dictionaries/i18n-config';
 
+const PUBLIC_FILE = /\.(.*)$/;
+
 export function middleware(request: NextRequest) {
-  const pathname = request.nextUrl.pathname
+  const pathname = request.nextUrl.pathname;
+
+  // Ignorar archivos públicos y rutas específicas como sitemap.xml
+  if (
+    pathname.startsWith('/_next') ||
+    pathname.startsWith('/api') ||
+    pathname.startsWith('/static') ||
+    PUBLIC_FILE.test(pathname)
+  ) {
+    return NextResponse.next();
+  }
   
-  // Check if there is any supported locale in the pathname
+  // Comprobar si la ruta ya tiene un localizador de idioma
   const pathnameIsMissingLocale = i18n.locales.every(
     (locale) => !pathname.startsWith(`/${locale}/`) && pathname !== `/${locale}`
-  )
+  );
 
-  // Redirect if there is no locale
+  // Redirigir si falta el localizador
   if (pathnameIsMissingLocale) {
     const locale = i18n.defaultLocale;
 
-    // e.g. incoming request is /products
-    // The new URL is now /es/products
     return NextResponse.redirect(
       new URL(
         `/${locale}${pathname.startsWith('/') ? '' : '/'}${pathname}`,
         request.url
       )
-    )
+    );
   }
+
+  return NextResponse.next();
 }
 
 export const config = {
+  // Excluir estas rutas del middleware
   matcher: [
-    // Skip all internal paths (_next)
-    '/((?!api|_next/static|_next/image|images|favicon.ico).*)'
+    '/((?!api|_next/static|_next/image|favicon.ico|sitemap.xml|robots.txt).*)'
   ],
 }

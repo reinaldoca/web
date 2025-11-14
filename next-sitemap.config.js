@@ -1,7 +1,7 @@
 /** @type {import('next-sitemap').IConfig} */
 module.exports = {
   siteUrl: 'https://cloudbit.com.ar',
-  generateRobotsTxt: true,
+  generateRobotsTxt: true, // (Optional)
   robotsTxtOptions: {
     policies: [
       {
@@ -13,7 +13,9 @@ module.exports = {
       'https://cloudbit.com.ar/sitemap.xml',
     ],
   },
-  // Generar alternateRefs para las rutas de idiomas
+  // Exclude the base locale routes since they are for redirection
+  exclude: ['/es', '/en'],
+  // Generate alternate refs for language routes
   alternateRefs: [
     {
       href: 'https://cloudbit.com.ar/es',
@@ -24,16 +26,19 @@ module.exports = {
       hreflang: 'en',
     },
   ],
-  // Excluir rutas que no queremos en el sitemap
-  exclude: ['/es', '/en'],
-  // Personalizar cómo se generan las URLs
+  // Custom transform function to handle localized paths
   transform: async (config, path) => {
-    // Para las rutas de idioma, genera las referencias alternativas
+    // For language-specific paths, generate alternate references
     const alternateRefs = config.alternateRefs.map(ref => {
-      // Reemplaza el prefijo de idioma base con el del path actual
-      // por ejemplo, /es/servicios -> /en/servicios
+      // Create the alternate path by replacing the language segment
+      // e.g., /es/servicios -> /en/servicios
       const lang = ref.hreflang;
-      const newPath = path.startsWith('/es') ? path.replace(/^\/es/, `/${lang}`) : path.replace(/^\/en/, `/${lang}`);
+      let newPath = path;
+      if (path.startsWith('/es')) {
+        newPath = path.replace('/es', `/${lang}`);
+      } else if (path.startsWith('/en')) {
+        newPath = path.replace('/en', `/${lang}`);
+      }
       
       return {
         ...ref,
