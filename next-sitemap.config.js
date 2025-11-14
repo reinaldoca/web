@@ -1,7 +1,7 @@
 /** @type {import('next-sitemap').IConfig} */
 module.exports = {
   siteUrl: 'https://cloudbit.com.ar',
-  generateRobotsTxt: true, // (Optional)
+  generateRobotsTxt: true,
   robotsTxtOptions: {
     policies: [
       {
@@ -9,11 +9,8 @@ module.exports = {
         allow: '/',
       },
     ],
-    additionalSitemaps: [
-      'https://cloudbit.com.ar/sitemap.xml',
-    ],
   },
-  // Exclude the base locale routes since they are for redirection
+  // Excluir rutas base de idioma que no son páginas reales
   exclude: ['/es', '/en'],
   // Generate alternate refs for language routes
   alternateRefs: [
@@ -25,19 +22,19 @@ module.exports = {
       href: 'https://cloudbit.com.ar/en',
       hreflang: 'en',
     },
+    // Añade más idiomas si es necesario
   ],
   // Custom transform function to handle localized paths
   transform: async (config, path) => {
-    // For language-specific paths, generate alternate references
+    // Para rutas específicas de idioma, generar referencias alternativas
     const alternateRefs = config.alternateRefs.map(ref => {
-      // Create the alternate path by replacing the language segment
-      // e.g., /es/servicios -> /en/servicios
       const lang = ref.hreflang;
       let newPath = path;
-      if (path.startsWith('/es')) {
-        newPath = path.replace('/es', `/${lang}`);
-      } else if (path.startsWith('/en')) {
-        newPath = path.replace('/en', `/${lang}`);
+
+      // Asegurarse de que estamos transformando una ruta localizada
+      const currentLangSegment = path.split('/')[1];
+      if (config.alternateRefs.some(alt => alt.hreflang === currentLangSegment)) {
+          newPath = path.replace(`/${currentLangSegment}`, `/${lang}`);
       }
       
       return {
@@ -47,12 +44,14 @@ module.exports = {
       };
     });
 
+    const isLocalizedPath = config.alternateRefs.some(alt => path.startsWith(`/${alt.hreflang}`));
+
     return {
       loc: path,
       changefreq: config.changefreq,
       priority: config.priority,
       lastmod: config.autoLastmod ? new Date().toISOString() : undefined,
-      alternateRefs: path.startsWith('/es') || path.startsWith('/en') ? alternateRefs : [],
+      alternateRefs: isLocalizedPath ? alternateRefs : [],
     }
   },
 };
