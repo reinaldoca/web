@@ -6,8 +6,8 @@ import { Toaster } from '@/components/ui/toaster';
 import { AppProviders } from './providers';
 
 export const metadata: Metadata = {
-  title: 'CloudBit',
-  description: 'Global solutions for infrastructure, DevOps, and AWS.',
+  title: 'CloudBit | Consultoría Cloud, DevOps y AWS',
+  description: 'Impulsamos tu negocio con soluciones globales de infraestructura, DevOps y AWS. Soporte técnico, migraciones cloud, automatización y seguridad.',
 };
 
 interface RootLayoutProps {
