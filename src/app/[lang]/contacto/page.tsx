@@ -1,10 +1,10 @@
 
 import Image from 'next/image';
 import { PlaceHolderImages } from '@/lib/placeholder-images';
-import ContactForm from './contact-form';
 import { Phone, Linkedin, Mail } from 'lucide-react';
 import { getDictionary } from '@/dictionaries/dictionaries';
 import { Locale } from '@/dictionaries/i18n-config';
+import ContactPageClient from './contact-page-client';
 
 const contactHero = PlaceHolderImages.find(p => p.id === 'contact-hero');
 
@@ -26,6 +26,7 @@ export default async function ContactoPage({ params }: ContactoPageProps) {
             data-ai-hint={contactHero.imageHint}
             fill
             className="object-cover"
+            priority
           />
         )}
         <div className="absolute inset-0 bg-black/50 flex items-center justify-center">
@@ -39,13 +40,7 @@ export default async function ContactoPage({ params }: ContactoPageProps) {
       <section className="w-full py-12 md:py-24 lg:py-32">
         <div className="container px-4 md:px-6">
           <div className="grid gap-12 lg:grid-cols-2">
-            <div>
-              <h2 className="text-3xl font-bold tracking-tighter sm:text-4xl font-headline mb-4">{t.form.title}</h2>
-              <p className="text-muted-foreground mb-8">
-                {t.form.subtitle}
-              </p>
-              <ContactForm t={t.form} />
-            </div>
+            <ContactPageClient t={t} />
             <div className="bg-secondary rounded-lg p-8">
                 <h3 className="text-2xl font-bold mb-6">{t.channels.title}</h3>
                 <div className="space-y-6">
@@ -58,7 +53,7 @@ export default async function ContactoPage({ params }: ContactoPageProps) {
                             <p className="text-muted-foreground">{t.channels.whatsappDescription}</p>
                         </div>
                     </a>
-                    <a href="mailto:contacto.cloudbit@gmail.com" className="flex items-center gap-4 group">
+                    <a href="mailto:contacto@cloudbit.com.ar" className="flex items-center gap-4 group">
                          <div className="bg-primary text-primary-foreground p-3 rounded-full group-hover:bg-primary/90 transition-colors">
                             <Mail className="h-6 w-6" />
                         </div>

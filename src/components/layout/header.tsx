@@ -2,7 +2,8 @@
 
 import { useState, useEffect } from 'react';
 import Link from 'next/link';
-import { Menu, Code, ChevronDown } from 'lucide-react';
+import Image from 'next/image';
+import { Menu, ChevronDown } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Sheet, SheetContent, SheetTrigger } from '@/components/ui/sheet';
 import { usePathname } from 'next/navigation';
@@ -88,8 +89,7 @@ export default function Header() {
     <header className="bg-background/80 backdrop-blur-sm sticky top-0 z-50 w-full border-b">
       <div className="container mx-auto flex h-16 items-center justify-between px-4 md:px-6">
         <Link href={getLocalizedHref('/')} className="flex items-center gap-2 font-bold text-xl">
-          <Code className="h-6 w-6 text-primary" />
-          <span className="font-headline">CloudBit</span>
+          CloudBit
         </Link>
         
         <nav className="hidden md:flex gap-4 items-center">
@@ -146,8 +146,7 @@ export default function Header() {
                       className="flex items-center gap-2 font-bold text-lg" 
                       onClick={() => setIsOpen(false)}
                     >
-                      <Code className="h-6 w-6 text-primary" />
-                      <span className="font-headline">CloudBit</span>
+                      CloudBit
                     </Link>
                     <nav className="flex flex-col gap-4">
                       {navLinks.map((link) => (

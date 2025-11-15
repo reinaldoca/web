@@ -32,7 +32,7 @@ export async function submitContactForm(data: z.infer<typeof formSchema>) {
     });
 
     const mailOptions = {
-      from: `"${name} - Formulario Web" <${process.env.GMAIL_EMAIL}>`,
+      from: `"${name} - Formulario Web" <contacto@cloudbit.com.ar>`,
       to: process.env.GMAIL_EMAIL,
       replyTo: email,
       subject: `Nuevo Mensaje de Contacto de ${name}`,
