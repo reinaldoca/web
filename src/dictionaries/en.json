@@ -29,12 +29,12 @@
             "title": "Our Solutions",
             "subtitle": "From technical support to cutting-edge cloud engineering, we offer a full range of services for your company.",
             "items": [
-                { "title": "Technical Support", "description": "On-premise and remote support for businesses." },
-                { "title": "AWS Migration", "description": "Secure cloud architecture and migration." },
-                { "title": "DevOps Consulting", "description": "CI/CD, automation, and pipelines." },
-                { "title": "Cloud Engineering", "description": "Infrastructure as code and automation." },
-                { "title": "Advanced Security", "description": "Monitoring and protection of your infrastructure." },
-                { "title": "Networks & Networking", "description": "Management of Cisco and Fortinet equipment." }
+                { "title": "Technical Support", "description": "On-premise and remote support for businesses.", "id": "on-premise-and-remote-technical-support" },
+                { "title": "AWS Migration", "description": "Secure cloud architecture and migration.", "id": "migration-and-architecture-in-aws" },
+                { "title": "DevOps Consulting", "description": "CI/CD, automation, and pipelines.", "id": "devops-consulting" },
+                { "title": "Cloud Engineering", "description": "Infrastructure as code and automation.", "id": "cloud-engineering" },
+                { "title": "Advanced Security", "description": "Monitoring and protection of your infrastructure.", "id": "advanced-security-and-monitoring" },
+                { "title": "Networks & Networking", "description": "Management of Cisco and Fortinet equipment.", "id": "network-administration-cisco" }
             ],
             "seeAll": "See all services"
         },

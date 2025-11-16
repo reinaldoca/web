@@ -21,7 +21,6 @@ const languageOptions: Record<Locale, { name: string; flag: React.ComponentType<
   es: { name: 'ES', flag: SpainFlagIcon },
 };
 
-// Define los textos directamente aquí o impórtalos de tus diccionarios
 const navTexts: Record<Locale, { home: string; services: string; whyUs: string; successStories: string; contact: string }> = {
   en: {
     home: "Home",
@@ -70,7 +69,6 @@ export default function Header() {
     if (href === '/') {
       return `/${currentLocale}`;
     }
-    // Asegurarse de que no haya doble barra
     const newPath = `/${currentLocale}${href}`.replace(/\/+/g, '/');
     return newPath;
   };
@@ -86,84 +84,98 @@ export default function Header() {
   const CurrentFlag = languageOptions[currentLocale].flag;
 
   return (
-    <header className="bg-background/80 backdrop-blur-sm sticky top-0 z-50 w-full border-b">
-      <div className="container mx-auto flex h-16 items-center justify-between px-4 md:px-6">
-        <Link href={getLocalizedHref('/')} className="flex items-center gap-2 font-bold text-xl">
-          CloudBit
-        </Link>
-        
-        <nav className="hidden md:flex gap-4 items-center">
-          {navLinks.map((link) => (
-            <Link 
-              key={link.href} 
-              href={getLocalizedHref(link.href)} 
-              className="text-sm font-medium hover:text-primary transition-colors"
-            >
-              {link.label}
-            </Link>
-          ))}
-        </nav>
-        
-        <div className="flex items-center gap-2">
-          {isMounted && (
-            <DropdownMenu>
-              <DropdownMenuTrigger asChild>
-                <Button variant="outline" size="sm" className="flex items-center gap-2">
-                  <CurrentFlag className="h-4 w-4 rounded-full object-cover" />
-                  {languageOptions[currentLocale].name}
-                  <ChevronDown className="w-4 h-4 opacity-50" />
-                </Button>
-              </DropdownMenuTrigger>
-              <DropdownMenuContent align="end">
-                {(['es', 'en'] as Locale[]).map((locale) => {
-                  const { name, flag: Flag } = languageOptions[locale];
-                  return (
-                    <DropdownMenuItem key={locale} asChild>
-                      <a href={getRedirectedPathname(locale)} className="flex items-center gap-2">
-                        <Flag className="h-4 w-4 rounded-full object-cover" />
-                        <span>{name}</span>
-                      </a>
-                    </DropdownMenuItem>
-                  )
-                })}
-              </DropdownMenuContent>
-            </DropdownMenu>
-          )}
-
-          <div className="md:hidden">
+    <header className="bg-cover bg-center bg-no-repeat sticky top-0 z-50 w-full border-b" style={{ backgroundImage: "url('/images/cloudbit-banner.png')" }}>
+      <div className="bg-black/30 backdrop-blur-sm">
+        <div className="container mx-auto flex h-[110px] items-center justify-between px-4 md:px-6">
+          <Link href={getLocalizedHref('/')} className="flex items-center gap-2 font-bold text-xl text-white">
+            <Image
+              src="/images/cloudbit.png"
+              alt="CloudBit Logo"
+              width={100}
+              height={100}
+              className="h-auto"
+            />
+          </Link>
+          
+          <nav className="hidden md:flex gap-4 items-center">
+            {navLinks.map((link) => (
+              <Link 
+                key={link.href} 
+                href={getLocalizedHref(link.href)} 
+                className="text-sm font-medium text-white hover:text-gray-200 transition-colors"
+              >
+                {link.label}
+              </Link>
+            ))}
+          </nav>
+          
+          <div className="flex items-center gap-2">
             {isMounted && (
-              <Sheet open={isOpen} onOpenChange={setIsOpen}>
-                <SheetTrigger asChild>
-                  <Button variant="ghost" size="icon">
-                    <Menu className="h-6 w-6" />
-                    <span className="sr-only">Abrir menú</span>
+              <DropdownMenu>
+                <DropdownMenuTrigger asChild>
+                  <Button variant="outline" size="sm" className="flex items-center gap-2 bg-white/20 text-white border-white/50 hover:bg-white/30 hover:text-white">
+                    <CurrentFlag className="h-4 w-4 rounded-full object-cover" />
+                    {languageOptions[currentLocale].name}
+                    <ChevronDown className="w-4 h-4 opacity-50" />
                   </Button>
-                </SheetTrigger>
-                <SheetContent side="right">
-                  <div className="flex flex-col gap-6 p-6">
-                    <Link 
-                      href={getLocalizedHref('/')} 
-                      className="flex items-center gap-2 font-bold text-lg" 
-                      onClick={() => setIsOpen(false)}
-                    >
-                      CloudBit
-                    </Link>
-                    <nav className="flex flex-col gap-4">
-                      {navLinks.map((link) => (
-                        <Link 
-                          key={link.href} 
-                          href={getLocalizedHref(link.href)} 
-                          className="text-lg font-medium hover:text-primary" 
-                          onClick={() => setIsOpen(false)}
-                        >
-                          {link.label}
-                        </Link>
-                      ))}
-                    </nav>
-                  </div>
-                </SheetContent>
-              </Sheet>
+                </DropdownMenuTrigger>
+                <DropdownMenuContent align="end">
+                  {(['es', 'en'] as Locale[]).map((locale) => {
+                    const { name, flag: Flag } = languageOptions[locale];
+                    return (
+                      <DropdownMenuItem key={locale} asChild>
+                        <a href={getRedirectedPathname(locale)} className="flex items-center gap-2">
+                          <Flag className="h-4 w-4 rounded-full object-cover" />
+                          <span>{name}</span>
+                        </a>
+                      </DropdownMenuItem>
+                    )
+                  })}
+                </DropdownMenuContent>
+              </DropdownMenu>
             )}
+
+            <div className="md:hidden">
+              {isMounted && (
+                <Sheet open={isOpen} onOpenChange={setIsOpen}>
+                  <SheetTrigger asChild>
+                    <Button variant="ghost" size="icon" className="text-white hover:bg-white/20 hover:text-white">
+                      <Menu className="h-6 w-6" />
+                      <span className="sr-only">Abrir menú</span>
+                    </Button>
+                  </SheetTrigger>
+                  <SheetContent side="right">
+                    <div className="flex flex-col gap-6 p-6">
+                      <Link 
+                        href={getLocalizedHref('/')} 
+                        className="flex items-center gap-2 font-bold text-lg" 
+                        onClick={() => setIsOpen(false)}
+                      >
+                        <Image
+                          src="/images/cloudbit.png"
+                          alt="CloudBit Logo"
+                          width={100}
+                          height={100}
+                          className="h-auto"
+                        />
+                      </Link>
+                      <nav className="flex flex-col gap-4">
+                        {navLinks.map((link) => (
+                          <Link 
+                            key={link.href} 
+                            href={getLocalizedHref(link.href)} 
+                            className="text-lg font-medium hover:text-primary" 
+                            onClick={() => setIsOpen(false)}
+                          >
+                            {link.label}
+                          </Link>
+                        ))}
+                      </nav>
+                    </div>
+                  </SheetContent>
+                </Sheet>
+              )}
+            </div>
           </div>
         </div>
       </div>

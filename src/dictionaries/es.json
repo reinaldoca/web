@@ -29,12 +29,12 @@
             "title": "Nuestras Soluciones",
             "subtitle": "Desde soporte técnico hasta ingeniería cloud de vanguardia, ofrecemos un abanico completo de servicios para tu empresa.",
             "items": [
-                { "title": "Soporte Técnico", "description": "Soporte on-premise y remoto para empresas." },
-                { "title": "Migración a AWS", "description": "Arquitectura y migración segura a la nube." },
-                { "title": "Consultoría DevOps", "description": "CI/CD, automatización y pipelines." },
-                { "title": "Ingeniería Cloud", "description": "Infraestructura como código y automatización." },
-                { "title": "Seguridad Avanzada", "description": "Monitoreo y protección de tu infraestructura." },
-                { "title": "Redes y Networking", "description": "Administración de equipos Cisco y Fortinet." }
+                { "title": "Soporte Técnico", "description": "Soporte on-premise y remoto para empresas.", "id": "soporte-tecnico-on-premise-y-remoto" },
+                { "title": "Migración a AWS", "description": "Arquitectura y migración segura a la nube.", "id": "migracion-y-arquitectura-en-aws" },
+                { "title": "Consultoría DevOps", "description": "CI/CD, automatización y pipelines.", "id": "consultoria-devops" },
+                { "title": "Ingeniería Cloud", "description": "Infraestructura como código y automatización.", "id": "ingenieria-cloud" },
+                { "title": "Seguridad Avanzada", "description": "Monitoreo y protección de tu infraestructura.", "id": "seguridad-y-monitoreo-avanzado" },
+                { "title": "Redes y Networking", "description": "Administración de equipos Cisco y Fortinet.", "id": "administracion-de-redes-cisco" }
             ],
             "seeAll": "Ver todos los servicios"
         },

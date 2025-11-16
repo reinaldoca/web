@@ -12,6 +12,7 @@ import { AnimatedSection } from '@/components/animations/animated-section';
 import { motion } from 'framer-motion';
 import type { Dictionary } from '@/dictionaries/dictionaries';
 import { Locale } from '@/dictionaries/i18n-config';
+import { slugify } from '@/lib/utils';
 
 const heroImage = PlaceHolderImages.find(p => p.id === 'hero-image-1');
 const whyUsImage = PlaceHolderImages.find(p => p.id === 'why-us-image');
@@ -125,19 +126,23 @@ export default function HomeClient({ lang, t }: HomeClientProps) {
               className="mx-auto grid max-w-5xl items-start gap-6 py-12 sm:grid-cols-2 md:grid-cols-3 lg:gap-12"
               variants={containerVariants}
             >
-              {t.services.items.map((service) => (
-                <motion.div key={service.title} variants={itemVariants} whileHover={cardHoverEffect}>
-                  <Card className="h-full transition-shadow duration-300">
-                    <CardHeader className="flex flex-col items-center text-center">
-                      {serviceIcons[service.title]}
-                      <CardTitle className="mt-4">{service.title}</CardTitle>
-                    </CardHeader>
-                    <CardContent className="text-center text-muted-foreground">
-                      <p>{service.description}</p>
-                    </CardContent>
-                  </Card>
-                </motion.div>
-              ))}
+              {t.services.items.map((service) => {
+                const serviceSlug = slugify(service.title);
+                return (
+                <Link key={service.title} href={`/${lang}/servicios#${serviceSlug}`} className="block h-full">
+                  <motion.div variants={itemVariants} whileHover={cardHoverEffect} className="h-full">
+                    <Card className="h-full transition-shadow duration-300">
+                      <CardHeader className="flex flex-col items-center text-center">
+                        {serviceIcons[service.title]}
+                        <CardTitle className="mt-4">{service.title}</CardTitle>
+                      </CardHeader>
+                      <CardContent className="text-center text-muted-foreground">
+                        <p>{service.description}</p>
+                      </CardContent>
+                    </Card>
+                  </motion.div>
+                </Link>
+              )})}
             </motion.div>
             <motion.div variants={itemVariants} className="flex justify-center">
                <Button asChild variant="outline">

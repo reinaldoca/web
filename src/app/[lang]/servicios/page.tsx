@@ -5,6 +5,7 @@ import { PlaceHolderImages } from '@/lib/placeholder-images';
 import { AnimatedSection } from '@/components/animations/animated-section';
 import { getDictionary } from '@/dictionaries/dictionaries';
 import { Locale } from '@/dictionaries/i18n-config';
+import { slugify } from '@/lib/utils';
 
 const servicesHero = PlaceHolderImages.find(p => p.id === 'services-hero');
 
@@ -59,8 +60,10 @@ export default async function ServiciosPage({ params }: ServiciosPageProps) {
           </p>
           <div className="bg-card p-4 md:p-8 rounded-lg">
             <Accordion type="single" collapsible className="w-full">
-              {t.services.map((service, index) => (
-                <AccordionItem key={index} value={`item-${index}`}>
+              {t.services.map((service) => {
+                const serviceSlug = slugify(service.title);
+                return (
+                <AccordionItem key={service.title} value={serviceSlug} id={serviceSlug}>
                   <AccordionTrigger className="text-lg font-semibold hover:no-underline">
                     <div className="flex items-center gap-4">
                       {serviceIcons[service.title]}
@@ -71,7 +74,7 @@ export default async function ServiciosPage({ params }: ServiciosPageProps) {
                     {service.content}
                   </AccordionContent>
                 </AccordionItem>
-              ))}
+              )})}
             </Accordion>
           </div>
         </div>
