@@ -86,15 +86,18 @@ export default function Header() {
   return (
     <header className="bg-cover bg-center bg-no-repeat sticky top-0 z-50 w-full border-b" style={{ backgroundImage: "url('/images/cloudbit-banner.png')" }}>
       <div className="bg-black/30 backdrop-blur-sm">
-        <div className="container mx-auto flex h-[110px] items-center justify-between px-4 md:px-6">
+        <div className="container mx-auto flex h-[80px] md:h-[110px] items-center justify-between px-4 md:px-6">
           <Link href={getLocalizedHref('/')} className="flex items-center gap-2 font-bold text-xl text-white">
-            <Image
-              src="/images/cloudbit.png"
-              alt="CloudBit Logo"
-              width={100}
-              height={100}
-              className="h-auto"
-            />
+             <div className="w-[80px] md:w-[100px]">
+              <Image
+                src="/images/cloudbit.png"
+                alt="CloudBit Logo"
+                width={100}
+                height={100}
+                className="h-auto w-full"
+                priority
+              />
+            </div>
           </Link>
           
           <nav className="hidden md:flex gap-4 items-center">
@@ -151,13 +154,15 @@ export default function Header() {
                         className="flex items-center gap-2 font-bold text-lg" 
                         onClick={() => setIsOpen(false)}
                       >
-                        <Image
-                          src="/images/cloudbit.png"
-                          alt="CloudBit Logo"
-                          width={100}
-                          height={100}
-                          className="h-auto"
-                        />
+                        <div className="w-[100px]">
+                          <Image
+                            src="/images/cloudbit.png"
+                            alt="CloudBit Logo"
+                            width={100}
+                            height={100}
+                            className="h-auto w-full"
+                          />
+                        </div>
                       </Link>
                       <nav className="flex flex-col gap-4">
                         {navLinks.map((link) => (
