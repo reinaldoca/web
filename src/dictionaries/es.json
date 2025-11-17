@@ -2,7 +2,7 @@
 {
     "nav": {
         "home": "Home",
-        "services": "Servicios",
+        "solutions": "Soluciones",
         "whyUs": "Por qué elegirnos",
         "successStories": "Casos de Éxito",
         "contact": "Contacto"
@@ -29,12 +29,12 @@
             "title": "Nuestras Soluciones",
             "subtitle": "Desde soporte técnico hasta ingeniería cloud de vanguardia, ofrecemos un abanico completo de servicios para tu empresa.",
             "items": [
-                { "title": "Soporte Técnico", "description": "Soporte on-premise y remoto para empresas.", "id": "soporte-tecnico-on-premise-y-remoto" },
-                { "title": "Migración a AWS", "description": "Arquitectura y migración segura a la nube.", "id": "migracion-y-arquitectura-en-aws" },
-                { "title": "Consultoría DevOps", "description": "CI/CD, automatización y pipelines.", "id": "consultoria-devops" },
-                { "title": "Ingeniería Cloud", "description": "Infraestructura como código y automatización.", "id": "ingenieria-cloud" },
-                { "title": "Seguridad Avanzada", "description": "Monitoreo y protección de tu infraestructura.", "id": "seguridad-y-monitoreo-avanzado" },
-                { "title": "Redes y Networking", "description": "Administración de equipos Cisco y Fortinet.", "id": "administracion-de-redes-cisco" }
+                { "title": "Soporte Técnico", "slug": "soporte-tecnico-on-premise-y-remoto", "description": "Soporte on-premise y remoto para empresas." },
+                { "title": "Migración a AWS", "slug": "migracion-y-arquitectura-en-aws", "description": "Arquitectura y migración segura a la nube." },
+                { "title": "Consultoría DevOps", "slug": "consultoria-devops", "description": "CI/CD, automatización y pipelines." },
+                { "title": "Ingeniería Cloud", "slug": "ingenieria-cloud", "description": "Infraestructura como código y automatización." },
+                { "title": "Seguridad Avanzada", "slug": "seguridad-y-monitoreo-avanzado", "description": "Monitoreo y protección de tu infraestructura." },
+                { "title": "Redes y Networking", "slug": "administracion-de-redes-cisco", "description": "Administración de equipos Cisco y Fortinet." }
             ],
             "seeAll": "Ver todos los servicios"
         },
@@ -43,8 +43,8 @@
             "title": "Tu Socio Tecnológico Global",
             "subtitle": "Combinamos experiencia global con un enfoque centrado en el cliente para ofrecer soluciones que realmente funcionan.",
             "points": [
-                { "title": "Trayectoria y Certificaciones", "description": "Nuestro equipo está certificado como AWS DevOps Engineer y tiene años de experiencia ayudando a empresas de todos los tamaños." },
-                { "title": "Metodología Profesional", "description": "Acompañamiento técnico, atención personalizada y una rápida capacidad de respuesta adaptada a tus necesidades, en cualquier parte del mundo." }
+                { "title": "Trayectoria y Certificaciones", "slug": "certifications", "description": "Nuestro equipo está certificado como AWS DevOps Engineer y tiene años de experiencia ayudando a empresas de todos los tamaños." },
+                { "title": "Metodología Profesional", "slug": "methodology", "description": "Acompañamiento técnico, atención personalizada y una rápida capacidad de respuesta adaptada a tus necesidades, en cualquier parte del mundo." }
             ]
         },
         "testimonials": {
@@ -60,24 +60,223 @@
     "servicesPage": {
         "heroTitle": "Nuestros Servicios",
         "intro": "Ofrecemos un conjunto completo de soluciones tecnológicas diseñadas para impulsar el crecimiento y la eficiencia de empresas en todo el mundo. Explora cómo podemos ayudarte.",
+        "ourProcessTitle": "Nuestro Proceso",
+        "ourPerspectiveTitle": "Nuestra Perspectiva",
+        "featuresTitle": "Características Clave",
+        "technologiesTitle": "Herramientas y Tecnologías",
+        "benefitsTitle": "Beneficios Cuantificables",
+        "useCasesTitle": "Casos de Uso",
+        "accordionServices": [
+            {
+                "icon": "Server",
+                "title": "Cloud Foundations",
+                "tagline": "Un inicio sólido para tu viaje a la nube",
+                "whatItIs": "Programa de solo 4 semanas, que apoya en la definición de políticas de gobierno de nube, configuración de alertas e implementación de mecanismos automatizados para evitar la violación de reglas de control y seguridad. Apoya en la definición de roles y niveles de acceso, y construye plantillas y blueprints para el aprovisionamiento estandarizado de nuevos ambientes de cómputo. Ayuda a implementar mecanismos de registro y auditoría para identificar autores de cambios y contrastar el ambiente actual contra mejores prácticas.",
+                "ourPerspective": {
+                    "title": "NUESTRA PERSPECTIVA",
+                    "content": "El principal error es intentar aplicar las mismas políticas de ambientes on-prem en los nuevos entornos de nube. Esto limita la agilidad y desaprovecha los beneficios de la nube. Es clave preguntarse: ¿Cómo mantenemos el control sin frenar la innovación? ¿Cómo garantizamos la seguridad desde el día cero? ¿Cómo estandarizamos para ser más eficientes?"
+                },
+                "ourProcess": [
+                    { "icon": "alignment", "title": "Alineación del equipo", "description": "Definimos objetivos, alcance y métricas de éxito del programa." },
+                    { "icon": "implementation", "title": "Implementación y configuración", "description": "Desplegamos una Landing Zone segura con AWS Control Tower y configuramos las cuentas." },
+                    { "icon": "definition", "title": "Definición de límites, controles y alertas", "description": "Establecemos barandas de seguridad para prevenir configuraciones no deseadas." },
+                    { "icon": "monitoring", "title": "Monitoreo del cumplimiento", "description": "Implementamos dashboards para visualizar el estado de cumplimiento y auditar cambios." }
+                ]
+            },
+            {
+                "icon": "Zap",
+                "title": "Servicios de Migración",
+                "tagline": "Virtualización de cargas de trabajo rápida, decidida y segura",
+                "whatItIs": "Contamos con un equipo de especialistas que acompaña en la virtualización de cargas de trabajo de forma rápida, decidida y segura. Con más de 700 implementaciones exitosas, nos enfocamos en comprender tus necesidades específicas para ofrecer soluciones personalizadas que impulsan la eficiencia y escalabilidad, reduciendo costos y fortaleciendo la seguridad.",
+                "ourPerspective": {
+                    "title": "NUESTRA PERSPECTIVA",
+                    "content": "Reconocemos que cada migración presenta desafíos únicos, desde la complejidad técnica hasta la resistencia cultural. Nos comprometemos a ser un socio de confianza, proporcionando no solo la experiencia técnica, sino también la orientación estratégica para superar obstáculos y asegurar una transición fluida y exitosa a la nube."
+                },
+                "ourProcess": [
+                    { "icon": "discovery", "title": "Discovery", "description": "Análisis exhaustivo de la infraestructura actual y definición de los objetivos de negocio para la migración." },
+                    { "icon": "planning", "title": "Planeación", "description": "Diseño de la arquitectura de destino en AWS y elaboración de un plan de migración detallado con cronogramas." },
+                    { "icon": "migration", "title": "Migración", "description": "Ejecución de la migración en fases, siguiendo las mejores prácticas de AWS para minimizar el impacto operativo." },
+                    { "icon": "optimization", "title": "Optimización", "description": "Post-migración, optimizamos continuamente los recursos para asegurar el control de costos y el máximo rendimiento." }
+                ]
+            },
+            {
+                "icon": "Code",
+                "title": "Implementación de Herramientas DevOps",
+                "tagline": "Simplifica y automatiza tus procesos de liberación de software",
+                "whatItIs": "Brindamos apoyo en la selección, implementación e integración de herramientas DevOps para simplificar y automatizar los procesos de liberación de software. Los beneficios clave son una base sólida en AWS, la conexión correcta de herramientas CI/CD y la autonomía del equipo para gestionar sus pipelines de desarrollo.",
+                "ourPerspective": {
+                    "title": "NUESTRA PERSPECTIVA",
+                    "content": "La dificultad principal no está en las herramientas, sino en la falta de experiencia de los equipos para integrarlas eficazmente. Una selección consciente de herramientas alineadas a la cultura y un equipo especializado para la puesta a punto inicial, especialmente en un entorno como AWS, aceleran drásticamente la adopción y el retorno de inversión."
+                },
+                "ourProcess": [
+                    { "icon": "survey", "title": "Levantamiento y Plan de Trabajo", "description": "Evaluamos los procesos actuales y definimos un plan de implementación de herramientas a la medida." },
+                    { "icon": "poc", "title": "Prueba de Concepto e Implementación", "description": "Realizamos una PoC para validar la solución y luego procedemos con la implementación y configuración completa del pipeline." },
+                    { "icon": "support", "title": "Acompañamiento y Soporte", "description": "Capacitamos a tu equipo y ofrecemos soporte continuo para asegurar la autonomía en la gestión de las nuevas herramientas." }
+                ]
+            },
+            {
+                "icon": "CheckCircle",
+                "title": "Well-Architected Review",
+                "tagline": "Alinea tu infraestructura de AWS con las mejores prácticas",
+                "whatItIs": "Realizamos una revisión sistemática de tu base instalada en AWS y las prácticas de tu equipo, contrastándolas con los pilares del Well-Architected Framework: seguridad, costos, desempeño, disponibilidad y excelencia operacional. Nuestro equipo cuenta con la certificación oficial de AWS para realizar estas revisiones.",
+                "ourPerspective": {
+                    "title": "NUESTRA PERSPECTIVA",
+                    "content": "Muchos administradores tienen problemas para replicar las mejores prácticas de Service Management on-prem en la nube. La falta de un estándar de industria claro y la poca visibilidad del entorno real dificultan la mejora continua. Un WAR provee esa hoja de ruta objetiva y priorizada para optimizar."
+                },
+                "ourProcess": [
+                    { "icon": "identification", "title": "Identificación de la Carga de Trabajo", "description": "Seleccionamos junto a ti la carga de trabajo más crítica a revisar." },
+                    { "icon": "survey", "title": "Levantamiento de Información", "description": "Realizamos entrevistas y análisis técnico contra los 5 pilares del Well-Architected Framework." },
+                    { "icon": "prioritization", "title": "Priorización y Remediación", "description": "Entregamos un reporte con hallazgos y un plan de acción priorizado para remediar los puntos críticos." },
+                    { "icon": "validation", "title": "Validación y Certificación", "description": "Validamos las mejoras implementadas y te ayudamos a acceder a posibles incentivos de AWS." }
+                ]
+            }
+        ],
         "services": [
-            { "title": "Soporte Técnico on-premise y remoto", "content": "Ofrecemos soporte integral para tu infraestructura física y virtual. Nuestro equipo está preparado para resolver incidentes rápidamente, minimizar el tiempo de inactividad y garantizar la continuidad de tu negocio, con atención tanto en tus oficinas como de forma remota." },
-            { "title": "Migración y Arquitectura en AWS", "content": "Te acompañamos en tu viaje a la nube. Diseñamos arquitecturas escalables, seguras y costo-eficientes en AWS. Realizamos migraciones de servidores, bases de datos y aplicaciones de forma planificada y sin interrupciones para tu operación." },
-            { "title": "Consultoría DevOps", "content": "Implementamos una cultura DevOps para acelerar tus ciclos de desarrollo y entrega. Configuramos pipelines de CI/CD con herramientas como AWS CodePipeline, CodeBuild y CodeDeploy, automatizando pruebas y despliegues para que tu equipo se enfoque en innovar." },
-            { "title": "Ingeniería Cloud", "content": "Automatizamos tu infraestructura con herramientas como Terraform y CloudFormation. Gestionamos tus aplicaciones en contenedores con ECS/EKS, optimizando recursos y mejorando la portabilidad y escalabilidad de tus sistemas." },
-            { "title": "Administración de Redes (Cisco)", "content": "Gestionamos y optimizamos tu infraestructura de red basada en tecnología Cisco. Desde la configuración de switches y routers hasta la resolución de problemas complejos, asegurando una red robusta y confiable." },
-            { "title": "Networking y Seguridad (Fortinet)", "content": "Implementamos y administramos soluciones de seguridad perimetral con Fortinet. Configuramos firewalls (FortiGate), políticas de seguridad, VPNs y análisis de tráfico para proteger tu red contra amenazas externas e internas." },
-            { "title": "Seguridad y Monitoreo Avanzado", "content": "Protegemos tus activos digitales con las mejores prácticas de seguridad en la nube. Implementamos sistemas de monitoreo proactivo con CloudWatch y Grafana para detectar y responder a amenazas en tiempo real, asegurando la integridad y disponibilidad de tu información." },
-            { "title": "Atención Personalizada", "content": "Entendemos que cada negocio es único. Por eso, ofrecemos un servicio de atención cercano y personalizado, asignando un especialista técnico a tu cuenta para que conozca a fondo tus necesidades y te brinde respuestas rápidas y efectivas." }
+            {
+                "title": "Soporte Técnico On-Premise y Remoto",
+                "tagline": "Disponibilidad continua para tu infraestructura",
+                "executiveDescription": "Ofrecemos soporte integral 24/7 para tu infraestructura física y virtual. Nuestro equipo está preparado para resolver incidentes rápidamente con SLA de 2-4 horas, minimizar tiempos de inactividad y garantizar la continuidad operativa. Según Best Practices ITSM, implementamos soluciones de ticketing y monitoreo proactivo que reducen el tiempo de caída de servidores hasta en un 80%.",
+                "keyFeatures": [
+                    { "icon": "⏱️", "text": "Resolución rápida de incidentes (SLA garantizado 2-4 horas)" },
+                    { "icon": "🌍", "text": "Cobertura global con horarios extendidos" },
+                    { "icon": "🔧", "text": "Soporte dual: on-premise + remoto" },
+                    { "icon": "📊", "text": "Reportes de desempeño mensual" },
+                    { "icon": "🎓", "text": "Capacitación continua al equipo técnico" }
+                ],
+                "toolsAndTechnologies": {"Monitoreo": ["Zabbix", "Nagios", "Datadog"], "ITSM": ["ServiceNow", "Jira Service Management"], "Ticketing": ["Zendesk", "ManageEngine ServiceDesk Plus"], "Soporte Remoto": ["Splashtop", "AnyDesk"]},
+                "quantifiableBenefits": ["Reducción de 80% en tiempos de caída", "Aumento de 30-50% productividad laboral", "Disponibilidad 99.5%+"],
+                "useCases": ["Empresas críticas 24/7", "Infraestructura híbrida", "Equipos distribuidos"]
+            },
+            {
+                "title": "Migración y Arquitectura en AWS",
+                "tagline": "Transforma tu negocio hacia la nube",
+                "executiveDescription": "Te acompañamos en tu viaje a la nube con estrategia clara basada en las 7 R de AWS. Diseñamos arquitecturas escalables, seguras y cost-eficientes. Nuestros clientes experimentan reducción de 51% en costos operativos y 62% más productividad en TI. Realizamos migraciones sin interrupciones.",
+                "keyFeatures": [
+                    { "icon": "🌟", "text": "Arquitectura escalable y optimizada" },
+                    { "icon": "🔆", "text": "Migración sin interrupciones" },
+                    { "icon": "💰", "text": "Optimización de costos" },
+                    { "icon": "📋", "text": "Disaster Recovery plan" },
+                    { "icon": "💡", "text": "Asesoría post-migración" }
+                ],
+                "migrationStrategies": {
+                    "title": "Estrategias de Migración 7 R's",
+                    "strategies": [
+                        { "name": "Rehost", "description": "Migraciones rápidas 'Lift & Shift' para salir de datacenters." },
+                        { "name": "Replatform", "description": "Ajustes mínimos para usar servicios gestionados como RDS o ECS." },
+                        { "name": "Refactor", "description": "Modernización con serverless y microservicios (Lambda, Fargate)." }
+                    ]
+                },
+                "toolsAndTechnologies": {"Automatización": ["Terraform", "AWS DMS"], "Transferencia": ["AWS DataSync", "AWS Snow Family"], "Validación": ["AWS Application Discovery Service"]},
+                "quantifiableBenefits": ["Reducción 51% costos operativos", "Aumento 62% productividad TI", "Reducción 94% tiempo de caída"],
+                "useCases": ["Cierre de datacenters", "Fusiones/adquisiciones", "Necesidad de escalabilidad"]
+            },
+            {
+                "title": "Consultoría DevOps",
+                "tagline": "Acelera ciclos de desarrollo e integración",
+                "executiveDescription": "Implementamos cultura DevOps integral para acelerar ciclos de desarrollo de semanas a días. Configuramos pipelines de CI/CD automáticos, reduciendo errores en producción hasta 70%. Utilizamos AWS CodePipeline, Jenkins, GitLab CI para automatizar pruebas, builds y despliegues.",
+                "keyFeatures": [
+                    { "icon": "🔄", "text": "CI/CD pipelines automáticos" },
+                    { "icon": "📦", "text": "Infrastructure as Code" },
+                    { "icon": "🐳", "text": "Containerización Docker/Kubernetes" },
+                    { "icon": "🚀", "text": "Automatización de deployments" },
+                    { "icon": "🤝", "text": "Cultura colaborativa" }
+                ],
+                "toolsAndTechnologies": {"CI/CD": ["Jenkins", "GitLab CI", "GitHub Actions", "AWS CodePipeline"], "IaC": ["Terraform", "CloudFormation"], "Containerización": ["Docker", "Kubernetes"]},
+                "quantifiableBenefits": ["Reducción 70% errores en producción", "Ciclo de 40%+ más frecuente", "Mejor colaboración entre equipos"],
+                "useCases": ["Ciclos de desarrollo lentos", "Equipos separados", "Necesidad de innovación rápida"]
+            },
+            {
+                "title": "Ingeniería Cloud",
+                "tagline": "Construye infraestructura resiliente",
+                "executiveDescription": "Diseñamos e implementamos arquitecturas cloud-native de alta disponibilidad (99.99%). Utilizamos Infrastructure as Code con Terraform. Aplicamos patrones modernos como microservicios, serverless y event-driven architecture. Garantizamos escalabilidad automática, resiliencia y optimización de costos.",
+                "keyFeatures": [
+                    { "icon": "🏗️", "text": "Diseño cloud-native" },
+                    { "icon": "📈", "text": "Alta disponibilidad 99.99%" },
+                    { "icon": "🐳", "text": "Containerización y orquestación" },
+                    { "icon": "💵", "text": "Optimización de costos" },
+                    { "icon": "📊", "text": "Monitoreo integral" }
+                ],
+                "awsPatternsAndServices": {
+                    "title": "Patrones y Servicios AWS",
+                    "categories": {
+                        "Compute": ["EC2", "Lambda", "Fargate", "ECS", "EKS"],
+                        "Bases de Datos": ["RDS", "DynamoDB", "ElastiCache"],
+                        "Almacenamiento": ["S3", "EBS", "EFS"]
+                    }
+                },
+                "toolsAndTechnologies": {"IaC": ["Terraform", "CloudFormation"], "Monitoreo": ["CloudWatch", "X-Ray", "Prometheus"]},
+                "quantifiableBenefits": ["Reducción 40-60% costos operativos", "Escalabilidad automática", "Disponibilidad 99.99%"],
+                "useCases": ["Apps web/mobile alto tráfico", "Plataformas de datos", "E-commerce con picos"]
+            },
+            {
+                "title": "Administración de Redes (Cisco)",
+                "tagline": "Redes robustas y confiables",
+                "executiveDescription": "Gestionamos infraestructura Cisco empresarial. Desde switches Catalyst, routers ASR, hasta Nexus para datacenter. Implementamos VLANs, segmentación, QoS y troubleshooting. Garantizamos uptime 99.9% y reducimos incidentes 85%.",
+                "keyFeatures": [
+                    { "icon": "🔧", "text": "Configuración switches/routers" },
+                    { "icon": "📈", "text": "Segmentación avanzada" },
+                    { "icon": "📊", "text": "Monitoreo 24/7" },
+                    { "icon": "🛠️", "text": "Mantenimiento preventivo" },
+                    { "icon": "🔒", "text": "Control de acceso" }
+                ],
+                "toolsAndTechnologies": {"Switches": ["Catalyst 9300", "9400"], "Routers": ["ISR 4000", "ASR 9000"], "Datacenter": ["Nexus 9000"], "Management": ["Cisco DNA Center", "IOS XE"]},
+                "quantifiableBenefits": ["Reducción 85% incidentes", "Uptime 99.9%", "Mejor seguridad y visibilidad"],
+                "useCases": ["Múltiples sedes", "Datacenters", "Redes complejas"]
+            },
+            {
+                "title": "Networking y Seguridad (Fortinet)",
+                "tagline": "Protección perimetral avanzada",
+                "executiveDescription": "Implementamos soluciones Fortinet de próxima generación. Firewalls FortiGate, políticas de seguridad granulares, VPNs seguras (IPSec), Inspección SSL. Reducimos brechas 94%. Utilizamos FortiManager para gestión centralizada.",
+                "keyFeatures": [
+                    { "icon": "🛡️", "text": "Firewalls FortiGate Gen 7" },
+                    { "icon": "🔒", "text": "VPNs seguras con redundancia" },
+                    { "icon": "👁️", "text": "IDS/IPS y análisis de tráfico" },
+                    { "icon": "📈", "text": "Protección amenazas avanzadas" },
+                    { "icon": "🌐", "text": "Visibilidad total" }
+                ],
+                "toolsAndTechnologies": {"Firewalls": ["FortiGate 7000F"], "Management": ["FortiManager", "FortiAnalyzer"], "Seguridad": ["FortiSandbox", "DLP"], "VPN": ["IPSec", "SSL VPN"]},
+                "quantifiableBenefits": ["Reducción 94% brechas de seguridad", "Gestión centralizada", "Mejor compliance GDPR/HIPAA"],
+                "useCases": ["Seguridad crítica", "Múltiples sedes", "Industrias reguladas"]
+            },
+            {
+                "title": "Seguridad y Monitoreo Avanzado",
+                "tagline": "Vigilancia continua de activos",
+                "executiveDescription": "Monitoreo 24/7 con detección proactiva usando AWS Security Services. CloudWatch para métricas, Grafana para dashboards visuales, GuardDuty para IA/ML. Reducimos MTTD 85% y MTTR 70%.",
+                "keyFeatures": [
+                    { "icon": "👁️", "text": "Monitoreo 24/7 con IA/ML" },
+                    { "icon": "📊", "text": "Dashboards Grafana avanzados" },
+                    { "icon": "🚨", "text": "Alertas multi-canal en tiempo real" },
+                    { "icon": "📋", "text": "Análisis y reportes cumplimiento" },
+                    { "icon": "🔍", "text": "Respuesta automatizada" }
+                ],
+                "toolsAndTechnologies": {"Monitoreo": ["CloudWatch", "Grafana"], "Seguridad": ["AWS GuardDuty", "AWS Security Hub"], "Logging": ["ELK Stack"]},
+                "quantifiableBenefits": ["Detección temprana de amenazas", "Cumplimiento de normativas", "Respuesta rápida a incidentes"],
+                "useCases": ["Empresas reguladas", "Datos sensibles", "Operaciones críticas"]
+            },
+            {
+                "title": "Atención Personalizada",
+                "tagline": "Especialista técnico dedicado",
+                "executiveDescription": "Servicio cercano y personalizado. Asignamos especialista técnico a tu cuenta. Asesoramiento sobre mejores prácticas, planificación estratégica de IT, acompañamiento continuo.",
+                "keyFeatures": [
+                    { "icon": "👤", "text": "Account manager técnico asignado" },
+                    { "icon": "⏱️", "text": "Respuesta rápida a consultas" },
+                    { "icon": "🎓", "text": "Asesoramiento mejores prácticas" },
+                    { "icon": "📊", "text": "Planificación estratégica IT" },
+                    { "icon": "🌟", "text": "Acompañamiento continuo" }
+                ],
+                "toolsAndTechnologies": ["Comunicación directa", "Reuniones periódicas", "Reportes personalizados"],
+                "quantifiableBenefits": ["Atención personalizada", "Mejor comprensión de objetivos", "Soluciones alineadas"],
+                "useCases": ["Empresas en transformación", "Startups en crecimiento", "Necesidad de asesoría"]
+            }
         ]
     },
     "whyUsPage": {
         "heroTitle": "Por Qué Elegirnos",
         "intro": "Somos más que un proveedor; somos tu socio estratégico en tecnología. Descubre las razones por las que empresas de todo el mundo confían en nosotros.",
         "points": [
-            { "title": "Experiencia y Certificaciones", "description": "Nuestro equipo posee certificaciones oficiales como AWS Certified DevOps Engineer y una sólida trayectoria trabajando con los desafíos de empresas de todos los tamaños." },
-            { "title": "Metodología Centrada en el Cliente", "description": "Creemos en el acompañamiento técnico constante y la atención personalizada. Tu éxito es nuestro objetivo, por lo que ofrecemos una comunicación fluida y respuestas rápidas." },
-            { "title": "Soluciones de Alcance Global", "description": "Diseñamos soluciones que no solo son técnicamente robustas, sino también financieramente viables y escalables para el mercado internacional." }
+            { "title": "Experiencia y Certificaciones", "slug": "certifications", "description": "Nuestro equipo posee certificaciones oficiales como AWS Certified DevOps Engineer y una sólida trayectoria trabajando con los desafíos de empresas de todos los tamaños." },
+            { "title": "Metodología Centrada en el Cliente", "slug": "methodology", "description": "Creemos en el acompañamiento técnico constante y la atención personalizada. Tu éxito es nuestro objetivo, por lo que ofrecemos una comunicación fluida y respuestas rápidas." },
+            { "title": "Soluciones de Alcance Global", "slug": "global-solutions", "description": "Diseñamos soluciones que no solo son técnicamente robustas, sino también financieramente viables y escalables para el mercado internacional." }
         ],
         "certifications": {
             "title": "Nuestras Certificaciones",

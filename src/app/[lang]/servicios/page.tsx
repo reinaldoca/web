@@ -1,40 +1,18 @@
+
 import Image from 'next/image';
-import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from '@/components/ui/accordion';
-import { Server, CloudUpload, GitBranch, Blocks, ShieldCheck, Headphones, Router, Network } from 'lucide-react';
 import { PlaceHolderImages } from '@/lib/placeholder-images';
-import { AnimatedSection } from '@/components/animations/animated-section';
 import { getDictionary } from '@/dictionaries/dictionaries';
-import { Locale } from '@/dictionaries/i18n-config';
-import { slugify } from '@/lib/utils';
+import { type Locale } from '@/dictionaries/i18n-config';
+import { ServicesAccordion } from './services-accordion';
 
 const servicesHero = PlaceHolderImages.find(p => p.id === 'services-hero');
 
-const serviceIcons: { [key: string]: JSX.Element } = {
-  'Soporte Técnico on-premise y remoto': <Server className="h-6 w-6 text-primary" />,
-  'On-premise and remote Technical Support': <Server className="h-6 w-6 text-primary" />,
-  'Migración y Arquitectura en AWS': <CloudUpload className="h-6 w-6 text-primary" />,
-  'Migration and Architecture in AWS': <CloudUpload className="h-6 w-6 text-primary" />,
-  'Consultoría DevOps': <GitBranch className="h-6 w-6 text-primary" />,
-  'DevOps Consulting': <GitBranch className="h-6 w-6 text-primary" />,
-  'Ingeniería Cloud': <Blocks className="h-6 w-6 text-primary" />,
-  'Cloud Engineering': <Blocks className="h-6 w-6 text-primary" />,
-  'Administración de Redes (Cisco)': <Router className="h-6 w-6 text-primary" />,
-  'Network Administration (Cisco)': <Router className="h-6 w-6 text-primary" />,
-  'Networking y Seguridad (Fortinet)': <Network className="h-6 w-6 text-primary" />,
-  'Networking and Security (Fortinet)': <Network className="h-6 w-6 text-primary" />,
-  'Seguridad y Monitoreo Avanzado': <ShieldCheck className="h-6 w-6 text-primary" />,
-  'Advanced Security and Monitoring': <ShieldCheck className="h-6 w-6 text-primary" />,
-  'Atención Personalizada': <Headphones className="h-6 w-6 text-primary" />,
-  'Personalized Attention': <Headphones className="h-6 w-6 text-primary" />,
-};
-
 interface ServiciosPageProps {
-  params: Promise<{ lang: Locale }>;
+  params: { lang: Locale };
 }
 
-export default async function ServiciosPage({ params }: ServiciosPageProps) {
-  const { lang } = await params;
-  const t = (await getDictionary(lang)).servicesPage;
+export default async function ServiciosPage({ params: { lang } }: ServiciosPageProps) {
+  const { servicesPage: t } = await getDictionary(lang);
 
   return (
     <main>
@@ -53,32 +31,14 @@ export default async function ServiciosPage({ params }: ServiciosPageProps) {
         </div>
       </section>
 
-      <AnimatedSection className="w-full py-12 md:py-24 lg:py-32">
-        <div className="container px-4 md:px-6 max-w-4xl mx-auto">
+      <section className="w-full py-12 md:py-24 lg:py-32">
+        <div className="container px-4 md:px-6 max-w-6xl mx-auto">
           <p className="text-center text-lg md:text-xl text-muted-foreground mb-12">
             {t.intro}
           </p>
-          <div className="bg-card p-4 md:p-8 rounded-lg">
-            <Accordion type="single" collapsible className="w-full">
-              {t.services.map((service) => {
-                const serviceSlug = slugify(service.title);
-                return (
-                <AccordionItem key={service.title} value={serviceSlug} id={serviceSlug}>
-                  <AccordionTrigger className="text-lg font-semibold hover:no-underline">
-                    <div className="flex items-center gap-4">
-                      {serviceIcons[service.title]}
-                      <span>{service.title}</span>
-                    </div>
-                  </AccordionTrigger>
-                  <AccordionContent className="text-base text-muted-foreground pl-14">
-                    {service.content}
-                  </AccordionContent>
-                </AccordionItem>
-              )})}
-            </Accordion>
-          </div>
+          <ServicesAccordion />
         </div>
-      </AnimatedSection>
+      </section>
     </main>
   );
 }

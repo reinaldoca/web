@@ -126,10 +126,8 @@ export default function HomeClient({ lang, t }: HomeClientProps) {
               className="mx-auto grid max-w-5xl items-start gap-6 py-12 sm:grid-cols-2 md:grid-cols-3 lg:gap-12"
               variants={containerVariants}
             >
-              {t.services.items.map((service) => {
-                const serviceSlug = slugify(service.title);
-                return (
-                <Link key={service.title} href={`/${lang}/servicios#${serviceSlug}`} className="block h-full">
+              {t.services.items.map((service) => (
+                <Link key={service.title} href={`/${lang}/servicios/${service.slug}`} className="block h-full">
                   <motion.div variants={itemVariants} whileHover={cardHoverEffect} className="h-full">
                     <Card className="h-full transition-shadow duration-300">
                       <CardHeader className="flex flex-col items-center text-center">
@@ -142,7 +140,7 @@ export default function HomeClient({ lang, t }: HomeClientProps) {
                     </Card>
                   </motion.div>
                 </Link>
-              )})}
+              ))}
             </motion.div>
             <motion.div variants={itemVariants} className="flex justify-center">
                <Button asChild variant="outline">
