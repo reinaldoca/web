@@ -8,7 +8,7 @@ import { Locale } from '@/dictionaries/i18n-config';
 const successHero = PlaceHolderImages.find(p => p.id === 'success-hero');
 
 interface CasosDeExitoPageProps {
-  params: Promise<{ lang: Locale }>;
+  params: { lang: Locale };
 }
 
 const storyIcons: { [key: string]: JSX.Element } = {
@@ -21,8 +21,7 @@ const storyIcons: { [key: string]: JSX.Element } = {
 };
 
 export default async function CasosDeExitoPage({ params }: CasosDeExitoPageProps) {
-  // Await the params promise
-  const { lang } = await params;
+  const { lang } = params;
   const t = (await getDictionary(lang)).successStoriesPage;
 
   const successStories = t.stories.map((story: any) => ({

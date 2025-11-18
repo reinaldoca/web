@@ -211,7 +211,7 @@
             {
                 "title": "Administración de Redes (Cisco)",
                 "tagline": "Redes robustas y confiables",
-                "executiveDescription": "Gestionamos infraestructura Cisco empresarial. Desde switches Catalyst, routers ASR, hasta Nexus para datacenter. Implementamos VLANs, segmentación, QoS y troubleshooting. Garantizamos uptime 99.9% y reducimos incidentes 85%.",
+                "executiveDescription": "Gestionamos infraestructura Cisco empresarial. Desde switches Catalyst, Routers, ASA Firewalls. Implementamos VLANs, segmentación, VPNs Site to Site, Remote Access y troubleshooting. Garantizamos uptime 99.9% y reducimos incidentes 85%",
                 "keyFeatures": [
                     { "icon": "🔧", "text": "Configuración switches/routers" },
                     { "icon": "📈", "text": "Segmentación avanzada" },
@@ -219,7 +219,12 @@
                     { "icon": "🛠️", "text": "Mantenimiento preventivo" },
                     { "icon": "🔒", "text": "Control de acceso" }
                 ],
-                "toolsAndTechnologies": {"Switches": ["Catalyst 9300", "9400"], "Routers": ["ISR 4000", "ASR 9000"], "Datacenter": ["Nexus 9000"], "Management": ["Cisco DNA Center", "IOS XE"]},
+                "toolsAndTechnologies": {
+                    "Equipos": [
+                        "Switches Cisco Catalyst 2960-XR Series",
+                        "Firewalls Cisco ASA 5500-X Series"
+                    ]
+                },
                 "quantifiableBenefits": ["Reducción 85% incidentes", "Uptime 99.9%", "Mejor seguridad y visibilidad"],
                 "useCases": ["Múltiples sedes", "Datacenters", "Redes complejas"]
             },

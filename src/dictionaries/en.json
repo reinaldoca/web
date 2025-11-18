@@ -211,7 +211,7 @@
             {
                 "title": "Network Administration (Cisco)",
                 "tagline": "Robust and reliable networks",
-                "executiveDescription": "We manage enterprise Cisco infrastructure. From Catalyst switches, ASR routers, to Nexus for datacenters. We implement VLANs, segmentation, QoS, and troubleshooting. We guarantee 99.9% uptime and reduce incidents by 85%.",
+                "executiveDescription": "We manage enterprise Cisco infrastructure. From Catalyst switches, Routers, ASA Firewalls. We implement VLANs, segmentation, Site-to-Site VPNs, Remote Access, and troubleshooting. We guarantee 99.9% uptime and reduce incidents by 85%.",
                 "keyFeatures": [
                     { "icon": "🔧", "text": "Switch/router configuration" },
                     { "icon": "📈", "text": "Advanced segmentation" },
@@ -219,7 +219,12 @@
                     { "icon": "🛠️", "text": "Preventive maintenance" },
                     { "icon": "🔒", "text": "Access control" }
                 ],
-                "toolsAndTechnologies": {"Switches": ["Catalyst 9300", "9400"], "Routers": ["ISR 4000", "ASR 9000"], "Datacenter": ["Nexus 9000"], "Management": ["Cisco DNA Center", "IOS XE"]},
+                "toolsAndTechnologies": {
+                     "Equipment": [
+                        "Switches Cisco Catalyst 2960-XR Series",
+                        "Firewalls Cisco ASA 5500-X Series"
+                    ]
+                },
                 "quantifiableBenefits": ["85% incident reduction", "99.9% uptime", "Better security and visibility"],
                 "useCases": ["Multiple locations", "Datacenters", "Complex networks"]
             },

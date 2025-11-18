@@ -9,14 +9,14 @@ export async function generateStaticParams() {
 
 interface LangLayoutProps {
   children: React.ReactNode;
-  params: Promise<{ lang: string }>;
+  params: { lang: string };
 }
 
 export default async function LangLayout({
   children,
   params,
 }: LangLayoutProps) {
-  const { lang } = await params;
+  const { lang } = params;
 
   // Validate that lang is a supported locale, otherwise use the default.
   const resolvedLang = i18n.locales.includes(lang as Locale) ? (lang as Locale) : i18n.defaultLocale;

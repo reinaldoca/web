@@ -9,11 +9,11 @@ import ContactPageClient from './contact-page-client';
 const contactHero = PlaceHolderImages.find(p => p.id === 'contact-hero');
 
 interface ContactoPageProps {
-  params: Promise<{ lang: Locale }>;
+  params: { lang: Locale };
 }
 
 export default async function ContactoPage({ params }: ContactoPageProps) {
-    const { lang } = await params;
+    const { lang } = params;
     const t = (await getDictionary(lang)).contactPage;
 
     return (

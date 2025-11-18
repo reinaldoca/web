@@ -18,11 +18,11 @@ const pointIcons: { [key: string]: JSX.Element } = {
 };
 
 interface PorqueElegirnosPageProps {
-  params: Promise<{ lang: Locale }>;
+  params: { lang: Locale };
 }
 
 export default async function PorqueElegirnosPage({ params }: PorqueElegirnosPageProps) {
-  const { lang } = await params;
+  const { lang } = params;
   const t = (await getDictionary(lang)).whyUsPage;
   
   return (
