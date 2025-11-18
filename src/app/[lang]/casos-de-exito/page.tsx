@@ -6,8 +6,6 @@ import { PlaceHolderImages } from '@/lib/placeholder-images';
 import { getDictionary } from '@/dictionaries/dictionaries';
 import { Locale } from '@/dictionaries/i18n-config';
 
-const successHero = PlaceHolderImages.find(p => p.id === 'success-hero');
-
 interface SuccessStory {
   title: string;
   description: string;
@@ -17,7 +15,10 @@ interface SuccessStory {
 
 interface CasosDeExitoPageProps {
   params: { lang: Locale };
+  searchParams?: { [key: string]: string | string[] | undefined };
 }
+
+const successHero = PlaceHolderImages.find(p => p.id === 'success-hero');
 
 const storyIcons: { [key: string]: JSX.Element } = {
   "Reducción de costos para Fintech": <CircleDollarSign className="h-8 w-8 text-primary" />,
@@ -30,7 +31,11 @@ const storyIcons: { [key: string]: JSX.Element } = {
 
 export default async function CasosDeExitoPage({ params }: CasosDeExitoPageProps) {
   const { lang } = params;
-  const t = (await getDictionary(lang)).successStoriesPage;
+  const t = (await getDictionary(lang)).successStoriesPage as {
+    heroTitle: string;
+    intro: string;
+    stories: SuccessStory[];
+  };
 
   const successStories = t.stories.map((story: SuccessStory) => ({
     ...story,
