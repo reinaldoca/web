@@ -4,18 +4,10 @@
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
-import { getDictionary } from "@/dictionaries/dictionaries";
 import { Locale } from "@/dictionaries/i18n-config";
 import { slugify } from "@/lib/utils";
 import { ArrowRight } from "lucide-react";
 import Link from "next/link";
-import { useEffect, useState } from "react";
-
-type Service = {
-    title: string;
-    tagline: string;
-    executiveDescription: string;
-};
 
 type AccordionService = {
   title: string;
@@ -32,21 +24,11 @@ type AccordionService = {
 
 type ServicesAccordionProps = {
   lang: Locale;
+  accordionServices: AccordionService[];
+  ctaText: string;
 };
 
-export function ServicesAccordion({ lang }: ServicesAccordionProps) {
-  const [accordionServices, setAccordionServices] = useState<AccordionService[]>([]);
-  const [ctaText, setCtaText] = useState('');
-
-  useEffect(() => {
-    async function fetchDict() {
-      const dictionary = await getDictionary(lang);
-      setAccordionServices(dictionary.servicesPage.accordionServices);
-      setCtaText(dictionary.home.hero.cta);
-    }
-    fetchDict();
-  }, [lang]);
-
+export function ServicesAccordion({ lang, accordionServices, ctaText }: ServicesAccordionProps) {
 
   return (
     <Accordion type="single" collapsible className="w-full space-y-4">

@@ -13,7 +13,9 @@ interface ServiciosPageProps {
 
 export default async function ServiciosPage({ params: paramsPromise }: ServiciosPageProps) {
   const { lang } = await paramsPromise;
-  const { servicesPage: t } = await getDictionary(lang);
+  const dictionary = await getDictionary(lang);
+  const t = dictionary.servicesPage;
+  const cta = dictionary.home.hero.cta;
 
   return (
     <main>
@@ -37,7 +39,11 @@ export default async function ServiciosPage({ params: paramsPromise }: Servicios
           <p className="text-center text-lg md:text-xl text-muted-foreground mb-12">
             {t.intro}
           </p>
-          <ServicesAccordion lang={lang}/>
+          <ServicesAccordion 
+            lang={lang} 
+            accordionServices={t.accordionServices} 
+            ctaText={cta}
+          />
         </div>
       </section>
     </main>
