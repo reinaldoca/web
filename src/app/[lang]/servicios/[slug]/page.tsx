@@ -291,5 +291,4 @@ export default async function ServiceDetailPage({ params: paramsPromise }: Servi
       </section>
     </main>
   );
-
-    
+}
