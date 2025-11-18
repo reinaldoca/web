@@ -1,5 +1,4 @@
 
-
 import { notFound } from 'next/navigation';
 import Image from 'next/image';
 import { getDictionary } from '@/dictionaries/dictionaries';
@@ -16,17 +15,27 @@ import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from '@/
 const servicesHero = PlaceHolderImages.find(p => p.id === 'services-hero');
 
 const serviceIcons: { [key:string]: JSX.Element } = {
-  'soporte-tecnico': <Headphones className="h-10 w-10 text-primary" />,
-  'migracion-aws': <CloudUpload className="h-10 w-10 text-primary" />,
+  'soporte-tecnico-on-premise-y-remoto': <Headphones className="h-10 w-10 text-primary" />,
+  'on-premise-and-remote-technical-support': <Headphones className="h-10 w-10 text-primary" />,
+  'migracion-y-arquitectura-en-aws': <CloudUpload className="h-10 w-10 text-primary" />,
+  'aws-migration-and-architecture': <CloudUpload className="h-10 w-10 text-primary" />,
   'consultoria-devops': <GitBranch className="h-10 w-10 text-primary" />,
+  'devops-consulting': <GitBranch className="h-10 w-10 text-primary" />,
   'ingenieria-cloud': <Blocks className="h-10 w-10 text-primary" />,
-  'redes-cisco': <Router className="h-10 w-10 text-primary" />,
-  'seguridad-fortinet': <Network className="h-10 w-10 text-primary" />,
-  'seguridad-monitoreo': <ShieldCheck className="h-10 w-10 text-primary" />,
+  'cloud-engineering': <Blocks className="h-10 w-10 text-primary" />,
+  'administracion-de-redes-cisco': <Router className="h-10 w-10 text-primary" />,
+  'network-administration-cisco': <Router className="h-10 w-10 text-primary" />,
+  'networking-y-seguridad-fortinet': <Network className="h-10 w-10 text-primary" />,
+  'networking-and-security-fortinet': <Network className="h-10 w-10 text-primary" />,
+  'seguridad-y-monitoreo-avanzado': <ShieldCheck className="h-10 w-10 text-primary" />,
+  'advanced-security-and-monitoring': <ShieldCheck className="h-10 w-10 text-primary" />,
   'atencion-personalizada': <Headphones className="h-10 w-10 text-primary" />,
+  'personalized-attention': <Headphones className="h-10 w-10 text-primary" />,
   'cloud-foundations': <Server className="h-10 w-10 text-primary" />,
   'servicios-de-migracion': <CloudUpload className="h-10 w-10 text-primary" />,
+  'migration-services': <CloudUpload className="h-10 w-10 text-primary" />,
   'implementacion-de-herramientas-devops': <GitBranch className="h-10 w-10 text-primary" />,
+  'devops-tools-implementation': <GitBranch className="h-10 w-10 text-primary" />,
   'well-architected-review': <CheckCircle className="h-10 w-10 text-primary" />,
 };
 
@@ -56,18 +65,18 @@ interface ServiceDetailPageProps {
   }>;
 }
 
-export async function generateStaticParams({ params: { lang } }: { params: { lang: Locale } }) {
+export async function generateStaticParams({ params }: { params: { lang: string } }) {
+  const lang = params.lang as Locale;
   const dictionary = await getDictionary(lang);
   
-  const allSlugs = dictionary.home.services.items.map(item => ({
-    slug: slugify(item.title)
-  })).concat(
-    dictionary.servicesPage.accordionServices.map(item => ({
-      slug: slugify(item.title)
-    }))
-  );
+  const allServices = [
+    ...dictionary.servicesPage.services,
+    ...dictionary.servicesPage.accordionServices
+  ];
 
-  return allSlugs;
+  return allServices.map(service => ({
+    slug: slugify(service.title)
+  }));
 }
 
 export default async function ServiceDetailPage({ params: paramsPromise }: ServiceDetailPageProps) {
@@ -165,7 +174,7 @@ export default async function ServiceDetailPage({ params: paramsPromise }: Servi
               <div>
                 <h3 className="font-bold text-2xl mb-8 text-center">{t.featuresTitle}</h3>
                 <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-                  {service.keyFeatures.map(feature => (
+                  {service.keyFeatures.map((feature:any) => (
                     <div key={feature.text} className="flex items-start gap-4">
                       <FeatureIcon emoji={feature.icon} className="text-2xl mt-1" />
                       <span className="flex-1 text-base text-muted-foreground">{feature.text}</span>
@@ -241,7 +250,7 @@ export default async function ServiceDetailPage({ params: paramsPromise }: Servi
                     <div className="bg-secondary/50 p-8 rounded-lg">
                         <h3 className="font-bold text-2xl mb-6 text-center">{t.benefitsTitle}</h3>
                         <ul className="space-y-3">
-                            {service.quantifiableBenefits.map(benefit => (
+                            {service.quantifiableBenefits.map((benefit:any) => (
                                 <li key={benefit} className="flex items-center gap-3 text-base text-muted-foreground">
                                   <CheckCircle className="h-5 w-5 text-primary flex-shrink-0" />
                                   <span>{benefit}</span>
@@ -254,7 +263,7 @@ export default async function ServiceDetailPage({ params: paramsPromise }: Servi
                     <div className="bg-secondary/50 p-8 rounded-lg">
                         <h3 className="font-bold text-2xl mb-6 text-center">{t.useCasesTitle}</h3>
                         <ul className="space-y-3">
-                            {service.useCases.map(useCase => (
+                            {service.useCases.map((useCase:any) => (
                                 <li key={useCase} className="flex items-center gap-3 text-base text-muted-foreground">
                                   <CheckCircle className="h-5 w-5 text-primary flex-shrink-0" />
                                   <span>{useCase}</span>
@@ -277,3 +286,5 @@ export default async function ServiceDetailPage({ params: paramsPromise }: Servi
     </main>
   );
 }
+
+    
