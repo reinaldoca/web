@@ -59,30 +59,36 @@ const serviceIcons: { [key:string]: JSX.Element } = {
                                                                             };
 
 interface ServiceDetailPageProps {
-    params: Promise<{
+    params: {
         lang: Locale;
         slug: string;
-    }>;
+    };
 }
 
-export async function generateStaticParams({ params }: { params: { lang: Locale } }) {
-  const { lang } = params;
-  if (!['en', 'es'].includes(lang)) {
-    return [];
+export async function generateStaticParams() {
+    const langs: Locale[] = ['es', 'en'];
+    let allParams: { lang: Locale; slug: string }[] = [];
+  
+    for (const lang of langs) {
+      const dictionary = await getDictionary(lang);
+      const allServices = [
+        ...dictionary.servicesPage.services,
+        ...dictionary.servicesPage.accordionServices
+      ];
+  
+      const langSlugs = allServices.map(service => ({
+        lang,
+        slug: slugify(service.title)
+      }));
+  
+      allParams = [...allParams, ...langSlugs];
+    }
+  
+    return allParams;
   }
-  const dictionary = await getDictionary(lang);
-  const allServices = [
-    ...dictionary.servicesPage.services,
-    ...dictionary.servicesPage.accordionServices
-  ];
 
-  return allServices.map(service => ({
-    slug: slugify(service.title)
-  }));
-}
-
-export default async function ServiceDetailPage({ params: paramsPromise }: ServiceDetailPageProps) {
-  const { lang, slug } = await paramsPromise;
+export default async function ServiceDetailPage({ params }: ServiceDetailPageProps) {
+  const { lang, slug } = params;
     const dictionary = await getDictionary(lang);
       const allServices = [...dictionary.servicesPage.services, ...dictionary.servicesPage.accordionServices];
         const service = allServices.find((s: any) => slugify(s.title) === slug);
