@@ -24,12 +24,10 @@ const storyIcons: { [key: string]: JSX.Element } = {
   "Scalable growth for EdTech": <TrendingUp className="h-8 w-8 text-primary" />,
 };
 
-export default async function CasosDeExitoPage({
-  params: { lang },
-}: {
-  params: { lang: Locale };
-  searchParams?: { [key: string]: string | string[] | undefined };
-}) {
+export default async function CasosDeExitoPage(props: any) {
+  const { params }: { params: { lang: Locale } } = props;
+  const { lang } = params;
+
   const t = (await getDictionary(lang)).successStoriesPage as {
     heroTitle: string;
     intro: string;
