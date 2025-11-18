@@ -1,3 +1,4 @@
+
 import Image from 'next/image';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Award, Users, Target } from 'lucide-react';
@@ -18,11 +19,11 @@ const pointIcons: { [key: string]: JSX.Element } = {
 };
 
 interface PorqueElegirnosPageProps {
-  params: { lang: Locale };
+  params: Promise<{ lang: Locale }>;
 }
 
-export default async function PorqueElegirnosPage({ params }: PorqueElegirnosPageProps) {
-  const { lang } = params;
+export default async function PorqueElegirnosPage({ params: paramsPromise }: PorqueElegirnosPageProps) {
+  const { lang } = await paramsPromise;
   const t = (await getDictionary(lang)).whyUsPage;
   
   return (

@@ -13,6 +13,10 @@ interface SuccessStory {
   metricDescription: string;
 }
 
+interface CasosDeExitoPageProps {
+  params: Promise<{ lang: Locale }>;
+}
+
 const successHero = PlaceHolderImages.find(p => p.id === 'success-hero');
 
 const storyIcons: { [key: string]: JSX.Element } = {
@@ -24,8 +28,8 @@ const storyIcons: { [key: string]: JSX.Element } = {
   "Scalable growth for EdTech": <TrendingUp className="h-8 w-8 text-primary" />,
 };
 
-export default async function CasosDeExitoPage(props: any) {
-  const { params }: { params: { lang: Locale } } = props;
+export default async function CasosDeExitoPage(props: CasosDeExitoPageProps) {
+  const params = await props.params;
   const { lang } = params;
 
   const t = (await getDictionary(lang)).successStoriesPage as {

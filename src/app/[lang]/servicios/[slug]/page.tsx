@@ -50,10 +50,10 @@ const processIcons: { [key: string]: JSX.Element } = {
 };
 
 interface ServiceDetailPageProps {
-  params: {
+  params: Promise<{
     lang: Locale;
     slug: string;
-  };
+  }>;
 }
 
 export async function generateStaticParams({ params: { lang } }: { params: { lang: Locale } }) {
@@ -70,7 +70,8 @@ export async function generateStaticParams({ params: { lang } }: { params: { lan
   return allSlugs;
 }
 
-export default async function ServiceDetailPage({ params: { lang, slug } }: ServiceDetailPageProps) {
+export default async function ServiceDetailPage({ params: paramsPromise }: ServiceDetailPageProps) {
+  const { lang, slug } = await paramsPromise;
   const dictionary = await getDictionary(lang);
   const allServices = [...dictionary.servicesPage.services, ...dictionary.servicesPage.accordionServices];
   const service = allServices.find((s) => slugify(s.title) === slug);

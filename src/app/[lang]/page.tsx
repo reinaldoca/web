@@ -1,13 +1,14 @@
+
 import { getDictionary } from '@/dictionaries/dictionaries';
 import { Locale } from '@/dictionaries/i18n-config';
 import HomeClient from './home-client';
 
 interface LangHomePageProps {
-  params: { lang: Locale };
+  params: Promise<{ lang: Locale }>;
 }
 
-export default async function LangHome({ params }: LangHomePageProps) {
-  const { lang } = params;
+export default async function LangHome({ params: paramsPromise }: LangHomePageProps) {
+  const { lang } = await paramsPromise;
   const dictionary = await getDictionary(lang);
   return <HomeClient lang={lang} t={dictionary.home} />;
 }
