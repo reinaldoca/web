@@ -1,12 +1,19 @@
 
 import Image from 'next/image';
-import { Card, CardContent } from '@/components/ui/card';
+import { Card } from '@/components/ui/card';
 import { TrendingUp, Zap, CircleDollarSign } from 'lucide-react';
 import { PlaceHolderImages } from '@/lib/placeholder-images';
 import { getDictionary } from '@/dictionaries/dictionaries';
 import { Locale } from '@/dictionaries/i18n-config';
 
 const successHero = PlaceHolderImages.find(p => p.id === 'success-hero');
+
+interface SuccessStory {
+  title: string;
+  description: string;
+  metric: string;
+  metricDescription: string;
+}
 
 interface CasosDeExitoPageProps {
   params: { lang: Locale };
@@ -25,7 +32,7 @@ export default async function CasosDeExitoPage({ params }: CasosDeExitoPageProps
   const { lang } = params;
   const t = (await getDictionary(lang)).successStoriesPage;
 
-  const successStories = t.stories.map((story: any) => ({
+  const successStories = t.stories.map((story: SuccessStory) => ({
     ...story,
     image: story.title.includes('Fintech') ? "https://picsum.photos/seed/fintech-case/500/300" :
            story.title.includes('E-commerce') ? "https://picsum.photos/seed/ecommerce-case/500/300" :
@@ -45,6 +52,7 @@ export default async function CasosDeExitoPage({ params }: CasosDeExitoPageProps
             data-ai-hint={successHero.imageHint}
             fill
             className="object-cover"
+            priority
           />
         )}
         <div className="absolute inset-0 bg-black/50 flex items-center justify-center">
@@ -58,7 +66,7 @@ export default async function CasosDeExitoPage({ params }: CasosDeExitoPageProps
             {t.intro}
           </p>
           <div className="grid gap-12">
-            {successStories.map((story: any, index: number) => (
+            {successStories.map((story, index: number) => (
               <Card key={story.title} className="overflow-hidden grid md:grid-cols-2 shadow-sm hover:shadow-lg transition-shadow">
                 <div className={`flex flex-col justify-center p-6 md:p-8 ${index % 2 !== 0 ? 'md:order-2' : ''}`}>
                   <div className="flex items-center gap-4 mb-4">
