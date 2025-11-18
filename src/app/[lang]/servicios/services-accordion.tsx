@@ -6,10 +6,11 @@ import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import { Locale } from "@/dictionaries/i18n-config";
 import { slugify } from "@/lib/utils";
-import { ArrowRight } from "lucide-react";
+import { ArrowRight, Server, CloudUpload, GitBranch, CheckCircle } from "lucide-react";
 import Link from "next/link";
 
 type AccordionService = {
+  icon: string;
   title: string;
   whatItIs: string;
   ourPerspective: {
@@ -28,6 +29,13 @@ type ServicesAccordionProps = {
   ctaText: string;
 };
 
+const serviceIcons: { [key: string]: JSX.Element } = {
+  Server: <Server className="h-6 w-6 text-primary" />,
+  CloudUpload: <CloudUpload className="h-6 w-6 text-primary" />,
+  GitBranch: <GitBranch className="h-6 w-6 text-primary" />,
+  CheckCircle: <CheckCircle className="h-6 w-6 text-primary" />,
+};
+
 export function ServicesAccordion({ lang, accordionServices, ctaText }: ServicesAccordionProps) {
 
   return (
@@ -35,7 +43,10 @@ export function ServicesAccordion({ lang, accordionServices, ctaText }: Services
       {accordionServices.map((service, index) => (
           <AccordionItem key={index} value={`item-${index}`} className="border rounded-lg shadow-sm bg-card overflow-hidden">
             <AccordionTrigger className="text-xl hover:no-underline p-6 text-left">
-                <span className="font-bold font-headline text-lg md:text-xl">{service.title}</span>
+                <div className="flex items-center gap-4">
+                  {serviceIcons[service.icon] || <Server className="h-6 w-6 text-primary" />}
+                  <span className="font-bold font-headline text-lg md:text-xl">{service.title}</span>
+                </div>
             </AccordionTrigger>
             <AccordionContent className="pt-0 p-6 border-t">
               <div className="space-y-8">

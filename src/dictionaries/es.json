@@ -84,7 +84,7 @@
                 ]
             },
             {
-                "icon": "Zap",
+                "icon": "CloudUpload",
                 "title": "Servicios de Migración",
                 "tagline": "Virtualización de cargas de trabajo rápida, decidida y segura",
                 "whatItIs": "Contamos con un equipo de especialistas que acompaña en la virtualización de cargas de trabajo de forma rápida, decidida y segura. Con más de 700 implementaciones exitosas, nos enfocamos en comprender tus necesidades específicas para ofrecer soluciones personalizadas que impulsan la eficiencia y escalabilidad, reduciendo costos y fortaleciendo la seguridad.",
@@ -100,7 +100,7 @@
                 ]
             },
             {
-                "icon": "Code",
+                "icon": "GitBranch",
                 "title": "Implementación de Herramientas DevOps",
                 "tagline": "Simplifica y automatiza tus procesos de liberación de software",
                 "whatItIs": "Brindamos apoyo en la selección, implementación e integración de herramientas DevOps para simplificar y automatizar los procesos de liberación de software. Los beneficios clave son una base sólida en AWS, la conexión correcta de herramientas CI/CD y la autonomía del equipo para gestionar sus pipelines de desarrollo.",
@@ -181,7 +181,7 @@
                     { "icon": "🚀", "text": "Automatización de deployments" },
                     { "icon": "🤝", "text": "Cultura colaborativa" }
                 ],
-                "toolsAndTechnologies": {"CI/CD": ["Jenkins", "GitLab CI", "GitHub Actions", "AWS CodePipeline"], "IaC": ["Terraform", "CloudFormation"], "Containerización": ["Docker", "Kubernetes"]},
+                "toolsAndTechnologies": {"CI/CD": ["Jenkins", " GitLab CI", "GitHub Actions", "AWS CodePipeline"], "IaC": ["Terraform", "CloudFormation"], "Containerización": ["Docker", "Kubernetes"]},
                 "quantifiableBenefits": ["Reducción 70% errores en producción", "Ciclo de 40%+ más frecuente", "Mejor colaboración entre equipos"],
                 "useCases": ["Ciclos de desarrollo lentos", "Equipos separados", "Necesidad de innovación rápida"]
             },

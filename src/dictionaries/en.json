@@ -84,7 +84,7 @@
                 ]
             },
             {
-                "icon": "Zap",
+                "icon": "CloudUpload",
                 "title": "Migration Services",
                 "tagline": "Fast, decisive, and secure workload virtualization",
                 "whatItIs": "We have a team of specialists who assist in the virtualization of workloads quickly, decisively, and securely. With over 700 successful implementations, we focus on understanding your specific needs to offer customized solutions that boost efficiency and scalability, reducing costs and strengthening security.",
@@ -100,7 +100,7 @@
                 ]
             },
             {
-                "icon": "Code",
+                "icon": "GitBranch",
                 "title": "DevOps Tools Implementation",
                 "tagline": "Simplify and automate your software release processes",
                 "whatItIs": "We provide support in the selection, implementation, and integration of DevOps tools to simplify and automate software release processes. The key benefits are a solid foundation in AWS, the correct connection of CI/CD tools, and team autonomy to manage their development pipelines.",
