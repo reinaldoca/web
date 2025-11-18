@@ -8,10 +8,11 @@ import { ServicesAccordion } from './services-accordion';
 const servicesHero = PlaceHolderImages.find(p => p.id === 'services-hero');
 
 interface ServiciosPageProps {
-  params: { lang: Locale };
+  params: Promise<{ lang: Locale }>;
 }
 
-export default async function ServiciosPage({ params: { lang } }: ServiciosPageProps) {
+export default async function ServiciosPage({ params: paramsPromise }: ServiciosPageProps) {
+  const { lang } = await paramsPromise;
   const { servicesPage: t } = await getDictionary(lang);
 
   return (
@@ -36,7 +37,7 @@ export default async function ServiciosPage({ params: { lang } }: ServiciosPageP
           <p className="text-center text-lg md:text-xl text-muted-foreground mb-12">
             {t.intro}
           </p>
-          <ServicesAccordion />
+          <ServicesAccordion lang={lang}/>
         </div>
       </section>
     </main>
