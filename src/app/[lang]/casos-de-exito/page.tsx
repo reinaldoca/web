@@ -13,6 +13,11 @@ interface SuccessStory {
   metricDescription: string;
 }
 
+interface CasosDeExitoPageProps {
+  params: { lang: Locale };
+  searchParams?: { [key: string]: string | string[] | undefined };
+}
+
 const successHero = PlaceHolderImages.find(p => p.id === 'success-hero');
 
 const storyIcons: { [key: string]: JSX.Element } = {
@@ -26,10 +31,7 @@ const storyIcons: { [key: string]: JSX.Element } = {
 
 export default async function CasosDeExitoPage({
   params,
-}: {
-  params: { lang: Locale };
-  searchParams?: { [key: string]: string | string[] | undefined };
-}) {
+}: CasosDeExitoPageProps) {
   const { lang } = params;
   const t = (await getDictionary(lang)).successStoriesPage as {
     heroTitle: string;
