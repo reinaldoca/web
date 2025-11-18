@@ -65,9 +65,13 @@ interface ServiceDetailPageProps {
   }>;
 }
 
-export async function generateStaticParams({ params }: { params: { lang: string } }) {
-  const lang = params.lang as Locale;
-  const dictionary = await getDictionary(lang);
+export async function generateStaticParams({ params: paramsPromise }: { params: Promise<{ lang: string }> }) {
+  const { lang } = await paramsPromise;
+  // Ensure lang is a valid Locale before proceeding.
+  if (!['en', 'es'].includes(lang)) {
+    return [];
+  }
+  const dictionary = await getDictionary(lang as Locale);
   
   const allServices = [
     ...dictionary.servicesPage.services,
@@ -83,7 +87,7 @@ export default async function ServiceDetailPage({ params: paramsPromise }: Servi
   const { lang, slug } = await paramsPromise;
   const dictionary = await getDictionary(lang);
   const allServices = [...dictionary.servicesPage.services, ...dictionary.servicesPage.accordionServices];
-  const service = allServices.find((s) => slugify(s.title) === slug);
+  const service = allServices.find((s: any) => slugify(s.title) === slug);
   const t = dictionary.servicesPage;
 
   if (!service) {
@@ -138,6 +142,8 @@ export default async function ServiceDetailPage({ params: paramsPromise }: Servi
     );
   };
 
+  const description = (service as any).executiveDescription || (service as any).whatItIs;
+
   return (
     <main>
       <section className="relative w-full h-80">
@@ -154,7 +160,7 @@ export default async function ServiceDetailPage({ params: paramsPromise }: Servi
         <div className="absolute inset-0 bg-black/50 flex items-center justify-center">
           <div className="text-center px-4">
             <h1 className="text-4xl md:text-5xl font-bold text-white font-headline">{service.title}</h1>
-            <p className="text-white/80 mt-2 text-lg">{service.tagline}</p>
+            <p className="text-white/80 mt-2 text-lg">{(service as any).tagline}</p>
           </div>
         </div>
       </section>
@@ -164,17 +170,17 @@ export default async function ServiceDetailPage({ params: paramsPromise }: Servi
           <div className="flex flex-col items-center text-center mb-16">
             {ServiceIcon}
             <p className="mt-6 text-lg md:text-xl text-muted-foreground max-w-3xl">
-              {service.executiveDescription}
+              {description}
             </p>
           </div>
           
           <div className="space-y-16">
 
-            {service.keyFeatures && service.keyFeatures.length > 0 && (
+            {(service as any).keyFeatures && (service as any).keyFeatures.length > 0 && (
               <div>
                 <h3 className="font-bold text-2xl mb-8 text-center">{t.featuresTitle}</h3>
                 <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-                  {service.keyFeatures.map((feature:any) => (
+                  {(service as any).keyFeatures.map((feature:any) => (
                     <div key={feature.text} className="flex items-start gap-4">
                       <FeatureIcon emoji={feature.icon} className="text-2xl mt-1" />
                       <span className="flex-1 text-base text-muted-foreground">{feature.text}</span>
@@ -184,38 +190,38 @@ export default async function ServiceDetailPage({ params: paramsPromise }: Servi
               </div>
             )}
 
-            {service.ourProcess && service.ourProcess.length > 0 && (
+            {(service as any).ourProcess && (service as any).ourProcess.length > 0 && (
               <div>
                 <h3 className="font-bold text-2xl mb-8 text-center">{t.ourProcessTitle}</h3>
-                {renderProcessSteps(service.ourProcess)}
+                {renderProcessSteps((service as any).ourProcess)}
               </div>
             )}
             
-            {service.ourPerspective && (
+            {(service as any).ourPerspective && (
               <div>
                 <h3 className="font-bold text-2xl mb-8 text-center">{t.ourPerspectiveTitle}</h3>
                 <blockquote className="border-l-4 border-primary pl-6 italic text-muted-foreground text-lg max-w-3xl mx-auto text-center">
-                  "{service.ourPerspective.content}"
+                  "{(service as any).ourPerspective.content}"
                 </blockquote>
               </div>
             )}
             
             <div className="grid md:grid-cols-2 gap-12 lg:gap-16 items-start">
-               {(service.toolsAndTechnologies || service.awsPatternsAndServices || service.migrationStrategies) && (
+               {((service as any).toolsAndTechnologies || (service as any).awsPatternsAndServices || (service as any).migrationStrategies) && (
                 <div className="space-y-8 bg-secondary/50 p-8 rounded-lg">
                   <h3 className="font-bold text-2xl mb-6 text-center">{t.technologiesTitle}</h3>
                   
-                  {service.toolsAndTechnologies && (
+                  {(service as any).toolsAndTechnologies && (
                     <div>
-                      {renderTools(service.toolsAndTechnologies)}
+                      {renderTools((service as any).toolsAndTechnologies)}
                     </div>
                   )}
 
-                  {service.migrationStrategies && (
+                  {(service as any).migrationStrategies && (
                     <div>
-                      <h4 className="font-bold text-xl mb-4">{service.migrationStrategies.title}</h4>
+                      <h4 className="font-bold text-xl mb-4">{(service as any).migrationStrategies.title}</h4>
                       <Accordion type="single" collapsible className="w-full">
-                        {service.migrationStrategies.strategies.map((strategy: any) => (
+                        {(service as any).migrationStrategies.strategies.map((strategy: any) => (
                            <AccordionItem value={strategy.name} key={strategy.name}>
                               <AccordionTrigger>{strategy.name}</AccordionTrigger>
                               <AccordionContent>
@@ -227,11 +233,11 @@ export default async function ServiceDetailPage({ params: paramsPromise }: Servi
                     </div>
                   )}
 
-                  {service.awsPatternsAndServices && (
+                  {(service as any).awsPatternsAndServices && (
                     <div>
-                      <h4 className="font-bold text-xl mb-4">{service.awsPatternsAndServices.title}</h4>
+                      <h4 className="font-bold text-xl mb-4">{(service as any).awsPatternsAndServices.title}</h4>
                        <div className="space-y-4">
-                        {Object.entries(service.awsPatternsAndServices.categories).map(([category, items]) => (
+                        {Object.entries((service as any).awsPatternsAndServices.categories).map(([category, items]) => (
                           <div key={category}>
                             <h5 className="font-semibold text-base mb-2">{category}</h5>
                             <div className="flex flex-wrap gap-2">
@@ -246,11 +252,11 @@ export default async function ServiceDetailPage({ params: paramsPromise }: Servi
                )}
               
               <div className="space-y-8">
-                {service.quantifiableBenefits && service.quantifiableBenefits.length > 0 && (
+                {(service as any).quantifiableBenefits && (service as any).quantifiableBenefits.length > 0 && (
                     <div className="bg-secondary/50 p-8 rounded-lg">
                         <h3 className="font-bold text-2xl mb-6 text-center">{t.benefitsTitle}</h3>
                         <ul className="space-y-3">
-                            {service.quantifiableBenefits.map((benefit:any) => (
+                            {(service as any).quantifiableBenefits.map((benefit:any) => (
                                 <li key={benefit} className="flex items-center gap-3 text-base text-muted-foreground">
                                   <CheckCircle className="h-5 w-5 text-primary flex-shrink-0" />
                                   <span>{benefit}</span>
@@ -259,11 +265,11 @@ export default async function ServiceDetailPage({ params: paramsPromise }: Servi
                         </ul>
                     </div>
                 )}
-                 {service.useCases && service.useCases.length > 0 && (
+                 {(service as any).useCases && (service as any).useCases.length > 0 && (
                     <div className="bg-secondary/50 p-8 rounded-lg">
                         <h3 className="font-bold text-2xl mb-6 text-center">{t.useCasesTitle}</h3>
                         <ul className="space-y-3">
-                            {service.useCases.map((useCase:any) => (
+                            {(service as any).useCases.map((useCase:any) => (
                                 <li key={useCase} className="flex items-center gap-3 text-base text-muted-foreground">
                                   <CheckCircle className="h-5 w-5 text-primary flex-shrink-0" />
                                   <span>{useCase}</span>
@@ -285,6 +291,5 @@ export default async function ServiceDetailPage({ params: paramsPromise }: Servi
       </section>
     </main>
   );
-}
 
     
