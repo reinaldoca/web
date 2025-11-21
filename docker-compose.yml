@@ -1,8 +1,0 @@
-services:
-  web:
-    build:
-      context: .
-      dockerfile: Dockerfile
-    container_name: cloudbit-app
-    ports:
-      - "3000:9002"
