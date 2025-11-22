@@ -11,23 +11,13 @@ import { AnimatedCounter } from "@/components/ui/animated-counter";
 
 export function About() {
     const { t } = useLanguage();
-    const [scrollY, setScrollY] = useState(0);
-
-    useEffect(() => {
-        const handleScroll = () => {
-            setScrollY(window.scrollY);
-        };
-
-        window.addEventListener("scroll", handleScroll, { passive: true });
-        return () => window.removeEventListener("scroll", handleScroll);
-    }, []);
 
     return (
-        <section id="nosotros" className="py-16 md:py-24 bg-muted/50 relative overflow-hidden">
+        <section id="nosotros" className="py-16 md:py-24 bg-muted/50 relative overflow-hidden scroll-mt-28">
             <div className="container">
                 <div className="grid gap-12 lg:grid-cols-2 items-center">
                     <ScrollAnimation animation="slide-in-left" duration={700}>
-                        <div style={{ transform: `translateY(${scrollY * 0.05}px)` }}>
+                        <div>
                             <h2 className="text-3xl font-bold tracking-tight sm:text-4xl mb-6">
                                 {t.about.title}
                             </h2>
@@ -37,7 +27,7 @@ export function About() {
                             <p className="text-lg text-muted-foreground mb-8">
                                 {t.about.description2}
                             </p>
-                            <div className="grid grid-cols-2 gap-6 mb-8">
+                            <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 mb-8">
                                 <div className="relative group">
                                     <div className="absolute inset-0 bg-gradient-to-br from-primary/20 to-primary/5 rounded-lg transform group-hover:scale-105 transition-transform duration-300" />
                                     <div className="relative p-4 rounded-lg">
@@ -81,10 +71,7 @@ export function About() {
                         </div>
                     </ScrollAnimation>
                     <ScrollAnimation animation="slide-in-right" duration={700}>
-                        <div
-                            className="relative aspect-square lg:aspect-auto lg:h-[600px] rounded-2xl overflow-hidden shadow-2xl"
-                            style={{ transform: `translateY(${scrollY * -0.1}px)` }}
-                        >
+                        <div className="relative aspect-video lg:aspect-auto lg:h-[600px] rounded-2xl overflow-hidden shadow-2xl">
                             <Image
                                 src="/images/corporate-team-new.png"
                                 alt={t.about.imageLabel}
