@@ -1,0 +1,342 @@
+
+{
+    "nav": {
+        "home": "Home",
+        "solutions": "Solutions",
+        "whyUs": "Why Us",
+        "successStories": "Success Stories",
+        "contact": "Contact"
+    },
+    "footer": {
+        "companyName": "CloudBit",
+        "companyDescription": "Boosting your business with global infrastructure, DevOps, and AWS solutions.",
+        "quickContact": "Quick Contact",
+        "whatsapp": "WhatsApp Business",
+        "linkedin": "LinkedIn",
+        "hours": "Hours: Mon-Fri 9:00 AM - 6:00 PM",
+        "navigation": "Navigation",
+        "services": "Services",
+        "contact": "Contact",
+        "copyright": "CloudBit. All rights reserved."
+    },
+    "home": {
+        "hero": {
+            "title": "We boost your business with infrastructure, DevOps, and AWS solutions",
+            "subtitle": "Comprehensive technical support, cloud migrations, automation, and security for businesses worldwide.",
+            "cta": "Request your free diagnosis"
+        },
+        "services": {
+            "title": "Our Solutions",
+            "subtitle": "From technical support to cutting-edge cloud engineering, we offer a full range of services for your company.",
+            "items": [
+                { "title": "Technical Support", "slug": "on-premise-and-remote-technical-support", "description": "On-premise and remote support for businesses." },
+                { "title": "AWS Migration", "slug": "aws-migration-and-architecture", "description": "Secure cloud architecture and migration." },
+                { "title": "DevOps Consulting", "slug": "devops-consulting", "description": "CI/CD, automation, and pipelines." },
+                { "title": "Cloud Engineering", "slug": "cloud-engineering", "description": "Infrastructure as code and automation." },
+                { "title": "Advanced Security", "slug": "advanced-security-and-monitoring", "description": "Monitoring and protection of your infrastructure." },
+                { "title": "Networks & Networking", "slug": "network-administration-cisco", "description": "Management of Cisco and Fortinet equipment." }
+            ],
+            "seeAll": "See all services"
+        },
+        "whyUs": {
+            "tag": "Why Choose Us",
+            "title": "Your Global Technology Partner",
+            "subtitle": "We combine global expertise with a customer-centric approach to deliver solutions that truly work.",
+            "points": [
+                { "title": "Experience and Certifications", "slug": "certifications", "description": "Our team consists of certified AWS DevOps Engineers with years of experience helping businesses of all sizes achieve their goals." },
+                { "title": "Professional Methodology", "slug": "methodology", "description": "Technical support, personalized attention, and a rapid response capacity adapted to your needs, anywhere in the world." }
+            ]
+        },
+        "testimonials": {
+            "title": "Our Clients' Success",
+            "subtitle": "Real results and testimonials from companies that trust us.",
+            "items": [
+                { "text": "A leading fintech company saved 40% on AWS costs after a DevOps audit.", "author": "CEO, International Fintech" },
+                { "text": "A global e-commerce doubled sales with no downtime thanks to CI/CD and cloud monitoring.", "author": "CTO, Fashion E-commerce" },
+                { "text": "The post-migration support was key, and the team perfectly understood our business needs.", "author": "IT Manager, Logistics Company" }
+            ]
+        }
+    },
+    "servicesPage": {
+        "heroTitle": "Our Services",
+        "intro": "We offer a complete set of technological solutions designed to boost the growth and efficiency of businesses worldwide. Explore how we can help you.",
+        "ourProcessTitle": "Our Process",
+        "ourPerspectiveTitle": "Our Perspective",
+        "featuresTitle": "Key Features",
+        "technologiesTitle": "Tools and Technologies",
+        "benefitsTitle": "Quantifiable Benefits",
+        "useCasesTitle": "Use Cases",
+        "accordionServices": [
+            {
+                "icon": "Server",
+                "title": "Cloud Foundations",
+                "tagline": "A solid start for your cloud journey",
+                "whatItIs": "A 4-week program that assists in defining cloud governance policies, configuring alerts, and implementing automated mechanisms to prevent violations of control and security rules. It supports the definition of roles and access levels, and builds templates and blueprints for the standardized provisioning of new computing environments. It helps implement logging and auditing mechanisms to identify change authors and compare the current environment against best practices.",
+                "ourPerspective": {
+                    "title": "OUR PERSPECTIVE",
+                    "content": "The main mistake is trying to apply the same policies from on-prem environments to new cloud environments. This limits agility and wastes the benefits of the cloud. It's key to ask: How do we maintain control without slowing down innovation? How do we ensure security from day zero? How do we standardize to be more efficient?"
+                },
+                "ourProcess": [
+                    { "icon": "alignment", "title": "Team Alignment", "description": "We define objectives, scope, and success metrics for the program." },
+                    { "icon": "implementation", "title": "Implementation and Configuration", "description": "We deploy a secure Landing Zone with AWS Control Tower and configure the accounts." },
+                    { "icon": "definition", "title": "Defining Limits, Controls, and Alerts", "description": "We establish security guardrails to prevent unwanted configurations." },
+                    { "icon": "monitoring", "title": "Compliance Monitoring", "description": "We implement dashboards to visualize compliance status and audit changes." }
+                ]
+            },
+            {
+                "icon": "CloudUpload",
+                "title": "Migration Services",
+                "tagline": "Fast, decisive, and secure workload virtualization",
+                "whatItIs": "We have a team of specialists who assist in the virtualization of workloads quickly, decisively, and securely. With over 700 successful implementations, we focus on understanding your specific needs to offer customized solutions that boost efficiency and scalability, reducing costs and strengthening security.",
+                "ourPerspective": {
+                    "title": "OUR PERSPECTIVE",
+                    "content": "We recognize that each migration presents unique challenges, from technical complexity to cultural resistance. We are committed to being a trusted partner, providing not only technical expertise but also the strategic guidance to overcome obstacles and ensure a smooth and successful transition to the cloud."
+                },
+                "ourProcess": [
+                    { "icon": "discovery", "title": "Discovery", "description": "Exhaustive analysis of the current infrastructure and definition of business objectives for the migration." },
+                    { "icon": "planning", "title": "Planning", "description": "Design of the target architecture in AWS and development of a detailed migration plan with timelines." },
+                    { "icon": "migration", "title": "Migration", "description": "Execution of the migration in phases, following AWS best practices to minimize operational impact." },
+                    { "icon": "optimization", "title": "Optimization", "description": "Post-migration, we continuously optimize resources to ensure cost control and maximum performance." }
+                ]
+            },
+            {
+                "icon": "GitBranch",
+                "title": "DevOps Tools Implementation",
+                "tagline": "Simplify and automate your software release processes",
+                "whatItIs": "We provide support in the selection, implementation, and integration of DevOps tools to simplify and automate software release processes. The key benefits are a solid foundation in AWS, the correct connection of CI/CD tools, and team autonomy to manage their development pipelines.",
+                "ourPerspective": {
+                    "title": "OUR PERSPECTIVE",
+                    "content": "The main difficulty is not in the tools, but in the teams' lack of experience to integrate them effectively. A conscious selection of tools aligned with the culture and a specialized team for the initial setup, especially in an environment like AWS, drastically accelerate adoption and return on investment."
+                },
+                "ourProcess": [
+                    { "icon": "survey", "title": "Assessment and Work Plan", "description": "We evaluate current processes and define a customized tool implementation plan." },
+                    { "icon": "poc", "title": "Proof of Concept and Implementation", "description": "We conduct a PoC to validate the solution and then proceed with the full implementation and configuration of the pipeline." },
+                    { "icon": "support", "title": "Guidance and Support", "description": "We train your team and offer continuous support to ensure autonomy in managing the new tools." }
+                ]
+            },
+            {
+                "icon": "CheckCircle",
+                "title": "Well-Architected Review",
+                "tagline": "Align your AWS infrastructure with best practices",
+                "whatItIs": "We conduct a systematic review of your AWS installed base and your team's practices, comparing them against the pillars of the Well-Architected Framework: security, cost, performance, availability, and operational excellence. Our team is officially certified by AWS to perform these reviews.",
+                "ourPerspective": {
+                    "title": "OUR PERSPECTIVE",
+                    "content": "Many administrators have trouble replicating on-prem Service Management best practices in the cloud. The lack of a clear industry standard and poor visibility of the real environment hinder continuous improvement. A WAR provides that objective and prioritized roadmap for optimization."
+                },
+                "ourProcess": [
+                    { "icon": "identification", "title": "Workload Identification", "description": "We select the most critical workload to review together with you." },
+                    { "icon": "survey", "title": "Information Gathering", "description": "We conduct interviews and technical analysis against the 5 pillars of the Well-Architected Framework." },
+                    { "icon": "prioritization", "title": "Prioritization and Remediation", "description": "We deliver a report with findings and a prioritized action plan to remedy critical points." },
+                    { "icon": "validation", "title": "Validation and Certification", "description": "We validate the implemented improvements and help you access possible AWS incentives." }
+                ]
+            }
+        ],
+        "services": [
+            {
+                "title": "On-Premise and Remote Technical Support",
+                "tagline": "Continuous availability for your infrastructure",
+                "executiveDescription": "We offer comprehensive 24/7 support for your physical and virtual infrastructure. Our team is prepared to quickly resolve incidents with a 2-4 hour SLA, minimizing downtime and ensuring operational continuity. Based on ITSM Best Practices, we implement ticketing and proactive monitoring solutions that reduce server downtime by up to 80%.",
+                "keyFeatures": [
+                    { "icon": "⏱️", "text": "Fast incident resolution (guaranteed 2-4 hour SLA)" },
+                    { "icon": "🌍", "text": "Global coverage with extended business hours" },
+                    { "icon": "🔧", "text": "Dual support: on-premise + remote" },
+                    { "icon": "📊", "text": "Monthly performance reports" },
+                    { "icon": "🎓", "text": "Continuous team training" }
+                ],
+                "toolsAndTechnologies": {"Monitoring": ["Zabbix", "Nagios", "Datadog"], "ITSM": ["ServiceNow", "Jira Service Management"], "Ticketing": ["Zendesk", "ManageEngine ServiceDesk Plus"], "Remote Support": ["Splashtop", "AnyDesk"]},
+                "quantifiableBenefits": ["80% reduction in downtime", "30-50% increase in labor productivity", "99.5%+ availability"],
+                "useCases": ["24/7 critical operations companies", "Hybrid infrastructure", "Distributed teams"]
+            },
+            {
+                "title": "AWS Migration and Architecture",
+                "tagline": "Transform your business to the cloud",
+                "executiveDescription": "We guide you on your cloud journey with a clear strategy based on the 7 R's of AWS. We design scalable, secure, and cost-efficient architectures. Our clients experience a 51% reduction in operational costs and a 62% increase in IT productivity. We perform seamless migrations.",
+                "keyFeatures": [
+                    { "icon": "🌟", "text": "Scalable and optimized architecture" },
+                    { "icon": "🔆", "text": "Zero-downtime migration" },
+                    { "icon": "💰", "text": "Cost optimization" },
+                    { "icon": "📋", "text": "Disaster Recovery plan" },
+                    { "icon": "💡", "text": "Post-migration advisory" }
+                ],
+                "migrationStrategies": {
+                    "title": "7 R's Migration Strategies",
+                    "strategies": [
+                        { "name": "Rehost", "description": "Fast 'Lift & Shift' migrations to exit datacenters quickly." },
+                        { "name": "Replatform", "description": "Minimal adjustments to use managed services like RDS or ECS." },
+                        { "name": "Refactor", "description": "Modernization with serverless and microservices (Lambda, Fargate)." }
+                    ]
+                },
+                "toolsAndTechnologies": {"Automation": ["Terraform", "AWS DMS"], "Transfer": ["AWS DataSync", "AWS Snow Family"], "Validation": ["AWS Application Discovery Service"]},
+                "quantifiableBenefits": ["51% reduction in operational costs", "62% increase in IT productivity", "94% reduction in downtime"],
+                "useCases": ["Datacenter closures", "Mergers/acquisitions", "Need for scalability"]
+            },
+            {
+                "title": "DevOps Consulting",
+                "tagline": "Accelerate development and integration cycles",
+                "executiveDescription": "We implement a comprehensive DevOps culture to accelerate development cycles from weeks to days. We set up automated CI/CD pipelines, reducing production errors by up to 70%. We use AWS CodePipeline, Jenkins, GitLab CI to automate testing, builds, and deployments.",
+                "keyFeatures": [
+                    { "icon": "🔄", "text": "Automated CI/CD pipelines" },
+                    { "icon": "📦", "text": "Infrastructure as Code" },
+                    { "icon": "🐳", "text": "Containerization with Docker/Kubernetes" },
+                    { "icon": "🚀", "text": "Deployment automation" },
+                    { "icon": "🤝", "text": "Collaborative culture" }
+                ],
+                "toolsAndTechnologies": {"CI/CD": ["Jenkins", "GitLab CI", "GitHub Actions", "AWS CodePipeline"], "IaC": ["Terraform", "CloudFormation"], "Containerization": ["Docker", "Kubernetes"]},
+                "quantifiableBenefits": ["70% reduction in production errors", "40%+ more frequent release cycle", "Better team collaboration"],
+                "useCases": ["Slow development cycles", "Siloed teams", "Need for rapid innovation"]
+            },
+            {
+                "title": "Cloud Engineering",
+                "tagline": "Build resilient infrastructure",
+                "executiveDescription": "We design and implement high-availability (99.99%) cloud-native architectures. We use Infrastructure as Code with Terraform. We apply modern patterns like microservices, serverless, and event-driven architecture, ensuring automatic scalability, resilience, and cost optimization.",
+                "keyFeatures": [
+                    { "icon": "🏗️", "text": "Cloud-native design" },
+                    { "icon": "📈", "text": "High availability 99.99%" },
+                    { "icon": "🐳", "text": "Containerization and orchestration" },
+                    { "icon": "💵", "text": "Cost optimization" },
+                    { "icon": "📊", "text": "Comprehensive monitoring" }
+                ],
+                "awsPatternsAndServices": {
+                    "title": "AWS Patterns and Services",
+                    "categories": {
+                        "Compute": ["EC2", "Lambda", "Fargate", "ECS", "EKS"],
+                        "Databases": ["RDS", "DynamoDB", "ElastiCache"],
+                        "Storage": ["S3", "EBS", "EFS"]
+                    }
+                },
+                "toolsAndTechnologies": {"IaC": ["Terraform", "CloudFormation"], "Monitoring": ["CloudWatch", "X-Ray", "Prometheus"]},
+                "quantifiableBenefits": ["40-60% reduction in operational costs", "Automatic scalability", "99.99% availability"],
+                "useCases": ["High-traffic web/mobile apps", "Data platforms", "E-commerce with peaks"]
+            },
+            {
+                "title": "Network Administration (Cisco)",
+                "tagline": "Robust and reliable networks",
+                "executiveDescription": "We manage enterprise Cisco infrastructure. From Catalyst switches, Routers, ASA Firewalls. We implement VLANs, segmentation, Site-to-Site VPNs, Remote Access, and troubleshooting. We guarantee 99.9% uptime and reduce incidents by 85%.",
+                "keyFeatures": [
+                    { "icon": "🔧", "text": "Switch/router configuration" },
+                    { "icon": "📈", "text": "Advanced segmentation" },
+                    { "icon": "📊", "text": "24/7 monitoring" },
+                    { "icon": "🛠️", "text": "Preventive maintenance" },
+                    { "icon": "🔒", "text": "Access control" }
+                ],
+                "toolsAndTechnologies": {
+                     "Equipment": [
+                        "Switches Cisco Catalyst 2960-XR Series",
+                        "Firewalls Cisco ASA 5500-X Series"
+                    ]
+                },
+                "quantifiableBenefits": ["85% incident reduction", "99.9% uptime", "Better security and visibility"],
+                "useCases": ["Multiple locations", "Datacenters", "Complex networks"]
+            },
+            {
+                "title": "Networking and Security (Fortinet)",
+                "tagline": "Advanced perimeter protection",
+                "executiveDescription": "We implement next-gen Fortinet solutions. FortiGate firewalls, granular security policies, secure VPNs (IPSec), SSL Inspection. We reduce breaches by 94%. We use FortiManager for centralized management.",
+                "keyFeatures": [
+                    { "icon": "🛡️", "text": "Gen 7 FortiGate firewalls" },
+                    { "icon": "🔒", "text": "Secure VPNs with redundancy" },
+                    { "icon": "👁️", "text": "IDS/IPS and traffic analysis" },
+                    { "icon": "📈", "text": "Advanced threat protection" },
+                    { "icon": "🌐", "text": "Total visibility" }
+                ],
+                "toolsAndTechnologies": {"Firewalls": ["FortiGate 7000F"], "Management": ["FortiManager", "FortiAnalyzer"], "Security": ["FortiSandbox", "DLP"], "VPN": ["IPSec", "SSL VPN"]},
+                "quantifiableBenefits": ["94% reduction in security breaches", "Centralized management", "Better GDPR/HIPAA compliance"],
+                "useCases": ["Critical security", "Multiple locations", "Regulated industries"]
+            },
+            {
+                "title": "Advanced Security and Monitoring",
+                "tagline": "Continuous asset surveillance",
+                "executiveDescription": "24/7 monitoring with proactive detection using AWS Security Services. CloudWatch for metrics, Grafana for visual dashboards, GuardDuty for AI/ML. We reduce MTTD by 85% and MTTR by 70%.",
+                "keyFeatures": [
+                    { "icon": "👁️", "text": "24/7 monitoring with AI/ML" },
+                    { "icon": "📊", "text": "Advanced Grafana dashboards" },
+                    { "icon": "🚨", "text": "Real-time multi-channel alerts" },
+                    { "icon": "📋", "text": "Compliance analysis and reports" },
+                    { "icon": "🔍", "text": "Automated response" }
+                ],
+                "toolsAndTechnologies": {"Monitoring": ["CloudWatch", "Grafana"], "Security": ["AWS GuardDuty", "AWS Security Hub"], "Logging": ["ELK Stack"]},
+                "quantifiableBenefits": ["Early threat detection", "Regulatory compliance", "Rapid incident response"],
+                "useCases": ["Regulated companies", "Sensitive data", "Critical operations"]
+            },
+            {
+                "title": "Personalized Attention",
+                "tagline": "Dedicated technical specialist",
+                "executiveDescription": "Close and personalized service. We assign a technical specialist to your account. Best practice advice, strategic IT planning, continuous support.",
+                "keyFeatures": [
+                    { "icon": "👤", "text": "Assigned technical account manager" },
+                    { "icon": "⏱️", "text": "Quick response to inquiries" },
+                    { "icon": "🎓", "text": "Best practices advisory" },
+                    { "icon": "📊", "text": "Strategic IT planning" },
+                    { "icon": "🌟", "text": "Continuous support" }
+                ],
+                "toolsAndTechnologies": ["Direct communication", "Periodic meetings", "Custom reports"],
+                "quantifiableBenefits": ["Personalized attention", "Better understanding of goals", "Aligned solutions"],
+                "useCases": ["Companies in transformation", "Growing startups", "Need for advisory"]
+            }
+        ]
+    },
+    "whyUsPage": {
+        "heroTitle": "Why Choose Us",
+        "intro": "We are more than a provider; we are your strategic technology partner. Discover the reasons why companies worldwide trust us.",
+        "points": [
+            { "title": "Experience and Certifications", "slug": "certifications", "description": "Our team holds official certifications such as AWS Certified DevOps Engineer and has a solid track record working with the specific challenges of businesses of all sizes." },
+            { "title": "Customer-Centric Methodology", "slug": "methodology", "description": "We believe in constant technical support and personalized attention. Your success is our goal, so we offer smooth communication and quick responses." },
+            { "title": "Globally Proven Solutions", "slug": "global-solutions", "description": "We design solutions that are not only technically robust but also financially viable and scalable for the international market." }
+        ],
+        "certifications": {
+            "title": "Our Certifications",
+            "subtitle": "Committed to excellence and cutting-edge knowledge.",
+            "items": [
+                { "title": "AWS Certified<br/>DevOps Engineer" },
+                { "title": "Certified DevOps<br/>Professional" }
+            ]
+        }
+    },
+    "successStoriesPage": {
+        "heroTitle": "Success Stories",
+        "intro": "Tangible results we have generated for companies around the world. Stories of transformation and growth driven by technology.",
+        "stories": [
+            { "title": "Cost reduction for Fintech", "description": "A leading international fintech company faced high costs in its AWS infrastructure. We conducted a comprehensive DevOps audit, optimized resource usage, and refactored their CI/CD pipelines.", "metric": "40% savings", "metricDescription": "in monthly AWS costs." },
+            { "title": "High availability for E-commerce", "description": "A global e-commerce platform experienced downtime during traffic peaks. We migrated their monolith to a microservices architecture on EKS and automated scaling.", "metric": "100% Uptime", "metricDescription": "during high-demand events." },
+            { "title": "Scalable growth for EdTech", "description": "An EdTech startup needed an infrastructure to support its rapid user growth. We designed a serverless architecture on AWS that scales automatically and reduces operational load.", "metric": "2X Growth", "metricDescription": "in users without service degradation." }
+        ]
+    },
+    "contactPage": {
+        "heroTitle": "Contact",
+        "heroSubtitle": "Let's talk about how we can help you.",
+        "form": {
+            "title": "Send us a message",
+            "subtitle": "Complete the form and our team will get in touch shortly to coordinate a free diagnosis.",
+            "name": "Name",
+            "namePlaceholder": "Your name",
+            "company": "Company",
+            "companyPlaceholder": "Your company's name",
+            "email": "Email",
+            "emailPlaceholder": "you@email.com",
+            "message": "Message",
+            "messagePlaceholder": "Tell us about your project or needs...",
+            "submit": "Send Message",
+            "submitting": "Sending...",
+            "successTitle": "Message Sent",
+            "successDescription": "Thank you for contacting us. Your ticket has been generated and we will get back to you shortly.",
+            "errorTitle": "Error sending",
+            "errorDescription": "There was a problem sending your message. Please try again.",
+             "validation": {
+                "name": "Name must be at least 2 characters.",
+                "company": "Company must be at least 2 characters.",
+                "email": "Please enter a valid email.",
+                "message": "Message must be at least 10 characters."
+            }
+        },
+        "channels": {
+            "title": "Contact Channels",
+            "whatsapp": "WhatsApp Business",
+            "whatsappDescription": "Start a direct conversation.",
+            "email": "Email",
+            "emailAddress": "contacto@cloudbit.com.ar",
+            "linkedin": "LinkedIn",
+            "linkedinDescription": "Connect with us on the professional network.",
+            "hours": "Business hours: Monday to Friday from 9:00 AM to 6:00 PM."
+        }
+    }
+}
