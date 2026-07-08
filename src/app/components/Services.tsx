@@ -35,7 +35,7 @@ export function Services() {
                     <ScrollAnimation animation="fade-in">
                         <div className="inline-block mb-4">
                             <span className="text-sm font-semibold text-[#0052CC] uppercase tracking-wider px-4 py-2 rounded-full bg-[#0052CC]/10 backdrop-blur-sm">
-                                {t.services.badge || "Nuestros Servicios"}
+                                Nuestros Servicios
                             </span>
                         </div>
                         <h2 className="text-4xl md:text-5xl font-bold tracking-tight mb-6 bg-gradient-to-br from-slate-900 via-slate-800 to-slate-600 bg-clip-text text-transparent">
