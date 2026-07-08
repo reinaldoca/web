@@ -9,7 +9,7 @@ export function Footer() {
     const { t } = useLanguage();
 
     return (
-        <footer className="border-t bg-background">
+        <footer className="border-t border-slate-100 bg-[#F8F9FA]">
             <div className="container py-12 md:py-16">
                 <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-4">
                     <div className="space-y-4">

@@ -17,11 +17,11 @@ export function WhyChooseUs() {
     const { t } = useLanguage();
 
     return (
-        <section id="elegirnos" className="py-16 md:py-24">
+        <section id="elegirnos" className="py-16 md:py-24 bg-[#F8F9FA]">
             <div className="container">
                 <div className="text-center max-w-3xl mx-auto mb-16">
                     <ScrollAnimation animation="fade-in">
-                        <h2 className="text-3xl font-bold tracking-tight sm:text-4xl mb-4">
+                        <h2 className="text-3xl font-bold tracking-tight sm:text-4xl mb-4 text-slate-900">
                             {t.whyUs.title}
                         </h2>
                         <p className="text-lg text-muted-foreground">
@@ -37,9 +37,9 @@ export function WhyChooseUs() {
                                 <FlipCard
                                     className="h-full min-h-[280px]"
                                     front={
-                                        <Card className="h-full text-center group transition-all duration-300 hover:shadow-lg border-transparent hover:border-primary/20 bg-card">
+                                        <Card className="h-full text-center group border border-slate-100">
                                             <CardHeader className="h-full flex flex-col justify-center">
-                                                <div className="mx-auto mb-4 inline-flex h-16 w-16 items-center justify-center rounded-full bg-primary/10 text-primary transition-all duration-500 group-hover:scale-110 group-hover:bg-primary group-hover:text-primary-foreground group-hover:shadow-xl group-hover:shadow-primary/50 animate-bounce-slow">
+                                                <div className="mx-auto mb-4 inline-flex h-16 w-16 items-center justify-center rounded-full bg-[#0052CC]/10 text-[#0052CC] transition-all duration-500 group-hover:scale-110 group-hover:bg-[#0052CC] group-hover:text-white group-hover:shadow-xl group-hover:shadow-[#0052CC]/30 animate-bounce-slow">
                                                     <Icon className="h-8 w-8" />
                                                 </div>
                                                 <CardTitle className="text-xl mb-2">{reason.title}</CardTitle>
@@ -53,7 +53,7 @@ export function WhyChooseUs() {
                                         </Card>
                                     }
                                     back={
-                                        <Card className="h-full bg-primary text-primary-foreground">
+                                        <Card className="h-full bg-[#0052CC] text-white hover:scale-100 hover:translate-y-0 hover:shadow-none hover:border-transparent">
                                             <CardHeader className="h-full flex flex-col justify-center">
                                                 <CardTitle className="text-xl mb-4 text-center">{reason.title}</CardTitle>
                                                 <div className="space-y-2">

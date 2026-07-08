@@ -30,13 +30,13 @@ export function ServiceDetail({ slug }: ServiceDetailProps) {
             <Header />
 
             {/* Hero Section */}
-            <section className="relative py-20 md:py-32 bg-muted/30 overflow-hidden">
+            <section className="relative py-20 md:py-32 bg-[#F8F9FA] overflow-hidden">
                 <div className="container relative z-10">
                     <ScrollAnimation animation="fade-in" duration={700}>
                         <div className="flex flex-col items-start max-w-3xl">
-                            <Button variant="ghost" className="mb-8 pl-0 hover:pl-2 transition-all" asChild>
+                            <Button variant="ghost" className="mb-8 pl-0 text-slate-500 hover:text-[#0052CC] bg-transparent hover:bg-transparent group hover:scale-100 active:scale-100" asChild>
                                 <Link href="/#servicios">
-                                    <ArrowLeft className="mr-2 h-4 w-4" /> {t.servicePage.back}
+                                    <ArrowLeft className="mr-2 h-4 w-4 transition-transform duration-300 group-hover:-translate-x-1" /> {t.servicePage.back}
                                 </Link>
                             </Button>
                             <div className="inline-flex items-center justify-center p-3 rounded-xl bg-primary/10 text-primary mb-6">
@@ -86,7 +86,7 @@ export function ServiceDetail({ slug }: ServiceDetailProps) {
 
                         {/* Benefits */}
                         <ScrollAnimation animation="slide-in-right" duration={700} delay={400}>
-                            <div className="bg-muted/50 rounded-2xl p-8 lg:p-10">
+                            <div className="bg-[#F8F9FA] border border-slate-100 rounded-2xl p-8 lg:p-10">
                                 <h2 className="text-2xl font-bold mb-8">{t.servicePage.benefits}</h2>
                                 <ul className="space-y-6">
                                     {service.benefits.map((benefit, index) => (

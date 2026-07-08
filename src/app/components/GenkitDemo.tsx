@@ -112,7 +112,7 @@ export function GenkitDemo() {
     };
 
     return (
-        <section className="py-16 bg-muted/30">
+        <section className="py-16 bg-white">
             <div className="container max-w-4xl">
                 <div className="text-center mb-10">
                     <h2 className="text-3xl font-bold tracking-tight mb-4">{t.genkit.title}</h2>
@@ -121,7 +121,7 @@ export function GenkitDemo() {
                     </p>
                 </div>
 
-                <Card className="w-full max-w-md mx-auto h-[500px] flex flex-col shadow-xl">
+                <Card className="w-full max-w-md mx-auto h-[500px] flex flex-col shadow-xl hover:translate-y-0 hover:shadow-xl hover:border-slate-100">
                     <CardHeader className="border-b bg-primary/5">
                         <CardTitle className="flex items-center gap-2 text-lg">
                             <Bot className="h-5 w-5 text-primary" />
@@ -138,15 +138,15 @@ export function GenkitDemo() {
                                             }`}
                                     >
                                         <div
-                                            className={`h-8 w-8 rounded-full flex items-center justify-center shrink-0 ${msg.role === "user" ? "bg-primary text-primary-foreground" : "bg-muted"
+                                            className={`h-8 w-8 rounded-full flex items-center justify-center shrink-0 ${msg.role === "user" ? "bg-[#0052CC] text-white" : "bg-slate-100 text-slate-600"
                                                 }`}
                                         >
                                             {msg.role === "user" ? <User className="h-4 w-4" /> : <Bot className="h-4 w-4" />}
                                         </div>
                                         <div
                                             className={`rounded-lg px-3 py-2 max-w-[80%] text-sm ${msg.role === "user"
-                                                ? "bg-primary text-primary-foreground"
-                                                : "bg-muted"
+                                                ? "bg-[#0052CC] text-white"
+                                                : "bg-[#0052CC]/5 text-slate-800"
                                                 }`}
                                         >
                                             {msg.content}

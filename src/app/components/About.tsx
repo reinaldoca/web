@@ -13,12 +13,12 @@ export function About() {
     const { t } = useLanguage();
 
     return (
-        <section id="nosotros" className="py-16 md:py-24 bg-muted/50 relative overflow-hidden scroll-mt-28">
+        <section id="nosotros" className="py-16 md:py-24 bg-white relative overflow-hidden scroll-mt-28">
             <div className="container">
                 <div className="grid gap-12 lg:grid-cols-2 items-center">
                     {/* Text Content - Higher Z-Index to prevent overlap */}
                     <div className="relative z-10">
-                        <h2 className="text-3xl font-bold tracking-tight sm:text-4xl mb-6">
+                        <h2 className="text-3xl font-bold tracking-tight sm:text-4xl mb-6 text-slate-900">
                             {t.about.title}
                         </h2>
                         <p className="text-lg text-muted-foreground mb-6">
@@ -28,40 +28,40 @@ export function About() {
                             {t.about.description2}
                         </p>
                         <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 mb-8">
-                            <div className="relative group">
-                                <div className="absolute inset-0 bg-gradient-to-br from-primary/20 to-primary/5 rounded-lg transform group-hover:scale-105 transition-transform duration-300" />
-                                <div className="relative p-4 rounded-lg">
-                                    <h3 className="text-4xl font-bold text-primary mb-2 animate-glow-pulse">
+                            <div className="relative group border border-slate-100 rounded-xl overflow-hidden bg-slate-50/40 p-4 transition-all duration-300 hover:shadow-lg hover:-translate-y-1">
+                                <div className="absolute inset-0 bg-gradient-to-br from-[#0052CC]/10 to-[#0052CC]/2 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+                                <div className="relative">
+                                    <h3 className="text-4xl font-bold text-[#0052CC] mb-2">
                                         <AnimatedCounter value={t.about.stats.experience.value} />
                                     </h3>
-                                    <p className="text-sm text-muted-foreground">{t.about.stats.experience.label}</p>
+                                    <p className="text-sm text-slate-500 font-medium">{t.about.stats.experience.label}</p>
                                 </div>
                             </div>
-                            <div className="relative group">
-                                <div className="absolute inset-0 bg-gradient-to-br from-primary/20 to-primary/5 rounded-lg transform group-hover:scale-105 transition-transform duration-300" />
-                                <div className="relative p-4 rounded-lg">
-                                    <h3 className="text-4xl font-bold text-primary mb-2 animate-glow-pulse">
+                            <div className="relative group border border-slate-100 rounded-xl overflow-hidden bg-slate-50/40 p-4 transition-all duration-300 hover:shadow-lg hover:-translate-y-1">
+                                <div className="absolute inset-0 bg-gradient-to-br from-[#0052CC]/10 to-[#0052CC]/2 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+                                <div className="relative">
+                                    <h3 className="text-4xl font-bold text-[#0052CC] mb-2">
                                         <AnimatedCounter value={t.about.stats.projects.value} />
                                     </h3>
-                                    <p className="text-sm text-muted-foreground">{t.about.stats.projects.label}</p>
+                                    <p className="text-sm text-slate-500 font-medium">{t.about.stats.projects.label}</p>
                                 </div>
                             </div>
-                            <div className="relative group">
-                                <div className="absolute inset-0 bg-gradient-to-br from-primary/20 to-primary/5 rounded-lg transform group-hover:scale-105 transition-transform duration-300" />
-                                <div className="relative p-4 rounded-lg">
-                                    <h3 className="text-4xl font-bold text-primary mb-2 animate-glow-pulse">
+                            <div className="relative group border border-slate-100 rounded-xl overflow-hidden bg-slate-50/40 p-4 transition-all duration-300 hover:shadow-lg hover:-translate-y-1">
+                                <div className="absolute inset-0 bg-gradient-to-br from-[#0052CC]/10 to-[#0052CC]/2 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+                                <div className="relative">
+                                    <h3 className="text-4xl font-bold text-[#0052CC] mb-2">
                                         <AnimatedCounter value={t.about.stats.experts.value} />
                                     </h3>
-                                    <p className="text-sm text-muted-foreground">{t.about.stats.experts.label}</p>
+                                    <p className="text-sm text-slate-500 font-medium">{t.about.stats.experts.label}</p>
                                 </div>
                             </div>
-                            <div className="relative group">
-                                <div className="absolute inset-0 bg-gradient-to-br from-primary/20 to-primary/5 rounded-lg transform group-hover:scale-105 transition-transform duration-300" />
-                                <div className="relative p-4 rounded-lg">
-                                    <h3 className="text-4xl font-bold text-primary mb-2 animate-glow-pulse">
+                            <div className="relative group border border-slate-100 rounded-xl overflow-hidden bg-slate-50/40 p-4 transition-all duration-300 hover:shadow-lg hover:-translate-y-1">
+                                <div className="absolute inset-0 bg-gradient-to-br from-[#0052CC]/10 to-[#0052CC]/2 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+                                <div className="relative">
+                                    <h3 className="text-4xl font-bold text-[#0052CC] mb-2">
                                         <AnimatedCounter value={t.about.stats.support.value} />
                                     </h3>
-                                    <p className="text-sm text-muted-foreground">{t.about.stats.support.label}</p>
+                                    <p className="text-sm text-slate-500 font-medium">{t.about.stats.support.label}</p>
                                 </div>
                             </div>
                         </div>

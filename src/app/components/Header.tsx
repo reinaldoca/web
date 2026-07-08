@@ -16,7 +16,6 @@ import {
     NavigationMenuLink,
     NavigationMenuList,
     NavigationMenuTrigger,
-    navigationMenuTriggerStyle,
 } from "@/components/ui/navigation-menu";
 import { getServices } from "@/lib/services-data";
 import { cn } from "@/lib/utils";
@@ -33,7 +32,7 @@ export function Header() {
     ];
 
     return (
-        <header className="sticky top-0 z-50 w-full border-b bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
+        <header className="sticky top-0 z-50 w-full border-b border-slate-100 bg-white/80 backdrop-blur-md">
             <div className="container flex h-20 items-center justify-between">
                 <div className="flex items-center gap-2">
                     <Link href="/" className="flex items-center space-x-2">
@@ -43,6 +42,8 @@ export function Header() {
                             width={300}
                             height={100}
                             className="h-20 w-auto object-contain"
+                            loading="eager"
+                            priority
                         />
                     </Link>
                 </div>
@@ -52,7 +53,7 @@ export function Header() {
                     <NavigationMenu>
                         <NavigationMenuList>
                             <NavigationMenuItem>
-                                <NavigationMenuTrigger>{t.header.services}</NavigationMenuTrigger>
+                                <NavigationMenuTrigger className="text-slate-500 hover:text-[#0052CC] transition-colors duration-300 bg-transparent hover:bg-transparent data-[state=open]:bg-transparent">{t.header.services}</NavigationMenuTrigger>
                                 <NavigationMenuContent>
                                     <ul className="grid w-[400px] gap-3 p-4 md:w-[500px] md:grid-cols-2 lg:w-[600px]">
                                         {services.map((service) => (
@@ -76,8 +77,9 @@ export function Header() {
                             {navigation.map((item) => (
                                 <NavigationMenuItem key={item.name}>
                                     <Link href={item.href} legacyBehavior passHref>
-                                        <NavigationMenuLink className={navigationMenuTriggerStyle()}>
+                                        <NavigationMenuLink className="group relative inline-flex h-9 w-max items-center justify-center bg-transparent px-3 py-2 text-sm font-medium text-slate-500 transition-colors duration-300 hover:text-[#0052CC] focus:outline-none disabled:pointer-events-none disabled:opacity-50">
                                             {item.name}
+                                            <span className="absolute bottom-0 left-0 right-0 h-[2px] bg-[#0052CC] origin-center scale-x-0 transition-transform duration-300 ease-out group-hover:scale-x-100" />
                                         </NavigationMenuLink>
                                     </Link>
                                 </NavigationMenuItem>
