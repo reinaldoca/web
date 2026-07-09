@@ -58,7 +58,7 @@ export function Services() {
                         >
                             <Link href={`/servicios/${service.id}`} className="block h-full group">
                                 <TiltCard className="h-full" tiltMaxAngle={5} scale={1.03}>
-                                    <Card className="flex flex-col h-full cursor-pointer relative overflow-hidden border-slate-200/60 bg-white/80 backdrop-blur-sm hover:bg-white transition-all duration-500 hover:shadow-2xl hover:shadow-[#0052CC]/10 hover:-translate-y-1">
+                                    <Card className="flex flex-col h-full min-h-[440px] cursor-pointer relative overflow-hidden border-slate-200/60 bg-white/80 backdrop-blur-sm hover:bg-white transition-all duration-500 hover:shadow-2xl hover:shadow-[#0052CC]/10 hover:-translate-y-1">
                                         {/* Gradient overlay on hover */}
                                         <div className="absolute inset-0 bg-gradient-to-br from-[#0052CC]/5 via-transparent to-indigo-500/5 opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
 
@@ -77,8 +77,8 @@ export function Services() {
                                             </CardTitle>
                                         </CardHeader>
 
-                                        <CardContent className="flex-1 relative z-10 pb-4">
-                                            <CardDescription className="text-base text-slate-600 leading-relaxed">
+                                        <CardContent className="flex-1 relative z-10 pb-4 min-h-[100px] flex items-start">
+                                            <CardDescription className="text-base text-slate-600 leading-relaxed line-clamp-4">
                                                 {service.shortDescription}
                                             </CardDescription>
                                         </CardContent>

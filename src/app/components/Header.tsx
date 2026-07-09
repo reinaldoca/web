@@ -5,7 +5,7 @@ import Link from "next/link";
 import Image from "next/image";
 import { Menu, ChevronDown } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import { Sheet, SheetContent, SheetTrigger, SheetTitle } from "@/components/ui/sheet";
+import { Sheet, SheetContent, SheetTrigger, SheetTitle, SheetDescription } from "@/components/ui/sheet";
 import { LanguageSwitcher } from "@/components/language-switcher";
 import { useLanguage } from "@/components/language-provider";
 
@@ -42,7 +42,6 @@ export function Header() {
                             width={300}
                             height={100}
                             className="h-20 w-auto object-contain"
-                            loading="eager"
                             priority
                         />
                     </Link>
@@ -76,12 +75,15 @@ export function Header() {
                             </NavigationMenuItem>
                             {navigation.map((item) => (
                                 <NavigationMenuItem key={item.name}>
-                                    <Link href={item.href} legacyBehavior passHref>
-                                        <NavigationMenuLink className="group relative inline-flex h-9 w-max items-center justify-center bg-transparent px-3 py-2 text-sm font-medium text-slate-500 transition-colors duration-300 hover:text-[#0052CC] focus:outline-none disabled:pointer-events-none disabled:opacity-50">
+                                    <NavigationMenuLink asChild>
+                                        <Link
+                                            href={item.href}
+                                            className="group relative inline-flex h-9 w-max items-center justify-center bg-transparent px-3 py-2 text-sm font-medium text-slate-500 transition-colors duration-300 hover:text-[#0052CC] focus:outline-none disabled:pointer-events-none disabled:opacity-50"
+                                        >
                                             {item.name}
                                             <span className="absolute bottom-0 left-0 right-0 h-[2px] bg-[#0052CC] origin-center scale-x-0 transition-transform duration-300 ease-out group-hover:scale-x-100" />
-                                        </NavigationMenuLink>
-                                    </Link>
+                                        </Link>
+                                    </NavigationMenuLink>
                                 </NavigationMenuItem>
                             ))}
                         </NavigationMenuList>
@@ -104,6 +106,9 @@ export function Header() {
                         </SheetTrigger>
                         <SheetContent side="right" className="overflow-y-auto">
                             <SheetTitle className="sr-only">Menú de navegación</SheetTitle>
+                            <SheetDescription className="sr-only">
+                                Navegue por las secciones de nuestro sitio web
+                            </SheetDescription>
                             <div className="flex flex-col space-y-4 mt-4">
                                 <div className="flex justify-end">
                                     <LanguageSwitcher />

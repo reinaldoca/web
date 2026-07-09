@@ -1,3 +1,6 @@
+// ARCHIVO DE EJEMPLO - page.tsx con componentes modernos
+// Copia este contenido a src/app/page.tsx para activar los componentes modernos
+
 import { Header } from "./components/Header";
 import { HeroModern } from "./components/HeroModern";
 import { ClientLogos } from "./components/ClientLogos";
@@ -12,12 +15,12 @@ export default function Home() {
   return (
     <main className="min-h-screen flex flex-col">
       <Header />
-      <HeroModern />
+      <HeroModern />           {/* ✨ NUEVO: Hero con glow effects y partículas */}
       {/* <ClientLogos /> */}
-      <ServicesModern />
-      <AboutModern />
+      <ServicesModern />       {/* ✨ NUEVO: Bento Grid con microinteracciones */}
+      <AboutModern />          {/* ✨ NUEVO: Contadores animados mejorados */}
       <WhyChooseUs />
-      <GenkitDemoModern />
+      <GenkitDemoModern />     {/* ✨ NUEVO: ChatBot con pills interactivos */}
       <CTA />
       <Footer />
     </main>
