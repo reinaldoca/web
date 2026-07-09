@@ -4,8 +4,32 @@ import Link from "next/link";
 import { Button } from "@/components/ui/button";
 import { useLanguage } from "@/components/language-provider";
 import { motion } from "framer-motion";
-import { useEffect, useState } from "react";
+import { useEffect, useState, useMemo } from "react";
 import { useReducedMotion, useMediaQuery } from "@/hooks/useReducedMotion";
+import type { Transition } from "framer-motion";
+
+// Generar posiciones de partículas de forma determinística
+const generateParticles = (count: number) => {
+    const particles = [];
+    const seed = 12345;
+    let random = seed;
+
+    const seededRandom = () => {
+        random = (random * 9301 + 49297) % 233280;
+        return random / 233280;
+    };
+
+    for (let i = 0; i < count; i++) {
+        particles.push({
+            id: i,
+            left: seededRandom() * 100,
+            top: seededRandom() * 100,
+            duration: 3 + seededRandom() * 2,
+            delay: seededRandom() * 2,
+        });
+    }
+    return particles;
+};
 
 /**
  * VERSIÓN OPTIMIZADA DEL HERO
@@ -21,6 +45,7 @@ export function HeroModernOptimized() {
 
     // Ajustar cantidad de partículas según dispositivo
     const particleCount = isMobile ? 5 : isDesktop ? 20 : 12;
+    const particles = useMemo(() => generateParticles(particleCount), [particleCount]);
 
     useEffect(() => {
         // Solo trackear mouse en desktop
@@ -38,9 +63,9 @@ export function HeroModernOptimized() {
     }, [isDesktop]);
 
     // Configuración de animación basada en preferencias
-    const animationConfig = shouldReduceMotion
+    const animationConfig: Transition = shouldReduceMotion
         ? { duration: 0, repeat: 0 }
-        : { duration: 8, repeat: Infinity, ease: "easeInOut" };
+        : { duration: 8, repeat: Infinity, ease: "easeInOut" as const };
 
     return (
         <section className="relative w-full overflow-hidden pt-20 pb-32 md:h-screen flex items-center">
@@ -119,22 +144,22 @@ export function HeroModernOptimized() {
                 )}
 
                 {/* Floating Particles - Cantidad adaptativa */}
-                {!shouldReduceMotion && [...Array(particleCount)].map((_, i) => (
+                {!shouldReduceMotion && particles.map((particle) => (
                     <motion.div
-                        key={i}
+                        key={particle.id}
                         className="absolute w-2 h-2 bg-blue-400/30 rounded-full"
                         style={{
-                            left: `${Math.random() * 100}%`,
-                            top: `${Math.random() * 100}%`,
+                            left: `${particle.left}%`,
+                            top: `${particle.top}%`,
                         }}
                         animate={{
                             y: [0, -30, 0],
                             opacity: [0.3, 0.8, 0.3],
                         }}
                         transition={{
-                            duration: 3 + Math.random() * 2,
+                            duration: particle.duration,
                             repeat: Infinity,
-                            delay: Math.random() * 2,
+                            delay: particle.delay,
                         }}
                     />
                 ))}
