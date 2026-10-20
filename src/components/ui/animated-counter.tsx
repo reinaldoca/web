@@ -66,5 +66,13 @@ export function AnimatedCounter({ value, duration = 2000 }: AnimatedCounterProps
         window.requestAnimationFrame(step);
     }, [isVisible, number, duration, prefix, suffix, value, hasNumber]);
 
-    return <span ref={ref}>{hasNumber ? displayValue : value}</span>;
+    return (
+        <span
+            ref={ref}
+            aria-live="polite"
+            aria-atomic="true"
+        >
+            {hasNumber ? displayValue : value}
+        </span>
+    );
 }

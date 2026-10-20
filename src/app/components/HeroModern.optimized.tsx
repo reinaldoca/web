@@ -170,7 +170,7 @@ export function HeroModernOptimized() {
                 <motion.div
                     initial={{ opacity: 0, y: shouldReduceMotion ? 0 : 20 }}
                     animate={{ opacity: 1, y: 0 }}
-                    transition={{ duration: shouldReduceMotion ? 0 : 0.6 }}
+                    transition={shouldReduceMotion ? { duration: 0 } : { type: "spring", stiffness: 100, damping: 15 }}
                     className="inline-flex items-center rounded-full border border-blue-500/30 bg-blue-500/10 backdrop-blur-sm px-6 py-2 text-sm font-semibold text-blue-300 mb-8"
                 >
                     {t.hero.badge}
@@ -179,7 +179,7 @@ export function HeroModernOptimized() {
                 <motion.h1
                     initial={{ opacity: 0, y: shouldReduceMotion ? 0 : 30 }}
                     animate={{ opacity: 1, y: 0 }}
-                    transition={{ duration: shouldReduceMotion ? 0 : 0.8, delay: shouldReduceMotion ? 0 : 0.2 }}
+                    transition={shouldReduceMotion ? { duration: 0 } : { type: "spring", stiffness: 100, damping: 15, delay: 0.2 }}
                     className="text-5xl font-extrabold tracking-tight sm:text-6xl md:text-7xl lg:text-8xl max-w-5xl mb-6"
                 >
                     <span className="bg-gradient-to-r from-blue-400 via-violet-400 to-cyan-300 bg-clip-text text-transparent">
@@ -190,7 +190,7 @@ export function HeroModernOptimized() {
                 <motion.p
                     initial={{ opacity: 0, y: shouldReduceMotion ? 0 : 30 }}
                     animate={{ opacity: 1, y: 0 }}
-                    transition={{ duration: shouldReduceMotion ? 0 : 0.8, delay: shouldReduceMotion ? 0 : 0.4 }}
+                    transition={shouldReduceMotion ? { duration: 0 } : { type: "spring", stiffness: 100, damping: 15, delay: 0.4 }}
                     className="text-xl text-slate-300 max-w-3xl mb-10 leading-relaxed"
                 >
                     {t.hero.description}
@@ -199,24 +199,35 @@ export function HeroModernOptimized() {
                 <motion.div
                     initial={{ opacity: 0, y: shouldReduceMotion ? 0 : 30 }}
                     animate={{ opacity: 1, y: 0 }}
-                    transition={{ duration: shouldReduceMotion ? 0 : 0.8, delay: shouldReduceMotion ? 0 : 0.6 }}
-                    className="flex flex-col sm:flex-row gap-4 w-full sm:w-auto"
+                    transition={shouldReduceMotion ? { duration: 0 } : { type: "spring", stiffness: 100, damping: 15, delay: 0.6 }}
+                    className="space-y-4"
                 >
-                    <Button
-                        size="lg"
-                        className="text-lg px-8 h-14 bg-gradient-to-r from-blue-600 to-violet-600 hover:from-blue-700 hover:to-violet-700 transition-all hover:scale-105 hover:shadow-2xl hover:shadow-blue-500/50"
-                        asChild
-                    >
-                        <Link href="/#servicios">{t.hero.servicesBtn}</Link>
-                    </Button>
-                    <Button
-                        size="lg"
-                        variant="outline"
-                        className="text-lg px-8 h-14 border-2 border-blue-500/50 text-blue-300 hover:bg-blue-500/10 hover:border-blue-400 transition-all hover:scale-105"
-                        asChild
-                    >
-                        <Link href="/#contacto">{t.hero.contactBtn}</Link>
-                    </Button>
+                    <div className="flex flex-col sm:flex-row gap-4 w-full sm:w-auto">
+                        <motion.div whileHover={{ scale: 1.02, y: -4 }} transition={{ type: "spring", stiffness: 400, damping: 25 }}>
+                            <Button
+                                size="lg"
+                                className="text-lg px-8 h-14 bg-gradient-to-r from-blue-600 to-violet-600 hover:from-blue-700 hover:to-violet-700 hover:shadow-2xl hover:shadow-blue-500/50"
+                                asChild
+                            >
+                                <Link href="/#contacto">{t.hero.contactBtn}</Link>
+                            </Button>
+                        </motion.div>
+                        <motion.div whileHover={{ scale: 1.02, y: -4 }} transition={{ type: "spring", stiffness: 400, damping: 25 }}>
+                            <Button
+                                size="lg"
+                                variant="outline"
+                                className="text-lg px-8 h-14 border-2 border-blue-500/50 text-blue-300 hover:bg-blue-500/10 hover:border-blue-400"
+                                asChild
+                            >
+                                <Link href="/#servicios">{t.hero.servicesBtn}</Link>
+                            </Button>
+                        </motion.div>
+                    </div>
+                    {t.hero.microcopy && (
+                        <p className="text-sm text-slate-300 text-center sm:text-left">
+                            {t.hero.microcopy}
+                        </p>
+                    )}
                 </motion.div>
 
                 {/* Scroll Indicator - Solo si no hay movimiento reducido */}

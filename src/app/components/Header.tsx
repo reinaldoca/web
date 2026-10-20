@@ -4,6 +4,7 @@ import * as React from "react";
 import Link from "next/link";
 import Image from "next/image";
 import { Menu, ChevronDown } from "lucide-react";
+import { motion } from "framer-motion";
 import { Button } from "@/components/ui/button";
 import { Sheet, SheetContent, SheetTrigger, SheetTitle, SheetDescription } from "@/components/ui/sheet";
 import { LanguageSwitcher } from "@/components/language-switcher";
@@ -33,6 +34,13 @@ export function Header() {
 
     return (
         <header className="sticky top-0 z-50 w-full border-b border-slate-100 bg-white/80 backdrop-blur-md">
+            {/* Skip to main content link - accessibility */}
+            <a
+                href="#main-content"
+                className="sr-only focus:not-sr-only focus:absolute focus:top-4 focus:left-4 focus:z-[100] focus:px-4 focus:py-2 focus:bg-[#3FB950] focus:text-[#0D1117] focus:rounded-lg focus:font-mono focus:text-sm focus:font-semibold focus:outline-none focus:ring-4 focus:ring-[#3FB950]/50"
+            >
+                Saltar al contenido principal
+            </a>
             <div className="container flex h-20 items-center justify-between">
                 <div className="flex items-center gap-2">
                     <Link href="/" className="flex items-center space-x-2">
@@ -89,9 +97,11 @@ export function Header() {
                         </NavigationMenuList>
                     </NavigationMenu>
 
-                    <Button asChild className="transition-transform duration-200 ease-in-out hover:scale-105">
-                        <Link href="/#contacto">{t.header.contact}</Link>
-                    </Button>
+                    <motion.div whileHover={{ scale: 1.02, y: -4 }} transition={{ type: "spring", stiffness: 400, damping: 25 }}>
+                        <Button asChild>
+                            <Link href="/#contacto">{t.header.contact}</Link>
+                        </Button>
+                    </motion.div>
                     <LanguageSwitcher />
                 </div>
 

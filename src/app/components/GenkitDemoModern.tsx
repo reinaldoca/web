@@ -140,8 +140,8 @@ export function GenkitDemoModern() {
                 <motion.div
                     initial={{ opacity: 0, y: 20 }}
                     whileInView={{ opacity: 1, y: 0 }}
-                    viewport={{ once: true }}
-                    transition={{ duration: 0.6 }}
+                    viewport={{ once: true, margin: "-100px" }}
+                    transition={{ type: "spring", stiffness: 100, damping: 15 }}
                     className="text-center mb-12"
                 >
                     <span className="text-sm font-semibold text-[#0052CC] uppercase tracking-wider px-4 py-2 rounded-full bg-[#0052CC]/10 backdrop-blur-sm inline-block mb-6">
@@ -157,8 +157,8 @@ export function GenkitDemoModern() {
                 <motion.div
                     initial={{ opacity: 0, y: 30 }}
                     whileInView={{ opacity: 1, y: 0 }}
-                    viewport={{ once: true }}
-                    transition={{ duration: 0.6, delay: 0.2 }}
+                    viewport={{ once: true, margin: "-100px" }}
+                    transition={{ type: "spring", stiffness: 100, damping: 15, delay: 0.2 }}
                 >
                     <Card className="w-full max-w-2xl mx-auto h-[600px] flex flex-col shadow-2xl border-slate-200/60 bg-white/80 backdrop-blur-sm overflow-hidden">
                         {/* Header with Status */}
@@ -203,7 +203,7 @@ export function GenkitDemoModern() {
                                                 key={i}
                                                 initial={{ opacity: 0, y: 20 }}
                                                 animate={{ opacity: 1, y: 0 }}
-                                                transition={{ duration: 0.3 }}
+                                                transition={{ type: "spring", stiffness: 100, damping: 15 }}
                                                 className={`flex gap-3 ${msg.role === "user" ? "flex-row-reverse" : "flex-row"
                                                     }`}
                                             >

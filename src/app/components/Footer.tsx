@@ -3,6 +3,7 @@
 import Link from "next/link";
 import Image from "next/image";
 import { Linkedin } from "lucide-react";
+import { motion } from "framer-motion";
 import { useLanguage } from "@/components/language-provider";
 
 export function Footer() {
@@ -67,10 +68,12 @@ export function Footer() {
                     <div>
                         <h3 className="font-semibold mb-4">{t.footer.followUs}</h3>
                         <div className="flex space-x-4">
-                            <Link href="https://linkedin.com/company/cloudbit-consultoria-it/" target="_blank" rel="noopener noreferrer" className="text-muted-foreground transition-all duration-200 hover:text-primary hover:scale-110">
-                                <Linkedin className="h-5 w-5" />
-                                <span className="sr-only">LinkedIn</span>
-                            </Link>
+                            <motion.div whileHover={{ scale: 1.05, y: -2 }} transition={{ type: "spring", stiffness: 400, damping: 25 }}>
+                                <Link href="https://linkedin.com/company/cloudbit-consultoria-it/" target="_blank" rel="noopener noreferrer" className="text-muted-foreground hover:text-primary">
+                                    <Linkedin className="h-5 w-5" />
+                                    <span className="sr-only">LinkedIn</span>
+                                </Link>
+                            </motion.div>
                         </div>
                     </div>
                 </div>

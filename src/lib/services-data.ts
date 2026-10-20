@@ -82,9 +82,9 @@ const servicesEs: ServiceData[] = [
   },
   {
     id: "devops",
-    title: "DevOps",
+    title: "Automatización y Seguridad Continua",
     shortDescription:
-      "Aceleramos el ciclo de vida del desarrollo de software mediante prácticas de CI/CD.",
+      "Automatizamos CI/CD, IaC y observabilidad full-stack",
     fullDescription:
       "Adoptamos la cultura y prácticas DevOps para unir el desarrollo y las operaciones. Automatizamos la entrega de software para que sea más rápida y confiable, permitiendo a tu empresa innovar a la velocidad que demanda el mercado sin sacrificar la estabilidad.",
     icon: Code,
@@ -132,9 +132,9 @@ const servicesEs: ServiceData[] = [
   },
   {
     id: "staffing",
-    title: "Staffing IT",
+    title: "Staffing y Operación Gestionada",
     shortDescription:
-      "Brindamos servicios profesionales y equipos técnicos altamente calificados.",
+      "Proveemos equipos especializados y operación 24/7",
     fullDescription:
       "Proveemos el talento tecnológico que tu proyecto necesita, cuando lo necesita. Ya sea para cubrir picos de demanda, proyectos específicos o roles especializados a largo plazo, contamos con una red de profesionales validados técnicamente y listos para integrarse a tu equipo.",
     icon: Users,
@@ -182,9 +182,9 @@ const servicesEs: ServiceData[] = [
   },
   {
     id: "cloud",
-    title: "Cloud",
+    title: "Migración y Arquitectura Cloud",
     shortDescription:
-      "Diseñamos e implementamos arquitecturas cloud escalables y seguras.",
+      "Migramos y diseñamos arquitecturas en AWS, Azure y Kubernetes",
     fullDescription:
       "Transformá tu negocio con servicios en la nube líderes. Diseñamos, migramos y gestionamos arquitecturas en AWS, Azure y nubes híbridas, asegurando escalabilidad, seguridad y eficiencia de costos. Aprovechá la potencia de la nube para innovar sin límites.",
     icon: Cloud,
@@ -787,16 +787,11 @@ const servicesEn: ServiceData[] = [
 
 export const servicesData = servicesEs; // Default export for backward compatibility if needed
 
+// Featured services: 3 pilares principales
 const featuredServiceIds = [
-  "devops",
-  "cloud",
-  "consultoria",
-  "devsecops",
-  "staffing",
-  "migracion",
-  "networking",
-  "virtualizacion",
-  "linux-admin",
+  "cloud", // Pilar 1: Cloud & Plataforma
+  "devops", // Pilar 2: DevOps & DevSecOps
+  "staffing", // Pilar 3: Operación & Soporte IT
 ];
 
 export function getServices(lang: Language): ServiceData[] {

@@ -1,51 +1,48 @@
 "use client";
 
 import Link from "next/link";
-import { Badge } from "@/components/ui/badge";
 import { useLanguage } from "@/components/language-provider";
 import { getFeaturedServices } from "@/lib/services-data";
-import { ArrowRight } from "lucide-react";
+import { SectionHeader } from "@/components/ui/section-header";
 import { motion } from "framer-motion";
-import { useState } from "react";
+import { useReducedMotion } from "@/hooks/use-reduced-motion";
 
 export function ServicesModern() {
     const { t, language } = useLanguage();
     const services = getFeaturedServices(language);
+    const shouldReduceMotion = useReducedMotion();
 
     return (
-        <section id="servicios" className="py-20 md:py-32 relative overflow-hidden bg-slate-50">
-            {/* Background Elements */}
-            <div className="absolute inset-0 bg-gradient-to-br from-slate-50 via-blue-50/30 to-slate-100" />
-            <div className="absolute inset-0 bg-[url('/grid.svg')] bg-center opacity-[0.03]" />
+        <section id="servicios" className="py-20 md:py-32 relative overflow-hidden bg-white">
+            {/* Technical grid background - subtle */}
+            <div className="absolute inset-0 bg-[url('/grid.svg')] bg-center opacity-[0.02]" />
+
+            {/* Gradient accent - matrix-style greens/blues instead of generic violet */}
+            <div className="absolute inset-0 bg-gradient-to-br from-[#3FB950]/5 via-transparent to-[#58A6FF]/5" />
 
             <div className="container relative z-10">
-                {/* Header */}
+                {/* Terminal-style header */}
                 <motion.div
-                    initial={{ opacity: 0, y: 20 }}
-                    whileInView={{ opacity: 1, y: 0 }}
-                    viewport={{ once: true }}
-                    transition={{ duration: 0.6 }}
-                    className="text-center max-w-3xl mx-auto mb-16"
+                    initial={shouldReduceMotion ? false : { opacity: 0, y: 20 }}
+                    whileInView={shouldReduceMotion ? {} : { opacity: 1, y: 0 }}
+                    viewport={{ once: true, margin: "-100px" }}
+                    transition={{ type: "spring", stiffness: 100, damping: 15 }}
                 >
-                    <span className="text-sm font-semibold text-[#0052CC] uppercase tracking-wider px-4 py-2 rounded-full bg-[#0052CC]/10 backdrop-blur-sm inline-block mb-4">
-                        Nuestros Servicios
-                    </span>
-                    <h2 className="text-4xl md:text-6xl font-bold tracking-tight mb-6 bg-gradient-to-br from-slate-900 via-slate-800 to-slate-600 bg-clip-text text-transparent">
-                        {t.services.title}
-                    </h2>
-                    <p className="text-lg md:text-xl text-slate-600 leading-relaxed">
-                        {t.services.subtitle}
-                    </p>
+                    <SectionHeader
+                        prompt="dollar"
+                        label="cloudbit --list-services"
+                        title={t.services.title}
+                        description={t.services.subtitle}
+                    />
                 </motion.div>
 
-                {/* Grid Layout Uniforme - 3 columnas */}
+                {/* Pipeline nodes grid */}
                 <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 max-w-7xl mx-auto">
                     {services.map((service, index) => (
-                        <BentoCard
+                        <PipelineServiceCard
                             key={service.id}
                             service={service}
                             index={index}
-                            isFeatured={false}
                         />
                     ))}
                 </div>
@@ -54,109 +51,98 @@ export function ServicesModern() {
     );
 }
 
-interface BentoCardProps {
+interface PipelineServiceCardProps {
     service: any;
     index: number;
-    isFeatured: boolean;
 }
 
-function BentoCard({ service, index, isFeatured }: BentoCardProps) {
-    const [isHovered, setIsHovered] = useState(false);
+/**
+ * Service card styled as CI/CD pipeline node
+ * Replaces generic rounded cards with technical DevOps aesthetic
+ */
+function PipelineServiceCard({ service, index }: PipelineServiceCardProps) {
+    const shouldReduceMotion = useReducedMotion();
+
+    // Assign status based on index for visual variety
+    const statuses = ["success", "running", "success"] as const;
+    const status = statuses[index % statuses.length];
+
+    const statusColors = {
+        success: "border-[#3FB950] hover:shadow-[#3FB950]/20",
+        running: "border-[#58A6FF] hover:shadow-[#58A6FF]/20",
+    };
+
+    const statusBg = {
+        success: "from-[#3FB950]/20 to-[#3FB950]/10",
+        running: "from-[#58A6FF]/20 to-[#58A6FF]/10",
+    };
 
     return (
         <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.5, delay: index * 0.1 }}
+            initial={shouldReduceMotion ? false : { opacity: 0, y: 30 }}
+            whileInView={shouldReduceMotion ? {} : { opacity: 1, y: 0 }}
+            viewport={{ once: true, margin: "-100px" }}
+            transition={{ type: "spring", stiffness: 100, damping: 15, delay: shouldReduceMotion ? 0 : index * 0.1 }}
             className="h-full"
         >
             <Link
                 href={`/servicios/${service.id}`}
                 className="block h-full group"
-                onMouseEnter={() => setIsHovered(true)}
-                onMouseLeave={() => setIsHovered(false)}
             >
-                <motion.div
-                    className="relative h-full min-h-[420px] flex flex-col p-8 rounded-3xl bg-white/80 backdrop-blur-sm border border-slate-200/60 overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-500"
-                    whileHover={{ y: -8 }}
+                <div
+                    className={`
+                        relative h-full min-h-[380px] p-8
+                        bg-white border-l-4 ${statusColors[status]}
+                        hover:shadow-2xl transition-all duration-300
+                    `}
                 >
-                    {/* Gradient Overlay */}
-                    <motion.div
-                        className="absolute inset-0 bg-gradient-to-br from-[#0052CC]/10 via-transparent to-indigo-500/10 opacity-0"
-                        animate={{ opacity: isHovered ? 1 : 0 }}
-                        transition={{ duration: 0.3 }}
-                    />
+                    {/* Status indicator - technical label */}
+                    <div className="absolute top-4 right-4">
+                        <span className="font-mono text-xs text-[#8B949E] uppercase tracking-wider">
+                            {status}
+                        </span>
+                    </div>
 
-                    {/* Top Accent Line */}
-                    <motion.div
-                        className="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-[#0052CC] via-blue-500 to-indigo-500"
-                        initial={{ scaleX: 0 }}
-                        animate={{ scaleX: isHovered ? 1 : 0 }}
-                        transition={{ duration: 0.4 }}
-                        style={{ transformOrigin: "left" }}
-                    />
-
-                    {/* Icon with Glow Effect */}
-                    <div className="relative mb-6">
-                        <motion.div
-                            className="absolute inset-0 bg-gradient-to-br from-[#0052CC] to-indigo-600 rounded-2xl blur-lg opacity-0"
-                            animate={{ opacity: isHovered ? 0.5 : 0.2 }}
-                            transition={{ duration: 0.3 }}
-                        />
-                        <motion.div
-                            className="relative inline-flex h-16 w-16 items-center justify-center rounded-2xl bg-gradient-to-br from-[#0052CC] to-indigo-600 text-white shadow-lg"
-                            animate={{
-                                scale: isHovered ? 1.15 : 1,
-                                rotate: isHovered ? 5 : 0,
-                            }}
-                            transition={{ duration: 0.3 }}
+                    {/* Icon - technical style */}
+                    <div className="mb-6">
+                        <div
+                            className={`
+                                inline-flex h-14 w-14 items-center justify-center
+                                rounded-lg bg-gradient-to-br ${statusBg[status]}
+                                transition-transform duration-300 group-hover:scale-110
+                            `}
                         >
-                            <service.icon className="h-8 w-8" />
-                        </motion.div>
+                            <service.icon className="h-7 w-7 text-[#24292F]" />
+                        </div>
                     </div>
 
                     {/* Content */}
-                    <div className="relative z-10 flex flex-col flex-1">
-                        <h3
-                            className={`font-bold mb-4 transition-colors duration-300 text-xl ${isHovered ? "text-[#0052CC]" : "text-slate-900"}`}
-                        >
-                            {service.title}
-                        </h3>
+                    <h3 className="font-[family-name:var(--font-display)] text-xl font-semibold mb-3 text-[#24292F] group-hover:text-[#3FB950] transition-colors">
+                        {service.title}
+                    </h3>
 
-                        <p className="text-slate-600 leading-relaxed mb-6 text-sm md:text-base line-clamp-3 flex-1">
-                            {service.shortDescription}
-                        </p>
+                    <p className="text-[#57606A] leading-relaxed mb-6 text-sm md:text-base line-clamp-4">
+                        {service.shortDescription}
+                    </p>
 
-                        {/* Tags */}
-                        <div className="flex flex-wrap gap-2 mb-4">
-                            {service.tags.slice(0, 3).map((tag: string) => (
-                                <Badge
-                                    key={tag}
-                                    variant="secondary"
-                                    className="font-normal text-xs bg-slate-100 text-slate-700 hover:bg-[#0052CC]/10 hover:text-[#0052CC] transition-colors"
-                                >
-                                    {tag}
-                                </Badge>
-                            ))}
-                        </div>
-
-                        {/* CTA */}
-                        <motion.div
-                            className="flex items-center text-sm font-semibold text-[#0052CC]"
-                            animate={{ gap: isHovered ? "0.5rem" : "0.25rem" }}
-                            transition={{ duration: 0.3 }}
-                        >
-                            <span>Ver más</span>
-                            <motion.div
-                                animate={{ x: isHovered ? 4 : 0 }}
-                                transition={{ duration: 0.3 }}
+                    {/* Technical tags - monospace style */}
+                    <div className="flex flex-wrap gap-2">
+                        {service.tags.slice(0, 3).map((tag: string) => (
+                            <span
+                                key={tag}
+                                className="font-mono text-xs px-2 py-1 rounded bg-[#161B22] text-[#8B949E] group-hover:bg-[#3FB950]/10 group-hover:text-[#3FB950] transition-colors"
                             >
-                                <ArrowRight className="h-4 w-4" />
-                            </motion.div>
-                        </motion.div>
+                                {tag}
+                            </span>
+                        ))}
                     </div>
-                </motion.div>
+
+                    {/* CTA - simple terminal style */}
+                    <div className="mt-6 font-mono text-sm font-semibold text-[#3FB950] flex items-center gap-2">
+                        <span>view --details</span>
+                        <span aria-hidden="true">→</span>
+                    </div>
+                </div>
             </Link>
         </motion.div>
     );

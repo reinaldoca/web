@@ -1,3 +1,4 @@
+@import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@600;700;800&display=swap');
 @import "tailwindcss";
 @import "tw-animate-css";
 
@@ -151,6 +152,28 @@
   animation-delay: 1s;
 }
 
+/* Terminal cursor animation */
+@keyframes cursor-blink {
+  0%, 49% { opacity: 1; }
+  50%, 100% { opacity: 0; }
+}
+
+.terminal-cursor {
+  animation: cursor-blink 1s infinite;
+}
+
+/* Pipeline connection lines */
+.pipeline-connector {
+  border-left: 2px dashed var(--terminal-border);
+}
+
+/* Command prompt prefix */
+.command-prompt::before {
+  content: '$ ';
+  color: var(--success-green);
+  font-family: var(--font-display);
+}
+
 :root {
   --radius: 0.625rem;
   --background: oklch(1 0 0);
@@ -184,6 +207,27 @@
   --sidebar-accent-foreground: oklch(0.45 0.26 264);
   --sidebar-border: oklch(0.92 0.01 240);
   --sidebar-ring: oklch(0.45 0.26 264);
+
+  /* Terminal/Code Palette - DevOps Theme */
+  --terminal-bg: #0D1117;
+  --terminal-surface: #161B22;
+  --terminal-border: #30363D;
+
+  --success-green: #3FB950;
+  --info-blue: #58A6FF;
+  --warning-amber: #D29922;
+  --error-red: #F85149;
+
+  --text-primary-dark: #F0F6FC;
+  --text-secondary-dark: #C9D1D9;
+  --text-muted: #8B949E;
+
+  --text-primary-light: #24292F;
+  --text-secondary-light: #57606A;
+
+  /* Typography */
+  --font-display: 'JetBrains Mono', monospace;
+  --font-body: var(--font-geist-sans);
 }
 
 .dark {
@@ -233,6 +277,25 @@
     scroll-behavior: smooth;
   }
 
+  /* Accordion animations */
+  @keyframes accordion-down {
+    from {
+      height: 0;
+    }
+    to {
+      height: var(--radix-accordion-content-height);
+    }
+  }
+
+  @keyframes accordion-up {
+    from {
+      height: var(--radix-accordion-content-height);
+    }
+    to {
+      height: 0;
+    }
+  }
+
   @media (prefers-reduced-motion: reduce) {
 
     *,
@@ -245,6 +308,17 @@
 
     html {
       scroll-behavior: auto;
+    }
+
+    /* Disable custom animations for accessibility */
+    .terminal-cursor,
+    .animate-scroll,
+    .animate-shake,
+    .animate-float,
+    .animate-glow-pulse,
+    .animate-gradient,
+    .animate-bounce-slow {
+      animation: none !important;
     }
   }
 }

@@ -1,148 +1,150 @@
 "use client";
 
 import Image from "next/image";
-import { Button } from "@/components/ui/button";
-import Link from "next/link";
+import { TerminalButton } from "@/components/ui/terminal-button";
 import { useLanguage } from "@/components/language-provider";
 import { AnimatedCounter } from "@/components/ui/animated-counter";
 import { motion } from "framer-motion";
+import { useReducedMotion } from "@/hooks/use-reduced-motion";
 
 export function AboutModern() {
     const { t } = useLanguage();
+    const shouldReduceMotion = useReducedMotion();
 
-    const stats = [
+    // System metrics with technical prefixes
+    const metrics = [
         {
+            prefix: "UPTIME:",
             value: t.about.stats.experience.value,
             label: t.about.stats.experience.label,
-            gradient: "from-blue-500 to-cyan-500",
+            color: "text-[#3FB950]", // terminal green
         },
         {
+            prefix: "DEPLOYED:",
             value: t.about.stats.projects.value,
             label: t.about.stats.projects.label,
-            gradient: "from-violet-500 to-purple-500",
+            color: "text-[#58A6FF]", // terminal blue
         },
         {
+            prefix: "TEAM:",
             value: t.about.stats.experts.value,
             label: t.about.stats.experts.label,
-            gradient: "from-indigo-500 to-blue-500",
+            color: "text-[#3FB950]",
         },
         {
+            prefix: "SLA:",
             value: t.about.stats.support.value,
             label: t.about.stats.support.label,
-            gradient: "from-cyan-500 to-teal-500",
+            color: "text-[#D29922]", // terminal amber
         },
     ];
 
     return (
         <section id="nosotros" className="py-16 md:py-32 bg-white relative overflow-hidden scroll-mt-28">
-            {/* Background Decorations */}
-            <div className="absolute inset-0 bg-gradient-to-br from-slate-50 via-white to-blue-50/30" />
-            <div className="absolute top-20 right-0 w-96 h-96 bg-blue-500/5 rounded-full blur-3xl" />
-            <div className="absolute bottom-20 left-0 w-96 h-96 bg-violet-500/5 rounded-full blur-3xl" />
+            {/* Technical grid background */}
+            <div className="absolute inset-0 bg-[url('/grid.svg')] bg-center opacity-[0.02]" />
+
+            {/* Gradient accent - matrix greens/blues, NO violet */}
+            <div className="absolute inset-0 bg-gradient-to-br from-[#3FB950]/5 via-transparent to-[#58A6FF]/5" />
 
             <div className="container relative z-10">
                 <div className="grid gap-12 lg:grid-cols-2 items-center">
                     {/* Text Content */}
                     <motion.div
-                        initial={{ opacity: 0, x: -30 }}
-                        whileInView={{ opacity: 1, x: 0 }}
-                        viewport={{ once: true }}
-                        transition={{ duration: 0.6 }}
+                        initial={shouldReduceMotion ? false : { opacity: 0, x: -30 }}
+                        whileInView={shouldReduceMotion ? {} : { opacity: 1, x: 0 }}
+                        viewport={{ once: true, margin: "-100px" }}
+                        transition={{ type: "spring", stiffness: 100, damping: 15 }}
                         className="relative z-10"
                     >
                         <motion.span
-                            initial={{ opacity: 0, y: 20 }}
-                            whileInView={{ opacity: 1, y: 0 }}
-                            viewport={{ once: true }}
-                            transition={{ duration: 0.5 }}
-                            className="text-sm font-semibold text-[#0052CC] uppercase tracking-wider px-4 py-2 rounded-full bg-[#0052CC]/10 backdrop-blur-sm inline-block mb-6"
+                            initial={shouldReduceMotion ? false : { opacity: 0, y: 20 }}
+                            whileInView={shouldReduceMotion ? {} : { opacity: 1, y: 0 }}
+                            viewport={{ once: true, margin: "-100px" }}
+                            transition={{ type: "spring", stiffness: 100, damping: 15 }}
+                            className="inline-flex items-center gap-2 mb-6 px-4 py-2 rounded-lg bg-[#0D1117] text-[#3FB950] font-mono text-sm"
                         >
-                            Sobre CloudBit
+                            <span aria-hidden="true">$</span>
+                            <span>cloudbit --about</span>
                         </motion.span>
 
-                        <h2 className="text-4xl md:text-5xl font-bold tracking-tight mb-6 bg-gradient-to-br from-slate-900 via-slate-800 to-slate-600 bg-clip-text text-transparent">
+                        <h2 className="font-[family-name:var(--font-display)] text-4xl md:text-5xl font-bold tracking-tight mb-6 text-[#24292F]">
                             {t.about.title}
                         </h2>
 
-                        <p className="text-lg text-slate-600 mb-4 leading-relaxed">
+                        <p className="text-lg text-[#57606A] mb-4 leading-relaxed">
                             {t.about.description1}
                         </p>
-                        <p className="text-lg text-slate-600 mb-10 leading-relaxed">
+                        <p className="text-lg text-[#57606A] mb-10 leading-relaxed">
                             {t.about.description2}
                         </p>
 
-                        {/* Stats Grid with Animated Counters */}
-                        <div className="grid grid-cols-2 gap-6 mb-10">
-                            {stats.map((stat, index) => (
+                        {/* System Metrics - Terminal/htop style */}
+                        <div className="grid grid-cols-2 gap-4 mb-10 p-6 bg-[#0D1117] rounded-lg border border-[#30363D]">
+                            {metrics.map((metric, index) => (
                                 <motion.div
                                     key={index}
-                                    initial={{ opacity: 0, y: 20 }}
-                                    whileInView={{ opacity: 1, y: 0 }}
-                                    viewport={{ once: true }}
-                                    transition={{ duration: 0.5, delay: index * 0.1 }}
-                                    whileHover={{ y: -5, scale: 1.02 }}
-                                    className="relative group border border-slate-200/80 rounded-2xl overflow-hidden bg-gradient-to-br from-white to-slate-50/50 backdrop-blur-sm p-6 transition-all duration-300 hover:shadow-xl hover:border-[#0052CC]/30"
+                                    initial={shouldReduceMotion ? false : { opacity: 0, y: 20 }}
+                                    whileInView={shouldReduceMotion ? {} : { opacity: 1, y: 0 }}
+                                    viewport={{ once: true, margin: "-100px" }}
+                                    transition={{ type: "spring", stiffness: 100, damping: 15, delay: shouldReduceMotion ? 0 : index * 0.1 }}
+                                    className="relative group"
                                 >
-                                    {/* Gradient Background on Hover */}
-                                    <motion.div
-                                        className={`absolute inset-0 bg-gradient-to-br ${stat.gradient} opacity-0 group-hover:opacity-5 transition-opacity duration-300`}
-                                    />
+                                    {/* Terminal-style metric display */}
+                                    <div className="flex flex-col gap-1">
+                                        {/* Prefix label */}
+                                        <span className="font-mono text-xs text-[#8B949E] uppercase tracking-wider">
+                                            {metric.prefix}
+                                        </span>
 
-                                    {/* Animated Border Glow */}
-                                    <motion.div
-                                        className={`absolute inset-0 bg-gradient-to-r ${stat.gradient} opacity-0 group-hover:opacity-20 blur-xl transition-opacity duration-300`}
-                                    />
+                                        {/* Value - monospace, large */}
+                                        <div className={`font-[family-name:var(--font-display)] text-4xl font-bold ${metric.color}`}>
+                                            <AnimatedCounter value={metric.value} duration={2500} />
+                                        </div>
 
-                                    <div className="relative z-10">
-                                        <h3 className={`text-5xl font-extrabold mb-2 bg-gradient-to-r ${stat.gradient} bg-clip-text text-transparent`}>
-                                            <AnimatedCounter value={stat.value} duration={2500} />
-                                        </h3>
-                                        <p className="text-sm text-slate-600 font-medium leading-tight">
-                                            {stat.label}
-                                        </p>
+                                        {/* Description */}
+                                        <span className="text-xs text-[#C9D1D9] leading-tight mt-1">
+                                            {metric.label}
+                                        </span>
                                     </div>
 
-                                    {/* Corner Accent */}
-                                    <motion.div
-                                        className={`absolute top-0 right-0 w-20 h-20 bg-gradient-to-br ${stat.gradient} opacity-0 group-hover:opacity-10 blur-2xl transition-opacity duration-300`}
-                                    />
+                                    {/* Subtle separator line */}
+                                    {index < metrics.length - 1 && index % 2 === 1 && (
+                                        <div className="absolute -bottom-2 left-0 right-0 h-px bg-[#30363D]" />
+                                    )}
                                 </motion.div>
                             ))}
                         </div>
 
                         <motion.div
-                            initial={{ opacity: 0 }}
-                            whileInView={{ opacity: 1 }}
-                            viewport={{ once: true }}
-                            transition={{ duration: 0.5, delay: 0.6 }}
+                            initial={shouldReduceMotion ? false : { opacity: 0 }}
+                            whileInView={shouldReduceMotion ? {} : { opacity: 1 }}
+                            viewport={{ once: true, margin: "-100px" }}
+                            transition={{ type: "spring", stiffness: 100, damping: 15, delay: 0.6 }}
                         >
-                            <Button
-                                size="lg"
-                                className="bg-gradient-to-r from-[#0052CC] to-blue-600 hover:from-[#0052CC]/90 hover:to-blue-700 transition-all hover:scale-105 hover:shadow-xl hover:shadow-blue-500/30"
-                                asChild
+                            <TerminalButton
+                                variant="primary"
+                                icon="terminal"
+                                href="/#contacto"
                             >
-                                <Link href="/#contacto">{t.about.teamBtn}</Link>
-                            </Button>
+                                {t.about.teamBtn}
+                            </TerminalButton>
                         </motion.div>
                     </motion.div>
 
                     {/* Image Content */}
                     <motion.div
-                        initial={{ opacity: 0, x: 30 }}
-                        whileInView={{ opacity: 1, x: 0 }}
-                        viewport={{ once: true }}
-                        transition={{ duration: 0.6 }}
+                        initial={shouldReduceMotion ? false : { opacity: 0, x: 30 }}
+                        whileInView={shouldReduceMotion ? {} : { opacity: 1, x: 0 }}
+                        viewport={{ once: true, margin: "-100px" }}
+                        transition={{ type: "spring", stiffness: 100, damping: 15 }}
                         className="relative z-0"
                     >
-                        <div className="relative aspect-square lg:h-[600px] rounded-3xl overflow-hidden shadow-2xl">
-                            {/* Glow Effect Behind Image */}
-                            <div className="absolute -inset-4 bg-gradient-to-r from-blue-500 to-violet-500 opacity-20 blur-3xl" />
+                        <div className="relative aspect-square lg:h-[600px] rounded-lg overflow-hidden shadow-2xl border-4 border-[#30363D]">
+                            {/* Technical glow - green/blue, NO violet */}
+                            <div className="absolute -inset-4 bg-gradient-to-r from-[#3FB950]/20 to-[#58A6FF]/20 opacity-40 blur-3xl" />
 
-                            <motion.div
-                                className="relative w-full h-full"
-                                whileHover={{ scale: 1.05 }}
-                                transition={{ duration: 0.4 }}
-                            >
+                            <div className="relative w-full h-full">
                                 <Image
                                     src="/images/corporate-team-new.png"
                                     alt={t.about.imageLabel}
@@ -151,18 +153,18 @@ export function AboutModern() {
                                     sizes="(max-width: 768px) 100vw, 50vw"
                                     priority
                                 />
-                                <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent flex items-end p-8">
+                                <div className="absolute inset-0 bg-gradient-to-t from-[#0D1117]/80 via-transparent to-transparent flex items-end p-8">
                                     <motion.p
-                                        initial={{ opacity: 0, y: 20 }}
-                                        whileInView={{ opacity: 1, y: 0 }}
-                                        viewport={{ once: true }}
-                                        transition={{ duration: 0.5, delay: 0.3 }}
-                                        className="text-white font-semibold text-lg"
+                                        initial={shouldReduceMotion ? false : { opacity: 0, y: 20 }}
+                                        whileInView={shouldReduceMotion ? {} : { opacity: 1, y: 0 }}
+                                        viewport={{ once: true, margin: "-100px" }}
+                                        transition={{ type: "spring", stiffness: 100, damping: 15, delay: 0.3 }}
+                                        className="text-[#F0F6FC] font-mono text-sm border-l-2 border-[#3FB950] pl-4"
                                     >
                                         {t.about.imageLabel}
                                     </motion.p>
                                 </div>
-                            </motion.div>
+                            </div>
                         </div>
                     </motion.div>
                 </div>
