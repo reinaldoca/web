@@ -69,63 +69,48 @@ export function HeroModernOptimized() {
 
     return (
         <section className="relative w-full overflow-hidden pt-20 pb-32 md:h-screen flex items-center">
-            {/* Animated Abstract Background with Glow Effect */}
-            <div className="absolute inset-0 bg-gradient-to-br from-slate-950 via-slate-900 to-blue-950">
-                {/* Animated Grid */}
+            {/* Terminal-inspired Background */}
+            <div className="absolute inset-0 bg-gradient-to-br from-[#0D1117] via-[#161B22] to-[#0D1117]">
+                {/* Technical Grid - green accent */}
                 <div
-                    className="absolute inset-0 opacity-20"
+                    className="absolute inset-0 opacity-10"
                     style={{
-                        backgroundImage: `linear-gradient(rgba(59, 130, 246, 0.3) 1px, transparent 1px), linear-gradient(90deg, rgba(59, 130, 246, 0.3) 1px, transparent 1px)`,
+                        backgroundImage: `linear-gradient(rgba(63, 185, 80, 0.3) 1px, transparent 1px), linear-gradient(90deg, rgba(63, 185, 80, 0.3) 1px, transparent 1px)`,
                         backgroundSize: "50px 50px",
                     }}
                 />
 
-                {/* Glow Orbs - Solo si no hay preferencia de movimiento reducido */}
+                {/* Terminal-inspired glows - NO violet, only green/blue technical colors */}
                 {!shouldReduceMotion && (
                     <>
-                        {/* Glow Orb 1 - Blue */}
+                        {/* Terminal Green Glow - Success/Pipeline */}
                         <motion.div
-                            className="absolute w-96 h-96 rounded-full blur-3xl opacity-30"
+                            className="absolute w-96 h-96 rounded-full blur-3xl opacity-20"
                             style={{
-                                background: "radial-gradient(circle, rgba(59, 130, 246, 0.8) 0%, rgba(37, 99, 235, 0) 70%)",
+                                background: "radial-gradient(circle, rgba(63, 185, 80, 0.4) 0%, rgba(63, 185, 80, 0) 70%)",
                             }}
                             animate={{
-                                x: [0, 100, 0],
-                                y: [0, -50, 0],
-                                scale: [1, 1.2, 1],
+                                x: [0, 80, 0],
+                                y: [0, -40, 0],
+                                scale: [1, 1.15, 1],
                             }}
                             transition={animationConfig}
-                            initial={{ top: "20%", left: "10%" }}
+                            initial={{ top: "15%", left: "5%" }}
                         />
 
-                        {/* Glow Orb 2 - Violet */}
+                        {/* Info Blue Glow - Technical accent */}
                         <motion.div
-                            className="absolute w-96 h-96 rounded-full blur-3xl opacity-30"
+                            className="absolute w-80 h-80 rounded-full blur-3xl opacity-15"
                             style={{
-                                background: "radial-gradient(circle, rgba(139, 92, 246, 0.8) 0%, rgba(124, 58, 237, 0) 70%)",
+                                background: "radial-gradient(circle, rgba(88, 166, 255, 0.5) 0%, rgba(88, 166, 255, 0) 70%)",
                             }}
                             animate={{
-                                x: [0, -80, 0],
-                                y: [0, 80, 0],
-                                scale: [1, 1.3, 1],
+                                x: [0, -60, 0],
+                                y: [0, 60, 0],
+                                scale: [1, 1.2, 1],
                             }}
-                            transition={{ ...animationConfig, duration: 10 }}
-                            initial={{ top: "50%", right: "15%" }}
-                        />
-
-                        {/* Glow Orb 3 - Cyan */}
-                        <motion.div
-                            className="absolute w-80 h-80 rounded-full blur-3xl opacity-20"
-                            style={{
-                                background: "radial-gradient(circle, rgba(34, 211, 238, 0.6) 0%, rgba(6, 182, 212, 0) 70%)",
-                            }}
-                            animate={{
-                                x: [0, 50, 0],
-                                y: [0, -70, 0],
-                                scale: [1, 1.1, 1],
-                            }}
-                            transition={{ ...animationConfig, duration: 7 }}
-                            initial={{ bottom: "10%", left: "30%" }}
+                            transition={{ ...animationConfig, duration: 9 }}
+                            initial={{ top: "50%", right: "10%" }}
                         />
                     </>
                 )}
@@ -171,9 +156,10 @@ export function HeroModernOptimized() {
                     initial={{ opacity: 0, y: shouldReduceMotion ? 0 : 20 }}
                     animate={{ opacity: 1, y: 0 }}
                     transition={shouldReduceMotion ? { duration: 0 } : { type: "spring", stiffness: 100, damping: 15 }}
-                    className="inline-flex items-center rounded-full border border-blue-500/30 bg-blue-500/10 backdrop-blur-sm px-6 py-2 text-sm font-semibold text-blue-300 mb-8"
+                    className="inline-flex items-center gap-2 rounded-lg border border-[#3FB950]/30 bg-[#0D1117] backdrop-blur-sm px-6 py-2 text-sm font-mono font-semibold text-[#3FB950] mb-8"
                 >
-                    {t.hero.badge}
+                    <span aria-hidden="true">$</span>
+                    <span>{t.hero.badge}</span>
                 </motion.div>
 
                 <motion.h1
@@ -182,7 +168,7 @@ export function HeroModernOptimized() {
                     transition={shouldReduceMotion ? { duration: 0 } : { type: "spring", stiffness: 100, damping: 15, delay: 0.2 }}
                     className="text-5xl font-extrabold tracking-tight sm:text-6xl md:text-7xl lg:text-8xl max-w-5xl mb-6"
                 >
-                    <span className="bg-gradient-to-r from-blue-400 via-violet-400 to-cyan-300 bg-clip-text text-transparent">
+                    <span className="bg-gradient-to-r from-[#3FB950] via-[#58A6FF] to-[#3FB950] bg-clip-text text-transparent">
                         {t.hero.title}
                     </span>
                 </motion.h1>
@@ -206,7 +192,7 @@ export function HeroModernOptimized() {
                         <motion.div whileHover={{ scale: 1.02, y: -4 }} transition={{ type: "spring", stiffness: 400, damping: 25 }}>
                             <Button
                                 size="lg"
-                                className="text-lg px-8 h-14 bg-gradient-to-r from-blue-600 to-violet-600 hover:from-blue-700 hover:to-violet-700 hover:shadow-2xl hover:shadow-blue-500/50"
+                                className="text-lg px-8 h-14 bg-[#3FB950] text-[#0D1117] font-semibold hover:bg-[#3FB950]/90 hover:shadow-2xl hover:shadow-[#3FB950]/30"
                                 asChild
                             >
                                 <Link href="/#contacto">{t.hero.contactBtn}</Link>
@@ -216,7 +202,7 @@ export function HeroModernOptimized() {
                             <Button
                                 size="lg"
                                 variant="outline"
-                                className="text-lg px-8 h-14 border-2 border-blue-500/50 text-blue-300 hover:bg-blue-500/10 hover:border-blue-400"
+                                className="text-lg px-8 h-14 border-2 border-[#58A6FF]/50 text-slate-200 hover:bg-[#58A6FF]/10 hover:border-[#58A6FF]"
                                 asChild
                             >
                                 <Link href="/#servicios">{t.hero.servicesBtn}</Link>
