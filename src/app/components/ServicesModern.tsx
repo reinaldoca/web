@@ -18,7 +18,7 @@ export function ServicesModern() {
             <div className="absolute inset-0 bg-[url('/grid.svg')] bg-center opacity-[0.02]" />
 
             {/* Gradient accent - matrix-style greens/blues instead of generic violet */}
-            <div className="absolute inset-0 bg-gradient-to-br from-[#3FB950]/5 via-transparent to-[#58A6FF]/5" />
+            <div className="absolute inset-0 bg-gradient-to-br from-[#8b5cf6]/5 via-transparent to-[#3b82f6]/5" />
 
             <div className="container relative z-10">
                 {/* Terminal-style header */}
@@ -67,13 +67,13 @@ function PipelineServiceCard({ service, index }: PipelineServiceCardProps) {
     const status = statuses[index % statuses.length];
 
     const statusColors = {
-        success: "border-[#3FB950] hover:shadow-[#3FB950]/20",
-        running: "border-[#58A6FF] hover:shadow-[#58A6FF]/20",
+        success: "border-[#8b5cf6] hover:shadow-[#8b5cf6]/20",
+        running: "border-[#3b82f6] hover:shadow-[#3b82f6]/20",
     };
 
     const statusBg = {
-        success: "from-[#3FB950]/20 to-[#3FB950]/10",
-        running: "from-[#58A6FF]/20 to-[#58A6FF]/10",
+        success: "from-[#8b5cf6]/20 to-[#8b5cf6]/10",
+        running: "from-[#3b82f6]/20 to-[#3b82f6]/10",
     };
 
     return (
@@ -116,7 +116,7 @@ function PipelineServiceCard({ service, index }: PipelineServiceCardProps) {
                     </div>
 
                     {/* Content */}
-                    <h3 className="font-[family-name:var(--font-display)] text-xl font-semibold mb-3 text-[#24292F] group-hover:text-[#3FB950] transition-colors">
+                    <h3 className="font-[family-name:var(--font-display)] text-xl font-semibold mb-3 text-[#24292F] group-hover:text-[#8b5cf6] transition-colors">
                         {service.title}
                     </h3>
 
@@ -129,7 +129,7 @@ function PipelineServiceCard({ service, index }: PipelineServiceCardProps) {
                         {service.tags.slice(0, 3).map((tag: string) => (
                             <span
                                 key={tag}
-                                className="font-mono text-xs px-2 py-1 rounded bg-[#161B22] text-[#8B949E] group-hover:bg-[#3FB950]/10 group-hover:text-[#3FB950] transition-colors"
+                                className="font-mono text-xs px-2 py-1 rounded bg-[#161B22] text-[#8B949E] group-hover:bg-[#8b5cf6]/10 group-hover:text-[#8b5cf6] transition-colors"
                             >
                                 {tag}
                             </span>
@@ -137,7 +137,7 @@ function PipelineServiceCard({ service, index }: PipelineServiceCardProps) {
                     </div>
 
                     {/* CTA - simple terminal style */}
-                    <div className="mt-6 font-mono text-sm font-semibold text-[#3FB950] flex items-center gap-2">
+                    <div className="mt-6 font-mono text-sm font-semibold text-[#8b5cf6] flex items-center gap-2">
                         <span>view --details</span>
                         <span aria-hidden="true">→</span>
                     </div>

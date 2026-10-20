@@ -39,15 +39,15 @@ export function ProblemSolutionSection() {
                     {/* Problemas - Izquierda */}
                     <ScrollAnimation animation="slide-in-left" duration={600} delay={200}>
                         <div className="space-y-6">
-                            <h3 className="text-2xl font-bold font-mono text-[#F85149] mb-8">
+                            <h3 className="text-2xl font-bold font-mono text-[#ef4444] mb-8">
                                 ERROR: Common Blockers
                             </h3>
                             <ul className="space-y-5">
                                 {problems.map((problem, index) => (
                                     <li key={index} className="flex gap-4 items-start">
                                         <div className="flex-shrink-0 mt-1">
-                                            <div className="w-5 h-5 rounded-full bg-[#F85149]/20 border-2 border-[#F85149] flex items-center justify-center">
-                                                <span className="text-[#F85149] text-xs font-bold">✕</span>
+                                            <div className="w-5 h-5 rounded-full bg-[#ef4444]/20 border-2 border-[#ef4444] flex items-center justify-center">
+                                                <span className="text-[#ef4444] text-xs font-bold">✕</span>
                                             </div>
                                         </div>
                                         <p className="text-[#57606A] leading-relaxed">
@@ -62,15 +62,15 @@ export function ProblemSolutionSection() {
                     {/* Soluciones - Derecha */}
                     <ScrollAnimation animation="slide-in-right" duration={600} delay={400}>
                         <div className="space-y-6">
-                            <h3 className="text-2xl font-bold font-mono text-[#3FB950] mb-8">
+                            <h3 className="text-2xl font-bold font-mono text-[#34d399] mb-8">
                                 SUCCESS: CloudBit Solutions
                             </h3>
                             <ul className="space-y-5">
                                 {solutions.map((solution, index) => (
                                     <li key={index} className="flex gap-4 items-start">
                                         <div className="flex-shrink-0 mt-1">
-                                            <div className="w-5 h-5 rounded-full bg-[#3FB950]/20 border-2 border-[#3FB950] flex items-center justify-center">
-                                                <span className="text-[#3FB950] text-xs font-bold">✓</span>
+                                            <div className="w-5 h-5 rounded-full bg-[#34d399]/20 border-2 border-[#34d399] flex items-center justify-center">
+                                                <span className="text-[#34d399] text-xs font-bold">✓</span>
                                             </div>
                                         </div>
                                         <p className="text-[#24292F] leading-relaxed font-medium">
