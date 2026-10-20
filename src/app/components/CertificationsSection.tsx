@@ -13,17 +13,17 @@ export function CertificationsSection() {
         {
             name: "AWS Select Tier Partner",
             icon: Shield,
-            color: "from-orange-500 to-yellow-500",
+            color: "from-[#8b5cf6] to-[#3b82f6]",
         },
         {
             name: "Microsoft Silver Partner",
             icon: Award,
-            color: "from-blue-500 to-cyan-500",
+            color: "from-[#8b5cf6] to-[#3b82f6]",
         },
         {
             name: "Kubernetes Certified",
             icon: CheckCircle2,
-            color: "from-indigo-500 to-purple-500",
+            color: "from-[#8b5cf6] to-[#3b82f6]",
         },
     ];
 
@@ -63,7 +63,7 @@ export function CertificationsSection() {
                                 key={index}
                                 whileHover={{ scale: 1.02, y: -4 }}
                                 transition={{ type: "spring", stiffness: 400, damping: 25 }}
-                                className="relative group p-6 rounded-2xl bg-gradient-to-br from-slate-50 to-white border-2 border-slate-200 hover:border-[#3FB950]/50 hover:shadow-xl"
+                                className="relative group p-6 rounded-2xl bg-gradient-to-br from-slate-50 to-white border-2 border-slate-200 hover:border-[rgba(139,92,246,0.5)] hover:shadow-xl"
                             >
                                 {/* Gradient glow */}
                                 <div className={`absolute inset-0 bg-gradient-to-br ${cert.color} opacity-0 group-hover:opacity-5 rounded-2xl transition-opacity duration-300`} />
@@ -91,7 +91,7 @@ export function CertificationsSection() {
                             {technologies.map((tech, index) => (
                                 <div
                                     key={index}
-                                    className="flex flex-col items-center gap-2 p-4 rounded-xl bg-slate-50 border border-slate-200 hover:border-[#3FB950]/50 hover:bg-white transition-all duration-300 hover:-translate-y-1"
+                                    className="flex flex-col items-center gap-2 p-4 rounded-xl bg-slate-50 border border-slate-200 hover:border-[rgba(139,92,246,0.5)] hover:bg-white transition-all duration-300 hover:-translate-y-1"
                                 >
                                     <span className="text-4xl" role="img" aria-label={tech.name}>
                                         {tech.icon}
