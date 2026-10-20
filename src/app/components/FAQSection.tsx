@@ -102,8 +102,7 @@ export function FAQSection() {
                         transition={{ type: "spring", stiffness: 100, damping: 15 }}
                     >
                         <SectionHeader
-                            prompt="hash"
-                            label="cloudbit --help"
+                            label="FAQ"
                             title="Preguntas frecuentes"
                             description="Respuestas a las dudas más comunes sobre nuestros servicios, procesos y certificaciones."
                         />

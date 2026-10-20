@@ -50,7 +50,7 @@ export function Header() {
             {/* Skip to main content link - accessibility */}
             <a
                 href="#main-content"
-                className="sr-only focus:not-sr-only focus:absolute focus:top-4 focus:left-4 focus:z-[100] focus:px-4 focus:py-2 focus:bg-[#3FB950] focus:text-[#0D1117] focus:rounded-lg focus:font-mono focus:text-sm focus:font-semibold focus:outline-none focus:ring-4 focus:ring-[#3FB950]/50"
+                className="sr-only focus:not-sr-only focus:absolute focus:top-4 focus:left-4 focus:z-[100] focus:px-4 focus:py-2 focus:bg-[#8b5cf6] focus:text-white focus:rounded-lg focus:text-sm focus:font-semibold focus:outline-none focus:ring-4 focus:ring-purple-500/50"
             >
                 Saltar al contenido principal
             </a>
@@ -73,7 +73,7 @@ export function Header() {
                     <NavigationMenu>
                         <NavigationMenuList>
                             <NavigationMenuItem>
-                                <NavigationMenuTrigger className="text-slate-500 hover:text-[#0052CC] transition-colors duration-300 bg-transparent hover:bg-transparent data-[state=open]:bg-transparent">{t.header.services}</NavigationMenuTrigger>
+                                <NavigationMenuTrigger className="text-slate-500 hover:text-[#8b5cf6] transition-colors duration-300 bg-transparent hover:bg-transparent data-[state=open]:bg-transparent">{t.header.services}</NavigationMenuTrigger>
                                 <NavigationMenuContent>
                                     <ul className="grid w-[400px] gap-3 p-4 md:w-[500px] md:grid-cols-2 lg:w-[600px]">
                                         {services.map((service) => (
@@ -99,10 +99,10 @@ export function Header() {
                                     <NavigationMenuLink asChild>
                                         <Link
                                             href={item.href}
-                                            className="group relative inline-flex h-9 w-max items-center justify-center bg-transparent px-3 py-2 text-sm font-medium text-slate-500 transition-colors duration-300 hover:text-[#0052CC] focus:outline-none disabled:pointer-events-none disabled:opacity-50"
+                                            className="group relative inline-flex h-9 w-max items-center justify-center bg-transparent px-3 py-2 text-sm font-medium text-slate-500 transition-colors duration-300 hover:text-[#8b5cf6] focus:outline-none disabled:pointer-events-none disabled:opacity-50"
                                         >
                                             {item.name}
-                                            <span className="absolute bottom-0 left-0 right-0 h-[2px] bg-[#0052CC] origin-center scale-x-0 transition-transform duration-300 ease-out group-hover:scale-x-100" />
+                                            <span className="absolute bottom-0 left-0 right-0 h-[2px] bg-[#8b5cf6] origin-center scale-x-0 transition-transform duration-300 ease-out group-hover:scale-x-100" />
                                         </Link>
                                     </NavigationMenuLink>
                                 </NavigationMenuItem>
@@ -185,7 +185,7 @@ export function Header() {
 
             {/* Scroll Progress Bar */}
             <motion.div
-                className="absolute bottom-0 left-0 h-0.5 bg-gradient-to-r from-[#3FB950] to-[#58A6FF]"
+                className="absolute bottom-0 left-0 h-0.5 bg-gradient-to-r from-[#8b5cf6] to-[#3b82f6]"
                 style={{ width: `${scrollProgress}%` }}
                 initial={{ scaleX: 0 }}
                 animate={{ scaleX: 1 }}

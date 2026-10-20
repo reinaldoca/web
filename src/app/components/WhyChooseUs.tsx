@@ -14,31 +14,31 @@ import { useState } from "react";
 
 const icons = [Shield, Zap, Users, Target];
 
-// Terminal color palette for each reason (green, blue, amber, green)
-const terminalColors = [
+// NexusAI color palette for each reason (purple, blue, green, purple)
+const nexusColors = [
     {
-        bg: "bg-[#3FB950]/10",
-        text: "text-[#3FB950]",
-        border: "border-[#3FB950]/30",
-        glow: "shadow-[#3FB950]/20",
+        bg: "bg-[rgba(139,92,246,0.1)]",
+        text: "text-[#a78bfa]",
+        border: "border-[rgba(139,92,246,0.3)]",
+        glow: "shadow-purple-500/20",
     },
     {
-        bg: "bg-[#58A6FF]/10",
-        text: "text-[#58A6FF]",
-        border: "border-[#58A6FF]/30",
-        glow: "shadow-[#58A6FF]/20",
+        bg: "bg-[rgba(59,130,246,0.1)]",
+        text: "text-[#60a5fa]",
+        border: "border-[rgba(59,130,246,0.3)]",
+        glow: "shadow-blue-500/20",
     },
     {
-        bg: "bg-[#D29922]/10",
-        text: "text-[#D29922]",
-        border: "border-[#D29922]/30",
-        glow: "shadow-[#D29922]/20",
+        bg: "bg-[rgba(52,211,153,0.1)]",
+        text: "text-[#34d399]",
+        border: "border-[rgba(52,211,153,0.3)]",
+        glow: "shadow-green-400/20",
     },
     {
-        bg: "bg-[#3FB950]/10",
-        text: "text-[#3FB950]",
-        border: "border-[#3FB950]/30",
-        glow: "shadow-[#3FB950]/20",
+        bg: "bg-[rgba(139,92,246,0.1)]",
+        text: "text-[#a78bfa]",
+        border: "border-[rgba(139,92,246,0.3)]",
+        glow: "shadow-purple-500/20",
     },
 ];
 
@@ -68,7 +68,7 @@ export function WhyChooseUs() {
                 <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
                     {t.whyUs.reasons.map((reason: { title: string; description: string }, index: number) => {
                         const Icon = icons[index];
-                        const colors = terminalColors[index];
+                        const colors = nexusColors[index];
                         const isHovered = hoveredIndex === index;
                         const isOtherHovered = hoveredIndex !== null && hoveredIndex !== index;
 

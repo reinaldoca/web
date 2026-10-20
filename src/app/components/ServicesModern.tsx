@@ -29,8 +29,7 @@ export function ServicesModern() {
                     transition={{ type: "spring", stiffness: 100, damping: 15 }}
                 >
                     <SectionHeader
-                        prompt="dollar"
-                        label="cloudbit --list-services"
+                        label="Servicios"
                         title={t.services.title}
                         description={t.services.subtitle}
                     />

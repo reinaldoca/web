@@ -93,8 +93,7 @@ export function CaseStudiesSection() {
                     transition={{ type: "spring", stiffness: 100, damping: 15 }}
                 >
                     <SectionHeader
-                        prompt="arrow"
-                        label="cloudbit --deployments --status=success"
+                        label="Casos de éxito"
                         title="Resultados medibles para nuestros clientes"
                         description="Ayudamos a empresas de diferentes industrias a modernizar su infraestructura y acelerar su operación."
                     />

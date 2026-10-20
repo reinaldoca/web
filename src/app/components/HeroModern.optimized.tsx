@@ -70,26 +70,23 @@ export function HeroModernOptimized() {
 
     return (
         <section className="relative w-full overflow-hidden pt-20 pb-32 md:h-screen flex items-center">
-            {/* Terminal-inspired Background */}
-            <div className="absolute inset-0 bg-gradient-to-br from-[#0D1117] via-[#161B22] to-[#0D1117]">
-                {/* Technical Grid - green accent */}
+            {/* NexusAI Background */}
+            <div className="absolute inset-0 bg-gradient-to-br from-[#08080f] via-[#0d0d1a] to-[#08080f]">
+                {/* Subtle Grid */}
                 <div
-                    className="absolute inset-0 opacity-10"
+                    className="absolute inset-0 opacity-5"
                     style={{
-                        backgroundImage: `linear-gradient(rgba(63, 185, 80, 0.3) 1px, transparent 1px), linear-gradient(90deg, rgba(63, 185, 80, 0.3) 1px, transparent 1px)`,
+                        backgroundImage: `linear-gradient(rgba(139, 92, 246, 0.3) 1px, transparent 1px), linear-gradient(90deg, rgba(139, 92, 246, 0.3) 1px, transparent 1px)`,
                         backgroundSize: "50px 50px",
                     }}
                 />
 
-                {/* Terminal-inspired glows - NO violet, only green/blue technical colors */}
+                {/* NexusAI Auras */}
                 {!shouldReduceMotion && (
                     <>
-                        {/* Terminal Green Glow - Success/Pipeline */}
+                        {/* Purple Aura - Primary */}
                         <motion.div
-                            className="absolute w-96 h-96 rounded-full blur-3xl opacity-20"
-                            style={{
-                                background: "radial-gradient(circle, rgba(63, 185, 80, 0.4) 0%, rgba(63, 185, 80, 0) 70%)",
-                            }}
+                            className="aur aur-a absolute"
                             animate={{
                                 x: [0, 80, 0],
                                 y: [0, -40, 0],
@@ -99,12 +96,9 @@ export function HeroModernOptimized() {
                             initial={{ top: "15%", left: "5%" }}
                         />
 
-                        {/* Info Blue Glow - Technical accent */}
+                        {/* Blue Aura - Secondary */}
                         <motion.div
-                            className="absolute w-80 h-80 rounded-full blur-3xl opacity-15"
-                            style={{
-                                background: "radial-gradient(circle, rgba(88, 166, 255, 0.5) 0%, rgba(88, 166, 255, 0) 70%)",
-                            }}
+                            className="aur aur-b absolute"
                             animate={{
                                 x: [0, -60, 0],
                                 y: [0, 60, 0],
@@ -133,7 +127,7 @@ export function HeroModernOptimized() {
                 {!shouldReduceMotion && particles.map((particle) => (
                     <motion.div
                         key={particle.id}
-                        className="absolute w-2 h-2 bg-blue-400/30 rounded-full"
+                        className="absolute w-2 h-2 bg-purple-400/30 rounded-full"
                         style={{
                             left: `${particle.left}%`,
                             top: `${particle.top}%`,
@@ -157,9 +151,9 @@ export function HeroModernOptimized() {
                     initial={{ opacity: 0, y: shouldReduceMotion ? 0 : 20 }}
                     animate={{ opacity: 1, y: 0 }}
                     transition={shouldReduceMotion ? { duration: 0 } : { type: "spring", stiffness: 100, damping: 15 }}
-                    className="inline-flex items-center gap-2 rounded-lg border border-[#3FB950]/30 bg-[#0D1117] backdrop-blur-sm px-6 py-2 text-sm font-mono font-semibold text-[#3FB950] mb-8"
+                    className="hbadge mb-8"
                 >
-                    <span aria-hidden="true">$</span>
+                    <span>✨</span>
                     <span>{t.hero.badge}</span>
                 </motion.div>
 
@@ -169,7 +163,7 @@ export function HeroModernOptimized() {
                     transition={shouldReduceMotion ? { duration: 0 } : { type: "spring", stiffness: 100, damping: 15, delay: 0.2 }}
                     className="text-5xl font-extrabold tracking-tight sm:text-6xl md:text-7xl lg:text-8xl max-w-5xl mb-6"
                 >
-                    <span className="bg-gradient-to-r from-[#3FB950] via-[#58A6FF] to-[#3FB950] bg-clip-text text-transparent">
+                    <span className="bg-gradient-to-r from-[#8b5cf6] to-[#3b82f6] bg-clip-text text-transparent">
                         {t.hero.title}
                     </span>
                 </motion.h1>
@@ -194,7 +188,7 @@ export function HeroModernOptimized() {
                             <motion.div whileHover={{ scale: 1.02, y: -4 }} transition={{ type: "spring", stiffness: 400, damping: 25 }}>
                                 <Button
                                     size="lg"
-                                    className="text-lg px-8 h-14 bg-[#3FB950] text-[#0D1117] font-semibold hover:bg-[#3FB950]/90 hover:shadow-2xl hover:shadow-[#3FB950]/30"
+                                    className="text-lg px-8 h-14 bg-gradient-to-r from-[#8b5cf6] to-[#3b82f6] text-white font-semibold hover:shadow-2xl hover:shadow-purple-500/40"
                                     asChild
                                 >
                                     <Link href="/#contacto">{t.hero.contactBtn}</Link>
@@ -206,7 +200,7 @@ export function HeroModernOptimized() {
                                 <Button
                                     size="lg"
                                     variant="outline"
-                                    className="text-lg px-8 h-14 border-2 border-[#58A6FF]/50 text-slate-200 hover:bg-[#58A6FF]/10 hover:border-[#58A6FF]"
+                                    className="text-lg px-8 h-14 border-2 border-[rgba(139,92,246,0.3)] text-slate-200 hover:bg-[rgba(139,92,246,0.1)] hover:border-[#8b5cf6]"
                                     asChild
                                 >
                                     <Link href="/#servicios">{t.hero.servicesBtn}</Link>
@@ -228,9 +222,9 @@ export function HeroModernOptimized() {
                         animate={{ y: [0, 10, 0] }}
                         transition={{ duration: 2, repeat: Infinity }}
                     >
-                        <div className="w-6 h-10 border-2 border-blue-400/50 rounded-full flex justify-center pt-2">
+                        <div className="w-6 h-10 border-2 border-purple-400/50 rounded-full flex justify-center pt-2">
                             <motion.div
-                                className="w-1.5 h-3 bg-blue-400 rounded-full"
+                                className="w-1.5 h-3 bg-purple-400 rounded-full"
                                 animate={{ y: [0, 12, 0], opacity: [1, 0.3, 1] }}
                                 transition={{ duration: 2, repeat: Infinity }}
                             />
