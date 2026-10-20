@@ -6,75 +6,149 @@ import {
     CardTitle,
     CardDescription,
 } from "@/components/ui/card";
-import { Shield, Zap, Users, Target, CheckCircle2 } from "lucide-react";
-import { ScrollAnimation } from "@/components/ui/scroll-animation";
-import { FlipCard } from "@/components/ui/flip-card";
+import { Shield, Zap, Users, Target } from "lucide-react";
+import { motion, AnimatePresence } from "framer-motion";
 import { useLanguage } from "@/components/language-provider";
+import { useReducedMotion } from "@/hooks/useReducedMotion";
+import { useState } from "react";
 
 const icons = [Shield, Zap, Users, Target];
 
+// Terminal color palette for each reason (green, blue, amber, green)
+const terminalColors = [
+    {
+        bg: "bg-[#3FB950]/10",
+        text: "text-[#3FB950]",
+        border: "border-[#3FB950]/30",
+        glow: "shadow-[#3FB950]/20",
+    },
+    {
+        bg: "bg-[#58A6FF]/10",
+        text: "text-[#58A6FF]",
+        border: "border-[#58A6FF]/30",
+        glow: "shadow-[#58A6FF]/20",
+    },
+    {
+        bg: "bg-[#D29922]/10",
+        text: "text-[#D29922]",
+        border: "border-[#D29922]/30",
+        glow: "shadow-[#D29922]/20",
+    },
+    {
+        bg: "bg-[#3FB950]/10",
+        text: "text-[#3FB950]",
+        border: "border-[#3FB950]/30",
+        glow: "shadow-[#3FB950]/20",
+    },
+];
+
 export function WhyChooseUs() {
     const { t } = useLanguage();
+    const shouldReduceMotion = useReducedMotion();
+    const [hoveredIndex, setHoveredIndex] = useState<number | null>(null);
 
     return (
-        <section id="elegirnos" className="py-16 md:py-24 bg-[#F8F9FA]">
+        <section id="elegirnos" className="py-16 md:py-24 bg-white">
             <div className="container">
-                <div className="text-center max-w-3xl mx-auto mb-16">
-                    <ScrollAnimation animation="fade-in">
-                        <h2 className="text-3xl font-bold tracking-tight sm:text-4xl mb-4 text-slate-900">
-                            {t.whyUs.title}
-                        </h2>
-                        <p className="text-lg text-muted-foreground">
-                            {t.whyUs.subtitle}
-                        </p>
-                    </ScrollAnimation>
-                </div>
-                <div className="grid gap-8 sm:grid-cols-2 lg:grid-cols-4">
+                <motion.div
+                    className="text-center max-w-3xl mx-auto mb-16"
+                    initial={shouldReduceMotion ? false : { opacity: 0, y: 20 }}
+                    whileInView={shouldReduceMotion ? {} : { opacity: 1, y: 0 }}
+                    viewport={{ once: true, margin: "-100px" }}
+                    transition={{ type: "spring", stiffness: 100, damping: 15 }}
+                >
+                    <h2 className="text-3xl font-bold tracking-tight sm:text-4xl mb-4 text-[#24292F]">
+                        {t.whyUs.title}
+                    </h2>
+                    <p className="text-lg text-[#57606A]">
+                        {t.whyUs.subtitle}
+                    </p>
+                </motion.div>
+
+                <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
                     {t.whyUs.reasons.map((reason: { title: string; description: string }, index: number) => {
                         const Icon = icons[index];
+                        const colors = terminalColors[index];
+                        const isHovered = hoveredIndex === index;
+                        const isOtherHovered = hoveredIndex !== null && hoveredIndex !== index;
+
                         return (
-                            <ScrollAnimation key={index} animation="scale-up" delay={index * 100} duration={500}>
-                                <FlipCard
-                                    className="h-full min-h-[280px]"
-                                    front={
-                                        <Card className="h-full text-center group border border-slate-100">
-                                            <CardHeader className="h-full flex flex-col justify-center">
-                                                <div className="mx-auto mb-4 inline-flex h-16 w-16 items-center justify-center rounded-full bg-[#0052CC]/10 text-[#0052CC] transition-all duration-500 group-hover:scale-110 group-hover:bg-[#0052CC] group-hover:text-white group-hover:shadow-xl group-hover:shadow-[#0052CC]/30 animate-bounce-slow">
-                                                    <Icon className="h-8 w-8" />
-                                                </div>
-                                                <CardTitle className="text-xl mb-2">{reason.title}</CardTitle>
-                                                <CardDescription className="text-base">
-                                                    {reason.description}
-                                                </CardDescription>
-                                                <p className="text-xs text-muted-foreground mt-4 opacity-70">
-                                                    Hover para más detalles
-                                                </p>
-                                            </CardHeader>
-                                        </Card>
-                                    }
-                                    back={
-                                        <Card className="h-full bg-[#0052CC] text-white hover:scale-100 hover:translate-y-0 hover:shadow-none hover:border-transparent">
-                                            <CardHeader className="h-full flex flex-col justify-center">
-                                                <CardTitle className="text-xl mb-4 text-center">{reason.title}</CardTitle>
-                                                <div className="space-y-2">
-                                                    <div className="flex items-start gap-2">
-                                                        <CheckCircle2 className="h-5 w-5 mt-0.5 flex-shrink-0" />
-                                                        <p className="text-sm">Soluciones personalizadas</p>
-                                                    </div>
-                                                    <div className="flex items-start gap-2">
-                                                        <CheckCircle2 className="h-5 w-5 mt-0.5 flex-shrink-0" />
-                                                        <p className="text-sm">Soporte 24/7</p>
-                                                    </div>
-                                                    <div className="flex items-start gap-2">
-                                                        <CheckCircle2 className="h-5 w-5 mt-0.5 flex-shrink-0" />
-                                                        <p className="text-sm">Tecnología de punta</p>
-                                                    </div>
-                                                </div>
-                                            </CardHeader>
-                                        </Card>
-                                    }
-                                />
-                            </ScrollAnimation>
+                            <motion.div
+                                key={index}
+                                initial={shouldReduceMotion ? false : { opacity: 0, y: 30 }}
+                                whileInView={shouldReduceMotion ? {} : { opacity: 1, y: 0 }}
+                                viewport={{ once: true, margin: "-100px" }}
+                                transition={{
+                                    type: "spring",
+                                    stiffness: 100,
+                                    damping: 15,
+                                    delay: shouldReduceMotion ? 0 : index * 0.1,
+                                }}
+                                animate={{
+                                    scale: isOtherHovered ? 0.96 : 1,
+                                }}
+                                onHoverStart={() => setHoveredIndex(index)}
+                                onHoverEnd={() => setHoveredIndex(null)}
+                                className="h-full"
+                            >
+                                <motion.div
+                                    whileHover={{ y: -6 }}
+                                    transition={{ type: "spring", stiffness: 400, damping: 25 }}
+                                >
+                                    <Card
+                                        className={`
+                                            h-full min-h-[280px] text-center border-2 transition-all duration-300
+                                            ${isHovered ? `${colors.border} shadow-xl ${colors.glow}` : 'border-[#30363D]/30'}
+                                        `}
+                                    >
+                                        <CardHeader className="h-full flex flex-col justify-center p-6">
+                                            {/* Icon with stagger animation */}
+                                            <motion.div
+                                                className={`
+                                                    mx-auto mb-6 inline-flex h-16 w-16 items-center justify-center
+                                                    rounded-lg ${colors.bg} ${colors.text}
+                                                `}
+                                                initial={shouldReduceMotion ? false : { scale: 0, rotate: -180 }}
+                                                whileInView={shouldReduceMotion ? {} : { scale: 1, rotate: 0 }}
+                                                viewport={{ once: true, margin: "-100px" }}
+                                                transition={{
+                                                    type: "spring",
+                                                    stiffness: 200,
+                                                    damping: 20,
+                                                    delay: shouldReduceMotion ? 0 : index * 0.1 + 0.2,
+                                                }}
+                                            >
+                                                <Icon className="h-8 w-8" />
+                                            </motion.div>
+
+                                            <CardTitle className="text-xl mb-3 text-[#24292F]">
+                                                {reason.title}
+                                            </CardTitle>
+
+                                            <CardDescription className="text-base leading-relaxed text-[#57606A]">
+                                                {reason.description}
+                                            </CardDescription>
+
+                                            {/* Subtle technical hint - NO "hover para más" */}
+                                            <AnimatePresence>
+                                                {isHovered && (
+                                                    <motion.div
+                                                        initial={{ opacity: 0, height: 0 }}
+                                                        animate={{ opacity: 1, height: "auto" }}
+                                                        exit={{ opacity: 0, height: 0 }}
+                                                        transition={{ type: "spring", stiffness: 300, damping: 30 }}
+                                                        className="mt-4 pt-4 border-t border-[#30363D]/20"
+                                                    >
+                                                        <p className={`text-sm font-mono ${colors.text}`}>
+                                                            → Implementado
+                                                        </p>
+                                                    </motion.div>
+                                                )}
+                                            </AnimatePresence>
+                                        </CardHeader>
+                                    </Card>
+                                </motion.div>
+                            </motion.div>
                         );
                     })}
                 </div>
