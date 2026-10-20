@@ -6,6 +6,7 @@ import { useLanguage } from "@/components/language-provider";
 import { motion } from "framer-motion";
 import { useEffect, useState, useMemo } from "react";
 import { useReducedMotion, useMediaQuery } from "@/hooks/useReducedMotion";
+import { MagneticButton } from "@/components/ui/magnetic-button";
 import type { Transition } from "framer-motion";
 
 // Generar posiciones de partículas de forma determinística
@@ -189,25 +190,29 @@ export function HeroModernOptimized() {
                     className="space-y-4"
                 >
                     <div className="flex flex-col sm:flex-row gap-4 w-full sm:w-auto">
-                        <motion.div whileHover={{ scale: 1.02, y: -4 }} transition={{ type: "spring", stiffness: 400, damping: 25 }}>
-                            <Button
-                                size="lg"
-                                className="text-lg px-8 h-14 bg-[#3FB950] text-[#0D1117] font-semibold hover:bg-[#3FB950]/90 hover:shadow-2xl hover:shadow-[#3FB950]/30"
-                                asChild
-                            >
-                                <Link href="/#contacto">{t.hero.contactBtn}</Link>
-                            </Button>
-                        </motion.div>
-                        <motion.div whileHover={{ scale: 1.02, y: -4 }} transition={{ type: "spring", stiffness: 400, damping: 25 }}>
-                            <Button
-                                size="lg"
-                                variant="outline"
-                                className="text-lg px-8 h-14 border-2 border-[#58A6FF]/50 text-slate-200 hover:bg-[#58A6FF]/10 hover:border-[#58A6FF]"
-                                asChild
-                            >
-                                <Link href="/#servicios">{t.hero.servicesBtn}</Link>
-                            </Button>
-                        </motion.div>
+                        <MagneticButton strength={0.25} radius={120}>
+                            <motion.div whileHover={{ scale: 1.02, y: -4 }} transition={{ type: "spring", stiffness: 400, damping: 25 }}>
+                                <Button
+                                    size="lg"
+                                    className="text-lg px-8 h-14 bg-[#3FB950] text-[#0D1117] font-semibold hover:bg-[#3FB950]/90 hover:shadow-2xl hover:shadow-[#3FB950]/30"
+                                    asChild
+                                >
+                                    <Link href="/#contacto">{t.hero.contactBtn}</Link>
+                                </Button>
+                            </motion.div>
+                        </MagneticButton>
+                        <MagneticButton strength={0.25} radius={120}>
+                            <motion.div whileHover={{ scale: 1.02, y: -4 }} transition={{ type: "spring", stiffness: 400, damping: 25 }}>
+                                <Button
+                                    size="lg"
+                                    variant="outline"
+                                    className="text-lg px-8 h-14 border-2 border-[#58A6FF]/50 text-slate-200 hover:bg-[#58A6FF]/10 hover:border-[#58A6FF]"
+                                    asChild
+                                >
+                                    <Link href="/#servicios">{t.hero.servicesBtn}</Link>
+                                </Button>
+                            </motion.div>
+                        </MagneticButton>
                     </div>
                     {t.hero.microcopy && (
                         <p className="text-sm text-slate-300 text-center sm:text-left">

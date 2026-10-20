@@ -24,6 +24,7 @@ import { cn } from "@/lib/utils";
 export function Header() {
     const [isOpen, setIsOpen] = React.useState(false);
     const [isServicesOpen, setIsServicesOpen] = React.useState(false);
+    const [scrollProgress, setScrollProgress] = React.useState(0);
     const { t, language } = useLanguage();
     const services = getServices(language);
 
@@ -32,8 +33,20 @@ export function Header() {
         { name: t.header.whyUs, href: "/#elegirnos" },
     ];
 
+    // Scroll progress tracking
+    React.useEffect(() => {
+        const handleScroll = () => {
+            const scrollHeight = document.documentElement.scrollHeight - window.innerHeight;
+            const progress = (window.scrollY / scrollHeight) * 100;
+            setScrollProgress(progress);
+        };
+
+        window.addEventListener('scroll', handleScroll, { passive: true });
+        return () => window.removeEventListener('scroll', handleScroll);
+    }, []);
+
     return (
-        <header className="sticky top-0 z-50 w-full border-b border-slate-100 bg-white/80 backdrop-blur-md">
+        <header className="sticky top-0 z-50 w-full border-b border-slate-100 bg-white/80 backdrop-blur-md relative">
             {/* Skip to main content link - accessibility */}
             <a
                 href="#main-content"
@@ -169,6 +182,15 @@ export function Header() {
                     </Sheet>
                 </div>
             </div>
+
+            {/* Scroll Progress Bar */}
+            <motion.div
+                className="absolute bottom-0 left-0 h-0.5 bg-gradient-to-r from-[#3FB950] to-[#58A6FF]"
+                style={{ width: `${scrollProgress}%` }}
+                initial={{ scaleX: 0 }}
+                animate={{ scaleX: 1 }}
+                transition={{ type: "spring", stiffness: 100, damping: 15 }}
+            />
         </header>
     );
 }
