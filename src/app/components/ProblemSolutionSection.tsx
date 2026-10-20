@@ -1,6 +1,5 @@
 "use client";
 
-import { XCircle, CheckCircle2 } from "lucide-react";
 import { ScrollAnimation } from "@/components/ui/scroll-animation";
 
 /**
@@ -40,16 +39,18 @@ export function ProblemSolutionSection() {
                     {/* Problemas - Izquierda */}
                     <ScrollAnimation animation="slide-in-left" duration={600} delay={200}>
                         <div className="space-y-6">
-                            <h3 className="text-2xl font-bold text-red-600 mb-8">
-                                Los problemas
+                            <h3 className="text-2xl font-bold font-mono text-[#F85149] mb-8">
+                                ERROR: Common Blockers
                             </h3>
                             <ul className="space-y-5">
                                 {problems.map((problem, index) => (
                                     <li key={index} className="flex gap-4 items-start">
-                                        <div className="flex-shrink-0">
-                                            <XCircle className="w-6 h-6 text-red-500" />
+                                        <div className="flex-shrink-0 mt-1">
+                                            <div className="w-5 h-5 rounded-full bg-[#F85149]/20 border-2 border-[#F85149] flex items-center justify-center">
+                                                <span className="text-[#F85149] text-xs font-bold">✕</span>
+                                            </div>
                                         </div>
-                                        <p className="text-slate-700 leading-relaxed">
+                                        <p className="text-[#57606A] leading-relaxed">
                                             {problem}
                                         </p>
                                     </li>
@@ -61,16 +62,18 @@ export function ProblemSolutionSection() {
                     {/* Soluciones - Derecha */}
                     <ScrollAnimation animation="slide-in-right" duration={600} delay={400}>
                         <div className="space-y-6">
-                            <h3 className="text-2xl font-bold text-green-600 mb-8">
-                                CloudBit te ayuda a:
+                            <h3 className="text-2xl font-bold font-mono text-[#3FB950] mb-8">
+                                SUCCESS: CloudBit Solutions
                             </h3>
                             <ul className="space-y-5">
                                 {solutions.map((solution, index) => (
                                     <li key={index} className="flex gap-4 items-start">
-                                        <div className="flex-shrink-0">
-                                            <CheckCircle2 className="w-6 h-6 text-green-500" />
+                                        <div className="flex-shrink-0 mt-1">
+                                            <div className="w-5 h-5 rounded-full bg-[#3FB950]/20 border-2 border-[#3FB950] flex items-center justify-center">
+                                                <span className="text-[#3FB950] text-xs font-bold">✓</span>
+                                            </div>
                                         </div>
-                                        <p className="text-slate-700 leading-relaxed font-medium">
+                                        <p className="text-[#24292F] leading-relaxed font-medium">
                                             {solution}
                                         </p>
                                     </li>
