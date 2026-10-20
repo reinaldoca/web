@@ -1,7 +1,7 @@
 "use client";
 
 import { useState, FormEvent, useRef, useEffect } from "react";
-import { TerminalButton } from "@/components/ui/terminal-button";
+import { GradientButton } from "@/components/ui/gradient-button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { Label } from "@/components/ui/label";
@@ -162,13 +162,12 @@ export function ContactFormInline() {
                     Gracias {formData.name}. Te contactaremos a {formData.email} en menos de 24 horas hábiles.
                 </p>
                 <div className="flex flex-col sm:flex-row gap-4 justify-center">
-                    <TerminalButton
-                        variant="primary"
-                        icon="terminal"
+                    <GradientButton
+                        variant="gradient"
                         href="https://wa.me/5491169044913"
                     >
                         Escribinos por WhatsApp
-                    </TerminalButton>
+                    </GradientButton>
                 </div>
             </div>
         );
@@ -293,9 +292,8 @@ export function ContactFormInline() {
             )}
 
             {/* Submit button with loading state */}
-            <TerminalButton
-                variant="primary"
-                icon={formState === "loading" ? "none" : "terminal"}
+            <GradientButton
+                variant="gradient"
                 disabled={formState === "loading"}
                 className="w-full"
             >
@@ -308,7 +306,7 @@ export function ContactFormInline() {
                 ) : (
                     "Solicitar diagnóstico gratuito"
                 )}
-            </TerminalButton>
+            </GradientButton>
 
             <p className="text-sm text-center text-[#8B949E] font-mono">
                 Al enviar aceptás nuestra política de privacidad. <br />

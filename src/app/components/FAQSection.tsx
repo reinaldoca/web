@@ -4,7 +4,7 @@ import { useEffect, useState } from "react";
 import Script from "next/script";
 import { ScrollAnimation } from "@/components/ui/scroll-animation";
 import { SectionHeader } from "@/components/ui/section-header";
-import { TerminalButton } from "@/components/ui/terminal-button";
+import { GradientButton } from "@/components/ui/gradient-button";
 import {
     Accordion,
     AccordionContent,
@@ -139,16 +139,12 @@ export function FAQSection() {
                     {/* CTA */}
                     <ScrollAnimation animation="scale-up" duration={600} delay={400}>
                         <div className="mt-16 text-center">
-                            <p className="text-lg text-[#57606A] mb-6 font-mono">
-                                $ cloudbit --support --level=enterprise
-                            </p>
-                            <TerminalButton
-                                variant="primary"
-                                icon="terminal"
+                            <GradientButton
+                                variant="gradient"
                                 href="/#contacto"
                             >
                                 Agendar consulta gratuita
-                            </TerminalButton>
+                            </GradientButton>
                         </div>
                     </ScrollAnimation>
                 </div>

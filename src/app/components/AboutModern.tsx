@@ -1,7 +1,7 @@
 "use client";
 
 import Image from "next/image";
-import { TerminalButton } from "@/components/ui/terminal-button";
+import { GradientButton } from "@/components/ui/gradient-button";
 import { useLanguage } from "@/components/language-provider";
 import { AnimatedCounter } from "@/components/ui/animated-counter";
 import { motion } from "framer-motion";
@@ -11,31 +11,31 @@ export function AboutModern() {
     const { t } = useLanguage();
     const shouldReduceMotion = useReducedMotion();
 
-    // System metrics with technical prefixes
+    // System metrics with NexusAI colors
     const metrics = [
         {
             prefix: "UPTIME:",
             value: t.about.stats.experience.value,
             label: t.about.stats.experience.label,
-            color: "text-[#3FB950]", // terminal green
+            color: "text-[#8b5cf6]", // purple
         },
         {
             prefix: "DEPLOYED:",
             value: t.about.stats.projects.value,
             label: t.about.stats.projects.label,
-            color: "text-[#58A6FF]", // terminal blue
+            color: "text-[#3b82f6]", // blue
         },
         {
             prefix: "TEAM:",
             value: t.about.stats.experts.value,
             label: t.about.stats.experts.label,
-            color: "text-[#3FB950]",
+            color: "text-[#8b5cf6]", // purple
         },
         {
             prefix: "SLA:",
             value: t.about.stats.support.value,
             label: t.about.stats.support.label,
-            color: "text-[#D29922]", // terminal amber
+            color: "text-[#34d399]", // green
         },
     ];
 
@@ -44,8 +44,8 @@ export function AboutModern() {
             {/* Technical grid background */}
             <div className="absolute inset-0 bg-[url('/grid.svg')] bg-center opacity-[0.02]" />
 
-            {/* Gradient accent - matrix greens/blues, NO violet */}
-            <div className="absolute inset-0 bg-gradient-to-br from-[#3FB950]/5 via-transparent to-[#58A6FF]/5" />
+            {/* Gradient accent - NexusAI purple/blue */}
+            <div className="absolute inset-0 bg-gradient-to-br from-[#8b5cf6]/5 via-transparent to-[#3b82f6]/5" />
 
             <div className="container relative z-10">
                 <div className="grid gap-12 lg:grid-cols-2 items-center">
@@ -62,10 +62,10 @@ export function AboutModern() {
                             whileInView={shouldReduceMotion ? {} : { opacity: 1, y: 0 }}
                             viewport={{ once: true, margin: "-100px" }}
                             transition={{ type: "spring", stiffness: 100, damping: 15 }}
-                            className="inline-flex items-center gap-2 mb-6 px-4 py-2 rounded-lg bg-[#0D1117] text-[#3FB950] font-mono text-sm"
+                            className="hbadge mb-6"
                         >
-                            <span aria-hidden="true">$</span>
-                            <span>cloudbit --about</span>
+                            <span>✨</span>
+                            <span>Acerca de CloudBit</span>
                         </motion.span>
 
                         <h2 className="font-[family-name:var(--font-display)] text-4xl md:text-5xl font-bold tracking-tight mb-6 text-[#24292F]">
@@ -79,8 +79,8 @@ export function AboutModern() {
                             {t.about.description2}
                         </p>
 
-                        {/* System Metrics - Terminal/htop style */}
-                        <div className="grid grid-cols-2 gap-4 mb-10 p-6 bg-[#0D1117] rounded-lg border border-[#30363D]">
+                        {/* System Metrics - NexusAI style */}
+                        <div className="grid grid-cols-2 gap-4 mb-10 p-6 bg-[var(--sf)] rounded-lg border border-[var(--bd2)]">
                             {metrics.map((metric, index) => (
                                 <motion.div
                                     key={index}
@@ -122,13 +122,12 @@ export function AboutModern() {
                             viewport={{ once: true, margin: "-100px" }}
                             transition={{ type: "spring", stiffness: 100, damping: 15, delay: 0.6 }}
                         >
-                            <TerminalButton
-                                variant="primary"
-                                icon="terminal"
+                            <GradientButton
+                                variant="gradient"
                                 href="/#contacto"
                             >
                                 {t.about.teamBtn}
-                            </TerminalButton>
+                            </GradientButton>
                         </motion.div>
                     </motion.div>
 
@@ -140,9 +139,9 @@ export function AboutModern() {
                         transition={{ type: "spring", stiffness: 100, damping: 15 }}
                         className="relative z-0"
                     >
-                        <div className="relative aspect-square lg:h-[600px] rounded-lg overflow-hidden shadow-2xl border-4 border-[#30363D]">
-                            {/* Technical glow - green/blue, NO violet */}
-                            <div className="absolute -inset-4 bg-gradient-to-r from-[#3FB950]/20 to-[#58A6FF]/20 opacity-40 blur-3xl" />
+                        <div className="relative aspect-square lg:h-[600px] rounded-lg overflow-hidden shadow-2xl border-4 border-[var(--bd2)]">
+                            {/* NexusAI glow - purple/blue */}
+                            <div className="absolute -inset-4 bg-gradient-to-r from-[#8b5cf6]/20 to-[#3b82f6]/20 opacity-40 blur-3xl" />
 
                             <div className="relative w-full h-full">
                                 <Image
@@ -153,13 +152,13 @@ export function AboutModern() {
                                     sizes="(max-width: 768px) 100vw, 50vw"
                                     priority
                                 />
-                                <div className="absolute inset-0 bg-gradient-to-t from-[#0D1117]/80 via-transparent to-transparent flex items-end p-8">
+                                <div className="absolute inset-0 bg-gradient-to-t from-[var(--bg)]/80 via-transparent to-transparent flex items-end p-8">
                                     <motion.p
                                         initial={shouldReduceMotion ? false : { opacity: 0, y: 20 }}
                                         whileInView={shouldReduceMotion ? {} : { opacity: 1, y: 0 }}
                                         viewport={{ once: true, margin: "-100px" }}
                                         transition={{ type: "spring", stiffness: 100, damping: 15, delay: 0.3 }}
-                                        className="text-[#F0F6FC] font-mono text-sm border-l-2 border-[#3FB950] pl-4"
+                                        className="text-white text-sm border-l-2 border-[#8b5cf6] pl-4"
                                     >
                                         {t.about.imageLabel}
                                     </motion.p>

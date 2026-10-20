@@ -2,7 +2,7 @@
 
 import { ScrollAnimation } from "@/components/ui/scroll-animation";
 import { SectionHeader } from "@/components/ui/section-header";
-import { TerminalButton } from "@/components/ui/terminal-button";
+import { GradientButton } from "@/components/ui/gradient-button";
 import { CheckCircle2 } from "lucide-react";
 import { motion } from "framer-motion";
 import { useReducedMotion } from "@/hooks/use-reduced-motion";
@@ -28,10 +28,10 @@ export function CaseStudiesSection() {
                 "Observabilidad con Prometheus + Grafana",
             ],
             metrics: [
-                { label: "COST_REDUCTION", value: "-35%", color: "text-[#3FB950]" },
-                { label: "DEPLOY_TIME", value: "6h → 15min", color: "text-[#58A6FF]" },
-                { label: "SCALE_CAPACITY", value: "3x traffic", color: "text-[#3FB950]" },
-                { label: "MTTR", value: "<5min", color: "text-[#D29922]" },
+                { label: "COST_REDUCTION", value: "-35%", color: "text-[#8b5cf6]" },
+                { label: "DEPLOY_TIME", value: "6h → 15min", color: "text-[#3b82f6]" },
+                { label: "SCALE_CAPACITY", value: "3x traffic", color: "text-[#8b5cf6]" },
+                { label: "MTTR", value: "<5min", color: "text-[#34d399]" },
             ],
             duration: "8 weeks",
             testimonial: "La migración fue impecable. Redujimos costos significativamente y ahora podemos escalar sin límites.",
@@ -50,10 +50,10 @@ export function CaseStudiesSection() {
                 "Capacitación del equipo interno",
             ],
             metrics: [
-                { label: "DEPLOY_FREQ", value: "1/week → 15/day", color: "text-[#3FB950]" },
-                { label: "FAILURE_RATE", value: "-80%", color: "text-[#3FB950]" },
-                { label: "MTTR", value: "2h → 10min", color: "text-[#58A6FF]" },
-                { label: "PRODUCTIVITY", value: "+40%", color: "text-[#D29922]" },
+                { label: "DEPLOY_FREQ", value: "1/week → 15/day", color: "text-[#8b5cf6]" },
+                { label: "FAILURE_RATE", value: "-80%", color: "text-[#8b5cf6]" },
+                { label: "MTTR", value: "2h → 10min", color: "text-[#3b82f6]" },
+                { label: "PRODUCTIVITY", value: "+40%", color: "text-[#34d399]" },
             ],
             duration: "6 weeks",
             testimonial: "Pasamos de deploys estresantes a entregas continuas sin fricción. Ahora el equipo se enfoca en features.",
@@ -72,10 +72,10 @@ export function CaseStudiesSection() {
                 "Certificación PCI-DSS Level 1",
             ],
             metrics: [
-                { label: "VULNERABILITIES", value: "47 → 0", color: "text-[#3FB950]" },
-                { label: "PCI_COMPLIANCE", value: "3 months", color: "text-[#58A6FF]" },
-                { label: "UPTIME", value: "99.97%", color: "text-[#3FB950]" },
-                { label: "COST_SAVINGS", value: "-28%", color: "text-[#D29922]" },
+                { label: "VULNERABILITIES", value: "47 → 0", color: "text-[#8b5cf6]" },
+                { label: "PCI_COMPLIANCE", value: "3 months", color: "text-[#3b82f6]" },
+                { label: "UPTIME", value: "99.97%", color: "text-[#8b5cf6]" },
+                { label: "COST_SAVINGS", value: "-28%", color: "text-[#34d399]" },
             ],
             duration: "12 weeks",
             testimonial: "El enfoque en seguridad desde el diseño nos permitió certificar PCI-DSS en tiempo récord.",
@@ -116,9 +116,9 @@ export function CaseStudiesSection() {
                                             {deployment.timestamp}
                                         </span>
                                         <span className={`font-mono text-xs px-2 py-1 rounded ${
-                                            deployment.status === "DEPLOYED" ? "bg-[#3FB950]/20 text-[#3FB950]" :
-                                            deployment.status === "SUCCESS" ? "bg-[#3FB950]/20 text-[#3FB950]" :
-                                            "bg-[#58A6FF]/20 text-[#58A6FF]"
+                                            deployment.status === "DEPLOYED" ? "bg-[#8b5cf6]/20 text-[#8b5cf6]" :
+                                            deployment.status === "SUCCESS" ? "bg-[#8b5cf6]/20 text-[#8b5cf6]" :
+                                            "bg-[#3b82f6]/20 text-[#3b82f6]"
                                         }`}>
                                             {deployment.status}
                                         </span>
@@ -155,7 +155,7 @@ export function CaseStudiesSection() {
 
                                 {/* Solutions */}
                                 <div className="mb-4">
-                                    <h4 className="font-mono text-xs text-[#58A6FF] mb-2">
+                                    <h4 className="font-mono text-xs text-[#3b82f6] mb-2">
                                         SOLUTION:
                                     </h4>
                                     <ul className="space-y-1.5">
@@ -170,7 +170,7 @@ export function CaseStudiesSection() {
 
                                 {/* Metrics - terminal dashboard style */}
                                 <div className="mb-4 p-4 bg-[#161B22] rounded border border-[#30363D]">
-                                    <h4 className="font-mono text-xs text-[#3FB950] mb-3">
+                                    <h4 className="font-mono text-xs text-[#8b5cf6] mb-3">
                                         METRICS:
                                     </h4>
                                     <div className="grid grid-cols-2 gap-3">
@@ -196,7 +196,7 @@ export function CaseStudiesSection() {
                                 <div className="mt-auto">
                                     <div className="p-3 bg-[#161B22] rounded border-l-2 border-[#3FB950]">
                                         <div className="flex items-center gap-2 mb-2">
-                                            <CheckCircle2 className="w-3 h-3 text-[#3FB950]" />
+                                            <CheckCircle2 className="w-3 h-3 text-[#8b5cf6]" />
                                             <span className="font-mono text-xs text-[#8B949E]">
                                                 CLIENT_FEEDBACK
                                             </span>
@@ -214,16 +214,12 @@ export function CaseStudiesSection() {
                 {/* CTA */}
                 <ScrollAnimation animation="scale-up" duration={600} delay={800}>
                     <div className="mt-16 text-center">
-                        <p className="text-lg text-[#57606A] mb-6 font-mono">
-                            $ cloudbit --deploy --client=tu-empresa
-                        </p>
-                        <TerminalButton
-                            variant="primary"
-                            icon="terminal"
+                        <GradientButton
+                            variant="gradient"
                             href="/#contacto"
                         >
                             Agendar diagnóstico gratuito
-                        </TerminalButton>
+                        </GradientButton>
                     </div>
                 </ScrollAnimation>
             </div>
