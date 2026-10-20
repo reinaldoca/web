@@ -41,9 +41,11 @@ export function CertificationsSection() {
             <div className="container">
                 <ScrollAnimation animation="fade-up" duration={600}>
                     <div className="text-center mb-12">
-                        <span className="text-sm font-semibold text-[#0052CC] uppercase tracking-wider px-4 py-2 rounded-full bg-[#0052CC]/10 backdrop-blur-sm inline-block mb-4">
-                            Certificaciones
-                        </span>
+                        <div className="inline-flex items-center gap-2 px-4 py-2 rounded-lg bg-[#0D1117] backdrop-blur-sm mb-4">
+                            <span className="text-sm font-mono font-semibold text-[#58A6FF]">
+                                $ cloudbit --certifications
+                            </span>
+                        </div>
                         <h2 className="text-3xl md:text-4xl font-bold tracking-tight mb-4 text-slate-900">
                             Equipo certificado y partners oficiales
                         </h2>
@@ -61,7 +63,7 @@ export function CertificationsSection() {
                                 key={index}
                                 whileHover={{ scale: 1.02, y: -4 }}
                                 transition={{ type: "spring", stiffness: 400, damping: 25 }}
-                                className="relative group p-6 rounded-2xl bg-gradient-to-br from-slate-50 to-white border-2 border-slate-200 hover:border-[#0052CC]/50 hover:shadow-xl"
+                                className="relative group p-6 rounded-2xl bg-gradient-to-br from-slate-50 to-white border-2 border-slate-200 hover:border-[#3FB950]/50 hover:shadow-xl"
                             >
                                 {/* Gradient glow */}
                                 <div className={`absolute inset-0 bg-gradient-to-br ${cert.color} opacity-0 group-hover:opacity-5 rounded-2xl transition-opacity duration-300`} />
@@ -89,7 +91,7 @@ export function CertificationsSection() {
                             {technologies.map((tech, index) => (
                                 <div
                                     key={index}
-                                    className="flex flex-col items-center gap-2 p-4 rounded-xl bg-slate-50 border border-slate-200 hover:border-[#0052CC]/50 hover:bg-white transition-all duration-300 hover:-translate-y-1"
+                                    className="flex flex-col items-center gap-2 p-4 rounded-xl bg-slate-50 border border-slate-200 hover:border-[#3FB950]/50 hover:bg-white transition-all duration-300 hover:-translate-y-1"
                                 >
                                     <span className="text-4xl" role="img" aria-label={tech.name}>
                                         {tech.icon}
@@ -106,10 +108,10 @@ export function CertificationsSection() {
                 {/* Estadística destacada */}
                 <ScrollAnimation animation="scale-up" duration={600} delay={600}>
                     <div className="mt-12 text-center">
-                        <div className="inline-flex items-center gap-3 px-6 py-4 rounded-2xl bg-gradient-to-r from-[#0052CC]/10 to-cyan-500/10 border border-[#0052CC]/20">
-                            <Award className="w-6 h-6 text-[#0052CC]" />
+                        <div className="inline-flex items-center gap-3 px-6 py-4 rounded-2xl bg-gradient-to-r from-[#3FB950]/10 to-[#58A6FF]/10 border border-[#3FB950]/30">
+                            <Award className="w-6 h-6 text-[#3FB950]" />
                             <p className="text-lg font-semibold text-slate-900">
-                                <span className="text-2xl text-[#0052CC]">15+</span> ingenieros con certificaciones AWS, Azure, CKA/CKAD
+                                <span className="text-2xl font-mono text-[#3FB950]">15+</span> ingenieros con certificaciones AWS, Azure, CKA/CKAD
                             </p>
                         </div>
                     </div>

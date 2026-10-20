@@ -144,7 +144,7 @@ export function GenkitDemoModern() {
                     transition={{ type: "spring", stiffness: 100, damping: 15 }}
                     className="text-center mb-12"
                 >
-                    <span className="text-sm font-semibold text-[#0052CC] uppercase tracking-wider px-4 py-2 rounded-full bg-[#0052CC]/10 backdrop-blur-sm inline-block mb-6">
+                    <span className="text-sm font-semibold text-[#3FB950] uppercase tracking-wider px-4 py-2 rounded-full bg-[#0052CC]/10 backdrop-blur-sm inline-block mb-6">
                         Asistente Inteligente
                     </span>
                     <h2 className="text-4xl md:text-5xl font-bold tracking-tight mb-4 bg-gradient-to-br from-slate-900 via-slate-800 to-slate-600 bg-clip-text text-transparent">
@@ -162,11 +162,11 @@ export function GenkitDemoModern() {
                 >
                     <Card className="w-full max-w-2xl mx-auto h-[600px] flex flex-col shadow-2xl border-slate-200/60 bg-white/80 backdrop-blur-sm overflow-hidden">
                         {/* Header with Status */}
-                        <CardHeader className="border-b bg-gradient-to-r from-[#0052CC]/5 to-blue-500/5 backdrop-blur-sm">
+                        <CardHeader className="border-b bg-gradient-to-r from-[#3FB950]/5 to-[#58A6FF]/5 backdrop-blur-sm">
                             <CardTitle className="flex items-center justify-between">
                                 <div className="flex items-center gap-3">
                                     <div className="relative">
-                                        <div className="h-12 w-12 rounded-full bg-gradient-to-br from-[#0052CC] to-blue-600 flex items-center justify-center text-white shadow-lg">
+                                        <div className="h-12 w-12 rounded-full bg-gradient-to-br from-[#3FB950] to-[#58A6FF] flex items-center justify-center text-white shadow-lg">
                                             <Bot className="h-6 w-6" />
                                         </div>
                                         {/* Pulse indicator */}
@@ -209,7 +209,7 @@ export function GenkitDemoModern() {
                                             >
                                                 <div
                                                     className={`h-9 w-9 rounded-full flex items-center justify-center shrink-0 shadow-md ${msg.role === "user"
-                                                        ? "bg-gradient-to-br from-[#0052CC] to-blue-600 text-white"
+                                                        ? "bg-gradient-to-br from-[#3FB950] to-[#58A6FF] text-white"
                                                         : "bg-gradient-to-br from-slate-100 to-slate-200 text-slate-700"
                                                         }`}
                                                 >
@@ -221,7 +221,7 @@ export function GenkitDemoModern() {
                                                 </div>
                                                 <motion.div
                                                     className={`rounded-2xl px-4 py-3 max-w-[80%] text-sm leading-relaxed shadow-sm ${msg.role === "user"
-                                                        ? "bg-gradient-to-br from-[#0052CC] to-blue-600 text-white"
+                                                        ? "bg-gradient-to-br from-[#3FB950] to-[#58A6FF] text-white"
                                                         : "bg-gradient-to-br from-slate-50 to-slate-100 text-slate-800 border border-slate-200/50"
                                                         }`}
                                                     whileHover={{ scale: 1.02 }}
@@ -277,7 +277,7 @@ export function GenkitDemoModern() {
                                         whileHover={{ scale: 1.05 }}
                                         whileTap={{ scale: 0.95 }}
                                         onClick={() => handlePromptClick(prompt)}
-                                        className="px-3 py-1.5 text-xs font-medium rounded-full bg-white border border-slate-200 text-slate-700 hover:bg-[#0052CC]/10 hover:border-[#0052CC]/30 hover:text-[#0052CC] transition-all shadow-sm"
+                                        className="px-3 py-1.5 text-xs font-medium rounded-full bg-white border border-slate-200 text-slate-700 hover:bg-[#0052CC]/10 hover:border-[#0052CC]/30 hover:text-[#3FB950] transition-all shadow-sm"
                                     >
                                         {prompt}
                                     </motion.button>
@@ -305,7 +305,7 @@ export function GenkitDemoModern() {
                                     type="submit"
                                     size="icon"
                                     disabled={isLoading || !input.trim()}
-                                    className="bg-gradient-to-br from-[#0052CC] to-blue-600 hover:from-[#0052CC]/90 hover:to-blue-700 transition-all hover:scale-105 shadow-lg"
+                                    className="bg-gradient-to-br from-[#3FB950] to-[#58A6FF] hover:from-[#3FB950]/90 hover:to-[#58A6FF]/90 transition-all hover:scale-105 shadow-lg"
                                 >
                                     <Send className="h-4 w-4" />
                                 </Button>
