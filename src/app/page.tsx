@@ -1,3 +1,4 @@
+import dynamic from "next/dynamic";
 import { Header } from "./components/Header";
 import { HeroModernOptimized } from "./components/HeroModern.optimized";
 import { TrustBar } from "./components/TrustBar";
@@ -5,14 +6,43 @@ import { ProblemSolutionSection } from "./components/ProblemSolutionSection";
 import { ServicesModern } from "./components/ServicesModern";
 import { CertificationsSection } from "./components/CertificationsSection";
 import { AboutModern } from "./components/AboutModern";
-import { CaseStudiesSection } from "./components/CaseStudiesSection";
 import { WhyChooseUs } from "./components/WhyChooseUs";
 import { FAQSection } from "./components/FAQSection";
-import { GenkitDemoModern } from "./components/GenkitDemoModern";
 import { CTA } from "./components/CTA";
 import { Footer } from "./components/Footer";
 import { StructuredData } from "./components/StructuredData";
 import type { Metadata } from "next";
+
+// Dynamic imports para componentes below-fold pesados
+const CaseStudiesSection = dynamic(
+  () => import("./components/CaseStudiesSection").then(m => ({ default: m.CaseStudiesSection })),
+  {
+    loading: () => (
+      <div className="py-20 md:py-32 bg-white">
+        <div className="container">
+          <div className="h-64 flex items-center justify-center">
+            <div className="animate-pulse text-[#3FB950] font-mono">Loading case studies...</div>
+          </div>
+        </div>
+      </div>
+    ),
+  }
+);
+
+const GenkitDemoModern = dynamic(
+  () => import("./components/GenkitDemoModern").then(m => ({ default: m.GenkitDemoModern })),
+  {
+    loading: () => (
+      <section className="py-20 md:py-32 bg-gradient-to-br from-slate-50 via-blue-50/20 to-slate-50">
+        <div className="container">
+          <div className="h-96 flex items-center justify-center">
+            <div className="animate-pulse text-[#58A6FF] font-mono">Initializing AI assistant...</div>
+          </div>
+        </div>
+      </section>
+    ),
+  }
+);
 
 export const metadata: Metadata = {
   title: "CloudBit | DevOps, Cloud AWS/Azure y Kubernetes en Argentina",
