@@ -2,6 +2,7 @@
 
 import { ScrollAnimation } from "@/components/ui/scroll-animation";
 import { Shield, Award, CheckCircle2 } from "lucide-react";
+import { motion } from "framer-motion";
 
 /**
  * Sección de certificaciones y partners oficiales
@@ -56,22 +57,24 @@ export function CertificationsSection() {
                 <ScrollAnimation animation="fade-up" duration={600} delay={200}>
                     <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-12 max-w-4xl mx-auto">
                         {certifications.map((cert, index) => (
-                            <div
+                            <motion.div
                                 key={index}
-                                className="relative group p-6 rounded-2xl bg-gradient-to-br from-slate-50 to-white border-2 border-slate-200 hover:border-[#0052CC]/50 transition-all duration-300 hover:-translate-y-1 hover:shadow-xl"
+                                whileHover={{ scale: 1.02, y: -4 }}
+                                transition={{ type: "spring", stiffness: 400, damping: 25 }}
+                                className="relative group p-6 rounded-2xl bg-gradient-to-br from-slate-50 to-white border-2 border-slate-200 hover:border-[#0052CC]/50 hover:shadow-xl"
                             >
                                 {/* Gradient glow */}
                                 <div className={`absolute inset-0 bg-gradient-to-br ${cert.color} opacity-0 group-hover:opacity-5 rounded-2xl transition-opacity duration-300`} />
 
                                 <div className="relative z-10 text-center">
-                                    <div className={`inline-flex items-center justify-center w-16 h-16 rounded-xl bg-gradient-to-br ${cert.color} text-white mb-4 group-hover:scale-110 transition-transform duration-300`}>
+                                    <div className={`inline-flex items-center justify-center w-16 h-16 rounded-xl bg-gradient-to-br ${cert.color} text-white mb-4`}>
                                         <cert.icon className="w-8 h-8" />
                                     </div>
                                     <h3 className="font-bold text-slate-900 text-sm">
                                         {cert.name}
                                     </h3>
                                 </div>
-                            </div>
+                            </motion.div>
                         ))}
                     </div>
                 </ScrollAnimation>

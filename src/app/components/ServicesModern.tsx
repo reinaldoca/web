@@ -109,7 +109,7 @@ function PipelineServiceCard({ service, index }: PipelineServiceCardProps) {
                             className={`
                                 inline-flex h-14 w-14 items-center justify-center
                                 rounded-lg bg-gradient-to-br ${statusBg[status]}
-                                transition-transform duration-300 group-hover:scale-110
+                                transition-transform duration-300 group-hover:scale-105
                             `}
                         >
                             <service.icon className="h-7 w-7 text-[#24292F]" />
