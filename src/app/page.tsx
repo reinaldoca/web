@@ -6,6 +6,7 @@ import { ProblemSolutionSection } from "./components/ProblemSolutionSection";
 import { ServicesModern } from "./components/ServicesModern";
 import { CertificationsSection } from "./components/CertificationsSection";
 import { AboutModern } from "./components/AboutModern";
+import { ProcessSection } from "./components/ProcessSection";
 import { WhyChooseUs } from "./components/WhyChooseUs";
 import { FAQSection } from "./components/FAQSection";
 import { CTA } from "./components/CTA";
@@ -111,6 +112,7 @@ export default function Home() {
         <ServicesModern />
         <CertificationsSection />
         <AboutModern />
+        <ProcessSection />
         <CaseStudiesSection />
         <WhyChooseUs />
         <FAQSection />
