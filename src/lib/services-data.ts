@@ -1,19 +1,19 @@
 import {
-  LayoutDashboard,
-  Settings,
-  Code,
+  ChartLine,
+  Ticket,
+  Infinity as InfinityIcon,
   Bot,
   Users,
   Lightbulb,
   Cloud,
   ShieldCheck,
-  PieChart,
-  ArrowLeftRight,
+  CircleDollarSign,
+  RefreshCcw,
   Layers,
-  Activity,
+  HeartPulse,
   Network,
   Server,
-  Terminal,
+  SquareTerminal,
   LucideIcon,
 } from "lucide-react";
 import { Language } from "@/lib/i18n/dictionary";
@@ -37,7 +37,7 @@ const servicesEs: ServiceData[] = [
       "Implementamos plataformas de código abierto para la visualización y análisis de datos en tiempo real.",
     fullDescription:
       "Controle cada aspecto crítico de su infraestructura con visibilidad total y en tiempo real. Te brindamos todo lo necesario para recopilar, categorizar y analizar los datos de las aplicaciones y la infraestructura de tu organización. Tené una visión clara de los aspectos críticos y tomá decisiones informadas que te permitan corregir posibles problemas antes de que afecten a los usuarios finales.",
-    icon: LayoutDashboard,
+    icon: ChartLine,
     features: [
       "Monitoreo unificado de infraestructura",
       "Análisis de tráfico y rendimiento de red",
@@ -62,7 +62,7 @@ const servicesEs: ServiceData[] = [
       "Gestionamos servicios y activos de manera autónoma para optimizar la eficiencia operativa.",
     fullDescription:
       "Transformamos la gestión de servicios de TI alineándola con los objetivos del negocio. Implementamos soluciones que automatizan flujos de trabajo, gestionan incidentes, problemas y cambios de manera eficiente, asegurando la calidad y continuidad de los servicios tecnológicos.",
-    icon: Settings,
+    icon: Ticket,
     features: [
       "Gestión de Incidentes y Requerimientos",
       "Gestión de Activos e Inventario (ITAM)",
@@ -87,7 +87,7 @@ const servicesEs: ServiceData[] = [
       "Automatizamos CI/CD, IaC y observabilidad full-stack",
     fullDescription:
       "Adoptamos la cultura y prácticas DevOps para unir el desarrollo y las operaciones. Automatizamos la entrega de software para que sea más rápida y confiable, permitiendo a tu empresa innovar a la velocidad que demanda el mercado sin sacrificar la estabilidad.",
-    icon: Code,
+    icon: InfinityIcon,
     features: [
       "Implementación de Pipelines CI/CD",
       "Infraestructura como Código (IaC)",
@@ -237,7 +237,7 @@ const servicesEs: ServiceData[] = [
       "Maximizamos el valor de tu inversión en la nube mediante control y optimización financiera.",
     fullDescription:
       "La nube ofrece agilidad, pero los costos pueden dispararse sin control. Implementamos la cultura FinOps para dar visibilidad, asignar responsabilidades y optimizar el gasto en la nube. Analizamos tus facturas, detectamos desperdicios y aplicamos estrategias de ahorro como Reserved Instances y Savings Plans.",
-    icon: PieChart,
+    icon: CircleDollarSign,
     features: [
       "Auditoría de costos cloud",
       "Asignación de etiquetas (Tagging)",
@@ -262,7 +262,7 @@ const servicesEs: ServiceData[] = [
       "Llevamos tus aplicaciones legacy a la nube con estrategias seguras y eficientes.",
     fullDescription:
       "No solo movemos tus servidores, modernizamos tu negocio. Evaluamos tus aplicaciones existentes y definimos la mejor estrategia de migración (Rehost, Replatform, Refactor). Transformamos monolitos en microservicios y aseguramos una transición sin interrupciones operativas.",
-    icon: ArrowLeftRight,
+    icon: RefreshCcw,
     features: [
       "Evaluación de madurez cloud (Assessment)",
       "Estrategias de migración (6 R's)",
@@ -312,7 +312,7 @@ const servicesEs: ServiceData[] = [
       "Garantizamos la confiabilidad y el rendimiento de tus sistemas críticos.",
     fullDescription:
       "Aplicamos ingeniería a las operaciones para crear sistemas ultra-confiables y escalables. Definimos SLIs, SLOs y SLAs, gestionamos el 'Error Budget' y automatizamos la respuesta a incidentes. Transformamos la forma en que tu organización gestiona la producción.",
-    icon: Activity,
+    icon: HeartPulse,
     features: [
       "Definición de SLI/SLO/SLA",
       "Gestión de incidentes y Post-mortems",
@@ -387,7 +387,7 @@ const servicesEs: ServiceData[] = [
       "Soporte y gestión integral para servidores Linux (Debian, Ubuntu, Fedora).",
     fullDescription:
       "Garantizamos la estabilidad, seguridad y rendimiento de tus servidores Linux. Nuestro equipo de expertos administra distribuciones como Debian, Ubuntu y Fedora, encargándose desde la configuración inicial y el endurecimiento (hardening) hasta el parcheo y la optimización continua. Mantén tus sistemas críticos operando sin interrupciones.",
-    icon: Terminal,
+    icon: SquareTerminal,
     features: [
       "Instalación y configuración de servidores Linux",
       "Hardening y seguridad del sistema operativo",
@@ -415,7 +415,7 @@ const servicesEn: ServiceData[] = [
       "We implement open-source platforms for real-time data visualization and analysis.",
     fullDescription:
       "Control every critical aspect of your infrastructure with total visibility in real-time. We provide everything you need to collect, categorize, and analyze data from your organization's applications and infrastructure. Get a clear view of critical aspects and make informed decisions that allow you to fix potential issues before they affect end-users.",
-    icon: LayoutDashboard,
+    icon: ChartLine,
     features: [
       "Unified infrastructure monitoring",
       "Network traffic and performance analysis",
@@ -440,7 +440,7 @@ const servicesEn: ServiceData[] = [
       "We manage services and assets autonomously to optimize operational efficiency.",
     fullDescription:
       "We transform IT service management by aligning it with business goals. We implement solutions that automate workflows, manage incidents, problems, and changes efficiently, ensuring the quality and continuity of technological services.",
-    icon: Settings,
+    icon: Ticket,
     features: [
       "Incident and Request Management",
       "Asset and Inventory Management (ITAM)",
@@ -465,7 +465,7 @@ const servicesEn: ServiceData[] = [
       "We accelerate the software development lifecycle through CI/CD practices.",
     fullDescription:
       "We adopt DevOps culture and practices to unite development and operations. We automate software delivery to be faster and more reliable, allowing your company to innovate at the speed the market demands without sacrificing stability.",
-    icon: Code,
+    icon: InfinityIcon,
     features: [
       "CI/CD Pipeline Implementation",
       "Infrastructure as Code (IaC)",
@@ -615,7 +615,7 @@ const servicesEn: ServiceData[] = [
       "We maximize the value of your cloud investment through financial control and optimization.",
     fullDescription:
       "The cloud offers agility, but costs can spiral out of control. We implement FinOps culture to provide visibility, assign accountability, and optimize cloud spending. We analyze your bills, detect waste, and apply savings strategies like Reserved Instances and Savings Plans.",
-    icon: PieChart,
+    icon: CircleDollarSign,
     features: [
       "Cloud cost audit",
       "Tagging allocation",
@@ -640,7 +640,7 @@ const servicesEn: ServiceData[] = [
       "We take your legacy applications to the cloud with secure and efficient strategies.",
     fullDescription:
       "We don't just move your servers, we modernize your business. We evaluate your existing applications and define the best migration strategy (Rehost, Replatform, Refactor). We transform monoliths into microservices and ensure a transition without operational interruptions.",
-    icon: ArrowLeftRight,
+    icon: RefreshCcw,
     features: [
       "Cloud maturity assessment",
       "Migration strategies (6 R's)",
@@ -690,7 +690,7 @@ const servicesEn: ServiceData[] = [
       "We guarantee the reliability and performance of your critical systems.",
     fullDescription:
       "We apply engineering to operations to create ultra-reliable and scalable systems. We define SLIs, SLOs, and SLAs, manage the 'Error Budget', and automate incident response. We transform the way your organization manages production.",
-    icon: Activity,
+    icon: HeartPulse,
     features: [
       "SLI/SLO/SLA Definition",
       "Incident Management and Post-mortems",
@@ -765,7 +765,7 @@ const servicesEn: ServiceData[] = [
       "Comprehensive support and management for Linux servers (Debian, Ubuntu, Fedora).",
     fullDescription:
       "We guarantee the stability, security, and performance of your Linux servers. Our team of experts administers distributions like Debian, Ubuntu, and Fedora, handling everything from initial configuration and hardening to patching and continuous optimization. Keep your critical systems operating without interruptions.",
-    icon: Terminal,
+    icon: SquareTerminal,
     features: [
       "Linux Server Installation and Configuration",
       "OS Hardening and Security",

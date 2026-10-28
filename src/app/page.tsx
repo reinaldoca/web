@@ -19,11 +19,10 @@ const CaseStudiesSection = dynamic(
   () => import("./components/CaseStudiesSection").then(m => ({ default: m.CaseStudiesSection })),
   {
     loading: () => (
-      <div className="py-20 md:py-32 bg-white">
+      <div className="py-20 md:py-32">
         <div className="container">
-          <div className="h-64 flex items-center justify-center">
-            <div className="animate-pulse text-[#3FB950] font-mono">Loading case studies...</div>
-          </div>
+          {/* Esqueleto sin texto: el idioma se conoce recién en el cliente */}
+          <div className="h-64 rounded-3xl border border-nb-line bg-nb-surface" aria-hidden="true" />
         </div>
       </div>
     ),
@@ -34,11 +33,9 @@ const GenkitDemoModern = dynamic(
   () => import("./components/GenkitDemoModern").then(m => ({ default: m.GenkitDemoModern })),
   {
     loading: () => (
-      <section className="py-20 md:py-32 bg-gradient-to-br from-slate-50 via-blue-50/20 to-slate-50">
+      <section className="py-20 md:py-32">
         <div className="container">
-          <div className="h-96 flex items-center justify-center">
-            <div className="animate-pulse text-[#58A6FF] font-mono">Initializing AI assistant...</div>
-          </div>
+          <div className="mx-auto h-96 max-w-2xl rounded-3xl border border-nb-line bg-nb-surface" aria-hidden="true" />
         </div>
       </section>
     ),
@@ -46,13 +43,15 @@ const GenkitDemoModern = dynamic(
 );
 
 export const metadata: Metadata = {
-  title: "CloudBit | DevOps, Cloud AWS/Azure y Kubernetes en Argentina",
-  description: "Migración cloud, CI/CD y DevSecOps para startups y SaaS. Implementamos Kubernetes, Terraform y observabilidad. 8+ años de experiencia, 120+ proyectos. Consulta técnica gratuita.",
+  title: "CloudBit | DevOps, Cloud AWS/Azure y Kubernetes para empresas de todo el mundo",
+  description: "Migración cloud, CI/CD y DevSecOps para startups y SaaS de cualquier país, en español o inglés. Implementamos Kubernetes, Terraform y observabilidad. 8+ años de experiencia, 120+ proyectos. Consulta técnica gratuita.",
   keywords: [
-    "DevOps Argentina",
+    "consultora DevOps",
+    "DevOps remoto",
+    "cloud consulting",
     "migración AWS",
     "migración Azure",
-    "Kubernetes Argentina",
+    "Kubernetes gestionado",
     "CI/CD",
     "DevSecOps",
     "cloud arquitectura",
@@ -65,24 +64,17 @@ export const metadata: Metadata = {
   openGraph: {
     type: "website",
     locale: "es_AR",
+    alternateLocale: ["en_US"],
     url: "https://cloudbit.com.ar",
     siteName: "CloudBit",
     title: "CloudBit - DevOps y Cloud para empresas en crecimiento",
     description: "Automatizamos CI/CD, migramos a cloud y operamos Kubernetes. 8+ años, 120+ proyectos, 15+ ingenieros certificados.",
-    images: [
-      {
-        url: "/og-image.jpg",
-        width: 1200,
-        height: 630,
-        alt: "CloudBit - DevOps, Cloud AWS/Azure y Kubernetes",
-      },
-    ],
+    // La imagen la genera src/app/opengraph-image.tsx
   },
   twitter: {
     card: "summary_large_image",
     title: "CloudBit | DevOps, Cloud AWS/Azure y Kubernetes",
     description: "Migración cloud, CI/CD y DevSecOps para startups y SaaS. 8+ años de experiencia.",
-    images: ["/og-image.jpg"],
   },
   robots: {
     index: true,
@@ -95,16 +87,17 @@ export const metadata: Metadata = {
       "max-snippet": -1,
     },
   },
-  verification: {
-    google: "google-site-verification-code", // TODO: Agregar código real
-  },
+  // Se publica solo si existe el código real de Google Search Console
+  ...(process.env.GOOGLE_SITE_VERIFICATION && {
+    verification: { google: process.env.GOOGLE_SITE_VERIFICATION },
+  }),
 };
 
 export default function Home() {
   return (
     <>
       <StructuredData />
-      <main id="main-content" className="min-h-screen flex flex-col">
+      <main id="main-content" className="min-h-screen flex flex-col overflow-x-clip">
         <Header />
         <HeroModernOptimized />
         <TrustBar />

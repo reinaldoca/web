@@ -1,86 +1,59 @@
 "use client";
 
-import { ScrollAnimation } from "@/components/ui/scroll-animation";
+import { Check, X } from "lucide-react";
+import { useLanguage } from "@/components/language-provider";
+import { SectionHeader } from "@/components/ui/section-header";
+import { FadeIn } from "@/components/ui/fade-in";
 
 /**
- * Sección que contrasta problemas comunes vs soluciones de CloudBit
- * Layout: 2 columnas en desktop, stacked en mobile
+ * Contraste problemas vs. soluciones, en dos paneles de vidrio.
  */
 export function ProblemSolutionSection() {
-    const problems = [
-        "Deploys manuales que toman horas y generan errores",
-        "Aplicaciones legacy lentas y difíciles de escalar",
-        "Costos cloud que crecen sin control",
-        "Falta de visibilidad cuando algo falla",
-        "Equipo interno sobrecargado sin expertise cloud",
-    ];
-
-    const solutions = [
-        "Automatizar CI/CD y reducir deploys a minutos",
-        "Migrar a arquitecturas cloud-native escalables",
-        "Optimizar infraestructura y reducir costos hasta 40%",
-        "Implementar observabilidad y alertas inteligentes",
-        "Aumentar capacidad sin contratar headcount",
-    ];
+    const { u } = useLanguage();
+    const copy = u.problemSolution;
 
     return (
-        <section className="py-20 md:py-32 bg-white">
+        <section className="py-20 md:py-32">
             <div className="container">
-                <ScrollAnimation animation="fade-up" duration={600}>
-                    <h2 className="text-4xl md:text-5xl font-bold text-center mb-4 text-slate-900">
-                        ¿Te suena familiar?
-                    </h2>
-                    <p className="text-center text-lg text-slate-600 max-w-2xl mx-auto mb-16">
-                        Muchas empresas enfrentan estos desafíos. CloudBit te ayuda a resolverlos.
-                    </p>
-                </ScrollAnimation>
+                <FadeIn>
+                    <SectionHeader label={copy.label} title={copy.title} description={copy.description} />
+                </FadeIn>
 
-                <div className="grid md:grid-cols-2 gap-12 max-w-6xl mx-auto">
-                    {/* Problemas - Izquierda */}
-                    <ScrollAnimation animation="slide-in-left" duration={600} delay={200}>
-                        <div className="space-y-6">
-                            <h3 className="text-2xl font-bold font-mono text-[#ef4444] mb-8">
-                                ERROR: Common Blockers
-                            </h3>
-                            <ul className="space-y-5">
-                                {problems.map((problem, index) => (
-                                    <li key={index} className="flex gap-4 items-start">
-                                        <div className="flex-shrink-0 mt-1">
-                                            <div className="w-5 h-5 rounded-full bg-[#ef4444]/20 border-2 border-[#ef4444] flex items-center justify-center">
-                                                <span className="text-[#ef4444] text-xs font-bold">✕</span>
-                                            </div>
-                                        </div>
-                                        <p className="text-[#57606A] leading-relaxed">
-                                            {problem}
-                                        </p>
-                                    </li>
-                                ))}
-                            </ul>
-                        </div>
-                    </ScrollAnimation>
+                <div className="mx-auto grid max-w-6xl gap-5 md:grid-cols-2">
+                    <FadeIn delay={0.05} className="nb-panel p-8 md:p-10">
+                        <h3 className="mb-8 text-sm font-semibold uppercase tracking-[0.14em] text-white/50">
+                            {copy.today}
+                        </h3>
+                        <ul className="space-y-5">
+                            {copy.problems.map((problem) => (
+                                <li key={problem} className="flex items-start gap-4">
+                                    <span className="mt-0.5 inline-flex h-6 w-6 shrink-0 items-center justify-center rounded-full border border-red-400/30 bg-red-400/10 text-red-300">
+                                        <X className="h-3.5 w-3.5" aria-hidden="true" />
+                                    </span>
+                                    <p className="leading-relaxed text-nb-text">{problem}</p>
+                                </li>
+                            ))}
+                        </ul>
+                    </FadeIn>
 
-                    {/* Soluciones - Derecha */}
-                    <ScrollAnimation animation="slide-in-right" duration={600} delay={400}>
-                        <div className="space-y-6">
-                            <h3 className="text-2xl font-bold font-mono text-[#34d399] mb-8">
-                                SUCCESS: CloudBit Solutions
-                            </h3>
-                            <ul className="space-y-5">
-                                {solutions.map((solution, index) => (
-                                    <li key={index} className="flex gap-4 items-start">
-                                        <div className="flex-shrink-0 mt-1">
-                                            <div className="w-5 h-5 rounded-full bg-[#34d399]/20 border-2 border-[#34d399] flex items-center justify-center">
-                                                <span className="text-[#34d399] text-xs font-bold">✓</span>
-                                            </div>
-                                        </div>
-                                        <p className="text-[#24292F] leading-relaxed font-medium">
-                                            {solution}
-                                        </p>
-                                    </li>
-                                ))}
-                            </ul>
-                        </div>
-                    </ScrollAnimation>
+                    <FadeIn
+                        delay={0.15}
+                        className="relative overflow-hidden rounded-2xl border border-nb-sky/30 bg-gradient-to-b from-nb-blue/25 to-nb-blue/5 p-8 md:p-10"
+                    >
+                        <h3 className="mb-8 text-sm font-semibold uppercase tracking-[0.14em] text-nb-sky">
+                            {copy.withUs}
+                        </h3>
+                        <ul className="space-y-5">
+                            {copy.solutions.map((solution) => (
+                                <li key={solution} className="flex items-start gap-4">
+                                    <span className="mt-0.5 inline-flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-nb-sky text-nb-dark">
+                                        <Check className="h-3.5 w-3.5" aria-hidden="true" />
+                                    </span>
+                                    <p className="font-medium leading-relaxed text-white">{solution}</p>
+                                </li>
+                            ))}
+                        </ul>
+                    </FadeIn>
                 </div>
             </div>
         </section>

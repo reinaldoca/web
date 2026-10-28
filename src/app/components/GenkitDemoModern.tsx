@@ -8,6 +8,8 @@ import { ScrollArea } from "@/components/ui/scroll-area";
 import { Bot, Send, User, Sparkles } from "lucide-react";
 import { useLanguage } from "@/components/language-provider";
 import { motion, AnimatePresence } from "framer-motion";
+import { SectionHeader } from "@/components/ui/section-header";
+import { FadeIn, premiumSpring } from "@/components/ui/fade-in";
 
 interface Message {
     role: "user" | "ai";
@@ -15,11 +17,10 @@ interface Message {
 }
 
 export function GenkitDemoModern() {
-    const { t, language } = useLanguage();
+    const { t, u, language } = useLanguage();
     const [messages, setMessages] = React.useState<Message[]>([]);
     const [input, setInput] = React.useState("");
     const [isLoading, setIsLoading] = React.useState(false);
-    const [isOnline, setIsOnline] = React.useState(true);
     const [waitingForEmail, setWaitingForEmail] = React.useState(false);
 
     // Prompts sugeridos interactivos
@@ -126,68 +127,37 @@ export function GenkitDemoModern() {
     };
 
     return (
-        <section className="py-20 md:py-32 bg-gradient-to-br from-slate-50 via-blue-50/20 to-slate-100 relative overflow-hidden">
-            {/* Background Effects */}
-            <div className="absolute inset-0 bg-[url('/grid.svg')] bg-center opacity-[0.02]" />
-            <motion.div
-                className="absolute top-20 left-10 w-96 h-96 bg-blue-500/10 rounded-full blur-3xl"
-                animate={{ scale: [1, 1.2, 1], opacity: [0.1, 0.2, 0.1] }}
-                transition={{ duration: 8, repeat: Infinity }}
-            />
+        <section className="py-20 md:py-32 relative overflow-hidden">
+            <div aria-hidden="true" className="nb-glow absolute inset-0" />
 
             <div className="container max-w-5xl relative z-10">
-                {/* Header */}
-                <motion.div
-                    initial={{ opacity: 0, y: 20 }}
-                    whileInView={{ opacity: 1, y: 0 }}
-                    viewport={{ once: true, margin: "-100px" }}
-                    transition={{ type: "spring", stiffness: 100, damping: 15 }}
-                    className="text-center mb-12"
-                >
-                    <span className="text-sm font-semibold text-[#3FB950] uppercase tracking-wider px-4 py-2 rounded-full bg-[#0052CC]/10 backdrop-blur-sm inline-block mb-6">
-                        Asistente Inteligente
-                    </span>
-                    <h2 className="text-4xl md:text-5xl font-bold tracking-tight mb-4 bg-gradient-to-br from-slate-900 via-slate-800 to-slate-600 bg-clip-text text-transparent">
-                        {t.genkit.title}
-                    </h2>
-                    <p className="text-lg text-slate-600 max-w-2xl mx-auto">{t.genkit.description}</p>
-                </motion.div>
+                <FadeIn>
+                    <SectionHeader
+                        label={u.genkit.label}
+                        title={t.genkit.title}
+                        description={t.genkit.description}
+                    />
+                </FadeIn>
 
                 {/* Chat Card */}
-                <motion.div
-                    initial={{ opacity: 0, y: 30 }}
-                    whileInView={{ opacity: 1, y: 0 }}
-                    viewport={{ once: true, margin: "-100px" }}
-                    transition={{ type: "spring", stiffness: 100, damping: 15, delay: 0.2 }}
-                >
-                    <Card className="w-full max-w-2xl mx-auto h-[600px] flex flex-col shadow-2xl border-slate-200/60 bg-white/80 backdrop-blur-sm overflow-hidden">
+                <FadeIn delay={0.1}>
+                    <Card className="w-full max-w-2xl mx-auto h-[600px] flex flex-col gap-0 py-0 rounded-3xl border-nb-line bg-nb-dark/80 backdrop-blur-md shadow-[0_30px_80px_rgba(9,93,189,0.18)] overflow-hidden">
                         {/* Header with Status */}
-                        <CardHeader className="border-b bg-gradient-to-r from-[#3FB950]/5 to-[#58A6FF]/5 backdrop-blur-sm">
+                        <CardHeader className="border-b border-nb-line bg-nb-blue/15 py-4">
                             <CardTitle className="flex items-center justify-between">
                                 <div className="flex items-center gap-3">
                                     <div className="relative">
-                                        <div className="h-12 w-12 rounded-full bg-gradient-to-br from-[#3FB950] to-[#58A6FF] flex items-center justify-center text-white shadow-lg">
+                                        <div className="h-12 w-12 rounded-full bg-gradient-to-br from-nb-sky to-nb-blue flex items-center justify-center text-white shadow-lg">
                                             <Bot className="h-6 w-6" />
                                         </div>
-                                        {/* Pulse indicator */}
-                                        {isOnline && (
-                                            <motion.div
-                                                className="absolute -top-1 -right-1 w-4 h-4 bg-green-500 rounded-full border-2 border-white"
-                                                animate={{ scale: [1, 1.2, 1] }}
-                                                transition={{ duration: 2, repeat: Infinity }}
-                                            />
-                                        )}
+                                        <span className="absolute -top-0.5 -right-0.5 h-3.5 w-3.5 rounded-full border-2 border-nb-dark bg-emerald-400" aria-hidden="true" />
                                     </div>
                                     <div>
-                                        <div className="text-lg font-bold text-slate-900">{t.genkit.botName}</div>
-                                        <motion.div
-                                            className="flex items-center gap-1.5 text-xs text-green-600"
-                                            animate={{ opacity: [0.7, 1, 0.7] }}
-                                            transition={{ duration: 2, repeat: Infinity }}
-                                        >
+                                        <div className="text-lg font-bold text-white">{t.genkit.botName}</div>
+                                        <div className="flex items-center gap-1.5 text-xs text-emerald-400">
                                             <Sparkles className="h-3 w-3" />
-                                            <span className="font-medium">En línea</span>
-                                        </motion.div>
+                                            <span className="font-medium">{u.genkit.online}</span>
+                                        </div>
                                     </div>
                                 </div>
                             </CardTitle>
@@ -203,14 +173,14 @@ export function GenkitDemoModern() {
                                                 key={i}
                                                 initial={{ opacity: 0, y: 20 }}
                                                 animate={{ opacity: 1, y: 0 }}
-                                                transition={{ type: "spring", stiffness: 100, damping: 15 }}
+                                                transition={premiumSpring}
                                                 className={`flex gap-3 ${msg.role === "user" ? "flex-row-reverse" : "flex-row"
                                                     }`}
                                             >
                                                 <div
                                                     className={`h-9 w-9 rounded-full flex items-center justify-center shrink-0 shadow-md ${msg.role === "user"
-                                                        ? "bg-gradient-to-br from-[#3FB950] to-[#58A6FF] text-white"
-                                                        : "bg-gradient-to-br from-slate-100 to-slate-200 text-slate-700"
+                                                        ? "bg-gradient-to-br from-nb-sky to-nb-blue text-white"
+                                                        : "border border-nb-line bg-white/5 text-nb-sky"
                                                         }`}
                                                 >
                                                     {msg.role === "user" ? (
@@ -221,8 +191,8 @@ export function GenkitDemoModern() {
                                                 </div>
                                                 <motion.div
                                                     className={`rounded-2xl px-4 py-3 max-w-[80%] text-sm leading-relaxed shadow-sm ${msg.role === "user"
-                                                        ? "bg-gradient-to-br from-[#3FB950] to-[#58A6FF] text-white"
-                                                        : "bg-gradient-to-br from-slate-50 to-slate-100 text-slate-800 border border-slate-200/50"
+                                                        ? "bg-gradient-to-br from-nb-sky to-nb-blue text-white"
+                                                        : "bg-white/5 text-white/90 border border-nb-line"
                                                         }`}
                                                     whileHover={{ scale: 1.02 }}
                                                 >
@@ -239,28 +209,11 @@ export function GenkitDemoModern() {
                                             animate={{ opacity: 1, y: 0 }}
                                             className="flex gap-3"
                                         >
-                                            <div className="h-9 w-9 rounded-full bg-gradient-to-br from-slate-100 to-slate-200 flex items-center justify-center shrink-0">
-                                                <Bot className="h-4 w-4 text-slate-700" />
+                                            <div className="h-9 w-9 rounded-full border border-nb-line bg-white/5 flex items-center justify-center shrink-0">
+                                                <Bot className="h-4 w-4 text-nb-sky" />
                                             </div>
-                                            <div className="bg-gradient-to-br from-slate-50 to-slate-100 rounded-2xl px-4 py-3 text-sm border border-slate-200/50 flex gap-1">
-                                                <motion.span
-                                                    animate={{ opacity: [0.3, 1, 0.3] }}
-                                                    transition={{ duration: 1, repeat: Infinity, delay: 0 }}
-                                                >
-                                                    ●
-                                                </motion.span>
-                                                <motion.span
-                                                    animate={{ opacity: [0.3, 1, 0.3] }}
-                                                    transition={{ duration: 1, repeat: Infinity, delay: 0.2 }}
-                                                >
-                                                    ●
-                                                </motion.span>
-                                                <motion.span
-                                                    animate={{ opacity: [0.3, 1, 0.3] }}
-                                                    transition={{ duration: 1, repeat: Infinity, delay: 0.4 }}
-                                                >
-                                                    ●
-                                                </motion.span>
+                                            <div className="rounded-2xl border border-nb-line bg-white/5 px-4 py-3 text-sm text-nb-text">
+                                                {u.genkit.typing}
                                             </div>
                                         </motion.div>
                                     )}
@@ -269,7 +222,7 @@ export function GenkitDemoModern() {
                         </CardContent>
 
                         {/* Suggested Prompts Pills */}
-                        <div className="px-4 pb-3 border-t border-slate-100 pt-3 bg-slate-50/50">
+                        <div className="px-4 pb-3 border-t border-nb-line pt-3">
                             <div className="flex flex-wrap gap-2">
                                 {suggestedPrompts.map((prompt, index) => (
                                     <motion.button
@@ -277,7 +230,7 @@ export function GenkitDemoModern() {
                                         whileHover={{ scale: 1.05 }}
                                         whileTap={{ scale: 0.95 }}
                                         onClick={() => handlePromptClick(prompt)}
-                                        className="px-3 py-1.5 text-xs font-medium rounded-full bg-white border border-slate-200 text-slate-700 hover:bg-[#0052CC]/10 hover:border-[#0052CC]/30 hover:text-[#3FB950] transition-all shadow-sm"
+                                        className="px-3 py-1.5 text-xs font-medium rounded-full border border-nb-line text-nb-text hover:border-nb-sky/40 hover:bg-nb-sky/10 hover:text-white transition-colors"
                                     >
                                         {prompt}
                                     </motion.button>
@@ -286,7 +239,7 @@ export function GenkitDemoModern() {
                         </div>
 
                         {/* Input Area */}
-                        <CardFooter className="p-4 border-t bg-white">
+                        <CardFooter className="p-4 border-t border-nb-line">
                             <form
                                 onSubmit={(e) => {
                                     e.preventDefault();
@@ -299,20 +252,20 @@ export function GenkitDemoModern() {
                                     value={input}
                                     onChange={(e) => setInput(e.target.value)}
                                     disabled={isLoading}
-                                    className="flex-1 border-slate-200 focus:border-[#0052CC] focus:ring-[#0052CC]/20"
+                                    className="flex-1 rounded-full border-nb-line bg-white/5 px-4"
                                 />
                                 <Button
                                     type="submit"
                                     size="icon"
                                     disabled={isLoading || !input.trim()}
-                                    className="bg-gradient-to-br from-[#3FB950] to-[#58A6FF] hover:from-[#3FB950]/90 hover:to-[#58A6FF]/90 transition-all hover:scale-105 shadow-lg"
+                                    className="bg-gradient-to-br from-nb-sky to-nb-blue rounded-full text-white transition-shadow hover:shadow-[0_8px_24px_rgba(66,162,254,0.35)]"
                                 >
                                     <Send className="h-4 w-4" />
                                 </Button>
                             </form>
                         </CardFooter>
                     </Card>
-                </motion.div>
+                </FadeIn>
             </div>
         </section>
     );

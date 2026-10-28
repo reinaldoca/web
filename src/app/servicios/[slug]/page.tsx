@@ -1,5 +1,7 @@
-import { servicesData } from "@/lib/services-data";
+import type { Metadata } from "next";
+import { servicesData, getServiceById } from "@/lib/services-data";
 import { ServiceDetail } from "@/app/components/ServiceDetail";
+import { SiteShell } from "@/components/site/site-shell";
 
 interface ServicePageProps {
   params: Promise<{
@@ -14,8 +16,22 @@ export async function generateStaticParams() {
   }));
 }
 
+export async function generateMetadata({ params }: ServicePageProps): Promise<Metadata> {
+  const { slug } = await params;
+  const service = getServiceById(slug, "es");
+  if (!service) return {};
+  return {
+    title: `${service.title} | CloudBit`,
+    description: service.shortDescription,
+  };
+}
+
 export default async function ServicePage({ params }: ServicePageProps) {
   const { slug } = await params;
 
-  return <ServiceDetail slug={slug} />;
+  return (
+    <SiteShell>
+      <ServiceDetail slug={slug} />
+    </SiteShell>
+  );
 }

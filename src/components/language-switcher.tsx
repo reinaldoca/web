@@ -1,36 +1,60 @@
 "use client";
 
-import { Button } from "@/components/ui/button";
+import { useId } from "react";
+import { motion } from "framer-motion";
 import { useLanguage } from "@/components/language-provider";
-import { Globe } from "lucide-react";
-import {
-    DropdownMenu,
-    DropdownMenuContent,
-    DropdownMenuItem,
-    DropdownMenuTrigger,
-} from "@/components/ui/dropdown-menu";
+import { premiumSpring } from "@/components/ui/fade-in";
+import type { Language } from "@/lib/i18n/dictionary";
+import { cn } from "@/lib/utils";
 
-export function LanguageSwitcher() {
-    const { language, setLanguage } = useLanguage();
+const OPTIONS: { value: Language; short: string; label: string }[] = [
+    { value: "es", short: "ES", label: "Español" },
+    { value: "en", short: "EN", label: "English" },
+];
+
+/**
+ * Selector de idioma segmentado "ES | EN".
+ * Reemplaza las banderas emoji, que Windows muestra como letras sueltas.
+ * El indicador se desliza bajo el idioma activo; cada instancia usa su propio layoutId.
+ */
+export function LanguageSwitcher({ className }: { className?: string }) {
+    const { language, setLanguage, u } = useLanguage();
+    const indicatorId = useId();
 
     return (
-        <DropdownMenu>
-            <DropdownMenuTrigger asChild>
-                <Button variant="ghost" size="icon" className="h-9 w-9 rounded-full">
-                    <span className="text-lg leading-none">
-                        {language === "es" ? "🇪🇸" : "🇺🇸"}
-                    </span>
-                    <span className="sr-only">Cambiar idioma</span>
-                </Button>
-            </DropdownMenuTrigger>
-            <DropdownMenuContent align="end">
-                <DropdownMenuItem onClick={() => setLanguage("es")} className={language === "es" ? "bg-accent" : ""}>
-                    <span className="mr-2">🇪🇸</span> Español
-                </DropdownMenuItem>
-                <DropdownMenuItem onClick={() => setLanguage("en")} className={language === "en" ? "bg-accent" : ""}>
-                    <span className="mr-2">🇺🇸</span> English
-                </DropdownMenuItem>
-            </DropdownMenuContent>
-        </DropdownMenu>
+        <div
+            role="radiogroup"
+            aria-label={u.header.changeLanguage}
+            className={cn("relative inline-flex items-center rounded-full border border-white/15 bg-white/5 p-0.5", className)}
+        >
+            {OPTIONS.map((option) => {
+                const isActive = option.value === language;
+                return (
+                    <button
+                        key={option.value}
+                        type="button"
+                        role="radio"
+                        aria-checked={isActive}
+                        aria-label={option.label}
+                        lang={option.value}
+                        onClick={() => setLanguage(option.value)}
+                        className={cn(
+                            "relative z-10 rounded-full px-2.5 py-1 text-xs font-semibold tracking-wide transition-colors duration-300 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-nb-sky",
+                            isActive ? "text-nb-dark" : "text-white/70 hover:text-white"
+                        )}
+                    >
+                        {isActive && (
+                            <motion.span
+                                layoutId={`language-indicator-${indicatorId}`}
+                                aria-hidden="true"
+                                className="absolute inset-0 -z-10 rounded-full bg-white"
+                                transition={premiumSpring}
+                            />
+                        )}
+                        {option.short}
+                    </button>
+                );
+            })}
+        </div>
     );
 }

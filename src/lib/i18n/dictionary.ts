@@ -10,9 +10,9 @@ export const dictionary = {
             contact: "Contáctanos",
         },
         hero: {
-            badge: "Plataformas Cloud | DevOps | DevSecOps",
-            title: "De deploys manuales a CI/CD automatizado en 30 días",
-            description: "Implementamos DevOps, DevSecOps y Kubernetes para startups y SaaS que necesitan velocidad de desarrollo sin comprometer seguridad ni estabilidad",
+            badge: "Cloud · DevSecOps · Operación 24/7",
+            title: "Infraestructura cloud que escala al ritmo de tu negocio",
+            description: "Diseñamos, automatizamos y operamos plataformas en AWS, Azure y Kubernetes para empresas que necesitan crecer con seguridad y sin interrupciones.",
             servicesBtn: "Explorar servicios",
             contactBtn: "Agendar diagnóstico técnico",
             microcopy: "Consulta inicial 100% gratuita - Sin letra chica",
@@ -51,7 +51,7 @@ export const dictionary = {
         },
         about: {
             title: "Sobre CloudBit",
-            description1: "Desde 2017, ayudamos a empresas en Argentina y Latinoamérica a migrar, modernizar y operar infraestructura cloud con DevOps y DevSecOps, reduciendo riesgo operativo y acelerando el time-to-market.",
+            description1: "Desde 2017, ayudamos a empresas de distintos países a migrar, modernizar y operar infraestructura cloud con DevOps y DevSecOps, reduciendo riesgo operativo y acelerando el time-to-market. Trabajamos de forma remota, en español o inglés, adaptándonos a la zona horaria de cada cliente.",
             description2: "Nuestro equipo de ingenieros certificados está comprometido con la excelencia técnica, brindando soluciones basadas en estándares de la industria que generan valor medible.",
             stats: {
                 experience: { value: "8+", label: "Años de Experiencia" },
@@ -140,9 +140,9 @@ export const dictionary = {
             contact: "Contact Us",
         },
         hero: {
-            badge: "Cloud Platforms | DevOps | DevSecOps",
-            title: "From manual deploys to automated CI/CD in 30 days",
-            description: "We implement DevOps, DevSecOps and Kubernetes for startups and SaaS that need development velocity without compromising security or stability",
+            badge: "Cloud · DevSecOps · 24/7 Operations",
+            title: "Cloud infrastructure that scales at the pace of your business",
+            description: "We design, automate and operate platforms on AWS, Azure and Kubernetes for companies that need to grow securely and without disruption.",
             servicesBtn: "Explore services",
             contactBtn: "Schedule technical consultation",
             microcopy: "Initial consultation 100% free - No strings attached",
@@ -181,7 +181,7 @@ export const dictionary = {
         },
         about: {
             title: "About CloudBit",
-            description1: "Since 2017, we help companies in Argentina and Latin America migrate, modernize and operate cloud infrastructure with DevOps and DevSecOps, reducing operational risk and accelerating time-to-market.",
+            description1: "Since 2017, we have helped companies in different countries migrate, modernize and operate cloud infrastructure with DevOps and DevSecOps, reducing operational risk and accelerating time-to-market. We work remotely, in English or Spanish, adapting to each client's time zone.",
             description2: "Our team of certified engineers is committed to technical excellence, providing solutions based on industry standards that generate measurable value.",
             stats: {
                 experience: { value: "8+", label: "Years of Experience" },

@@ -1,121 +1,64 @@
 "use client";
 
-import { ScrollAnimation } from "@/components/ui/scroll-animation";
-import { Shield, Award, CheckCircle2 } from "lucide-react";
-import { motion } from "framer-motion";
+import Image from "next/image";
+import { siKubernetes } from "simple-icons";
+import { useLanguage } from "@/components/language-provider";
+import { SectionHeader } from "@/components/ui/section-header";
+import { SpotlightCard } from "@/components/ui/spotlight-card";
+import { FadeIn, Stagger, StaggerItem } from "@/components/ui/fade-in";
+
+/** Logos de las plataformas (mismas fuentes que TrustBar). */
+const platformLogos = [
+    <Image key="aws" src="/images/tech/aws.svg" alt="" width={44} height={44} className="h-11 w-11 object-contain" />,
+    <Image key="azure" src="/images/tech/azure.svg" alt="" width={44} height={44} className="h-11 w-11 object-contain" />,
+    <svg key="k8s" viewBox="0 0 24 24" className="h-10 w-10" fill={`#${siKubernetes.hex}`}>
+        <path d={siKubernetes.path} />
+    </svg>,
+];
 
 /**
- * Sección de certificaciones y partners oficiales
- * Muestra badges de AWS, Azure, Kubernetes y stack tecnológico
+ * Certificaciones del equipo en AWS, Azure y Kubernetes.
+ * Solo afirma certificaciones de personas: CloudBit no declara estatus de partner oficial.
  */
 export function CertificationsSection() {
-    const certifications = [
-        {
-            name: "AWS Select Tier Partner",
-            icon: Shield,
-            color: "from-[#8b5cf6] to-[#3b82f6]",
-        },
-        {
-            name: "Microsoft Silver Partner",
-            icon: Award,
-            color: "from-[#8b5cf6] to-[#3b82f6]",
-        },
-        {
-            name: "Kubernetes Certified",
-            icon: CheckCircle2,
-            color: "from-[#8b5cf6] to-[#3b82f6]",
-        },
-    ];
-
-    const technologies = [
-        { name: "AWS", icon: "☁️" },
-        { name: "Azure", icon: "🔷" },
-        { name: "Kubernetes", icon: "☸️" },
-        { name: "Terraform", icon: "🏗️" },
-        { name: "GitLab CI", icon: "🦊" },
-        { name: "Docker", icon: "🐋" },
-    ];
+    const { u } = useLanguage();
+    const copy = u.certifications;
 
     return (
-        <section className="py-16 md:py-24 bg-white border-y border-slate-100">
+        <section className="relative py-20 md:py-28">
             <div className="container">
-                <ScrollAnimation animation="fade-up" duration={600}>
-                    <div className="text-center mb-12">
-                        <div className="inline-flex items-center gap-2 px-4 py-2 rounded-lg bg-[#0D1117] backdrop-blur-sm mb-4">
-                            <span className="text-sm font-mono font-semibold text-[#58A6FF]">
-                                $ cloudbit --certifications
-                            </span>
-                        </div>
-                        <h2 className="text-3xl md:text-4xl font-bold tracking-tight mb-4 text-slate-900">
-                            Equipo certificado y partners oficiales
-                        </h2>
-                        <p className="text-lg text-slate-600 max-w-2xl mx-auto">
-                            Trabajamos con las principales plataformas cloud. Nuestro equipo cuenta con <strong>15+ ingenieros certificados</strong> en AWS, Azure y Kubernetes.
-                        </p>
-                    </div>
-                </ScrollAnimation>
+                <FadeIn>
+                    <SectionHeader
+                        label={copy.label}
+                        title={copy.title}
+                        description={copy.description}
+                    />
+                </FadeIn>
 
-                {/* Badges de certificación */}
-                <ScrollAnimation animation="fade-up" duration={600} delay={200}>
-                    <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-12 max-w-4xl mx-auto">
-                        {certifications.map((cert, index) => (
-                            <motion.div
-                                key={index}
-                                whileHover={{ scale: 1.02, y: -4 }}
-                                transition={{ type: "spring", stiffness: 400, damping: 25 }}
-                                className="relative group p-6 rounded-2xl bg-gradient-to-br from-slate-50 to-white border-2 border-slate-200 hover:border-[rgba(139,92,246,0.5)] hover:shadow-xl"
-                            >
-                                {/* Gradient glow */}
-                                <div className={`absolute inset-0 bg-gradient-to-br ${cert.color} opacity-0 group-hover:opacity-5 rounded-2xl transition-opacity duration-300`} />
-
-                                <div className="relative z-10 text-center">
-                                    <div className={`inline-flex items-center justify-center w-16 h-16 rounded-xl bg-gradient-to-br ${cert.color} text-white mb-4`}>
-                                        <cert.icon className="w-8 h-8" />
-                                    </div>
-                                    <h3 className="font-bold text-slate-900 text-sm">
-                                        {cert.name}
-                                    </h3>
-                                </div>
-                            </motion.div>
-                        ))}
-                    </div>
-                </ScrollAnimation>
-
-                {/* Stack tecnológico */}
-                <ScrollAnimation animation="fade-up" duration={600} delay={400}>
-                    <div className="max-w-5xl mx-auto">
-                        <p className="text-center text-sm font-semibold text-slate-500 uppercase tracking-wider mb-6">
-                            Stack tecnológico principal
-                        </p>
-                        <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-4">
-                            {technologies.map((tech, index) => (
+                <Stagger className="mx-auto mb-12 grid max-w-4xl grid-cols-1 gap-5 md:grid-cols-3">
+                    {copy.cards.map((name, index) => (
+                        <StaggerItem key={name} className="h-full">
+                            <SpotlightCard className="flex flex-col items-center p-8 text-center" radius={300}>
                                 <div
-                                    key={index}
-                                    className="flex flex-col items-center gap-2 p-4 rounded-xl bg-slate-50 border border-slate-200 hover:border-[rgba(139,92,246,0.5)] hover:bg-white transition-all duration-300 hover:-translate-y-1"
+                                    aria-hidden="true"
+                                    className="mb-5 inline-flex h-16 w-16 items-center justify-center rounded-2xl border border-nb-line bg-white/[0.06] shadow-[0_10px_30px_rgba(9,93,189,0.2)] transition-colors duration-300 group-hover:border-nb-sky/40 group-hover:bg-white/[0.1]"
                                 >
-                                    <span className="text-4xl" role="img" aria-label={tech.name}>
-                                        {tech.icon}
-                                    </span>
-                                    <span className="font-semibold text-sm text-slate-700">
-                                        {tech.name}
-                                    </span>
+                                    {platformLogos[index]}
                                 </div>
-                            ))}
-                        </div>
-                    </div>
-                </ScrollAnimation>
+                                <h3 className="text-sm font-semibold">{name}</h3>
+                            </SpotlightCard>
+                        </StaggerItem>
+                    ))}
+                </Stagger>
 
-                {/* Estadística destacada */}
-                <ScrollAnimation animation="scale-up" duration={600} delay={600}>
-                    <div className="mt-12 text-center">
-                        <div className="inline-flex items-center gap-3 px-6 py-4 rounded-2xl bg-gradient-to-r from-[#3FB950]/10 to-[#58A6FF]/10 border border-[#3FB950]/30">
-                            <Award className="w-6 h-6 text-[#3FB950]" />
-                            <p className="text-lg font-semibold text-slate-900">
-                                <span className="text-2xl font-mono text-[#3FB950]">15+</span> ingenieros con certificaciones AWS, Azure, CKA/CKAD
-                            </p>
-                        </div>
+                <FadeIn className="text-center">
+                    <div className="inline-flex flex-col items-center gap-2 rounded-full border border-nb-line bg-nb-surface px-6 py-4 sm:flex-row sm:gap-4">
+                        <span className="text-3xl font-extrabold text-nb-sky">15+</span>
+                        <p className="text-sm text-white/85 md:text-base">
+                            {copy.stat}
+                        </p>
                     </div>
-                </ScrollAnimation>
+                </FadeIn>
             </div>
         </section>
     );

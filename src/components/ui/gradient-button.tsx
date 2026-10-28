@@ -8,11 +8,12 @@ interface GradientButtonProps {
   onClick?: () => void;
   className?: string;
   disabled?: boolean;
+  type?: "button" | "submit";
 }
 
 /**
- * NexusAI-style gradient button component
- * Features purple-blue gradient for primary actions
+ * Botón principal estilo nublit: degradado celeste → azul, forma pill.
+ * La variante outline usa el borde translúcido de la paleta.
  */
 export function GradientButton({
   children,
@@ -21,15 +22,16 @@ export function GradientButton({
   onClick,
   className,
   disabled = false,
+  type = "button",
 }: GradientButtonProps) {
   const baseStyles =
-    "inline-flex items-center justify-center gap-2 px-6 py-3 font-semibold rounded-xl transition-all duration-300 disabled:opacity-50 disabled:cursor-not-allowed disabled:hover:translate-y-0 disabled:hover:shadow-none";
+    "inline-flex items-center justify-center gap-2 px-6 py-3 font-semibold rounded-full transition-all duration-300 focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-nb-sky/40 disabled:opacity-50 disabled:cursor-not-allowed disabled:hover:translate-y-0 disabled:hover:shadow-none";
 
   const variantStyles = {
     gradient:
-      "bg-gradient-to-r from-[#8b5cf6] to-[#3b82f6] text-white hover:shadow-lg hover:shadow-purple-500/30 hover:-translate-y-0.5 focus-visible:ring-4 focus-visible:ring-purple-500/50 focus-visible:outline-none",
+      "bg-gradient-to-r from-nb-sky to-nb-blue text-white hover:shadow-[0_10px_30px_rgba(66,162,254,0.35)] hover:-translate-y-0.5",
     outline:
-      "border border-[var(--bd2)] text-[var(--tx)] hover:border-[rgba(139,92,246,0.3)] hover:bg-[rgba(139,92,246,0.05)] focus-visible:ring-4 focus-visible:ring-purple-500/50 focus-visible:outline-none",
+      "border border-nb-line text-white hover:border-nb-sky/50 hover:bg-nb-sky/10",
   };
 
   const combinedClassName = cn(baseStyles, variantStyles[variant], className);
@@ -47,7 +49,7 @@ export function GradientButton({
       onClick={onClick}
       disabled={disabled}
       className={combinedClassName}
-      type="button"
+      type={type}
     >
       {children}
     </button>

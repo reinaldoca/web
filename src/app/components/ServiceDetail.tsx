@@ -1,115 +1,116 @@
 "use client";
 
-import Link from "next/link";
-import { ArrowLeft, CheckCircle2 } from "lucide-react";
-import { Button } from "@/components/ui/button";
-import { Badge } from "@/components/ui/badge";
-import { ScrollAnimation } from "@/components/ui/scroll-animation";
-import { Header } from "@/app/components/Header";
-import { Footer } from "@/app/components/Footer";
-import { getServiceById } from "@/lib/services-data";
-import { useLanguage } from "@/components/language-provider";
 import { notFound } from "next/navigation";
+import { CheckCircle2, Users } from "lucide-react";
+import { getServiceById } from "@/lib/services-data";
+import { getServiceExtras } from "@/lib/content/service-extras";
+import { useLanguage } from "@/components/language-provider";
+import { PageHero } from "@/components/site/page-hero";
+import { SignalsChecklist } from "@/components/site/signals-checklist";
+import { StepsTimeline } from "@/components/site/steps-timeline";
+import { SectionHeader } from "@/components/ui/section-header";
+import { SpotlightCard } from "@/components/ui/spotlight-card";
+import { IconTile } from "@/components/ui/icon-tile";
+import { FadeIn, Stagger, StaggerItem } from "@/components/ui/fade-in";
+import { CTA } from "@/app/components/CTA";
 
 interface ServiceDetailProps {
     slug: string;
 }
 
+/**
+ * Plantilla de servicio: hero → señales → qué incluye → proceso → para quién → contacto.
+ */
 export function ServiceDetail({ slug }: ServiceDetailProps) {
-    const { t, language } = useLanguage();
+    const { t, u, language } = useLanguage();
+    const copy = u.servicePage;
     const service = getServiceById(slug, language);
 
     if (!service) {
         notFound();
     }
 
-    const Icon = service.icon;
+    const extras = getServiceExtras(service.id, language);
 
     return (
-        <main className="min-h-screen flex flex-col">
-            <Header />
-
-            {/* Hero Section */}
-            <section className="relative py-20 md:py-32 bg-[#F8F9FA] overflow-hidden">
-                <div className="container relative z-10">
-                    <ScrollAnimation animation="fade-in" duration={700}>
-                        <div className="flex flex-col items-start max-w-3xl">
-                            <Button variant="ghost" className="mb-8 pl-0 text-slate-500 hover:text-[#0052CC] bg-transparent hover:bg-transparent group hover:scale-100 active:scale-100" asChild>
-                                <Link href="/#servicios">
-                                    <ArrowLeft className="mr-2 h-4 w-4 transition-transform duration-300 group-hover:-translate-x-1" /> {t.servicePage.back}
-                                </Link>
-                            </Button>
-                            <div className="inline-flex items-center justify-center p-3 rounded-xl bg-primary/10 text-primary mb-6">
-                                <Icon className="h-8 w-8" />
-                            </div>
-                            <h1 className="text-4xl font-extrabold tracking-tight sm:text-5xl mb-6">
-                                {service.title}
-                            </h1>
-                            <p className="text-xl text-muted-foreground leading-relaxed">
-                                {service.fullDescription}
-                            </p>
-                            <div className="flex flex-wrap gap-2 mt-8">
-                                {service.tags.map((tag) => (
-                                    <Badge key={tag} variant="secondary" className="text-sm px-3 py-1">
-                                        {tag}
-                                    </Badge>
-                                ))}
-                            </div>
-                        </div>
-                    </ScrollAnimation>
+        <>
+            <PageHero
+                breadcrumbs={[
+                    { label: u.common.home, href: "/" },
+                    { label: t.header.services, href: "/#servicios" },
+                    { label: service.title },
+                ]}
+                title={service.title}
+                description={service.fullDescription}
+                cta={{ label: t.servicePage.consultation, href: "/contacto" }}
+            >
+                <div className="flex flex-wrap items-center gap-3">
+                    <IconTile icon={service.icon} size="lg" />
+                    {service.tags.map((tag) => (
+                        <span key={tag} className="rounded-full border border-nb-line px-3 py-1 text-sm text-white/80">
+                            {tag}
+                        </span>
+                    ))}
                 </div>
+            </PageHero>
 
-                {/* Background decoration */}
-                <div className="absolute top-0 right-0 -translate-y-1/4 translate-x-1/4 w-[600px] h-[600px] opacity-5 pointer-events-none">
-                    <div className="absolute inset-0 rounded-full bg-primary blur-[100px]" />
-                </div>
-            </section>
+            <SignalsChecklist signals={extras.signals} />
 
-            {/* Features & Benefits */}
-            <section className="py-16 md:py-24">
+            {/* Qué incluye */}
+            <section className="py-20 md:py-28">
                 <div className="container">
-                    <div className="grid gap-12 lg:grid-cols-2">
-                        {/* Features */}
-                        <ScrollAnimation animation="slide-in-left" duration={700} delay={200}>
-                            <div>
-                                <h2 className="text-2xl font-bold mb-8">{t.servicePage.features}</h2>
-                                <div className="grid gap-4">
-                                    {service.features.map((feature, index) => (
-                                        <div key={index} className="flex items-start gap-3 p-4 rounded-lg border bg-card">
-                                            <CheckCircle2 className="h-5 w-5 text-primary shrink-0 mt-0.5" />
-                                            <span className="font-medium">{feature}</span>
-                                        </div>
-                                    ))}
-                                </div>
-                            </div>
-                        </ScrollAnimation>
-
-                        {/* Benefits */}
-                        <ScrollAnimation animation="slide-in-right" duration={700} delay={400}>
-                            <div className="bg-[#F8F9FA] border border-slate-100 rounded-2xl p-8 lg:p-10">
-                                <h2 className="text-2xl font-bold mb-8">{t.servicePage.benefits}</h2>
-                                <ul className="space-y-6">
-                                    {service.benefits.map((benefit, index) => (
-                                        <li key={index} className="flex items-center gap-3">
-                                            <div className="h-2 w-2 rounded-full bg-primary shrink-0" />
-                                            <span className="text-lg">{benefit}</span>
+                    <div className="grid gap-12 lg:grid-cols-[1fr_1.2fr] lg:gap-16">
+                        <FadeIn>
+                            <SectionHeader align="left" label={copy.includesLabel} title={t.servicePage.features} className="mb-8" />
+                            <div className="rounded-2xl border border-nb-sky/30 bg-gradient-to-b from-nb-blue/25 to-nb-blue/5 p-8">
+                                <h3 className="mb-6 text-sm font-semibold uppercase tracking-[0.14em] text-nb-sky">{t.servicePage.benefits}</h3>
+                                <ul className="space-y-4">
+                                    {service.benefits.map((benefit) => (
+                                        <li key={benefit} className="flex items-start gap-3 text-white/90">
+                                            <span className="mt-2 h-1.5 w-1.5 shrink-0 rounded-full bg-nb-sky" aria-hidden="true" />
+                                            {benefit}
                                         </li>
                                     ))}
                                 </ul>
-
-                                <div className="mt-12 pt-8 border-t border-border/50">
-                                    <h3 className="font-semibold mb-4">{t.servicePage.ready}</h3>
-                                    <Button size="lg" className="w-full sm:w-auto" asChild>
-                                        <Link href="/#contacto">{t.servicePage.consultation}</Link>
-                                    </Button>
-                                </div>
                             </div>
-                        </ScrollAnimation>
+                        </FadeIn>
+                        <Stagger className="grid content-start gap-3 sm:grid-cols-2">
+                            {service.features.map((feature) => (
+                                <StaggerItem key={feature}>
+                                    <div className="flex h-full items-start gap-3 rounded-2xl border border-nb-line bg-nb-surface p-5 transition-colors duration-300 hover:border-nb-sky/40">
+                                        <CheckCircle2 className="mt-0.5 h-5 w-5 shrink-0 text-nb-sky" aria-hidden="true" />
+                                        <span className="text-sm font-medium leading-relaxed text-white/90">{feature}</span>
+                                    </div>
+                                </StaggerItem>
+                            ))}
+                        </Stagger>
                     </div>
                 </div>
             </section>
 
-            <Footer />
-        </main>
+            <StepsTimeline title={copy.timelineTitle} steps={extras.steps} />
+
+            {/* Para quién */}
+            <section className="py-20 md:py-28">
+                <div className="container">
+                    <FadeIn>
+                        <SectionHeader label={copy.audienceLabel} title={copy.audienceTitle} />
+                    </FadeIn>
+                    <Stagger className="grid gap-5 md:grid-cols-3">
+                        {extras.audience.map((item) => (
+                            <StaggerItem key={item.title} className="h-full">
+                                <SpotlightCard className="p-7" radius={350}>
+                                    <Users className="mb-5 h-6 w-6 text-nb-sky" aria-hidden="true" />
+                                    <h3 className="mb-2 text-lg font-semibold">{item.title}</h3>
+                                    <p className="text-sm leading-relaxed text-nb-text">{item.description}</p>
+                                </SpotlightCard>
+                            </StaggerItem>
+                        ))}
+                    </Stagger>
+                </div>
+            </section>
+
+            <CTA />
+        </>
     );
 }

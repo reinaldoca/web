@@ -38,11 +38,10 @@ export function AnimatedCounter({ value, duration = 2000 }: AnimatedCounterProps
     }, []);
 
     useEffect(() => {
-        if (!isVisible || !hasNumber) {
-            if (!hasNumber) setDisplayValue(value);
-            return;
-        }
+        // Sin número (p. ej. "24/7") el render muestra `value` directamente
+        if (!isVisible || !hasNumber) return;
 
+        let frame = 0;
         let startTime: number | null = null;
         const step = (timestamp: number) => {
             if (!startTime) startTime = timestamp;
@@ -57,22 +56,20 @@ export function AnimatedCounter({ value, duration = 2000 }: AnimatedCounterProps
             setDisplayValue(`${prefix}${currentCount}${suffix}`);
 
             if (progress < 1) {
-                window.requestAnimationFrame(step);
+                frame = window.requestAnimationFrame(step);
             } else {
                 setDisplayValue(value); // Ensure final value matches exactly
             }
         };
 
-        window.requestAnimationFrame(step);
+        frame = window.requestAnimationFrame(step);
+        return () => window.cancelAnimationFrame(frame);
     }, [isVisible, number, duration, prefix, suffix, value, hasNumber]);
 
+    // El lector de pantalla recibe el valor final, no cada número intermedio del conteo
     return (
-        <span
-            ref={ref}
-            aria-live="polite"
-            aria-atomic="true"
-        >
-            {hasNumber ? displayValue : value}
+        <span ref={ref} aria-label={value}>
+            <span aria-hidden="true">{hasNumber ? displayValue : value}</span>
         </span>
     );
 }

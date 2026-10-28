@@ -1,237 +1,97 @@
 "use client";
 
 import Link from "next/link";
-import { Button } from "@/components/ui/button";
+import { ArrowRight, Sparkles } from "lucide-react";
 import { useLanguage } from "@/components/language-provider";
-import { motion } from "framer-motion";
-import { useEffect, useState, useMemo } from "react";
-import { useReducedMotion, useMediaQuery } from "@/hooks/useReducedMotion";
-import { MagneticButton } from "@/components/ui/magnetic-button";
-import type { Transition } from "framer-motion";
-
-// Generar posiciones de partículas de forma determinística
-const generateParticles = (count: number) => {
-    const particles = [];
-    const seed = 12345;
-    let random = seed;
-
-    const seededRandom = () => {
-        random = (random * 9301 + 49297) % 233280;
-        return random / 233280;
-    };
-
-    for (let i = 0; i < count; i++) {
-        particles.push({
-            id: i,
-            left: seededRandom() * 100,
-            top: seededRandom() * 100,
-            duration: 3 + seededRandom() * 2,
-            delay: seededRandom() * 2,
-        });
-    }
-    return particles;
-};
+import { getSolutions } from "@/lib/content/solutions";
+import { GradientButton } from "@/components/ui/gradient-button";
+import { SpotlightCard } from "@/components/ui/spotlight-card";
+import { IconTile } from "@/components/ui/icon-tile";
+import { Stagger, StaggerItem } from "@/components/ui/fade-in";
+import { cn } from "@/lib/utils";
 
 /**
- * VERSIÓN OPTIMIZADA DEL HERO
- * - Usa useReducedMotion para accesibilidad
- * - Ajusta partículas según el tamaño de pantalla
- * - Deshabilita cursor glow en mobile
+ * Hero estilo nublit:
+ * - fondo oscuro con haz azul radial desde abajo (sin loops infinitos)
+ * - entrada escalonada badge → título → bajada → CTAs → cards
+ * - fila de cards con las 4 soluciones como "pilares"
  */
 export function HeroModernOptimized() {
-    const { t } = useLanguage();
-    const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
-    const shouldReduceMotion = useReducedMotion();
-    const { isMobile, isDesktop } = useMediaQuery();
-
-    // Ajustar cantidad de partículas según dispositivo
-    const particleCount = isMobile ? 5 : isDesktop ? 20 : 12;
-    const particles = useMemo(() => generateParticles(particleCount), [particleCount]);
-
-    useEffect(() => {
-        // Solo trackear mouse en desktop
-        if (!isDesktop) return;
-
-        const handleMouseMove = (e: MouseEvent) => {
-            setMousePosition({
-                x: e.clientX,
-                y: e.clientY,
-            });
-        };
-
-        window.addEventListener("mousemove", handleMouseMove);
-        return () => window.removeEventListener("mousemove", handleMouseMove);
-    }, [isDesktop]);
-
-    // Configuración de animación basada en preferencias
-    const animationConfig: Transition = shouldReduceMotion
-        ? { duration: 0, repeat: 0 }
-        : { duration: 8, repeat: Infinity, ease: "easeInOut" as const };
+    const { t, language } = useLanguage();
+    const pillars = getSolutions(language);
 
     return (
-        <section className="relative w-full overflow-hidden pt-20 pb-32 md:h-screen flex items-center">
-            {/* NexusAI Background */}
-            <div className="absolute inset-0 bg-gradient-to-br from-[#08080f] via-[#0d0d1a] to-[#08080f]">
-                {/* Subtle Grid */}
-                <div
-                    className="absolute inset-0 opacity-5"
-                    style={{
-                        backgroundImage: `linear-gradient(rgba(139, 92, 246, 0.3) 1px, transparent 1px), linear-gradient(90deg, rgba(139, 92, 246, 0.3) 1px, transparent 1px)`,
-                        backgroundSize: "50px 50px",
-                    }}
-                />
+        <section className="nb-hero-bg relative w-full overflow-hidden pt-36 pb-20 md:pt-44 md:pb-28">
+            {/* Grilla técnica muy sutil, se desvanece hacia abajo */}
+            <div
+                aria-hidden="true"
+                className="absolute inset-0 opacity-[0.07] [mask-image:linear-gradient(to_bottom,black,transparent_75%)]"
+                style={{
+                    backgroundImage:
+                        "linear-gradient(rgba(202,213,226,0.5) 1px, transparent 1px), linear-gradient(90deg, rgba(202,213,226,0.5) 1px, transparent 1px)",
+                    backgroundSize: "64px 64px",
+                }}
+            />
+            {/* Fundido hacia la sección siguiente */}
+            <div aria-hidden="true" className="absolute inset-x-0 bottom-0 h-40 bg-gradient-to-b from-transparent to-nb-dark" />
 
-                {/* NexusAI Auras */}
-                {!shouldReduceMotion && (
-                    <>
-                        {/* Purple Aura - Primary */}
-                        <motion.div
-                            className="aur aur-a absolute"
-                            animate={{
-                                x: [0, 80, 0],
-                                y: [0, -40, 0],
-                                scale: [1, 1.15, 1],
-                            }}
-                            transition={animationConfig}
-                            initial={{ top: "15%", left: "5%" }}
-                        />
-
-                        {/* Blue Aura - Secondary */}
-                        <motion.div
-                            className="aur aur-b absolute"
-                            animate={{
-                                x: [0, -60, 0],
-                                y: [0, 60, 0],
-                                scale: [1, 1.2, 1],
-                            }}
-                            transition={{ ...animationConfig, duration: 9 }}
-                            initial={{ top: "50%", right: "10%" }}
-                        />
-                    </>
-                )}
-
-                {/* Interactive Cursor Glow - Solo desktop */}
-                {isDesktop && !shouldReduceMotion && (
-                    <motion.div
-                        className="absolute w-96 h-96 rounded-full blur-3xl opacity-20 pointer-events-none"
-                        style={{
-                            background: "radial-gradient(circle, rgba(255, 255, 255, 0.3) 0%, rgba(255, 255, 255, 0) 70%)",
-                            left: mousePosition.x - 192,
-                            top: mousePosition.y - 192,
-                        }}
-                        transition={{ type: "spring", damping: 30, stiffness: 200 }}
-                    />
-                )}
-
-                {/* Floating Particles - Cantidad adaptativa */}
-                {!shouldReduceMotion && particles.map((particle) => (
-                    <motion.div
-                        key={particle.id}
-                        className="absolute w-2 h-2 bg-purple-400/30 rounded-full"
-                        style={{
-                            left: `${particle.left}%`,
-                            top: `${particle.top}%`,
-                        }}
-                        animate={{
-                            y: [0, -30, 0],
-                            opacity: [0.3, 0.8, 0.3],
-                        }}
-                        transition={{
-                            duration: particle.duration,
-                            repeat: Infinity,
-                            delay: particle.delay,
-                        }}
-                    />
-                ))}
-            </div>
-
-            {/* Content */}
-            <div className="container relative z-10 flex flex-col items-center text-center">
-                <motion.div
-                    initial={{ opacity: 0, y: shouldReduceMotion ? 0 : 20 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    transition={shouldReduceMotion ? { duration: 0 } : { type: "spring", stiffness: 100, damping: 15 }}
-                    className="hbadge mb-8"
-                >
-                    <span>✨</span>
-                    <span>{t.hero.badge}</span>
-                </motion.div>
-
-                <motion.h1
-                    initial={{ opacity: 0, y: shouldReduceMotion ? 0 : 30 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    transition={shouldReduceMotion ? { duration: 0 } : { type: "spring", stiffness: 100, damping: 15, delay: 0.2 }}
-                    className="text-5xl font-extrabold tracking-tight sm:text-6xl md:text-7xl lg:text-8xl max-w-5xl mb-6"
-                >
-                    <span className="bg-gradient-to-r from-[#8b5cf6] to-[#3b82f6] bg-clip-text text-transparent">
-                        {t.hero.title}
+            <Stagger onMount className="container relative z-10 flex flex-col items-center text-center">
+                <StaggerItem>
+                    <span className="mb-8 inline-flex items-center gap-2 rounded-full border border-nb-line bg-white/5 px-4 py-1.5 text-sm font-medium text-white/90 backdrop-blur-sm">
+                        <Sparkles className="h-4 w-4 text-nb-sky" aria-hidden="true" />
+                        {t.hero.badge}
                     </span>
-                </motion.h1>
+                </StaggerItem>
 
-                <motion.p
-                    initial={{ opacity: 0, y: shouldReduceMotion ? 0 : 30 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    transition={shouldReduceMotion ? { duration: 0 } : { type: "spring", stiffness: 100, damping: 15, delay: 0.4 }}
-                    className="text-xl text-slate-300 max-w-3xl mb-10 leading-relaxed"
-                >
-                    {t.hero.description}
-                </motion.p>
+                <StaggerItem>
+                    <h1 className="mb-6 max-w-5xl text-4xl font-extrabold leading-[1.05] tracking-tight sm:text-6xl md:text-7xl">
+                        <span className="nb-gradient-text">{t.hero.title}</span>
+                    </h1>
+                </StaggerItem>
 
-                <motion.div
-                    initial={{ opacity: 0, y: shouldReduceMotion ? 0 : 30 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    transition={shouldReduceMotion ? { duration: 0 } : { type: "spring", stiffness: 100, damping: 15, delay: 0.6 }}
-                    className="space-y-4"
-                >
-                    <div className="flex flex-col sm:flex-row gap-4 w-full sm:w-auto">
-                        <MagneticButton strength={0.25} radius={120}>
-                            <motion.div whileHover={{ scale: 1.02, y: -4 }} transition={{ type: "spring", stiffness: 400, damping: 25 }}>
-                                <Button
-                                    size="lg"
-                                    className="text-lg px-8 h-14 bg-gradient-to-r from-[#8b5cf6] to-[#3b82f6] text-white font-semibold hover:shadow-2xl hover:shadow-purple-500/40"
-                                    asChild
-                                >
-                                    <Link href="/#contacto">{t.hero.contactBtn}</Link>
-                                </Button>
-                            </motion.div>
-                        </MagneticButton>
-                        <MagneticButton strength={0.25} radius={120}>
-                            <motion.div whileHover={{ scale: 1.02, y: -4 }} transition={{ type: "spring", stiffness: 400, damping: 25 }}>
-                                <Button
-                                    size="lg"
-                                    variant="outline"
-                                    className="text-lg px-8 h-14 border-2 border-[rgba(139,92,246,0.3)] text-slate-200 hover:bg-[rgba(139,92,246,0.1)] hover:border-[#8b5cf6]"
-                                    asChild
-                                >
-                                    <Link href="/#servicios">{t.hero.servicesBtn}</Link>
-                                </Button>
-                            </motion.div>
-                        </MagneticButton>
+                <StaggerItem>
+                    <p className="mb-10 max-w-2xl text-lg leading-relaxed text-nb-text md:text-xl">
+                        {t.hero.description}
+                    </p>
+                </StaggerItem>
+
+                <StaggerItem className="flex w-full flex-col items-center gap-4">
+                    <div className="flex w-full flex-col gap-3 sm:w-auto sm:flex-row">
+                        <GradientButton href="/#contacto" className="h-14 px-8 text-base">
+                            {t.hero.contactBtn}
+                            <ArrowRight className="h-4 w-4" aria-hidden="true" />
+                        </GradientButton>
+                        <GradientButton href="/#servicios" variant="outline" className="h-14 px-8 text-base">
+                            {t.hero.servicesBtn}
+                        </GradientButton>
                     </div>
                     {t.hero.microcopy && (
-                        <p className="text-sm text-slate-300 text-center sm:text-left">
-                            {t.hero.microcopy}
-                        </p>
+                        <p className="text-sm text-nb-text">{t.hero.microcopy}</p>
                     )}
-                </motion.div>
+                </StaggerItem>
 
-                {/* Scroll Indicator - Solo si no hay movimiento reducido */}
-                {!shouldReduceMotion && !isMobile && (
-                    <motion.div
-                        className="absolute bottom-10 left-1/2 -translate-x-1/2"
-                        animate={{ y: [0, 10, 0] }}
-                        transition={{ duration: 2, repeat: Infinity }}
-                    >
-                        <div className="w-6 h-10 border-2 border-purple-400/50 rounded-full flex justify-center pt-2">
-                            <motion.div
-                                className="w-1.5 h-3 bg-purple-400 rounded-full"
-                                animate={{ y: [0, 12, 0], opacity: [1, 0.3, 1] }}
-                                transition={{ duration: 2, repeat: Infinity }}
-                            />
-                        </div>
-                    </motion.div>
-                )}
-            </div>
+                {/* Pilares */}
+                <div
+                    className={cn(
+                        "mt-16 grid w-full grid-cols-1 gap-4 text-left md:mt-24",
+                        pillars.length === 4 ? "max-w-6xl sm:grid-cols-2 lg:grid-cols-4" : "max-w-5xl sm:grid-cols-3"
+                    )}
+                >
+                    {pillars.map((pillar) => (
+                        <StaggerItem key={pillar.slug}>
+                            <Link href={`/soluciones/${pillar.slug}`} className="block h-full focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-nb-sky rounded-2xl">
+                                <SpotlightCard className="p-6" radius={300}>
+                                    <IconTile icon={pillar.icon} className="mb-4" />
+                                    <h2 className="mb-2 text-base font-semibold">{pillar.title}</h2>
+                                    <p className="line-clamp-2 text-sm leading-relaxed text-nb-text">
+                                        {pillar.tagline}
+                                    </p>
+                                </SpotlightCard>
+                            </Link>
+                        </StaggerItem>
+                    ))}
+                </div>
+            </Stagger>
         </section>
     );
 }
