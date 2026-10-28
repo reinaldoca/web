@@ -11,14 +11,15 @@ export function WhatsAppButton() {
             href="https://wa.me/5491169044913"
             target="_blank"
             rel="noopener noreferrer"
-            className="inline-flex items-center fixed bottom-8 right-8 z-50 rounded-full focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-[#25D366]/50"
+            className="fixed bottom-4 right-4 z-50 inline-flex items-center rounded-full focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-[#25D366]/50 sm:bottom-6 sm:right-6"
             id="whatsapp-button"
             aria-label={u.whatsapp.aria}
             whileHover={{ scale: 1.05, y: -4, rotate: -6 }}
             transition={{ type: "spring", stiffness: 120, damping: 20 }}
         >
-            <div className="bg-[#25D366] text-white p-4 rounded-full shadow-[0_10px_30px_rgba(37,211,102,0.35)]">
-                <WhatsAppIcon className="h-[30px] w-[30px]" />
+            {/* 44px en celular (área táctil mínima recomendada por Apple) y 48px en escritorio */}
+            <div className="flex h-11 w-11 items-center justify-center rounded-full bg-[#25D366] text-white shadow-[0_6px_20px_rgba(37,211,102,0.35)] sm:h-12 sm:w-12">
+                <WhatsAppIcon className="h-[22px] w-[22px] sm:h-6 sm:w-6" />
             </div>
         </motion.a>
     );

@@ -22,6 +22,13 @@ function isRateLimited(ip: string) {
     return recent.length > MAX_PER_WINDOW;
 }
 
+/** Lee una variable de entorno quitando espacios y comillas envolventes pegadas por error en el panel. */
+function readEnv(key: string) {
+    const raw = process.env[key];
+    if (!raw) return "";
+    return raw.trim().replace(/^(['"])(.*)\1$/, "$2").trim();
+}
+
 function escapeHtml(value: string) {
     return value.replace(/[&<>"']/g, (char) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" })[char]!);
 }
@@ -58,9 +65,21 @@ export async function POST(request: Request) {
         return NextResponse.json({ error: "invalid_fields" }, { status: 422 });
     }
 
-    const { RESEND_API_KEY, CONTACT_TO_EMAIL, CONTACT_FROM_EMAIL } = process.env;
+    const RESEND_API_KEY = readEnv("RESEND_API_KEY");
+    const CONTACT_TO_EMAIL = readEnv("CONTACT_TO_EMAIL");
+    const CONTACT_FROM_EMAIL = readEnv("CONTACT_FROM_EMAIL");
+    const missing = [
+        ["RESEND_API_KEY", RESEND_API_KEY],
+        ["CONTACT_TO_EMAIL", CONTACT_TO_EMAIL],
+        ["CONTACT_FROM_EMAIL", CONTACT_FROM_EMAIL],
+    ]
+        .filter(([, value]) => !value)
+        .map(([key]) => key);
     if (!RESEND_API_KEY || !CONTACT_TO_EMAIL || !CONTACT_FROM_EMAIL) {
-        console.error("[contact] Faltan RESEND_API_KEY, CONTACT_TO_EMAIL o CONTACT_FROM_EMAIL; el mensaje no se envió.");
+        // Solo nombres y entorno, nunca valores. En Vercel: revisar que estén en "Production" y redeployar.
+        console.error(
+            `[contact] Faltan variables: ${missing.join(", ")} (entorno: ${process.env.VERCEL_ENV ?? process.env.NODE_ENV}); el mensaje no se envió.`
+        );
         return NextResponse.json({ error: "not_configured" }, { status: 503 });
     }
 

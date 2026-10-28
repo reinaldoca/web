@@ -29,18 +29,8 @@ const CaseStudiesSection = dynamic(
   }
 );
 
-const GenkitDemoModern = dynamic(
-  () => import("./components/GenkitDemoModern").then(m => ({ default: m.GenkitDemoModern })),
-  {
-    loading: () => (
-      <section className="py-20 md:py-32">
-        <div className="container">
-          <div className="mx-auto h-96 max-w-2xl rounded-3xl border border-nb-line bg-nb-surface" aria-hidden="true" />
-        </div>
-      </section>
-    ),
-  }
-);
+// Asistente inteligente (GenkitDemoModern) oculto por el momento: el componente sigue en
+// ./components/GenkitDemoModern.tsx; para volver a mostrarlo, importarlo con dynamic() y ubicarlo antes de <CTA />.
 
 export const metadata: Metadata = {
   title: "CloudBit | DevOps, Cloud AWS/Azure y Kubernetes para empresas de todo el mundo",
@@ -109,7 +99,6 @@ export default function Home() {
         <CaseStudiesSection />
         <WhyChooseUs />
         <FAQSection />
-        <GenkitDemoModern />
         <CTA />
         <Footer />
       </main>
