@@ -7,6 +7,7 @@ import { NextResponse } from "next/server";
  */
 
 const LIMITS = { name: 120, email: 200, company: 160, message: 5000 };
+const RESEND_TEST_SENDER = "CloudBit Web <onboarding@resend.dev>";
 const EMAIL_RE = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
 // Límite simple por IP (best-effort: se reinicia con cada instancia del servidor)
@@ -66,21 +67,26 @@ export async function POST(request: Request) {
     }
 
     const RESEND_API_KEY = readEnv("RESEND_API_KEY");
-    const CONTACT_TO_EMAIL = readEnv("CONTACT_TO_EMAIL");
-    const CONTACT_FROM_EMAIL = readEnv("CONTACT_FROM_EMAIL");
+    // Respaldo: si no hay CONTACT_TO_EMAIL se usa GMAIL_EMAIL (variable ya existente en el proyecto)
+    const CONTACT_TO_EMAIL = readEnv("CONTACT_TO_EMAIL") || readEnv("GMAIL_EMAIL");
+    // Respaldo: remitente de prueba de Resend. Solo puede enviar al email dueño de la cuenta de Resend;
+    // para enviar a cualquier destinatario, definir CONTACT_FROM_EMAIL con un dominio verificado.
+    const CONTACT_FROM_EMAIL = readEnv("CONTACT_FROM_EMAIL") || RESEND_TEST_SENDER;
     const missing = [
         ["RESEND_API_KEY", RESEND_API_KEY],
-        ["CONTACT_TO_EMAIL", CONTACT_TO_EMAIL],
-        ["CONTACT_FROM_EMAIL", CONTACT_FROM_EMAIL],
+        ["CONTACT_TO_EMAIL (o GMAIL_EMAIL)", CONTACT_TO_EMAIL],
     ]
         .filter(([, value]) => !value)
         .map(([key]) => key);
-    if (!RESEND_API_KEY || !CONTACT_TO_EMAIL || !CONTACT_FROM_EMAIL) {
+    if (!RESEND_API_KEY || !CONTACT_TO_EMAIL) {
         // Solo nombres y entorno, nunca valores. En Vercel: revisar que estén en "Production" y redeployar.
         console.error(
             `[contact] Faltan variables: ${missing.join(", ")} (entorno: ${process.env.VERCEL_ENV ?? process.env.NODE_ENV}); el mensaje no se envió.`
         );
         return NextResponse.json({ error: "not_configured" }, { status: 503 });
+    }
+    if (CONTACT_FROM_EMAIL === RESEND_TEST_SENDER) {
+        console.warn("[contact] Sin CONTACT_FROM_EMAIL: se usa el remitente de prueba de Resend (onboarding@resend.dev).");
     }
 
     const rows = [
@@ -107,7 +113,16 @@ export async function POST(request: Request) {
     });
 
     if (!response.ok) {
-        console.error("[contact] Resend respondió", response.status, await response.text().catch(() => ""));
+        // Resend devuelve { name, message }: el message explica la causa (dominio sin verificar, destinatario no permitido, etc.)
+        const detail = await response.text().catch(() => "");
+        let reason = detail;
+        try {
+            const parsed = JSON.parse(detail) as { name?: string; message?: string };
+            reason = [parsed.name, parsed.message].filter(Boolean).join(": ") || detail;
+        } catch {
+            // respuesta no JSON: se registra tal cual
+        }
+        console.error(`[contact] Resend rechazó el envío (${response.status}): ${reason}`);
         return NextResponse.json({ error: "send_failed" }, { status: 502 });
     }
 
