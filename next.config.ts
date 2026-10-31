@@ -6,14 +6,18 @@ const isProd = process.env.NODE_ENV === "production";
  * CSP compatible con el sitio actual: Next inyecta scripts inline (sin nonce) y
  * framer-motion escribe estilos inline. Las fuentes se sirven desde el propio dominio (next/font).
  * Si se agrega un servicio externo (analítica, calendario, CRM), sumar su dominio acá.
+ * challenges.cloudflare.com: Turnstile (anti-bots del formulario de contacto), script + iframe del desafío.
  */
+const TURNSTILE = "https://challenges.cloudflare.com";
+
 const contentSecurityPolicy = [
   "default-src 'self'",
-  "script-src 'self' 'unsafe-inline'",
+  `script-src 'self' 'unsafe-inline' ${TURNSTILE}`,
   "style-src 'self' 'unsafe-inline'",
   "img-src 'self' data: blob:",
   "font-src 'self' data:",
-  "connect-src 'self'",
+  `connect-src 'self' ${TURNSTILE}`,
+  `frame-src ${TURNSTILE}`,
   "frame-ancestors 'none'",
   "base-uri 'self'",
   "form-action 'self'",

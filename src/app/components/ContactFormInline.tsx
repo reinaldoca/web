@@ -8,8 +8,12 @@ import { Textarea } from "@/components/ui/textarea";
 import { Label } from "@/components/ui/label";
 import { CheckCircle2, Loader2, XCircle, AlertCircle } from "lucide-react";
 import { useLanguage } from "@/components/language-provider";
+import { Turnstile } from "@/components/ui/turnstile";
 
 type FormState = "idle" | "loading" | "success" | "error";
+
+/** Clave pública de Cloudflare Turnstile; si no está definida, el widget no se muestra. */
+const TURNSTILE_SITE_KEY = process.env.NEXT_PUBLIC_TURNSTILE_SITE_KEY ?? "";
 
 /** Se guarda la clave del error (no el texto) para que cambie con el idioma. */
 type ErrorKey = "nameRequired" | "emailRequired" | "emailInvalid";
@@ -27,7 +31,7 @@ interface FormData {
  */
 export function ContactFormInline({ redirectOnSuccess }: { redirectOnSuccess?: string } = {}) {
     const router = useRouter();
-    const { u } = useLanguage();
+    const { u, language } = useLanguage();
     const f = u.form;
     const [formState, setFormState] = useState<FormState>("idle");
     const [formData, setFormData] = useState<FormData>({
@@ -43,6 +47,16 @@ export function ContactFormInline({ redirectOnSuccess }: { redirectOnSuccess?: s
     const successMessageRef = useRef<HTMLDivElement>(null);
     const errorMessageRef = useRef<HTMLDivElement>(null);
     const formRef = useRef<HTMLFormElement>(null);
+
+    // Anti-bots: momento en que se mostró el formulario (el servidor exige un tiempo mínimo de llenado)
+    const startedAtRef = useRef(0);
+    useEffect(() => {
+        startedAtRef.current = Date.now();
+    }, []);
+
+    // Cloudflare Turnstile (solo si está configurada la clave pública)
+    const [turnstileToken, setTurnstileToken] = useState<string | null>(null);
+    const [turnstileReset, setTurnstileReset] = useState(0);
 
     // Focus on success/error messages for accessibility
     useEffect(() => {
@@ -96,6 +110,12 @@ export function ContactFormInline({ redirectOnSuccess }: { redirectOnSuccess?: s
             return;
         }
 
+        // Con Turnstile activo, no se envía hasta tener el token del desafío
+        if (TURNSTILE_SITE_KEY && !turnstileToken) {
+            setFormState("error");
+            return;
+        }
+
         setFormState("loading");
 
         try {
@@ -103,7 +123,12 @@ export function ContactFormInline({ redirectOnSuccess }: { redirectOnSuccess?: s
             const response = await fetch("/api/contact", {
                 method: "POST",
                 headers: { "Content-Type": "application/json" },
-                body: JSON.stringify({ ...formData, website: honeypot }),
+                body: JSON.stringify({
+                    ...formData,
+                    website: honeypot,
+                    startedAt: startedAtRef.current,
+                    turnstileToken,
+                }),
             });
             if (!response.ok) {
                 throw new Error(`HTTP ${response.status}`);
@@ -116,6 +141,9 @@ export function ContactFormInline({ redirectOnSuccess }: { redirectOnSuccess?: s
             setFormState("success");
         } catch (error) {
             setFormState("error");
+            // Cada token de Turnstile sirve una sola vez: se pide un desafío nuevo para reintentar
+            setTurnstileToken(null);
+            setTurnstileReset((value) => value + 1);
             console.error("Error al enviar formulario:", error);
         }
     };
@@ -296,6 +324,15 @@ export function ContactFormInline({ redirectOnSuccess }: { redirectOnSuccess?: s
                         </div>
                     </div>
                 </div>
+            )}
+
+            {TURNSTILE_SITE_KEY && (
+                <Turnstile
+                    siteKey={TURNSTILE_SITE_KEY}
+                    language={language}
+                    onToken={setTurnstileToken}
+                    resetKey={turnstileReset}
+                />
             )}
 
             {/* Submit button with loading state */}
