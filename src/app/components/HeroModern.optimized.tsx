@@ -17,7 +17,7 @@ import { cn } from "@/lib/utils";
  * - fila de cards con las 4 soluciones como "pilares"
  */
 export function HeroModernOptimized() {
-    const { t, language } = useLanguage();
+    const { t, language, to } = useLanguage();
     const pillars = getSolutions(language);
 
     return (
@@ -57,11 +57,11 @@ export function HeroModernOptimized() {
 
                 <StaggerItem className="flex w-full flex-col items-center gap-4">
                     <div className="flex w-full flex-col gap-3 sm:w-auto sm:flex-row">
-                        <GradientButton href="/#contacto" className="h-14 px-8 text-base">
+                        <GradientButton href={to("/#contacto")} className="h-14 px-8 text-base">
                             {t.hero.contactBtn}
                             <ArrowRight className="h-4 w-4" aria-hidden="true" />
                         </GradientButton>
-                        <GradientButton href="/#servicios" variant="outline" className="h-14 px-8 text-base">
+                        <GradientButton href={to("/#servicios")} variant="outline" className="h-14 px-8 text-base">
                             {t.hero.servicesBtn}
                         </GradientButton>
                     </div>
@@ -79,7 +79,7 @@ export function HeroModernOptimized() {
                 >
                     {pillars.map((pillar) => (
                         <StaggerItem key={pillar.slug}>
-                            <Link href={`/soluciones/${pillar.slug}`} className="block h-full focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-nb-sky rounded-2xl">
+                            <Link href={to(`/soluciones/${pillar.slug}`)} className="block h-full focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-nb-sky rounded-2xl">
                                 <SpotlightCard className="p-6" radius={300}>
                                     <IconTile icon={pillar.icon} className="mb-4" />
                                     <h2 className="mb-2 text-base font-semibold">{pillar.title}</h2>

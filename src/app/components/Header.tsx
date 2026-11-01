@@ -33,7 +33,7 @@ export function Header() {
     const [isOpen, setIsOpen] = React.useState(false);
     const [openMobileGroup, setOpenMobileGroup] = React.useState<string | null>(null);
     const [isScrolled, setIsScrolled] = React.useState(false);
-    const { t, u, language } = useLanguage();
+    const { t, u, language, to } = useLanguage();
     const services = getServices(language);
     const solutionLinks = getSolutionLinks(language);
     const { scrollY } = useScroll();
@@ -49,7 +49,7 @@ export function Header() {
 
     const mobileGroups = [
         { id: "soluciones", label: u.common.solutions, links: solutionLinks.map((s) => ({ label: s.label, href: s.href })) },
-        { id: "servicios", label: t.header.services, links: services.map((s) => ({ label: s.title, href: `/servicios/${s.id}` })) },
+        { id: "servicios", label: t.header.services, links: services.map((s) => ({ label: s.title, href: to(`/servicios/${s.id}`) })) },
     ];
 
     return (
@@ -77,7 +77,7 @@ export function Header() {
                     isScrolled && "backdrop-blur-md"
                 )}
             >
-                <Link href="/" className="flex shrink-0 items-center" aria-label={u.header.homeAria}>
+                <Link href={to("/")} className="flex shrink-0 items-center" aria-label={u.header.homeAria}>
                     <Image
                         src="/images/logo.png"
                         alt="CloudBit Logo"
@@ -127,7 +127,7 @@ export function Header() {
                                             <li key={service.title}>
                                                 <NavigationMenuLink asChild>
                                                     <Link
-                                                        href={`/servicios/${service.id}`}
+                                                        href={to(`/servicios/${service.id}`)}
                                                         className="group flex !flex-row select-none items-center gap-3 rounded-xl p-2.5 text-left text-sm font-medium leading-snug text-white/85 no-underline outline-none transition-colors hover:bg-nb-sky/10 hover:text-white focus:bg-nb-sky/10"
                                                     >
                                                         <IconTile icon={service.icon} size="sm" />
@@ -157,7 +157,7 @@ export function Header() {
 
                     <LanguageSwitcher />
                     <GradientButton
-                        href="/contacto"
+                        href={to("/contacto")}
                         className={cn(
                             "px-5 py-2.5 text-sm",
                             isScrolled && "from-white to-white text-nb-blue hover:shadow-[0_10px_30px_rgba(255,255,255,0.25)]"
@@ -225,7 +225,7 @@ export function Header() {
                                     </Link>
                                 ))}
                                 <div onClick={() => setIsOpen(false)}>
-                                    <GradientButton href="/contacto" className="mt-4 w-full">
+                                    <GradientButton href={to("/contacto")} className="mt-4 w-full">
                                         {t.header.contact}
                                     </GradientButton>
                                 </div>

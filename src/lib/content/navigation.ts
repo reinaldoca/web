@@ -1,4 +1,5 @@
 import type { Language } from "@/lib/i18n/dictionary";
+import { localizeHref } from "@/lib/i18n/routes";
 import { getSolutions } from "./solutions";
 
 /** Links del sitio por idioma; Header y Footer leen de acá. */
@@ -6,7 +7,7 @@ export function getSolutionLinks(lang: Language) {
   return getSolutions(lang).map((solution) => ({
     label: solution.title,
     description: solution.tagline,
-    href: `/soluciones/${solution.slug}`,
+    href: localizeHref(`/soluciones/${solution.slug}`, lang),
     icon: solution.icon,
   }));
 }
@@ -39,9 +40,9 @@ const companyLinksByLanguage: Record<Language, { label: string; href: string }[]
 };
 
 export function getContentLinks(lang: Language) {
-  return contentLinksByLanguage[lang];
+  return contentLinksByLanguage[lang].map((link) => ({ ...link, href: localizeHref(link.href, lang) }));
 }
 
 export function getCompanyLinks(lang: Language) {
-  return companyLinksByLanguage[lang];
+  return companyLinksByLanguage[lang].map((link) => ({ ...link, href: localizeHref(link.href, lang) }));
 }

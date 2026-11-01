@@ -11,7 +11,7 @@ import { FadeIn, Stagger, StaggerItem } from "@/components/ui/fade-in";
  * Casos de éxito en la home: cards que llevan al detalle de cada caso.
  */
 export function CaseStudiesSection() {
-    const { u, language } = useLanguage();
+    const { u, language, to } = useLanguage();
     const copy = u.casesSection;
 
     return (
@@ -31,8 +31,8 @@ export function CaseStudiesSection() {
                 </Stagger>
 
                 <FadeIn className="mt-16 flex flex-col items-center justify-center gap-3 sm:flex-row">
-                    <GradientButton href="/casos-de-exito">{copy.viewAll}</GradientButton>
-                    <GradientButton href="/contacto" variant="outline">
+                    <GradientButton href={to("/casos-de-exito")}>{copy.viewAll}</GradientButton>
+                    <GradientButton href={to("/contacto")} variant="outline">
                         {u.common.freeDiagnosis}
                     </GradientButton>
                 </FadeIn>

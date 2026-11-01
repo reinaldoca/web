@@ -4,7 +4,6 @@ import {
     AnimatePresence,
     motion,
     useMotionValueEvent,
-    useReducedMotion,
     useScroll,
     useSpring,
     useTransform,
@@ -13,7 +12,7 @@ import {
 import { useCallback, useEffect, useRef, useState, useSyncExternalStore } from "react";
 import { SectionHeader } from "@/components/ui/section-header";
 import { GradientButton } from "@/components/ui/gradient-button";
-import { FadeIn, premiumSpring } from "@/components/ui/fade-in";
+import { FadeIn, premiumSpring, useSafeReducedMotion } from "@/components/ui/fade-in";
 import { useLanguage } from "@/components/language-provider";
 import { cn } from "@/lib/utils";
 
@@ -44,9 +43,9 @@ type StepState = "upcoming" | "done" | "active";
 export function ProcessSection() {
     const timelineRef = useRef<HTMLOListElement>(null);
     const nodeRefs = useRef<(HTMLSpanElement | null)[]>([]);
-    const reduceMotion = useReducedMotion();
+    const reduceMotion = useSafeReducedMotion();
     const isDesktop = useIsDesktop();
-    const { u } = useLanguage();
+    const { u, to } = useLanguage();
     const copy = u.process;
     const steps = copy.steps;
 
@@ -150,8 +149,8 @@ export function ProcessSection() {
                         <h3 className="text-2xl font-bold">{copy.readyTitle}</h3>
                         <p className="text-nb-text">{copy.readyText}</p>
                         <div className="flex flex-col gap-3 sm:flex-row">
-                            <GradientButton href="/contacto">{copy.schedule}</GradientButton>
-                            <GradientButton variant="outline" href="/#servicios">
+                            <GradientButton href={to("/contacto")}>{copy.schedule}</GradientButton>
+                            <GradientButton variant="outline" href={to("/#servicios")}>
                                 {copy.viewServices}
                             </GradientButton>
                         </div>

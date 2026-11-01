@@ -1,11 +1,11 @@
 "use client";
 
 import { useState } from "react";
-import { AnimatePresence, motion, useReducedMotion } from "framer-motion";
+import { AnimatePresence, motion } from "framer-motion";
 import { Check } from "lucide-react";
 import { useLanguage } from "@/components/language-provider";
 import { SectionHeader } from "@/components/ui/section-header";
-import { FadeIn, premiumSpring } from "@/components/ui/fade-in";
+import { FadeIn, premiumSpring, useSafeReducedMotion } from "@/components/ui/fade-in";
 import { GradientButton } from "@/components/ui/gradient-button";
 import { cn } from "@/lib/utils";
 
@@ -27,11 +27,11 @@ function levelColor(level: number, total: number) {
  * nivel y un CTA. Cada cambio dispara un pulso único (no un loop).
  */
 export function SignalsChecklist({ title, description, signals }: SignalsChecklistProps) {
-    const { u } = useLanguage();
+    const { u, to } = useLanguage();
     const copy = u.signals;
     // El estado se indexa por posición: al cambiar de idioma las señales marcadas se conservan
     const [checked, setChecked] = useState<boolean[]>(() => signals.map(() => false));
-    const reduceMotion = useReducedMotion();
+    const reduceMotion = useSafeReducedMotion();
     const total = signals.length;
     const count = checked.filter(Boolean).length;
     const levelIndex = Math.min(Math.round((count / total) * (copy.levels.length - 1)), copy.levels.length - 1);
@@ -127,7 +127,7 @@ export function SignalsChecklist({ title, description, signals }: SignalsCheckli
                                 </motion.p>
                             </AnimatePresence>
 
-                            <GradientButton href="/contacto" className={cn("w-full", count === 0 && "opacity-60")}>
+                            <GradientButton href={to("/contacto")} className={cn("w-full", count === 0 && "opacity-60")}>
                                 {copy.cta}
                             </GradientButton>
                         </motion.div>

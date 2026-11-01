@@ -20,7 +20,7 @@ import { getFaqCategories } from "@/lib/content/faq";
  */
 export function FAQSection() {
     const [openItem, setOpenItem] = useState<string | undefined>(undefined);
-    const { u, language } = useLanguage();
+    const { u, language, to } = useLanguage();
     const copy = u.faqSection;
 
     // Misma fuente que /faq: las primeras preguntas de cada categoría
@@ -101,7 +101,7 @@ export function FAQSection() {
 
                     {/* CTA */}
                     <FadeIn className="mt-16 text-center">
-                        <GradientButton href="/contacto">{copy.cta}</GradientButton>
+                        <GradientButton href={to("/contacto")}>{copy.cta}</GradientButton>
                     </FadeIn>
                 </div>
             </section>

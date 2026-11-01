@@ -11,15 +11,15 @@ import { getFeaturedServices } from "@/lib/services-data";
 import { getSolutionLinks, getContentLinks, getCompanyLinks } from "@/lib/content/navigation";
 
 export function Footer() {
-    const { t, u, language } = useLanguage();
+    const { t, u, language, to } = useLanguage();
 
     const columns = [
         { title: u.common.solutions, links: getSolutionLinks(language).map((s) => ({ label: s.label, href: s.href })) },
         {
             title: t.footer.services,
             links: getFeaturedServices(language)
-                .map((s) => ({ label: s.title, href: `/servicios/${s.id}` }))
-                .concat([{ label: u.common.seeAll, href: "/#servicios" }]),
+                .map((s) => ({ label: s.title, href: to(`/servicios/${s.id}`) }))
+                .concat([{ label: u.common.seeAll, href: to("/#servicios") }]),
         },
         { title: u.common.content, links: getContentLinks(language) },
         { title: t.footer.company, links: getCompanyLinks(language) },
@@ -33,7 +33,7 @@ export function Footer() {
             <div className="container py-14 md:py-20">
                 <div className="grid gap-10 md:grid-cols-2 lg:grid-cols-[1.4fr_1fr_1fr_1fr_1fr]">
                     <div className="space-y-5">
-                        <Link href="/" className="inline-flex items-center">
+                        <Link href={to("/")} className="inline-flex items-center">
                             <Image
                                 src="/images/logo.png"
                                 alt="CloudBit Logo"

@@ -1,10 +1,24 @@
 "use client";
 
+import { useSyncExternalStore } from "react";
 import { motion, useReducedMotion, type HTMLMotionProps, type Transition, type Variants } from "framer-motion";
 import { cn } from "@/lib/utils";
 
 /** Resorte "material premium" del proyecto (ver CLAUDE.md). */
 export const premiumSpring: Transition = { type: "spring", stiffness: 120, damping: 20 };
+
+const noopSubscribe = () => () => {};
+
+/**
+ * useReducedMotion apto para SSR: durante la hidratación devuelve false, igual que el servidor,
+ * y recién después la preferencia real. Con useReducedMotion directo, un visitante con
+ * "reducir movimiento" recibe un HTML distinto al del servidor y React descarta la hidratación.
+ */
+export function useSafeReducedMotion() {
+    const reduceMotion = useReducedMotion();
+    const hydrated = useSyncExternalStore(noopSubscribe, () => true, () => false);
+    return hydrated && !!reduceMotion;
+}
 
 interface FadeInProps extends HTMLMotionProps<"div"> {
     delay?: number;
@@ -17,7 +31,7 @@ interface FadeInProps extends HTMLMotionProps<"div"> {
  * Equivalente al `.fade-in` + ScrollTrigger de la referencia, pero con whileInView.
  */
 export function FadeIn({ delay = 0, offset = 30, className, children, ...props }: FadeInProps) {
-    const reduceMotion = useReducedMotion();
+    const reduceMotion = useSafeReducedMotion();
 
     return (
         <motion.div
@@ -50,7 +64,7 @@ interface StaggerProps extends HTMLMotionProps<"div"> {
 
 /** Contenedor que revela a sus <StaggerItem> en secuencia. */
 export function Stagger({ onMount = false, className, children, ...props }: StaggerProps) {
-    const reduceMotion = useReducedMotion();
+    const reduceMotion = useSafeReducedMotion();
     const trigger = onMount
         ? { animate: "visible" as const }
         : { whileInView: "visible" as const, viewport: { once: true, margin: "0px 0px -15% 0px" } };

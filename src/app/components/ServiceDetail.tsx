@@ -22,7 +22,7 @@ interface ServiceDetailProps {
  * Plantilla de servicio: hero → señales → qué incluye → proceso → para quién → contacto.
  */
 export function ServiceDetail({ slug }: ServiceDetailProps) {
-    const { t, u, language } = useLanguage();
+    const { t, u, language, to } = useLanguage();
     const copy = u.servicePage;
     const service = getServiceById(slug, language);
 
@@ -36,13 +36,13 @@ export function ServiceDetail({ slug }: ServiceDetailProps) {
         <>
             <PageHero
                 breadcrumbs={[
-                    { label: u.common.home, href: "/" },
-                    { label: t.header.services, href: "/#servicios" },
+                    { label: u.common.home, href: to("/") },
+                    { label: t.header.services, href: to("/#servicios") },
                     { label: service.title },
                 ]}
                 title={service.title}
                 description={service.fullDescription}
-                cta={{ label: t.servicePage.consultation, href: "/contacto" }}
+                cta={{ label: t.servicePage.consultation, href: to("/contacto") }}
             >
                 <div className="flex flex-wrap items-center gap-3">
                     <IconTile icon={service.icon} size="lg" />

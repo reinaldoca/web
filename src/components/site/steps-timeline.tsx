@@ -1,10 +1,10 @@
 "use client";
 
 import { useState } from "react";
-import { AnimatePresence, motion, useReducedMotion } from "framer-motion";
+import { AnimatePresence, motion } from "framer-motion";
 import { ArrowLeft, ArrowRight } from "lucide-react";
 import { SectionHeader } from "@/components/ui/section-header";
-import { FadeIn, premiumSpring } from "@/components/ui/fade-in";
+import { FadeIn, premiumSpring, useSafeReducedMotion } from "@/components/ui/fade-in";
 import { cn } from "@/lib/utils";
 import { useLanguage } from "@/components/language-provider";
 
@@ -24,7 +24,7 @@ export function StepsTimeline({ label, title, description, steps }: StepsTimelin
     const copy = u.timeline;
     const [active, setActive] = useState(0);
     const [direction, setDirection] = useState(1);
-    const reduceMotion = useReducedMotion();
+    const reduceMotion = useSafeReducedMotion();
 
     const goTo = (index: number) => {
         setDirection(index > active ? 1 : -1);

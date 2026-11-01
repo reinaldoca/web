@@ -39,10 +39,10 @@ export function ServicesModern() {
 }
 
 function ServiceCard({ service, index }: { service: ServiceData; index: number }) {
-    const { u } = useLanguage();
+    const { u, to } = useLanguage();
     return (
         <Link
-            href={`/servicios/${service.id}`}
+            href={to(`/servicios/${service.id}`)}
             className="block h-full rounded-2xl focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-nb-sky"
         >
             <SpotlightCard className="flex min-h-[340px] flex-col p-8">

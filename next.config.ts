@@ -36,6 +36,10 @@ const securityHeaders = [
 ];
 
 const nextConfig: NextConfig = {
+  // Hay dos layouts raíz (app/(es) y app/en): el 404 de URLs inexistentes sale de app/global-not-found.tsx
+  experimental: {
+    globalNotFound: true,
+  },
   poweredByHeader: false,
   async headers() {
     return [{ source: "/:path*", headers: securityHeaders }];

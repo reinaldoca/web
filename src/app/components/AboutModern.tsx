@@ -15,7 +15,7 @@ import { FadeIn, Stagger, StaggerItem } from "@/components/ui/fade-in";
  * "Nosotros" + franja de KPIs (equivalente a section__kpi de la referencia).
  */
 export function AboutModern() {
-    const { t, u } = useLanguage();
+    const { t, u, to } = useLanguage();
 
     const metrics = [
         t.about.stats.experience,
@@ -41,7 +41,7 @@ export function AboutModern() {
                         <p className="mb-10 text-lg leading-relaxed text-nb-text">
                             {t.about.description2}
                         </p>
-                        <GradientButton href="/#contacto">{t.about.teamBtn}</GradientButton>
+                        <GradientButton href={to("/#contacto")}>{t.about.teamBtn}</GradientButton>
                     </FadeIn>
 
                     <FadeIn delay={0.1} className="relative">

@@ -100,9 +100,6 @@ export const faqCategories: FaqCategory[] = [
   },
 ];
 
-/** Preguntas en español para el schema FAQPage (el HTML inicial se renderiza en español). */
-export const allFaqs = faqCategories.flatMap((category) => category.items);
-
 const faqByLanguage: Record<Language, FaqCategory[]> = { es: faqCategories, en: faqCategoriesEn };
 
 export function getFaqCategories(lang: Language) {

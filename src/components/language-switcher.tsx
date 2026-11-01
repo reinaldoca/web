@@ -1,10 +1,12 @@
 "use client";
 
 import { useId } from "react";
+import { usePathname } from "next/navigation";
 import { motion } from "framer-motion";
 import { useLanguage } from "@/components/language-provider";
 import { premiumSpring } from "@/components/ui/fade-in";
 import type { Language } from "@/lib/i18n/dictionary";
+import { switchLanguagePath } from "@/lib/i18n/routes";
 import { cn } from "@/lib/utils";
 
 const OPTIONS: { value: Language; short: string; label: string }[] = [
@@ -16,10 +18,18 @@ const OPTIONS: { value: Language; short: string; label: string }[] = [
  * Selector de idioma segmentado "ES | EN".
  * Reemplaza las banderas emoji, que Windows muestra como letras sueltas.
  * El indicador se desliza bajo el idioma activo; cada instancia usa su propio layoutId.
+ * Cambiar de idioma navega a la misma página en el otro idioma (cada uno tiene su layout raíz,
+ * así que es una carga completa).
  */
 export function LanguageSwitcher({ className }: { className?: string }) {
-    const { language, setLanguage, u } = useLanguage();
+    const { language, u } = useLanguage();
+    const pathname = usePathname();
     const indicatorId = useId();
+
+    const switchTo = (lang: Language) => {
+        if (lang === language) return;
+        window.location.assign(switchLanguagePath(pathname, lang) + window.location.hash);
+    };
 
     return (
         <div
@@ -37,7 +47,7 @@ export function LanguageSwitcher({ className }: { className?: string }) {
                         aria-checked={isActive}
                         aria-label={option.label}
                         lang={option.value}
-                        onClick={() => setLanguage(option.value)}
+                        onClick={() => switchTo(option.value)}
                         className={cn(
                             "relative z-10 rounded-full px-2.5 py-1 text-xs font-semibold tracking-wide transition-colors duration-300 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-nb-sky",
                             isActive ? "text-nb-dark" : "text-white/70 hover:text-white"

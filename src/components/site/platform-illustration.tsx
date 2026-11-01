@@ -1,12 +1,12 @@
 "use client";
 
 import Image from "next/image";
-import { motion, useReducedMotion } from "framer-motion";
+import { motion } from "framer-motion";
 import { Check, Cloud, GitBranch, Gauge, ShieldCheck, Boxes } from "lucide-react";
 import { siKubernetes } from "simple-icons";
 import { useLanguage } from "@/components/language-provider";
 import { IconTile } from "@/components/ui/icon-tile";
-import { premiumSpring } from "@/components/ui/fade-in";
+import { premiumSpring, useSafeReducedMotion } from "@/components/ui/fade-in";
 import { cn } from "@/lib/utils";
 
 /**
@@ -29,7 +29,7 @@ const SPARKLINE = "M0 22 L10 18 L20 20 L30 12 L40 15 L50 9 L60 11 L70 6 L80 8 L9
 export function PlatformIllustration() {
     const { u } = useLanguage();
     const copy = u.about.illustration;
-    const reduceMotion = useReducedMotion();
+    const reduceMotion = useSafeReducedMotion();
 
     const reveal = (delay: number) => ({
         initial: reduceMotion ? false : { opacity: 0, y: 16 },

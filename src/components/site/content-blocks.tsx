@@ -96,8 +96,9 @@ export function StagesGrid({ stages }: { stages: { name: string; deliverables: s
 
 /** Card de listado de casos de éxito. */
 export function CaseCard({ item }: { item: CaseStudy }) {
+    const { to } = useLanguage();
     return (
-        <Link href={`/casos-de-exito/${item.slug}`} className="block h-full rounded-2xl focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-nb-sky">
+        <Link href={to(`/casos-de-exito/${item.slug}`)} className="block h-full rounded-2xl focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-nb-sky">
             <SpotlightCard className="flex flex-col p-7">
                 <div className="mb-5 flex items-center justify-between">
                     <span className="rounded-full border border-nb-line px-3 py-1 text-xs font-semibold text-nb-sky">{item.industry}</span>
@@ -124,9 +125,9 @@ export function formatDate(iso: string, locale: string) {
 
 /** Card de listado del blog. */
 export function BlogCard({ post }: { post: BlogPost }) {
-    const { u, language } = useLanguage();
+    const { u, language, to } = useLanguage();
     return (
-        <Link href={`/blog/${post.slug}`} className="block h-full rounded-2xl focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-nb-sky">
+        <Link href={to(`/blog/${post.slug}`)} className="block h-full rounded-2xl focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-nb-sky">
             <SpotlightCard className="flex flex-col p-7" radius={400}>
                 <div className="mb-5 flex items-center gap-3 text-xs">
                     <span className="rounded-full bg-nb-blue/25 px-3 py-1 font-semibold text-nb-sky">{categoryLabel(post.category, language)}</span>
