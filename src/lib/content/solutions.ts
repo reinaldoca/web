@@ -48,7 +48,7 @@ export const solutions: Solution[] = [
       { title: "Olas de migración", description: "Movemos en grupos pequeños, con pruebas y plan de reversión en cada ola." },
       { title: "Estabilización", description: "Dos semanas de acompañamiento, ajuste de tamaños y traspaso al equipo." },
     ],
-    relatedServiceIds: ["cloud", "migracion", "finops"],
+    relatedServiceIds: ["cloud", "migracion", "finops", "iac", "well-architected", "backup-dr"],
     quote: "Migrar no es copiar servidores: es la oportunidad de dejar atrás la deuda técnica que nadie quería tocar.",
     stages: [
       { name: "Evaluar", deliverables: ["Inventario y mapa de dependencias", "Estimación de costos cloud", "Roadmap por olas"] },
@@ -84,7 +84,7 @@ export const solutions: Solution[] = [
       { title: "Seguridad en el pipeline", description: "SAST, escaneo de imágenes y gestión de secretos." },
       { title: "Escalado al resto", description: "Plantillas reutilizables para que cada equipo adopte el modelo." },
     ],
-    relatedServiceIds: ["devops", "devsecops", "platform-engineering"],
+    relatedServiceIds: ["devops", "devsecops", "platform-engineering", "iac", "contenedores-kubernetes", "gitops"],
     quote: "Un equipo que publica seguido publica con menos miedo, porque cada cambio es pequeño y reversible.",
     stages: [
       { name: "Medir", deliverables: ["Métricas DORA iniciales", "Mapa del flujo de entrega", "Prioridades de automatización"] },
@@ -120,7 +120,7 @@ export const solutions: Solution[] = [
       { title: "Guardia activa", description: "Atención 24/7 con escalamiento según severidad." },
       { title: "Reportes mensuales", description: "Disponibilidad, incidentes, costos y recomendaciones." },
     ],
-    relatedServiceIds: ["staffing", "observabilidad", "sre"],
+    relatedServiceIds: ["staffing", "observabilidad", "sre", "linux-admin", "well-architected", "backup-dr"],
     quote: "La mejor guardia es la que casi no suena, porque los problemas se detectan antes de convertirse en incidentes.",
     stages: [
       { name: "Observar", deliverables: ["Dashboards por servicio", "Alertas con umbrales acordados", "Inventario de activos"] },

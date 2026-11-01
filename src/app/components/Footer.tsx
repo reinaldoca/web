@@ -2,7 +2,8 @@
 
 import Link from "next/link";
 import Image from "next/image";
-import { Linkedin, Mail } from "lucide-react";
+import { Linkedin, Mail, MapPin } from "lucide-react";
+import { COMPANY_ADDRESS } from "@/lib/content/company";
 import { motion } from "framer-motion";
 import { useLanguage } from "@/components/language-provider";
 import { premiumSpring } from "@/components/ui/fade-in";
@@ -50,6 +51,15 @@ export function Footer() {
                         >
                             <Mail className="h-4 w-4" aria-hidden="true" />
                             contacto@cloudbit.com.ar
+                        </a>
+                        <a
+                            href={COMPANY_ADDRESS.mapsUrl}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="flex items-start gap-2 text-sm text-white/85 transition-colors hover:text-nb-sky"
+                        >
+                            <MapPin className="mt-0.5 h-4 w-4 shrink-0" aria-hidden="true" />
+                            <address className="not-italic">{COMPANY_ADDRESS.display}</address>
                         </a>
                         <div>
                         <h3 className="sr-only">

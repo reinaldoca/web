@@ -14,6 +14,11 @@ import {
   Network,
   Server,
   SquareTerminal,
+  FileCode,
+  Container,
+  GitPullRequest,
+  ClipboardCheck,
+  DatabaseBackup,
   LucideIcon,
 } from "lucide-react";
 import { Language } from "@/lib/i18n/dictionary";
@@ -405,6 +410,131 @@ const servicesEs: ServiceData[] = [
     ],
     tags: ["Linux", "Debian", "Ubuntu", "Fedora", "SysAdmin"],
   },
+  {
+    id: "iac",
+    title: "Infraestructura como Código (IaC)",
+    shortDescription:
+      "Definimos tu infraestructura AWS en código con Terraform, OpenTofu, CloudFormation o CDK: versionada, revisada y reproducible.",
+    fullDescription:
+      "Dejamos de crear infraestructura a mano desde la consola. Describimos redes, cómputo, bases de datos y permisos en código versionado, con módulos reutilizables, estado remoto seguro y un pipeline que muestra el plan en cada pull request antes de aplicar. Podemos partir de cero o importar lo que ya existe sin recrearlo. El código queda en tu repositorio y tu equipo puede mantenerlo sin depender de nosotros.",
+    icon: FileCode,
+    features: [
+      "Relevamiento de la infraestructura actual y del nivel de automatización",
+      "Biblioteca de módulos Terraform/OpenTofu versionados",
+      "Estado remoto en S3 con cifrado y bloqueo",
+      "Ambientes separados por cuenta AWS (dev, staging, prod)",
+      "Pipeline de plan/apply con revisión en cada pull request",
+      "Importación de recursos existentes y detección de drift",
+    ],
+    benefits: [
+      "Ambientes idénticos y reproducibles",
+      "Cada cambio queda revisado y auditado",
+      "Recuperación rápida ante incidentes o desastres",
+      "Menos errores por cambios manuales",
+      "Sin lock-in: el código es tuyo",
+    ],
+    tags: ["Terraform", "OpenTofu", "CloudFormation", "AWS CDK"],
+  },
+  {
+    id: "contenedores-kubernetes",
+    title: "Contenedores y Kubernetes en AWS",
+    shortDescription:
+      "Contenerizamos tus aplicaciones y las llevamos a producción en ECS, Fargate o EKS con despliegues automatizados.",
+    fullDescription:
+      "Llevamos tus aplicaciones a contenedores con imágenes livianas y seguras, y elegimos con vos el orquestador que mejor se ajusta a tu equipo: ECS con Fargate para operar con lo mínimo, o EKS cuando necesitás el ecosistema de Kubernetes. Construimos todo en un ambiente de prueba, lo endurecemos con escalado, observabilidad y políticas de seguridad, y te entregamos la plataforma documentada y lista para operar.",
+    icon: Container,
+    features: [
+      "Dockerfiles multi-stage e imágenes mínimas sin root",
+      "Registro privado en Amazon ECR con escaneo de vulnerabilidades",
+      "Clusters ECS/Fargate o EKS definidos como código",
+      "Autoescalado de pods y nodos (HPA, Karpenter)",
+      "Ingress, certificados y balanceo de carga administrados",
+      "Secretos desde AWS Secrets Manager y políticas de red",
+    ],
+    benefits: [
+      "Despliegues consistentes en todos los ambientes",
+      "Escalado automático según la demanda real",
+      "Mejor aprovechamiento de la capacidad contratada",
+      "Actualizaciones sin cortes de servicio",
+      "Base lista para microservicios y GitOps",
+    ],
+    tags: ["Docker", "Kubernetes", "Amazon EKS", "Amazon ECS", "Helm"],
+  },
+  {
+    id: "gitops",
+    title: "GitOps",
+    shortDescription:
+      "Git como única fuente de verdad: despliegues declarativos, auditables y con rollback en un clic usando Argo CD o Flux.",
+    fullDescription:
+      "Implementamos GitOps para que desplegar sea aprobar un pull request. Un agente dentro del cluster sincroniza continuamente lo que está en el repositorio con lo que corre, detecta cambios manuales y los corrige. Las promociones entre ambientes quedan registradas, volver atrás es revertir un commit y el pipeline de CI ya no necesita credenciales de administrador del cluster.",
+    icon: GitPullRequest,
+    features: [
+      "Instalación y configuración de Argo CD o Flux",
+      "Estructura de repositorios para aplicaciones y ambientes",
+      "Promoción entre ambientes mediante pull requests",
+      "Detección y corrección automática de drift",
+      "Gestión de secretos con External Secrets o Sealed Secrets",
+      "Notificaciones de sincronización y estado de despliegues",
+    ],
+    benefits: [
+      "Historial completo de quién desplegó qué y cuándo",
+      "Rollback inmediato revirtiendo un commit",
+      "Clusters que se autocorrigen ante cambios manuales",
+      "Menos credenciales sensibles en el CI",
+      "Despliegues más frecuentes con menos riesgo",
+    ],
+    tags: ["Argo CD", "Flux", "Kustomize", "Helm"],
+  },
+  {
+    id: "well-architected",
+    title: "AWS Well-Architected Review",
+    shortDescription:
+      "Revisamos tu cuenta AWS contra los seis pilares de buenas prácticas y te entregamos un plan priorizado de mejoras.",
+    fullDescription:
+      "Una revisión de alcance acotado, con acceso de solo lectura, sobre una o varias cargas de trabajo en AWS. Analizamos seguridad, confiabilidad, excelencia operativa, rendimiento, costos y sostenibilidad, y transformamos los hallazgos en un informe por pilar con riesgos altos y medios, y un plan de acción de 30 a 90 días. Ideal antes de una auditoría, una ronda de inversión o un crecimiento fuerte de tráfico.",
+    icon: ClipboardCheck,
+    features: [
+      "Acceso de solo lectura con rol IAM temporal",
+      "Revisión de los seis pilares del framework Well-Architected",
+      "Análisis de IAM, redes, backups y configuración de seguridad",
+      "Detección de oportunidades de ahorro",
+      "Informe ejecutivo y técnico por pilar",
+      "Plan de remediación priorizado de 30 a 90 días",
+    ],
+    benefits: [
+      "Visibilidad clara de los riesgos de tu arquitectura",
+      "Prioridades concretas en lugar de listas interminables",
+      "Preparación para auditorías y due diligence",
+      "Ahorros identificados desde la primera revisión",
+      "Sin cambios en tu entorno durante la revisión",
+    ],
+    tags: ["AWS", "Well-Architected", "Security Hub", "Trusted Advisor"],
+  },
+  {
+    id: "backup-dr",
+    title: "Backup y Recuperación ante Desastres",
+    shortDescription:
+      "Definimos RPO y RTO con tu negocio, automatizamos backups entre cuentas y regiones, y probamos que la restauración funcione.",
+    fullDescription:
+      "Un backup que nunca se restauró es solo una suposición. Definimos con vos cuántos datos podés perder y cuánto tiempo puede estar caído cada sistema, y diseñamos la estrategia adecuada: desde backup y restauración hasta réplicas en otra región. Centralizamos las copias con AWS Backup, las protegemos contra borrado y programamos pruebas de restauración periódicas con resultados documentados.",
+    icon: DatabaseBackup,
+    features: [
+      "Definición de RPO y RTO por aplicación",
+      "Políticas centralizadas con AWS Backup",
+      "Copias cruzadas entre cuentas y regiones",
+      "Bóvedas inmutables protegidas contra borrado",
+      "Infraestructura como código para recrear entornos",
+      "Pruebas de restauración programadas y runbooks de DR",
+    ],
+    benefits: [
+      "Continuidad del negocio ante fallas o ransomware",
+      "Tiempos de recuperación medidos, no estimados",
+      "Cumplimiento de requisitos regulatorios y de clientes",
+      "Costos de DR acordes a la criticidad de cada sistema",
+      "Equipo preparado con procedimientos probados",
+    ],
+    tags: ["AWS Backup", "Elastic Disaster Recovery", "Amazon S3", "RDS"],
+  },
 ];
 
 const servicesEn: ServiceData[] = [
@@ -782,6 +912,131 @@ const servicesEn: ServiceData[] = [
       "Expert support for incident resolution",
     ],
     tags: ["Linux", "Debian", "Ubuntu", "Fedora", "SysAdmin"],
+  },
+  {
+    id: "iac",
+    title: "Infrastructure as Code (IaC)",
+    shortDescription:
+      "We define your AWS infrastructure as code with Terraform, OpenTofu, CloudFormation or CDK: versioned, reviewed and reproducible.",
+    fullDescription:
+      "No more building infrastructure by hand in the console. We describe networks, compute, databases and permissions in versioned code, with reusable modules, secure remote state and a pipeline that shows the plan on every pull request before applying. We can start from scratch or import what already exists without recreating it. The code lives in your repository and your team can maintain it without depending on us.",
+    icon: FileCode,
+    features: [
+      "Assessment of current infrastructure and automation maturity",
+      "Library of versioned Terraform/OpenTofu modules",
+      "Remote state in S3 with encryption and locking",
+      "Environments split by AWS account (dev, staging, prod)",
+      "Plan/apply pipeline with review on every pull request",
+      "Import of existing resources and drift detection",
+    ],
+    benefits: [
+      "Identical, reproducible environments",
+      "Every change reviewed and audited",
+      "Fast recovery from incidents or disasters",
+      "Fewer errors from manual changes",
+      "No lock-in: the code is yours",
+    ],
+    tags: ["Terraform", "OpenTofu", "CloudFormation", "AWS CDK"],
+  },
+  {
+    id: "contenedores-kubernetes",
+    title: "Containers and Kubernetes on AWS",
+    shortDescription:
+      "We containerize your applications and run them in production on ECS, Fargate or EKS with automated deployments.",
+    fullDescription:
+      "We move your applications to lightweight, secure container images and choose with you the orchestrator that best fits your team: ECS on Fargate to run with minimal operations, or EKS when you need the Kubernetes ecosystem. We build everything in a test environment, harden it with autoscaling, observability and security policies, and hand over a documented platform ready to operate.",
+    icon: Container,
+    features: [
+      "Multi-stage Dockerfiles and minimal non-root images",
+      "Private Amazon ECR registry with vulnerability scanning",
+      "ECS/Fargate or EKS clusters defined as code",
+      "Pod and node autoscaling (HPA, Karpenter)",
+      "Managed ingress, certificates and load balancing",
+      "Secrets from AWS Secrets Manager and network policies",
+    ],
+    benefits: [
+      "Consistent deployments across every environment",
+      "Automatic scaling based on real demand",
+      "Better use of the capacity you pay for",
+      "Updates without service interruptions",
+      "A foundation ready for microservices and GitOps",
+    ],
+    tags: ["Docker", "Kubernetes", "Amazon EKS", "Amazon ECS", "Helm"],
+  },
+  {
+    id: "gitops",
+    title: "GitOps",
+    shortDescription:
+      "Git as the single source of truth: declarative, auditable deployments with one-click rollback using Argo CD or Flux.",
+    fullDescription:
+      "We implement GitOps so that deploying means approving a pull request. An agent inside the cluster continuously syncs what is in the repository with what is running, detects manual changes and corrects them. Promotions between environments are recorded, rolling back is reverting a commit, and the CI pipeline no longer needs cluster admin credentials.",
+    icon: GitPullRequest,
+    features: [
+      "Argo CD or Flux installation and configuration",
+      "Repository structure for applications and environments",
+      "Promotion between environments through pull requests",
+      "Automatic drift detection and correction",
+      "Secrets management with External Secrets or Sealed Secrets",
+      "Sync notifications and deployment status",
+    ],
+    benefits: [
+      "Full history of who deployed what and when",
+      "Instant rollback by reverting a commit",
+      "Self-healing clusters when manual changes happen",
+      "Fewer sensitive credentials in CI",
+      "More frequent deployments with less risk",
+    ],
+    tags: ["Argo CD", "Flux", "Kustomize", "Helm"],
+  },
+  {
+    id: "well-architected",
+    title: "AWS Well-Architected Review",
+    shortDescription:
+      "We review your AWS account against the six best-practice pillars and deliver a prioritized improvement plan.",
+    fullDescription:
+      "A fixed-scope review, with read-only access, of one or more workloads on AWS. We analyze security, reliability, operational excellence, performance, cost and sustainability, and turn the findings into a report by pillar with high and medium risks plus a 30- to 90-day action plan. Ideal before an audit, a funding round or a sharp increase in traffic.",
+    icon: ClipboardCheck,
+    features: [
+      "Read-only access through a temporary IAM role",
+      "Review of the six Well-Architected pillars",
+      "Analysis of IAM, networking, backups and security settings",
+      "Identification of cost-saving opportunities",
+      "Executive and technical report by pillar",
+      "Prioritized 30- to 90-day remediation plan",
+    ],
+    benefits: [
+      "Clear visibility of your architecture's risks",
+      "Concrete priorities instead of endless lists",
+      "Readiness for audits and due diligence",
+      "Savings identified from the first review",
+      "No changes to your environment during the review",
+    ],
+    tags: ["AWS", "Well-Architected", "Security Hub", "Trusted Advisor"],
+  },
+  {
+    id: "backup-dr",
+    title: "Backup and Disaster Recovery",
+    shortDescription:
+      "We define RPO and RTO with your business, automate cross-account and cross-region backups, and prove that restores work.",
+    fullDescription:
+      "A backup that has never been restored is just an assumption. We define with you how much data you can lose and how long each system can be down, and design the right strategy: from backup and restore to replicas in another region. We centralize copies with AWS Backup, protect them against deletion and schedule periodic restore tests with documented results.",
+    icon: DatabaseBackup,
+    features: [
+      "RPO and RTO defined per application",
+      "Centralized policies with AWS Backup",
+      "Cross-account and cross-region copies",
+      "Immutable vaults protected against deletion",
+      "Infrastructure as code to rebuild environments",
+      "Scheduled restore tests and DR runbooks",
+    ],
+    benefits: [
+      "Business continuity through outages or ransomware",
+      "Recovery times measured, not estimated",
+      "Compliance with regulatory and customer requirements",
+      "DR costs matched to each system's criticality",
+      "A team prepared with tested procedures",
+    ],
+    tags: ["AWS Backup", "Elastic Disaster Recovery", "Amazon S3", "RDS"],
   },
 ];
 

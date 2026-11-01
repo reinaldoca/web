@@ -30,7 +30,7 @@ export const solutionsEn: Solution[] = [
       { title: "Migration waves", description: "We move in small groups, with tests and a rollback plan in every wave." },
       { title: "Stabilization", description: "Two weeks of support, right-sizing and handover to your team." },
     ],
-    relatedServiceIds: ["cloud", "migracion", "finops"],
+    relatedServiceIds: ["cloud", "migracion", "finops", "iac", "well-architected", "backup-dr"],
     quote: "Migrating isn't copying servers: it's the chance to leave behind the technical debt nobody wanted to touch.",
     stages: [
       { name: "Assess", deliverables: ["Inventory and dependency map", "Cloud cost estimate", "Wave-based roadmap"] },
@@ -66,7 +66,7 @@ export const solutionsEn: Solution[] = [
       { title: "Security in the pipeline", description: "SAST, image scanning and secrets management." },
       { title: "Rollout to the rest", description: "Reusable templates so every team can adopt the model." },
     ],
-    relatedServiceIds: ["devops", "devsecops", "platform-engineering"],
+    relatedServiceIds: ["devops", "devsecops", "platform-engineering", "iac", "contenedores-kubernetes", "gitops"],
     quote: "A team that ships often ships with less fear, because every change is small and reversible.",
     stages: [
       { name: "Measure", deliverables: ["Baseline DORA metrics", "Delivery flow map", "Automation priorities"] },
@@ -102,7 +102,7 @@ export const solutionsEn: Solution[] = [
       { title: "Active on-call", description: "24/7 coverage with escalation by severity." },
       { title: "Monthly reports", description: "Availability, incidents, costs and recommendations." },
     ],
-    relatedServiceIds: ["staffing", "observabilidad", "sre"],
+    relatedServiceIds: ["staffing", "observabilidad", "sre", "linux-admin", "well-architected", "backup-dr"],
     quote: "The best on-call is the one that barely rings, because problems are caught before they become incidents.",
     stages: [
       { name: "Observe", deliverables: ["Per-service dashboards", "Alerts with agreed thresholds", "Asset inventory"] },

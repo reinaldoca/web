@@ -1,6 +1,7 @@
 "use client";
 
-import { Mail, MapPin } from "lucide-react";
+import { Building2, Mail, MapPin } from "lucide-react";
+import { COMPANY_ADDRESS } from "@/lib/content/company";
 import { WhatsAppIcon } from "@/components/ui/whatsapp-icon";
 import { IconTile } from "@/components/ui/icon-tile";
 import { useLanguage } from "@/components/language-provider";
@@ -14,6 +15,7 @@ export function ContactView() {
     const channels = [
         { icon: Mail, label: copy.email, value: "contacto@cloudbit.com.ar", href: "mailto:contacto@cloudbit.com.ar" },
         { icon: WhatsAppIcon, label: copy.whatsapp, value: "+54 9 11 6904-4913", href: "https://wa.me/5491169044913" },
+        { icon: Building2, label: copy.office, value: COMPANY_ADDRESS.display, href: COMPANY_ADDRESS.mapsUrl },
         { icon: MapPin, label: copy.coverage, value: copy.coverageValue, href: undefined },
     ];
 

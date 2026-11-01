@@ -1,7 +1,9 @@
 import type { Language } from "@/lib/i18n/dictionary";
 import { blogPostsEn } from "./blog.en";
+import { platformPostsEn } from "./blog.platform.en";
+import { platformPostsEs } from "./blog.platform.es";
 
-export type BlogCategory = "Cloud" | "DevOps" | "Operación" | "Datos e IA";
+export type BlogCategory = "Cloud" | "DevOps" | "Seguridad" | "Operación" | "Datos e IA";
 
 export interface BlogPost {
   slug: string;
@@ -14,12 +16,12 @@ export interface BlogPost {
   faqs?: { question: string; answer: string }[];
 }
 
-export const blogCategories: BlogCategory[] = ["Cloud", "DevOps", "Operación", "Datos e IA"];
+export const blogCategories: BlogCategory[] = ["Cloud", "DevOps", "Seguridad", "Operación", "Datos e IA"];
 
 /** La categoría es una clave fija; esta tabla da el texto visible en cada idioma. */
 const categoryLabels: Record<Language, Record<BlogCategory, string>> = {
-  es: { Cloud: "Cloud", DevOps: "DevOps", "Operación": "Operación", "Datos e IA": "Datos e IA" },
-  en: { Cloud: "Cloud", DevOps: "DevOps", "Operación": "Operations", "Datos e IA": "Data and AI" },
+  es: { Cloud: "Cloud", DevOps: "DevOps", Seguridad: "Seguridad", "Operación": "Operación", "Datos e IA": "Datos e IA" },
+  en: { Cloud: "Cloud", DevOps: "DevOps", Seguridad: "Security", "Operación": "Operations", "Datos e IA": "Data and AI" },
 };
 
 export function categoryLabel(category: BlogCategory, lang: Language) {
@@ -27,7 +29,7 @@ export function categoryLabel(category: BlogCategory, lang: Language) {
 }
 
 /** Artículos propios de CloudBit. Revisar y ajustar el tono antes de publicar. */
-export const blogPosts: BlogPost[] = [
+const corePostsEs: BlogPost[] = [
   {
     slug: "checklist-antes-de-migrar-a-la-nube",
     title: "Checklist técnico antes de migrar tu primera aplicación a la nube",
@@ -219,7 +221,10 @@ export const blogPosts: BlogPost[] = [
   },
 ];
 
-const postsByLanguage: Record<Language, BlogPost[]> = { es: blogPosts, en: blogPostsEn };
+export const blogPosts: BlogPost[] = [...platformPostsEs, ...corePostsEs];
+const postsEn: BlogPost[] = [...platformPostsEn, ...blogPostsEn];
+
+const postsByLanguage: Record<Language, BlogPost[]> = { es: blogPosts, en: postsEn };
 
 export function getPosts(lang: Language) {
   return postsByLanguage[lang];

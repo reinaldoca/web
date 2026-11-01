@@ -88,6 +88,56 @@ const es: ExtrasSet = {
         "Cada equipo usa su propia herramienta de monitoreo",
       ],
     },
+    iac: {
+      signals: [
+        "La infraestructura se crea y modifica a mano desde la consola",
+        "Staging y producción no son iguales y nadie sabe por qué",
+        "Reconstruir un ambiente llevaría días o semanas",
+        "Solo una persona sabe cómo está armada la red",
+        "No hay registro de quién cambió qué en AWS",
+        "Tenés Terraform, pero el estado vive en una laptop",
+      ],
+    },
+    "contenedores-kubernetes": {
+      signals: [
+        "Las aplicaciones funcionan en la máquina del desarrollador pero no en el servidor",
+        "Escalar significa levantar servidores a mano",
+        "Las imágenes pesan gigas y tardan en desplegarse",
+        "El cluster de Kubernetes quedó desactualizado y nadie lo quiere tocar",
+        "Los servidores están ociosos la mayor parte del día",
+        "Cada servicio se despliega de una forma distinta",
+      ],
+    },
+    gitops: {
+      signals: [
+        "No sabés exactamente qué versión corre en cada ambiente",
+        "Alguien aplica cambios en el cluster con kubectl a mano",
+        "Volver a la versión anterior es un procedimiento manual",
+        "El pipeline de CI tiene credenciales de administrador del cluster",
+        "Promover de staging a producción depende de una persona",
+        "Los secretos están en texto plano en el repositorio",
+      ],
+    },
+    "well-architected": {
+      signals: [
+        "Nunca se revisó la cuenta AWS con una mirada externa",
+        "Se acerca una auditoría o una due diligence",
+        "Hay usuarios IAM con claves de acceso de hace años",
+        "Producción y desarrollo comparten la misma cuenta",
+        "No sabés si tus bases de datos tienen backup y cifrado",
+        "La factura crece y no está claro dónde ahorrar",
+      ],
+    },
+    "backup-dr": {
+      signals: [
+        "Nadie probó restaurar un backup completo",
+        "Los backups están en la misma cuenta que producción",
+        "No hay un RPO ni un RTO acordado con el negocio",
+        "Un ransomware podría borrar también las copias",
+        "El plan de recuperación es un documento desactualizado",
+        "Una caída de región dejaría el servicio fuera por días",
+      ],
+    },
   },
 };
 
@@ -162,6 +212,56 @@ const en: ExtrasSet = {
         "Finding the cause of an incident takes hours",
         "There are no real-time business metrics",
         "Every team uses its own monitoring tool",
+      ],
+    },
+    iac: {
+      signals: [
+        "Infrastructure is created and changed by hand in the console",
+        "Staging and production differ and nobody knows why",
+        "Rebuilding an environment would take days or weeks",
+        "Only one person knows how the network is set up",
+        "There is no record of who changed what in AWS",
+        "You have Terraform, but the state lives on a laptop",
+      ],
+    },
+    "contenedores-kubernetes": {
+      signals: [
+        "Apps work on the developer's machine but not on the server",
+        "Scaling means spinning up servers by hand",
+        "Images weigh gigabytes and take ages to deploy",
+        "The Kubernetes cluster is outdated and nobody wants to touch it",
+        "Servers sit idle most of the day",
+        "Every service is deployed differently",
+      ],
+    },
+    gitops: {
+      signals: [
+        "You don't know exactly which version runs in each environment",
+        "Someone applies changes to the cluster with kubectl by hand",
+        "Rolling back is a manual procedure",
+        "The CI pipeline holds cluster admin credentials",
+        "Promoting from staging to production depends on one person",
+        "Secrets sit in plain text in the repository",
+      ],
+    },
+    "well-architected": {
+      signals: [
+        "Your AWS account has never been reviewed by outside eyes",
+        "An audit or due diligence is coming up",
+        "There are IAM users with years-old access keys",
+        "Production and development share the same account",
+        "You're not sure your databases are backed up and encrypted",
+        "The bill keeps growing and it's unclear where to save",
+      ],
+    },
+    "backup-dr": {
+      signals: [
+        "Nobody has tested a full backup restore",
+        "Backups live in the same account as production",
+        "There is no RPO or RTO agreed with the business",
+        "Ransomware could delete the copies too",
+        "The recovery plan is an outdated document",
+        "A region outage would take the service down for days",
       ],
     },
   },

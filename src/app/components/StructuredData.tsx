@@ -1,3 +1,5 @@
+import { COMPANY_ADDRESS } from "@/lib/content/company";
+
 /**
  * Structured Data (Schema.org) para SEO: Organization y Service.
  * El FAQPage lo publica FAQSection a partir de src/lib/content/faq.ts.
@@ -22,8 +24,10 @@ export function StructuredData() {
         "email": "contacto@cloudbit.com.ar",
         "address": {
             "@type": "PostalAddress",
-            "addressCountry": "AR",
-            "addressRegion": "Buenos Aires"
+            "streetAddress": COMPANY_ADDRESS.street,
+            "addressLocality": COMPANY_ADDRESS.locality,
+            "addressRegion": COMPANY_ADDRESS.region,
+            "addressCountry": COMPANY_ADDRESS.country
         },
         "contactPoint": {
             "@type": "ContactPoint",
