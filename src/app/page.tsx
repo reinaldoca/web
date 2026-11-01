@@ -51,11 +51,11 @@ export const metadata: Metadata = {
     "staffing DevOps",
   ],
   authors: [{ name: "CloudBit" }],
+  alternates: { canonical: "/" },
   openGraph: {
     type: "website",
     locale: "es_AR",
-    alternateLocale: ["en_US"],
-    url: "https://cloudbit.com.ar",
+    url: "/",
     siteName: "CloudBit",
     title: "CloudBit - DevOps y Cloud para empresas en crecimiento",
     description: "Automatizamos CI/CD, migramos a cloud y operamos Kubernetes. 8+ años, 120+ proyectos, 15+ ingenieros certificados.",

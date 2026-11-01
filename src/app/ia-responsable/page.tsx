@@ -1,11 +1,13 @@
 import type { Metadata } from "next";
+import { pageMetadata } from "@/lib/seo";
 import { SiteShell } from "@/components/site/site-shell";
 import { ResponsibleAiView } from "./ai-view";
 
-export const metadata: Metadata = {
+export const metadata: Metadata = pageMetadata({
     title: "Uso responsable de IA | CloudBit",
     description: "Principios que guían cómo CloudBit diseña e implementa soluciones con inteligencia artificial.",
-};
+    path: "/ia-responsable",
+});
 
 export default function ResponsibleAiPage() {
     return (

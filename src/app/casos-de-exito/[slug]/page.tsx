@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import { cases, getCase } from "@/lib/content/cases";
 import { SiteShell } from "@/components/site/site-shell";
+import { breadcrumbSchema, jsonLd, pageMetadata } from "@/lib/seo";
 import { CaseView } from "./case-view";
 
 interface CasePageProps {
@@ -16,7 +17,11 @@ export async function generateMetadata({ params }: CasePageProps): Promise<Metad
     const { slug } = await params;
     const item = getCase(slug);
     if (!item) return {};
-    return { title: `${item.industry}: caso de éxito | CloudBit`, description: item.summary };
+    return pageMetadata({
+        title: `${item.industry}: caso de éxito | CloudBit`,
+        description: item.summary,
+        path: `/casos-de-exito/${slug}`,
+    });
 }
 
 export default async function CasePage({ params }: CasePageProps) {
@@ -26,6 +31,15 @@ export default async function CasePage({ params }: CasePageProps) {
 
     return (
         <SiteShell>
+            <script
+                type="application/ld+json"
+                dangerouslySetInnerHTML={jsonLd(
+                    breadcrumbSchema([
+                        { name: "Casos de éxito", path: "/casos-de-exito" },
+                        { name: item.industry, path: `/casos-de-exito/${slug}` },
+                    ]),
+                )}
+            />
             <CaseView slug={slug} />
         </SiteShell>
     );

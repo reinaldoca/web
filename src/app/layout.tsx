@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { SITE_URL } from "@/lib/seo";
 import { Geist_Mono, Plus_Jakarta_Sans } from "next/font/google";
 import "./globals.css";
 import { LanguageProvider } from "@/components/language-provider";
@@ -17,7 +18,7 @@ const geistMono = Geist_Mono({
 
 export const metadata: Metadata = {
   // Base para resolver URLs absolutas de Open Graph, Twitter y canonical
-  metadataBase: new URL(process.env.NEXT_PUBLIC_SITE_URL ?? "https://cloudbit.com.ar"),
+  metadataBase: new URL(SITE_URL),
   title: "CloudBit - Soluciones en la Nube",
   description: "Transformación digital y servicios cloud para tu empresa.",
 };

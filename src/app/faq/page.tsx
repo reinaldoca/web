@@ -1,12 +1,14 @@
 import type { Metadata } from "next";
+import { pageMetadata } from "@/lib/seo";
 import { SiteShell } from "@/components/site/site-shell";
 import { allFaqs } from "@/lib/content/faq";
 import { FaqView } from "./faq-view";
 
-export const metadata: Metadata = {
+export const metadata: Metadata = pageMetadata({
     title: "Preguntas frecuentes | CloudBit",
     description: "Respuestas sobre migración, operación, DevOps, datos e IA y cómo trabajamos.",
-};
+    path: "/faq",
+});
 
 export default function FaqPage() {
     const schema = {
